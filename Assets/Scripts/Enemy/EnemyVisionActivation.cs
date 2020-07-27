@@ -8,7 +8,7 @@ namespace Enemy
         public bool visionActivated;
         public Material visionMat;
         public Material defaultMat;
-
+        
         public void Start()
         {
             VisionAbilityController.visionActivation += UpdateVision;

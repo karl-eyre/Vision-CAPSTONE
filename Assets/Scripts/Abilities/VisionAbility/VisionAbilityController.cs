@@ -1,23 +1,32 @@
 ﻿using System;
+using Abilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace VisionAbility
 {
-    public class VisionAbilityController : MonoBehaviour
+    public class VisionAbilityController : AbilityBase
     {
         [SerializeField] private bool isActive;
-        [SerializeField] private float visionAbilityDuration;
+        private float visionAbilityDuration;
         public float maxVisionAbilityDuration;
         public static event Action visionActivation;
 
+        [SerializeField] private GameControls controls;
+        private void Start()
+        {
+             controls = new GameControls();
+             controls.Enable();
+             controls.InGame.VisionAbilityActivation.performed += UseVisionAbility;
+        }
+
         public void FixedUpdate()
         {
-            if (InputSystem.GetDevice<Keyboard>().spaceKey.isPressed)
-            {
-                UseVisionAbility();
-            }
+            CheckAbility();
+        }
 
+        private void CheckAbility()
+        {
             if (visionAbilityDuration > 0)
             {
                 visionAbilityDuration -= Time.deltaTime;
@@ -31,9 +40,9 @@ namespace VisionAbility
             }
         }
 
-        public void UseVisionAbility()
+        private void UseVisionAbility(InputAction.CallbackContext context)
         {
-            if (!isActive)
+            if(!isActive)
             {
                 isActive = true;
                 visionAbilityDuration = maxVisionAbilityDuration;
@@ -41,9 +50,19 @@ namespace VisionAbility
             }
         }
 
-        public void CallEvent()
+        private void CallEvent()
         {
             visionActivation?.Invoke();
+        }
+
+        private void OnEnable()
+        {
+            // controls.Enable();
+        }
+
+        private void OnDisable()
+        {
+            controls.Disable();
         }
     }
 }
