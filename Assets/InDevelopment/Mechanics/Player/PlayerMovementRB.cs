@@ -25,18 +25,21 @@ namespace Player
         private void OnEnable()
         {
             controls.Enable();
+            
         }
 
         private void OnDisable()
         {
             controls.Disable();
         }
-
+        
         private void Awake()
         {
             controls = new GameControls();
             controls.Enable();
             controls.InGame.Jump.performed += JumpInput;
+            controls.InGame.Movement.performed += Move;
+            controls.InGame.Movement.canceled += Move;
             rb = GetComponent<Rigidbody>();
             disToGround = GetComponent<Collider>().bounds.extents.y;
         }
@@ -60,7 +63,7 @@ namespace Player
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
-        private void Move()
+        private void Move(InputAction.CallbackContext obj)
         {
             moveDirection = controls.InGame.Movement.ReadValue<Vector2>();
             Vector3 movement = (moveDirection.y * transform.forward) + (moveDirection.x * transform.right);
@@ -70,7 +73,7 @@ namespace Player
         private void FixedUpdate()
         {
             //add in bool to stop movement when vision active
-            Move();
+            // Move();
         }
     }
 }

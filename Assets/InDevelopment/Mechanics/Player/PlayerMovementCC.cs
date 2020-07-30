@@ -78,7 +78,7 @@ namespace Player
             moveDirection.y -= gravity * Time.deltaTime;
             characterController.Move(moveDirection * movementSpeed * Time.deltaTime);
         }
-        
+
         private void OnEnable()
         {
             controls.Enable();

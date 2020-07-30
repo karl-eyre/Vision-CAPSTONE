@@ -7,24 +7,24 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Scripts" t="Include">
-          <e p="Abilities" t="Include">
-            <e p="AbilityBase.cs" t="Include" />
-            <e p="VisionAbility" t="Include">
-              <e p="VisionAbilityController.cs" t="Include" />
-              <e p="VisionShader.shader" t="Include" />
+        <e p="InDevelopment" t="Include">
+          <e p="Mechanics" t="Include">
+            <e p="Abilities" t="Include">
+              <e p="AbilityBase.cs" t="Include" />
+              <e p="VisionAbility" t="Include">
+                <e p="VisionAbilityController.cs" t="Include" />
+                <e p="VisionShader.shader" t="Include" />
+              </e>
             </e>
-          </e>
-          <e p="Enemy" t="Include">
-            <e p="EnemyVisionActivation.cs" t="Include" />
-          </e>
-          <e p="Player" t="Include">
             <e p="ActionMap" t="Include">
               <e p="GameControls.cs" t="Include" />
             </e>
-            <e p="MouseLook.cs" t="Include" />
-            <e p="PlayerMovementCC.cs" t="Include" />
-            <e p="Prefabs" t="Include">
+            <e p="Enemy" t="Include">
+              <e p="EnemyVisionActivation.cs" t="Include" />
+            </e>
+            <e p="Player" t="Include">
+              <e p="MouseLook.cs" t="Include" />
+              <e p="PlayerMovementCC.cs" t="Include" />
               <e p="PlayerMovementRB.cs" t="Include" />
             </e>
           </e>
