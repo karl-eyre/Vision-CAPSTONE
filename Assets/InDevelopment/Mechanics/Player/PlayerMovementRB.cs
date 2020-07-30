@@ -12,7 +12,7 @@ namespace Player
         private GameControls controls;
         private Vector2 moveDirection;
         private Rigidbody rb;
-
+        private Vector3 movement;
 
         [Header("Movement Settings")] public float moveSpeed;
 
@@ -40,6 +40,7 @@ namespace Player
             controls.InGame.Jump.performed += JumpInput;
             controls.InGame.Movement.performed += Move;
             controls.InGame.Movement.canceled += Move;
+            controls.InGame.Movement.canceled += MoveStop;
             rb = GetComponent<Rigidbody>();
             disToGround = GetComponent<Collider>().bounds.extents.y;
         }
@@ -63,17 +64,32 @@ namespace Player
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
+        /// <summary>
+        /// Currently the movement works.. but it wont continute to move forward when you change direction while still holding down W
+        /// Will continute to look into this but for now its too late and im gonna finish up for the night!
+        /// </summary>
+        /// <param name="obj"></param>
         private void Move(InputAction.CallbackContext obj)
         {
             moveDirection = controls.InGame.Movement.ReadValue<Vector2>();
-            Vector3 movement = (moveDirection.y * transform.forward) + (moveDirection.x * transform.right);
-            rb.AddForce(movement.normalized * moveSpeed);
+            movement = (moveDirection.y * transform.forward) + (moveDirection.x * transform.right);
+            //rb.AddForce(movement.normalized * moveSpeed);
+        }
+
+        private void MoveStop(InputAction.CallbackContext context)
+        {
+            Vector2 vel = rb.velocity;
+            Vector2 slowDown;
+            slowDown.x = Mathf.Lerp(vel.x, 0, 0.5f);
+            slowDown.y = Mathf.Lerp(vel.y, 0, 0.5f);
+            
+            rb.velocity = new Vector3(slowDown.x, 0, slowDown.y);
         }
 
         private void FixedUpdate()
         {
             //add in bool to stop movement when vision active
-            // Move();
+            rb.AddForce(movement.normalized * moveSpeed);
         }
     }
 }
