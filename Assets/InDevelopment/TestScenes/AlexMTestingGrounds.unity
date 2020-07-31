@@ -280,6 +280,11 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 65
       objectReference: {fileID: 0}
+    - target: {fileID: 1146908603206028426, guid: 274dbac12f7b5814bba701a69f20642a,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 365820795}
     - target: {fileID: 1146908603206028429, guid: 274dbac12f7b5814bba701a69f20642a,
         type: 3}
       propertyPath: m_Name
@@ -320,6 +325,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &365820795 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8761025662884687280, guid: 274dbac12f7b5814bba701a69f20642a,
+    type: 3}
+  m_PrefabInstance: {fileID: 175644188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &894200425
 GameObject:
   m_ObjectHideFlags: 0
@@ -3276,7 +3287,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35626
+  m_Name: pb_Mesh16666
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

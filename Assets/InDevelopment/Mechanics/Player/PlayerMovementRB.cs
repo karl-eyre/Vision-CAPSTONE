@@ -18,6 +18,9 @@ namespace Player
 
         [Header("Jump Settings")] public float jumpForce;
         public LayerMask groundMask;
+        public Camera cam;
+        
+        
         
         private bool isJumping;
         private float disToGround;
@@ -40,7 +43,7 @@ namespace Player
             controls.InGame.Jump.performed += JumpInput;
             controls.InGame.Movement.performed += Move;
             controls.InGame.Movement.canceled += Move;
-            controls.InGame.Movement.canceled += MoveStop;
+            // controls.InGame.Movement.canceled += MoveStop;
             rb = GetComponent<Rigidbody>();
             disToGround = GetComponent<Collider>().bounds.extents.y;
         }
@@ -71,20 +74,21 @@ namespace Player
         /// <param name="obj"></param>
         private void Move(InputAction.CallbackContext obj)
         {
+            Transform ct = cam.transform;
             moveDirection = controls.InGame.Movement.ReadValue<Vector2>();
-            movement = (moveDirection.y * transform.forward) + (moveDirection.x * transform.right);
+            movement = (moveDirection.y * ct.forward) + (moveDirection.x * ct.right);
             //rb.AddForce(movement.normalized * moveSpeed);
         }
 
-        private void MoveStop(InputAction.CallbackContext context)
-        {
-            Vector2 vel = rb.velocity;
-            Vector2 slowDown;
-            slowDown.x = Mathf.Lerp(vel.x, 0, 0.5f);
-            slowDown.y = Mathf.Lerp(vel.y, 0, 0.5f);
-            
-            rb.velocity = new Vector3(slowDown.x, 0, slowDown.y);
-        }
+        // private void MoveStop(InputAction.CallbackContext context)
+        // {
+        //     Vector2 vel = rb.velocity;
+        //     Vector2 slowDown;
+        //     slowDown.x = Mathf.Lerp(vel.x, 0, 0.5f);
+        //     slowDown.y = Mathf.Lerp(vel.y, 0, 0.5f);
+        //     
+        //     rb.velocity = new Vector3(slowDown.x, 0, slowDown.y);
+        // }
 
         private void FixedUpdate()
         {
