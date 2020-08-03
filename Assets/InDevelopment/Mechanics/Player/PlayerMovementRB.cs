@@ -12,6 +12,7 @@ namespace Player
         private GameControls controls;
         private Vector2 moveDirection;
         private Rigidbody rb;
+        private Transform rbT;
         private Vector3 movement;
 
         [Header("Movement Settings")] public float moveSpeed;
@@ -43,26 +44,30 @@ namespace Player
             controls.InGame.Movement.canceled += Move;
             // controls.InGame.Movement.canceled += MoveStop;
             rb = GetComponent<Rigidbody>();
+            rbT = rb.transform;
             disToGround = GetComponent<Collider>().bounds.extents.y;
         }
 
         private void JumpInput(InputAction.CallbackContext obj)
         {
-            if (!isJumping && IsGrounded())
-            {
-                isJumping = true;
-                Jump();
-            }
+            
+                Jump();   
+            
         }
 
         private bool IsGrounded()
         {
-            return Physics.Raycast(transform.position, -Vector3.up, disToGround + 0.1f,groundMask);
+            Debug.DrawRay(transform.position, -Vector3.up * (disToGround - 0.9f), Color.red, 0.2f);
+            //Debug.DrawLine(transform.position, -Vector3.up * disToGround, Color.red, 0.2f);
+            return Physics.Raycast(transform.position, -Vector3.up, (disToGround - 0.9f),groundMask);
         }
 
         private void Jump()
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            if (IsGrounded())
+            {
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
         }
 
         /// <summary>
@@ -72,26 +77,31 @@ namespace Player
         /// <param name="obj"></param>
         private void Move(InputAction.CallbackContext obj)
         {
-            Transform ct = cam.transform;
             moveDirection = controls.InGame.Movement.ReadValue<Vector2>();
-            movement = (moveDirection.y * ct.forward) + (moveDirection.x * ct.right);
-            //rb.AddForce(movement.normalized * moveSpeed);
         }
 
-        // private void MoveStop(InputAction.CallbackContext context)
-        // {
-        //     Vector2 vel = rb.velocity;
-        //     Vector2 slowDown;
-        //     slowDown.x = Mathf.Lerp(vel.x, 0, 0.5f);
-        //     slowDown.y = Mathf.Lerp(vel.y, 0, 0.5f);
-        //     
-        //     rb.velocity = new Vector3(slowDown.x, 0, slowDown.y);
-        // }
+        void ApplyMovement()
+        {
+            movement = (moveDirection.y * rbT.forward) + (moveDirection.x * rbT.right);
+            if (IsGrounded())
+            {
+                //GroundSpeed
+                //rb.AddForce(movement.normalized * moveSpeed);
+                rb.velocity = (movement.normalized * moveSpeed);
+            }
+            else
+            {
+                //AirSpeed
+                rb.AddForce((movement.normalized * moveSpeed) / 3);
+            }
+            
+        }
+
 
         private void FixedUpdate()
         {
             //add in bool to stop movement when vision active
-            rb.AddForce(movement.normalized * moveSpeed);
+            ApplyMovement();
         }
     }
 }
