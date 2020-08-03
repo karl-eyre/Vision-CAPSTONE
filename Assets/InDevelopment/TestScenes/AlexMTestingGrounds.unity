@@ -275,16 +275,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1146908603206028426, guid: 274dbac12f7b5814bba701a69f20642a,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 190
-      objectReference: {fileID: 0}
-    - target: {fileID: 1146908603206028426, guid: 274dbac12f7b5814bba701a69f20642a,
-        type: 3}
-      propertyPath: jumpForce
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 1146908603206028429, guid: 274dbac12f7b5814bba701a69f20642a,
         type: 3}
       propertyPath: m_Name
@@ -506,12 +496,12 @@ GameObject:
   - component: {fileID: 1834215030}
   - component: {fileID: 1834215029}
   - component: {fileID: 1834215028}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &1834215028
 BoxCollider:

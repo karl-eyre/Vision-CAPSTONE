@@ -60,7 +60,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146908603206028429}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: fdc4b2292872bd946be18e32d3417c65, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2beb4d7daf5e0c94f990988cabfb6bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
-  jumpForce: 3
+  moveSpeed: 190
+  jumpForce: 5
   groundMask:
     serializedVersion: 2
     m_Bits: 256
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 531021395378896550}
   - component: {fileID: 8311655784715717969}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
