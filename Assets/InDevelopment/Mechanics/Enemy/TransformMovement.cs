@@ -26,7 +26,6 @@ namespace InDevelopment.Mechanics.Enemy
                 {
                     currentIndex = 0;
                 }
-
                 
             }
             transform.position = Vector3.MoveTowards(transform.position, waypoints[currentIndex].transform.position,

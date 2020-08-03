@@ -20,8 +20,6 @@ namespace Player
         public LayerMask groundMask;
         public Camera cam;
         
-        
-        
         private bool isJumping;
         private float disToGround;
         
