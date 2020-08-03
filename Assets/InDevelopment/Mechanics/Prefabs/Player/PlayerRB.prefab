@@ -93,11 +93,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2beb4d7daf5e0c94f990988cabfb6bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 100
+  moveSpeed: 15
   jumpForce: 3
   groundMask:
     serializedVersion: 2
     m_Bits: 256
+  cam: {fileID: 8761025662884687280}
 --- !u!1 &1536125643057934684
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 50
+  mouseLocked: 0
   minLookAngle: -50
   maxLookAngle: 50
   playerBody: {fileID: 1146908603206028419}

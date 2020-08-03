@@ -278,13 +278,13 @@ PrefabInstance:
     - target: {fileID: 1146908603206028426, guid: 274dbac12f7b5814bba701a69f20642a,
         type: 3}
       propertyPath: moveSpeed
-      value: 15
+      value: 190
       objectReference: {fileID: 0}
     - target: {fileID: 1146908603206028426, guid: 274dbac12f7b5814bba701a69f20642a,
         type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 1773406695}
+      propertyPath: jumpForce
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1146908603206028429, guid: 274dbac12f7b5814bba701a69f20642a,
         type: 3}
       propertyPath: m_Name
@@ -3438,12 +3438,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!20 &1773406695 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 8761025662884687280, guid: 274dbac12f7b5814bba701a69f20642a,
-    type: 3}
-  m_PrefabInstance: {fileID: 175644188}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1936722876
 GameObject:
   m_ObjectHideFlags: 0

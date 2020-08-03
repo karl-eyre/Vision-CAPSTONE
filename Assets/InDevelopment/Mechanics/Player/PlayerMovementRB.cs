@@ -50,9 +50,7 @@ namespace Player
 
         private void JumpInput(InputAction.CallbackContext obj)
         {
-            
-                Jump();   
-            
+            Jump();
         }
 
         private bool IsGrounded()
@@ -87,12 +85,12 @@ namespace Player
             {
                 //GroundSpeed
                 //rb.AddForce(movement.normalized * moveSpeed);
-                rb.velocity = (movement.normalized * moveSpeed);
+                rb.velocity = movement.normalized * (moveSpeed * Time.deltaTime);
             }
             else
             {
                 //AirSpeed
-                rb.AddForce((movement.normalized * moveSpeed) / 3);
+                rb.AddForce((movement.normalized * (moveSpeed * Time.deltaTime)) / 3);
             }
             
         }
