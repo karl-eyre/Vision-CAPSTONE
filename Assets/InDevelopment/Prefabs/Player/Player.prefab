@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2beb4d7daf5e0c94f990988cabfb6bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 190
+  moveSpeed: 350
   jumpForce: 5.25
   groundMask:
     serializedVersion: 2
@@ -623,7 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b321480c4c67704aa710ae96c953d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 50
+  mouseSensitivity: 8
   mouseLocked: 0
   minLookAngle: -40
   maxLookAngle: 50
