@@ -9,7 +9,7 @@ namespace InDevelopment.Mechanics.Enemy
         private int currentIndex = 0;
         private float rotSpeed;
         public float speed;
-        private float WPradius = 1;
+        private float WaypointRadius = 1;
 
         private void Start()
         {
@@ -19,18 +19,20 @@ namespace InDevelopment.Mechanics.Enemy
 
         private void Update()
         {
-            if (Vector3.Distance(waypoints[currentIndex].transform.position, transform.position) < WPradius)
+            if (Vector3.Distance(waypoints[currentIndex].transform.position, transform.position) < WaypointRadius)
             {
                 currentIndex++;
                 if (currentIndex >= waypoints.Length)
                 {
                     currentIndex = 0;
                 }
-                
             }
+
             transform.position = Vector3.MoveTowards(transform.position, waypoints[currentIndex].transform.position,
                 Time.deltaTime * speed);
+            Vector3 direction = (waypoints[currentIndex].transform.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            transform.rotation = lookRotation;
         }
     }
 }
-    

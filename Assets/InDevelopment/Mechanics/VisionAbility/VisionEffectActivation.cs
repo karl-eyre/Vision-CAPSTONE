@@ -3,7 +3,7 @@ using VisionAbility;
 
 namespace Enemy
 {
-    public class EnemyVisionActivation : MonoBehaviour
+    public class VisionEffectActivation : MonoBehaviour
     {
         public bool visionActivated;
         public Material visionMat;

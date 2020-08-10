@@ -14,6 +14,7 @@
         {
             Cull Off
             ZWrite Off 
+            Lighting Off
                         
             ZTest Always
             
@@ -52,6 +53,8 @@
         
         Pass
         {
+        
+            Lighting Off
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
