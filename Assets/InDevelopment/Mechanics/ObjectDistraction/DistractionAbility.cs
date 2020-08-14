@@ -8,6 +8,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
     public class DistractionAbility : MonoBehaviour
     {
         //TODO: apply outline to object when it is being looked at.
+        //TODO: change throwforce depending on raycast distance or change based on how high and down the player is looking
         private GameControls controls;
 
         [Header("Camera")]
@@ -15,10 +16,12 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         private Camera camera;
 
         private bool hasObjectToThrow;
-        private bool predictingThrow = false;
+        private bool predictingThrow;
 
         [Header("Throw Settings")]
         public float PickupRange;
+
+        public bool useThrowArc;
 
         public LayerMask pickupObjectLayer;
         private GameObject throwableObjectPrefab;
@@ -29,8 +32,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         [SerializeField]
         private Transform handPosition;
 
-        public Color lineRendererStartColor;
-        public Color lineRendererEndColor;
         private List<Vector3> points = new List<Vector3>();
 
         private LineRenderer lineRenderer;
@@ -58,8 +59,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         private void SetUpLineRenderer()
         {
             lineRenderer = GetComponent<LineRenderer>();
-            lineRenderer.startColor = lineRendererStartColor;
-            lineRenderer.endColor = lineRendererEndColor;
             lineRenderer.positionCount = 0;
         }
 
@@ -72,12 +71,14 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             controls.InGame.ThrowObject.canceled += ThrowObjectInput;
         }
 
-
         private void Update()
         {
-            if (predictingThrow)
+            if (useThrowArc)
             {
-                PredictPath();
+                if (predictingThrow)
+                {
+                    PredictPath();
+                }
             }
         }
 
@@ -199,6 +200,12 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             return currentPosition;
         }
 
+
+        private Vector3 CalculateThrowDirection(Vector3 direction)
+        {
+            return direction = camera.transform.forward;
+        }
+
         private void ThrowObject()
         {
             //when you want to throw an object, it simply, moves the object
@@ -212,7 +219,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             throwableObject.transform.rotation = handPosition.rotation;
             throwableObject.SetActive(true);
 
-            rb.AddForce(throwDirection * throwForce, ForceMode.Impulse);
+            rb.AddForce(CalculateThrowDirection(throwDirection) * throwForce, ForceMode.Impulse);
 
             //these two need to be in there
             throwableObjectPrefab = null;
@@ -222,7 +229,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         private void TryToPickupObject()
         {
             //if really neede this top few lines can be moved to update to do a raycast every frame but won't be efficient
-            
+
             //reads the mouse position and converts it into a ray position for the raycast to use
             Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
 
@@ -261,12 +268,12 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         private void OnEnable()
         {
-            controls.Enable();
+            if (controls != null) controls.Enable();
         }
 
         private void OnDisable()
         {
-            controls.Disable();
+            if (controls != null) controls.Disable();
         }
     }
 }

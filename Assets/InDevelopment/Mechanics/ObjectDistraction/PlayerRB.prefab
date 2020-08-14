@@ -129,9 +129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 50
-  mouseLocked: 0
-  minLookAngle: -40
-  maxLookAngle: 50
+  mouseLocked: 1
+  minDownLookAngle: -50
+  maxUpLookAngle: 50
   playerBody: {fileID: 8012688163758644737}
   InvertMouseY: 0
 --- !u!1 &6647101951967327103
@@ -595,13 +595,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2beb4d7daf5e0c94f990988cabfb6bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   moveSpeed: 190
+  maxGroundAngle: 120
+  groundAngle: 0
   jumpForce: 5.25
   groundMask:
     serializedVersion: 2
     m_Bits: 256
   cam: {fileID: 1823113763246735154}
-  fricStub: {fileID: 4628350095458141247}
+  fricStub: {fileID: 8469300578272863198}
+  fricStubCol: {fileID: 7811925150638590261}
+  lowFrictionMat: {fileID: 13400000, guid: fdc4b2292872bd946be18e32d3417c65, type: 2}
+  frictionMat: {fileID: 13400000, guid: 3e67949a86c20d6448b77ceca256ea86, type: 2}
+  isGrounded: 0
 --- !u!114 &6978444319680414636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,27 +674,7 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
+  m_Positions: []
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
