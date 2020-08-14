@@ -7,17 +7,21 @@ namespace VisionAbility
 {
     public class VisionAbilityController : AbilityBase
     {
-        [SerializeField] private bool isActive;
+        [SerializeField]
+        private bool isActive;
+
         private float visionAbilityDuration;
-        public float maxVisionAbilityDuration;
+        public float maxVisionAbilityDuration = 3f;
         public static event Action visionActivation;
 
-        [SerializeField] private GameControls controls;
+        [SerializeField]
+        private GameControls controls;
+
         private void Start()
         {
-             controls = new GameControls();
-             controls.Enable();
-             controls.InGame.VisionAbilityActivation.performed += UseVisionAbility;
+            controls = new GameControls();
+            controls.Enable();
+            controls.InGame.VisionAbilityActivation.performed += UseVisionAbility;
         }
 
         public void FixedUpdate()
@@ -31,8 +35,8 @@ namespace VisionAbility
             {
                 visionAbilityDuration -= Time.deltaTime;
             }
-            
-            if(visionAbilityDuration < 0)
+
+            if (visionAbilityDuration < 0)
             {
                 visionAbilityDuration = 0;
                 CallEvent();
@@ -42,7 +46,7 @@ namespace VisionAbility
 
         private void UseVisionAbility(InputAction.CallbackContext context)
         {
-            if(!isActive)
+            if (!isActive)
             {
                 isActive = true;
                 visionAbilityDuration = maxVisionAbilityDuration;
@@ -57,12 +61,12 @@ namespace VisionAbility
 
         private void OnEnable()
         {
-            // controls.Enable();
+            if (controls != null) controls.Enable();
         }
 
         private void OnDisable()
         {
-            controls.Disable();
+            if (controls != null) controls.Disable();
         }
     }
 }

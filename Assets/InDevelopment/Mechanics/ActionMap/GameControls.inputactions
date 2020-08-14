@@ -54,6 +54,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "8faf5352-6f11-480f-9b27-ae83ac1f344b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "PickUpObject",
                     "type": "Button",
                     "id": "d2be3771-6db4-4450-90e8-77b180ab5404",
@@ -211,6 +219,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ThrowObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0ff10858-f611-45dc-a5aa-8ce96f1615c9",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

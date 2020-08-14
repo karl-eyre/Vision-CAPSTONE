@@ -67,6 +67,14 @@ public class @GameControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""8faf5352-6f11-480f-9b27-ae83ac1f344b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""PickUpObject"",
                     ""type"": ""Button"",
                     ""id"": ""d2be3771-6db4-4450-90e8-77b180ab5404"",
@@ -226,6 +234,17 @@ public class @GameControls : IInputActionCollection, IDisposable
                     ""action"": ""ThrowObject"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ff10858-f611-45dc-a5aa-8ce96f1615c9"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -240,6 +259,7 @@ public class @GameControls : IInputActionCollection, IDisposable
         m_InGame_VisionAbilityActivation = m_InGame.FindAction("VisionAbilityActivation", throwIfNotFound: true);
         m_InGame_Jump = m_InGame.FindAction("Jump", throwIfNotFound: true);
         m_InGame_Crouch = m_InGame.FindAction("Crouch", throwIfNotFound: true);
+        m_InGame_Sprint = m_InGame.FindAction("Sprint", throwIfNotFound: true);
         m_InGame_PickUpObject = m_InGame.FindAction("PickUpObject", throwIfNotFound: true);
         m_InGame_ThrowObject = m_InGame.FindAction("ThrowObject", throwIfNotFound: true);
     }
@@ -297,6 +317,7 @@ public class @GameControls : IInputActionCollection, IDisposable
     private readonly InputAction m_InGame_VisionAbilityActivation;
     private readonly InputAction m_InGame_Jump;
     private readonly InputAction m_InGame_Crouch;
+    private readonly InputAction m_InGame_Sprint;
     private readonly InputAction m_InGame_PickUpObject;
     private readonly InputAction m_InGame_ThrowObject;
     public struct InGameActions
@@ -309,6 +330,7 @@ public class @GameControls : IInputActionCollection, IDisposable
         public InputAction @VisionAbilityActivation => m_Wrapper.m_InGame_VisionAbilityActivation;
         public InputAction @Jump => m_Wrapper.m_InGame_Jump;
         public InputAction @Crouch => m_Wrapper.m_InGame_Crouch;
+        public InputAction @Sprint => m_Wrapper.m_InGame_Sprint;
         public InputAction @PickUpObject => m_Wrapper.m_InGame_PickUpObject;
         public InputAction @ThrowObject => m_Wrapper.m_InGame_ThrowObject;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
@@ -338,6 +360,9 @@ public class @GameControls : IInputActionCollection, IDisposable
                 @Crouch.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnCrouch;
                 @Crouch.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnCrouch;
                 @Crouch.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnCrouch;
+                @Sprint.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnSprint;
                 @PickUpObject.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnPickUpObject;
                 @PickUpObject.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnPickUpObject;
                 @PickUpObject.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnPickUpObject;
@@ -366,6 +391,9 @@ public class @GameControls : IInputActionCollection, IDisposable
                 @Crouch.started += instance.OnCrouch;
                 @Crouch.performed += instance.OnCrouch;
                 @Crouch.canceled += instance.OnCrouch;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
                 @PickUpObject.started += instance.OnPickUpObject;
                 @PickUpObject.performed += instance.OnPickUpObject;
                 @PickUpObject.canceled += instance.OnPickUpObject;
@@ -384,6 +412,7 @@ public class @GameControls : IInputActionCollection, IDisposable
         void OnVisionAbilityActivation(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
         void OnPickUpObject(InputAction.CallbackContext context);
         void OnThrowObject(InputAction.CallbackContext context);
     }

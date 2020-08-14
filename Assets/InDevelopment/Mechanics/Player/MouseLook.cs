@@ -12,20 +12,20 @@ namespace Player
         [SerializeField]
         private float mouseSensitivity = 100f;
 
-
-        [Header("Debug Settings")]
-        public bool mouseLocked;
-
+        [SerializeField]
+        [Tooltip("The lower this is the higher you can look")]
+        private float minUpLookAngle = -50f;
 
         [SerializeField]
-        private float minLookAngle = -50f;
-
-        [SerializeField]
-        private float maxLookAngle = 50f;
+        [Tooltip("The higher this is the lower you can look")]
+        private float maxDownLookAngle = 60f;
 
         [Header("Player Body")]
         [SerializeField]
         private Transform playerBody;
+
+        [Header("Debug Settings")]
+        public bool mouseLocked;
 
         public bool InvertMouseY;
 
@@ -38,7 +38,10 @@ namespace Player
         private void Start()
         {
             SetUpControls();
-            Cursor.lockState = CursorLockMode.Locked;
+            if (mouseLocked)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
 
             if (playerBody == null)
             {
@@ -50,33 +53,33 @@ namespace Player
         {
             look = controls.InGame.MouseLook.ReadValue<Vector2>();
 
-            var MouseX = look.x * mouseSensitivity * Time.deltaTime;
-            var MouseY = look.y * mouseSensitivity * Time.deltaTime;
+            var mouseX = look.x * mouseSensitivity * Time.deltaTime;
+            var mouseY = look.y * mouseSensitivity * Time.deltaTime;
 
             if (InvertMouseY)
             {
-                xRotation += MouseY;
+                xRotation += mouseY;
             }
             else
             {
-                xRotation -= MouseY;
+                xRotation -= mouseY;
             }
 
-            xRotation = Mathf.Clamp(xRotation, minLookAngle, maxLookAngle);
+            xRotation = Mathf.Clamp(xRotation, minUpLookAngle, maxDownLookAngle);
 
             transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
-            playerBody.Rotate(Vector3.up * MouseX);
+            playerBody.Rotate(Vector3.up * mouseX);
         }
 
 
         private void OnEnable()
         {
-            controls.Enable();
+            if (controls != null) controls.Enable();
         }
 
         private void OnDisable()
         {
-            controls.Disable();
+            if (controls != null) controls.Disable();
         }
     }
 }

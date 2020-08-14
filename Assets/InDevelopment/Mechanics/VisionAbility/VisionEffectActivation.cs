@@ -5,7 +5,7 @@ namespace Enemy
 {
     public class VisionEffectActivation : MonoBehaviour
     {
-        public bool visionActivated;
+        private bool visionActivated;
         public Material visionMat;
         public Material defaultMat;
         public bool useCustomRenderer;
