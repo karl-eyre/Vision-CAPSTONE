@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -357,9 +357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868ec46ec4983ad4392dc16f5e8acf29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionActivated: 0
   visionMat: {fileID: 2100000, guid: 32585ff3013085349986731b8b866f76, type: 2}
-  defaultMat: {fileID: 2100000, guid: b1346a02b71b4fb489824c5ef1af4a6d, type: 2}
+  defaultMat: {fileID: 2100000, guid: af405d8458df1e14089523beff06ca87, type: 2}
   useCustomRenderer: 0
 --- !u!65 &703193955
 BoxCollider:
@@ -392,7 +391,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b1346a02b71b4fb489824c5ef1af4a6d, type: 2}
+  - {fileID: 2100000, guid: af405d8458df1e14089523beff06ca87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -583,6 +582,13 @@ MonoBehaviour:
   - {fileID: 1420985882}
   - {fileID: 729165136}
   speed: 5
+  WaitTime: 0
+  rotSpeed: 2
+  maxRotation: 45
+  investigating: 0
+  stationary: 0
+  targetLastKnownPos: {x: 0, y: 0, z: 0}
+  states: 0
 --- !u!114 &840054093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,9 +601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868ec46ec4983ad4392dc16f5e8acf29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionActivated: 0
   visionMat: {fileID: 2100000, guid: 4872271247e770e429ad315b32b08d85, type: 2}
-  defaultMat: {fileID: 2100000, guid: b1346a02b71b4fb489824c5ef1af4a6d, type: 2}
+  defaultMat: {fileID: 2100000, guid: af405d8458df1e14089523beff06ca87, type: 2}
   useCustomRenderer: 0
 --- !u!65 &840054094
 BoxCollider:
@@ -630,7 +635,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b1346a02b71b4fb489824c5ef1af4a6d, type: 2}
+  - {fileID: 2100000, guid: af405d8458df1e14089523beff06ca87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -780,9 +785,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868ec46ec4983ad4392dc16f5e8acf29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionActivated: 0
   visionMat: {fileID: 2100000, guid: 4872271247e770e429ad315b32b08d85, type: 2}
-  defaultMat: {fileID: 2100000, guid: b1346a02b71b4fb489824c5ef1af4a6d, type: 2}
+  defaultMat: {fileID: 2100000, guid: af405d8458df1e14089523beff06ca87, type: 2}
   useCustomRenderer: 1
 --- !u!65 &1191479720
 BoxCollider:
@@ -815,7 +819,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b1346a02b71b4fb489824c5ef1af4a6d, type: 2}
+  - {fileID: 2100000, guid: af405d8458df1e14089523beff06ca87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -989,6 +993,13 @@ MonoBehaviour:
   - {fileID: 1453694778}
   - {fileID: 1420985882}
   speed: 5
+  WaitTime: 0
+  rotSpeed: 2
+  maxRotation: 45
+  investigating: 0
+  stationary: 0
+  targetLastKnownPos: {x: 0, y: 0, z: 0}
+  states: 0
 --- !u!114 &1420886935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1001,9 +1012,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868ec46ec4983ad4392dc16f5e8acf29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionActivated: 0
   visionMat: {fileID: 2100000, guid: 4872271247e770e429ad315b32b08d85, type: 2}
-  defaultMat: {fileID: 2100000, guid: b1346a02b71b4fb489824c5ef1af4a6d, type: 2}
+  defaultMat: {fileID: 2100000, guid: af405d8458df1e14089523beff06ca87, type: 2}
   useCustomRenderer: 1
 --- !u!65 &1420886936
 BoxCollider:
@@ -1036,7 +1046,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b1346a02b71b4fb489824c5ef1af4a6d, type: 2}
+  - {fileID: 2100000, guid: af405d8458df1e14089523beff06ca87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1095,7 +1105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1428052833}
   m_Layer: 0
-  m_Name: ===LEVEL===
+  m_Name: ===ENV===
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1615,9 +1625,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868ec46ec4983ad4392dc16f5e8acf29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionActivated: 0
   visionMat: {fileID: 2100000, guid: 4872271247e770e429ad315b32b08d85, type: 2}
-  defaultMat: {fileID: 2100000, guid: b1346a02b71b4fb489824c5ef1af4a6d, type: 2}
+  defaultMat: {fileID: 2100000, guid: af405d8458df1e14089523beff06ca87, type: 2}
   useCustomRenderer: 0
 --- !u!65 &1981223124
 BoxCollider:
@@ -1650,7 +1659,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b1346a02b71b4fb489824c5ef1af4a6d, type: 2}
+  - {fileID: 2100000, guid: af405d8458df1e14089523beff06ca87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

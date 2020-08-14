@@ -18,13 +18,15 @@ namespace InDevelopment.Mechanics.Player
 
         private Transform rbT;
         private Vector3 movement;
-
+        
+        private float moveSpeed;
+        
         [Header("Movement Settings")]
-        public float moveSpeed;
+        public float walkSpeed;
+        public float sprintSpeed;
 
-        public float maxGroundAngle = 120;
-
-        [SerializeField]
+        
+        public float maxSlopeAngle = 120;
         private float groundAngle;
 
         [Header("Jump Settings")]
@@ -97,12 +99,12 @@ namespace InDevelopment.Mechanics.Player
 
         private void Walk(InputAction.CallbackContext obj)
         {
-            moveSpeed = 335;
+            moveSpeed = walkSpeed;
         }
 
         private void Sprint(InputAction.CallbackContext obj)
         {
-            moveSpeed = 460;
+            moveSpeed = sprintSpeed;
         }
 
         private void UnCrouch(InputAction.CallbackContext obj)
@@ -152,7 +154,7 @@ namespace InDevelopment.Mechanics.Player
         void ApplyMovement()
         {
             //ensures that if the slope is too high then you can't move
-            if (groundAngle >= maxGroundAngle)
+            if (groundAngle >= maxSlopeAngle)
             {
                 return;
             }
