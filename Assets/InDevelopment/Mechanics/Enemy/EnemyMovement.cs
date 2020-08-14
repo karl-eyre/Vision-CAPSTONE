@@ -8,6 +8,7 @@ namespace InDevelopment.Mechanics.Enemy
 {
     public class EnemyMovement : MonoBehaviour
     {
+        [Header("Enemy Settings")]
         public List<GameObject> waypoints;
         private int currentIndex = 0;
 
@@ -29,24 +30,29 @@ namespace InDevelopment.Mechanics.Enemy
         private bool stationary;
 
         [HideInInspector]
-        public Vector3 playerLastKnownPos;
+        public Vector3 targetLastKnownPos;
 
         private Vector3 targetPosition;
-        private Vector3 stationaryPos;
-        private Quaternion stationaryRot;
+        private Vector3 previousPos;
+        private Quaternion previousRot;
 
-        private enum states
+        public enum States
         {
             patrolling,
             investigating,
             stationary,
-            waiting
+            waitingAtPoint,
+            returningToPos
         }
+
+        [Header("Debug"),Tooltip("Leave ALONE")]
+        public States states = States.patrolling;
+        private States previousState;
 
         private void Start()
         {
-            stationaryPos = transform.position;
-            stationaryRot = transform.rotation;
+            previousPos = transform.position;
+            previousRot = transform.rotation;
             currentIndex = 0;
 
             if (waypoints == null)
@@ -58,54 +64,82 @@ namespace InDevelopment.Mechanics.Enemy
                 transform.position = waypoints[0].transform.position;
             }
 
+            if (stationary)
+            {
+                states = States.stationary;
+            }
+
             investigating = false;
             waiting = false;
         }
 
         private void Update()
         {
-            
-
-
             CheckWaypointIndex();
-            //TODO make it so that if the target is stationary then after investigating go back to original stationaryPos
-            if (!investigating)
+
+            switch (states)
             {
-                targetPosition = waypoints[currentIndex].transform.position;
-                MoveToTarget(targetPosition);
+                case States.patrolling:
+                    targetPosition = waypoints[currentIndex].transform.position;
+                    
+                    MoveToTarget(targetPosition);
+
+                    if (CheckDistance(targetPosition))
+                    {
+                        previousState = States.patrolling;
+                        previousPos = transform.position;
+                        ChangeState(States.waitingAtPoint);
+                    }
+                    break;
+
+                case States.investigating:
+                    investigating = true;
+                    MoveToTarget(targetLastKnownPos);
+
+                    if (CheckDistance(targetLastKnownPos))
+                    {
+                        ChangeState(States.waitingAtPoint);
+                    }
+                    break;
+
+                case States.stationary:
+                    //put in if statement that checks are you in your original spot if not move there
+                    transform.position = previousPos;
+                    transform.rotation = previousRot; 
+                    LookLeftAndRight();
+                    previousState = States.stationary;
+                    break;
+
+                case States.waitingAtPoint:
+                    if (!waiting)
+                    {
+                        StartCoroutine(WaitAtWaypoint());
+                    }
+                    break;
+
+                case States.returningToPos:
+                    MoveToTarget(previousPos);
+                    if (CheckDistance(previousPos))
+                    {
+                        states = previousState;
+                    }
+                    break;
             }
-            else
+        }
+
+        public void ChangeState(States newState)
+        {
+            states = newState;
+        }
+
+        private bool CheckDistance(Vector3 targetPos)
+        {
+            if (Vector3.Distance(targetPos, transform.position) < WaypointRadius)
             {
-                MoveToTarget(playerLastKnownPos);
+                return true;
             }
 
-            if (stationary)
-            {
-                LookLeftAndRight();
-                targetPosition = stationaryPos;
-            }
-
-
-            if (Vector3.Distance(waypoints[currentIndex].transform.position, transform.position) < WaypointRadius &&
-                !stationary)
-            {
-                if (!waiting)
-                {
-                    StartCoroutine(WaitAtWaypoint());
-                }
-            }
-
-            if (Vector3.Distance(playerLastKnownPos, transform.position) < WaypointRadius && !stationary)
-            {
-                StartCoroutine(WaitAtInvestigatePoint());
-            }
-
-            if (Vector3.Distance(stationaryPos, transform.position) < WaypointRadius)
-            {
-                // stationary = true;
-                // transform.position = stationaryPos;
-                // transform.rotation = stationaryRot;
-            }
+            return false;
         }
 
         public void LookLeftAndRight()
@@ -131,15 +165,6 @@ namespace InDevelopment.Mechanics.Enemy
             }
         }
 
-        IEnumerator WaitAtInvestigatePoint()
-        {
-            yield return new WaitForSeconds(WaitTime);
-            //just to ensure that the player can't accidently end up near the last know position by accident,
-            //since you can't null out a vector 3
-            playerLastKnownPos = new Vector3(9999999, 99999999, 9999999);
-            investigating = false;
-        }
-
         IEnumerator WaitAtWaypoint()
         {
             waiting = true;
@@ -147,9 +172,13 @@ namespace InDevelopment.Mechanics.Enemy
             waiting = false;
             if (investigating)
             {
+                targetLastKnownPos = new Vector3(9999999, 99999999, 9999999);
+                investigating = false;
+                ChangeState(States.returningToPos);
                 yield break;
             }
             currentIndex++;
+            ChangeState(States.returningToPos);
         }
     }
 }

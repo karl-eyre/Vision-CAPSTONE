@@ -157,13 +157,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                     RaycastHit hit;
 
                     //need to change to a box cast along the raycast line
-
-                    // if (Physics.BoxCast(transform.position, transform.lossyScale / 2, throwDirection,
-                    //     out hit, Quaternion.identity))
-                    // {
-                    //     hitGround = true;
-                    // }
-
                     //basically if the raycast hits anything just make that the last point, rather than the points continuing through the ground
                     if (Physics.Raycast(ray, out hit, Vector3.Distance(point1, point2), groundLayerMask))
                     {

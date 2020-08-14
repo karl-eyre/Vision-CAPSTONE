@@ -24,11 +24,10 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                 {
                     EnemyMovement enemyScript = enemy.GetComponent<EnemyMovement>();
                     //call notify enemy of sound and pass in sound location for position
-                    enemyScript.playerLastKnownPos = soundLocation;
-                    enemyScript.investigating = true;
+                    enemyScript.targetLastKnownPos = soundLocation;
+                    enemyScript.ChangeState(EnemyMovement.States.investigating);
                 }
             }
-            
         }
     }
 }
