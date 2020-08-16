@@ -42,7 +42,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         private Vector3 throwDirection;
 
-        [SerializeField]
+        //[SerializeField]
         private float yOffset;
 
         [SerializeField]
@@ -80,6 +80,9 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                     PredictPath();
                 }
             }
+         
+            //debug 
+            // PredictPath();
         }
 
         private void ThrowObjectInput(InputAction.CallbackContext obj)

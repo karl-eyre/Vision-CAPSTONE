@@ -11,7 +11,7 @@ namespace InDevelopment.Mechanics.Enemy
         [Header("Enemy Settings")]
         public List<GameObject> waypoints;
         private int currentIndex = 0;
-
+        
         public float speed;
         private float WaypointRadius = 1;
 

@@ -22,9 +22,12 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         private void OnCollisionEnter(Collision other)
         {
+            //Add in some check for how this function is called
+            //maybe depending on the objects rb's relative velocity?
             soundMaker.MakeSound(gameObject.transform.position, noiseLoudness);
         }
 
+        //TODO: Remove after testing
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.green;

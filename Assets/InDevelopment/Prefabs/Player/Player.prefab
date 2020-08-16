@@ -9,9 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3880613904255860427}
-  - component: {fileID: 1839736537293648833}
   m_Layer: 0
-  m_Name: Fric
+  m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,19 +30,6 @@ Transform:
   m_Father: {fileID: 1932975819869562101}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1839736537293648833
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29420913355643178}
-  m_Material: {fileID: 13400000, guid: 3e67949a86c20d6448b77ceca256ea86, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.18598023, z: 0.6}
-  m_Center: {x: 0, y: -0.07299012, z: 0}
 --- !u!1 &1529513068319462647
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +303,7 @@ GameObject:
   - component: {fileID: 4168808489237427627}
   - component: {fileID: 1932975819869562086}
   m_Layer: 0
-  m_Name: PlayerWThrow
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,15 +374,15 @@ MonoBehaviour:
   sprintSpeed: 460
   maxSlopeAngle: 120
   jumpForce: 6
+  isGrounded: 0
   groundMask:
     serializedVersion: 2
     m_Bits: 256
   cam: {fileID: 7830781616900490694}
   fricStub: {fileID: 29420913355643178}
-  fricStubCol: {fileID: 1839736537293648833}
+  fricStubCol: {fileID: 670986221098177392}
   lowFrictionMat: {fileID: 13400000, guid: fdc4b2292872bd946be18e32d3417c65, type: 2}
   frictionMat: {fileID: 13400000, guid: 3e67949a86c20d6448b77ceca256ea86, type: 2}
-  isGrounded: 0
 --- !u!114 &1932975819869562084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,7 +418,6 @@ MonoBehaviour:
   throwForce: 10
   handPosition: {fileID: 2655336180969663826}
   numberOfPoints: 20
-  yOffset: 0
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256

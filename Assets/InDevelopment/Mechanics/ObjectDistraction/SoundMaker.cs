@@ -12,6 +12,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         //depending on what the player is currently doing
         //when the collider is entered then something heard the sound get those collider's that are off type enemy
         //and call their investigate sound function and pass in the player's collider's position.
+        //just use game control events to read when something is happening and set noise accordingly
         
         public LayerMask enemyLayer;
 
