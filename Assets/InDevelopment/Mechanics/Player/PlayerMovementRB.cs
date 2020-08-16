@@ -16,7 +16,7 @@ namespace InDevelopment.Mechanics.Player
         [SerializeField]
         private Rigidbody rb;
 
-        private Transform rbT;
+        private Transform rbTransform;
         private Vector3 movement;
         
         private float moveSpeed;
@@ -31,8 +31,10 @@ namespace InDevelopment.Mechanics.Player
 
         [Header("Jump Settings")]
         public float jumpForce;
-
+        public bool isGrounded;
         public LayerMask groundMask;
+        
+        [Header("Other Settings")]
         public Camera cam;
 
         [SerializeField]
@@ -55,7 +57,7 @@ namespace InDevelopment.Mechanics.Player
         private Vector3 forwardTransform;
         private RaycastHit hitInfo;
 
-        public bool isGrounded;
+        
         private bool hasForward;
 
         private void OnEnable()
@@ -72,19 +74,20 @@ namespace InDevelopment.Mechanics.Player
         {
             controls = new GameControls();
             controls.Enable();
-            controls.InGame.Jump.performed += JumpInput;
-            controls.InGame.Movement.performed += MoveInput;
-            controls.InGame.Movement.canceled += MoveInput;
-            controls.InGame.Crouch.started += Crouch;
-            controls.InGame.Crouch.canceled += UnCrouch;
-            controls.InGame.Sprint.started += Sprint;
-            controls.InGame.Sprint.canceled += Walk;
+            controls.InGame.Jump.performed += ReadJumpInput;
+            controls.InGame.Movement.performed += ReadMoveInput;
+            controls.InGame.Movement.canceled += ReadMoveInput;
+            controls.InGame.Crouch.started += ReadCrouch;
+            controls.InGame.Crouch.canceled += ReadUnCrouch;
+            controls.InGame.Sprint.started += ReadSprint;
+            controls.InGame.Sprint.canceled += ReadWalk;
         }
         
         private void Start()
         {
             SetUpControls();
             visionActivated = false;
+            moveSpeed = walkSpeed;
             GetReferences();
         }
         
@@ -92,37 +95,36 @@ namespace InDevelopment.Mechanics.Player
         {
             VisionAbilityController.visionActivation += () => visionActivated = !visionActivated;
             rb = GetComponent<Rigidbody>();
-            rbT = rb.transform;
+            rbTransform = rb.transform;
             disToGround = GetComponent<Collider>().bounds.extents.y;
         }
 
-
-        private void Walk(InputAction.CallbackContext obj)
+        private void ReadWalk(InputAction.CallbackContext obj)
         {
             moveSpeed = walkSpeed;
         }
 
-        private void Sprint(InputAction.CallbackContext obj)
+        private void ReadSprint(InputAction.CallbackContext obj)
         {
             moveSpeed = sprintSpeed;
         }
 
-        private void UnCrouch(InputAction.CallbackContext obj)
+        private void ReadUnCrouch(InputAction.CallbackContext obj)
         {
             transform.localScale = new Vector3(1f, transform.localScale.y * 2, 1f);
         }
 
-        private void Crouch(InputAction.CallbackContext obj)
+        private void ReadCrouch(InputAction.CallbackContext obj)
         {
             transform.localScale = new Vector3(1f, transform.localScale.y / 2, 1f);
         }
 
-        private void JumpInput(InputAction.CallbackContext obj)
+        private void ReadJumpInput(InputAction.CallbackContext obj)
         {
             Jump();
         }
 
-        private void MoveInput(InputAction.CallbackContext obj)
+        private void ReadMoveInput(InputAction.CallbackContext obj)
         {
             moveDirection = controls.InGame.Movement.ReadValue<Vector2>();
         }
@@ -151,7 +153,7 @@ namespace InDevelopment.Mechanics.Player
             }
         }
         
-        void ApplyMovement()
+        private void ApplyMovement()
         {
             //ensures that if the slope is too high then you can't move
             if (groundAngle >= maxSlopeAngle)
@@ -210,6 +212,7 @@ namespace InDevelopment.Mechanics.Player
             }
         }
 
+        //TODO:Move into a script on the fric stub
         private bool IsMoving()
         {
             if (moveDirection.x < 0 || moveDirection.x > 0 || moveDirection.y < 0 || moveDirection.y > 0)
@@ -224,9 +227,10 @@ namespace InDevelopment.Mechanics.Player
             return isMoving;
         }
 
+        //TODO: remove debug/gizmos after fully tested
         private void DrawDebugLines()
         {
-            Debug.DrawLine(rbT.transform.position, rbT.transform.position + forwardTransform, Color.blue);
+            Debug.DrawLine(rbTransform.transform.position, rbTransform.transform.position + forwardTransform, Color.blue);
         }
 
         private void OnDrawGizmos()
@@ -254,7 +258,8 @@ namespace InDevelopment.Mechanics.Player
             {
                 rb.velocity = Vector3.zero;
             }
-
+            
+            //TODO:Move into a script on the fric stub
             if (IsMoving())
             {
                 fricStubCol.sharedMaterial = lowFrictionMat;
