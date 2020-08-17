@@ -10,6 +10,7 @@ namespace Enemy
         public Material defaultMat;
         public bool useCustomRenderer;
         
+        
         public void Start()
         {
             VisionAbilityController.visionActivation += UpdateVision;
