@@ -9,7 +9,7 @@
     {
         Tags { "Queue"="Transparent" }
         LOD 100
-        
+                
         Pass
         {
             Cull Off
@@ -87,5 +87,6 @@
             
             ENDCG
         }
+        
     }
 }

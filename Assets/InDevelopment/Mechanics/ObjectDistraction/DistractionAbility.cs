@@ -42,7 +42,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         private Vector3 throwDirection;
 
-        //[SerializeField]
+        // [SerializeField]
         private float yOffset;
 
         [SerializeField]
@@ -77,12 +77,11 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             {
                 if (predictingThrow)
                 {
+                    CalculateThrowForce();
                     PredictPath();
                 }
             }
-         
-            //debug 
-            // PredictPath();
+            
         }
 
         private void ThrowObjectInput(InputAction.CallbackContext obj)
@@ -96,6 +95,11 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             predictingThrow = false;
             lineRenderer.positionCount = 0;
             ThrowObject();
+        }
+
+        private void CalculateThrowForce()
+        {
+            
         }
 
         private void PredictPathInput(InputAction.CallbackContext obj)
@@ -121,9 +125,10 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             Ray ray1 = camera.ScreenPointToRay(mousePosition);
             RaycastHit hitInfo;
 
-            if (Physics.Raycast(ray1, out hitInfo, throwForce + 50f))
+            if (Physics.Raycast(ray1, out hitInfo, throwForce + 50f, groundLayerMask))
             {
-                handPosition.LookAt(hitInfo.point + new Vector3(0, yOffset, 0));
+                // + new Vector3(0, yOffset, 0)
+                handPosition.LookAt(hitInfo.point);
             }
             else
             {
@@ -191,6 +196,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         /// <returns></returns>
         private Vector3 PointPosition(float time)
         {
+            //TODO
             Vector3 currentPosition = handPosition.position + (throwDirection * throwForce * time) +
                                       0.5f * Physics.gravity * (time * time);
             return currentPosition;

@@ -9,22 +9,19 @@ namespace Enemy
         public Material visionMat;
         public Material defaultMat;
         public bool useCustomRenderer;
-        
-        
+
         public void Start()
         {
             VisionAbilityController.visionActivation += UpdateVision;
             if (useCustomRenderer)
             {
                 VisionAbilityController.visionActivation += ChangeLayer;
-                
             }
         }
-        
-        
+
         private void Update()
         {
-            if(visionActivated && !useCustomRenderer)
+            if (visionActivated && !useCustomRenderer)
             {
                 GetComponent<Renderer>().material = visionMat;
             }
@@ -44,7 +41,7 @@ namespace Enemy
             //have to use layer numbers 
             //for some reason it errors out when trying to use a public layer mask,
             //even if you want to pass it the int value the thing wants
-            if(visionActivated)
+            if (visionActivated)
             {
                 gameObject.layer = 10;
             }

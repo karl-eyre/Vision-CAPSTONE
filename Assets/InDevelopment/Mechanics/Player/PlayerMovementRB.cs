@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using InDevelopment.Mechanics.ObjectDistraction;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using VisionAbility;
 
@@ -24,7 +25,10 @@ namespace InDevelopment.Mechanics.Player
         [Header("Movement Settings")]
         public float walkSpeed;
         public float sprintSpeed;
-
+        public float walkNoiseLevel;
+        public float sprintNoiseLevel;
+        
+        private float currentNoiseLevel;
         
         public float maxSlopeAngle = 120;
         private float groundAngle;
@@ -32,7 +36,7 @@ namespace InDevelopment.Mechanics.Player
         [Header("Jump Settings")]
         public float jumpForce;
         public bool isGrounded;
-        public LayerMask groundMask;
+        public LayerMask playerMask;
         
         [Header("Other Settings")]
         public Camera cam;
@@ -56,10 +60,14 @@ namespace InDevelopment.Mechanics.Player
 
         private Vector3 forwardTransform;
         private RaycastHit hitInfo;
-
         
         private bool hasForward;
+        private bool isCrouching;
 
+        [SerializeField]
+        private GeneralSoundMaker generalSoundMaker;
+        
+        
         private void OnEnable()
         {
             if (controls != null) controls.Enable();
@@ -88,6 +96,9 @@ namespace InDevelopment.Mechanics.Player
             SetUpControls();
             visionActivated = false;
             moveSpeed = walkSpeed;
+            currentNoiseLevel = walkNoiseLevel;
+            playerMask = 1 << 13;
+            playerMask = ~playerMask;
             GetReferences();
         }
         
@@ -97,25 +108,34 @@ namespace InDevelopment.Mechanics.Player
             rb = GetComponent<Rigidbody>();
             rbTransform = rb.transform;
             disToGround = GetComponent<Collider>().bounds.extents.y;
+            generalSoundMaker = GetComponent<GeneralSoundMaker>();
         }
 
         private void ReadWalk(InputAction.CallbackContext obj)
         {
             moveSpeed = walkSpeed;
+            currentNoiseLevel = walkNoiseLevel;
         }
 
         private void ReadSprint(InputAction.CallbackContext obj)
         {
+            if(isCrouching)
+            {
+                return;
+            }
             moveSpeed = sprintSpeed;
+            currentNoiseLevel = sprintNoiseLevel;
         }
 
         private void ReadUnCrouch(InputAction.CallbackContext obj)
         {
+            isCrouching = false;
             transform.localScale = new Vector3(1f, transform.localScale.y * 2, 1f);
         }
 
         private void ReadCrouch(InputAction.CallbackContext obj)
         {
+            isCrouching = true;
             transform.localScale = new Vector3(1f, transform.localScale.y / 2, 1f);
         }
 
@@ -132,7 +152,7 @@ namespace InDevelopment.Mechanics.Player
         private bool IsGrounded()
         {
             Vector3 boxColliderTransform = new Vector3(fricStub.transform.localScale.x/4,fricStub.transform.localScale.y/4,fricStub.transform.localScale.z/4);
-            Collider[] cols = Physics.OverlapBox(fricStub.transform.position, boxColliderTransform,Quaternion.identity, groundMask);
+            Collider[] cols = Physics.OverlapBox(fricStub.transform.position, boxColliderTransform,Quaternion.identity, playerMask);
             if (cols.Length == 0)
             {
                 isGrounded = false;
@@ -166,6 +186,7 @@ namespace InDevelopment.Mechanics.Player
             {
                 //GroundSpeed
                 rb.velocity = movement.normalized * (moveSpeed * Time.deltaTime);
+                
             }
             else
             {
@@ -202,7 +223,7 @@ namespace InDevelopment.Mechanics.Player
 
             Ray ray = new Ray(fricStub.transform.position, -Vector3.up);
 
-            if (Physics.Raycast(ray, out hitInfo, distance, groundMask))
+            if (Physics.Raycast(ray, out hitInfo, distance, playerMask))
             {
                 hasForward = true;
             }
@@ -263,6 +284,7 @@ namespace InDevelopment.Mechanics.Player
             if (IsMoving())
             {
                 fricStubCol.sharedMaterial = lowFrictionMat;
+                generalSoundMaker.MakeSound(currentNoiseLevel);
             }
             else
             {

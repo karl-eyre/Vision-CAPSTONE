@@ -6,12 +6,13 @@ using UnityEngine;
 
 namespace InDevelopment.Mechanics.Enemy
 {
-    public class EnemyMovement : MonoBehaviour
+    public class EnemyStateMachine : MonoBehaviour
     {
         [Header("Enemy Settings")]
         public List<GameObject> waypoints;
+
         private int currentIndex = 0;
-        
+
         public float speed;
         private float WaypointRadius = 1;
 
@@ -45,8 +46,9 @@ namespace InDevelopment.Mechanics.Enemy
             returningToPos
         }
 
-        [Header("Debug"),Tooltip("Leave ALONE")]
+        [Header("Debug"), Tooltip("Leave ALONE")]
         public States states = States.patrolling;
+
         private States previousState;
 
         private void Start()
@@ -80,8 +82,9 @@ namespace InDevelopment.Mechanics.Enemy
             switch (states)
             {
                 case States.patrolling:
-                    targetPosition = waypoints[currentIndex].transform.position;
                     
+                    targetPosition = waypoints[currentIndex].transform.position;
+
                     MoveToTarget(targetPosition);
 
                     if (CheckDistance(targetPosition))
@@ -90,9 +93,11 @@ namespace InDevelopment.Mechanics.Enemy
                         previousPos = transform.position;
                         ChangeState(States.waitingAtPoint);
                     }
+
                     break;
 
                 case States.investigating:
+                    
                     investigating = true;
                     MoveToTarget(targetLastKnownPos);
 
@@ -100,29 +105,36 @@ namespace InDevelopment.Mechanics.Enemy
                     {
                         ChangeState(States.waitingAtPoint);
                     }
+
                     break;
 
                 case States.stationary:
+                   
                     //put in if statement that checks are you in your original spot if not move there
                     transform.position = previousPos;
-                    transform.rotation = previousRot; 
+                    transform.rotation = previousRot;
                     LookLeftAndRight();
                     previousState = States.stationary;
+                   
                     break;
 
                 case States.waitingAtPoint:
+                    
                     if (!waiting)
                     {
                         StartCoroutine(WaitAtWaypoint());
                     }
+
                     break;
 
                 case States.returningToPos:
+                    
                     MoveToTarget(previousPos);
                     if (CheckDistance(previousPos))
                     {
                         states = previousState;
                     }
+
                     break;
             }
         }
@@ -177,6 +189,7 @@ namespace InDevelopment.Mechanics.Enemy
                 ChangeState(States.returningToPos);
                 yield break;
             }
+
             currentIndex++;
             ChangeState(States.returningToPos);
         }
