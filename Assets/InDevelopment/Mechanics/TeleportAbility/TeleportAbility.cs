@@ -39,7 +39,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         private void SetReferences()
         {
-            generalSoundMaker = GetComponent<GeneralSoundMaker>();
+            generalSoundMaker = GetComponentInChildren<GeneralSoundMaker>();
         }
 
         private void SetUpControls()

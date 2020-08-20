@@ -108,7 +108,7 @@ namespace InDevelopment.Mechanics.Player
             rb = GetComponent<Rigidbody>();
             rbTransform = rb.transform;
             disToGround = GetComponent<Collider>().bounds.extents.y;
-            generalSoundMaker = GetComponent<GeneralSoundMaker>();
+            generalSoundMaker = GetComponentInChildren<GeneralSoundMaker>();
         }
 
         private void ReadWalk(InputAction.CallbackContext obj)
