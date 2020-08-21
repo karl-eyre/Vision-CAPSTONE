@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using InDevelopment.Mechanics.LineOfSight;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace InDevelopment.Mechanics.Enemy
 {
@@ -43,7 +45,8 @@ namespace InDevelopment.Mechanics.Enemy
             investigating,
             stationary,
             waitingAtPoint,
-            returningToPos
+            returningToPos,
+            playerDetected
         }
 
         [Header("Debug"), Tooltip("Leave ALONE")]
@@ -51,10 +54,16 @@ namespace InDevelopment.Mechanics.Enemy
 
         private States previousState;
 
+        public LineOfSight.LineOfSight lineOfSight;
+
+        public float investigationThreshold = 50f;
+        public float maxDetection = 100f;
+
         private void Start()
         {
             previousPos = transform.position;
             previousRot = transform.rotation;
+            lineOfSight = GetComponent<LineOfSight.LineOfSight>();
             currentIndex = 0;
 
             if (waypoints == null)
@@ -66,6 +75,7 @@ namespace InDevelopment.Mechanics.Enemy
                 transform.position = waypoints[0].transform.position;
             }
 
+            states = States.patrolling;
             if (stationary)
             {
                 states = States.stationary;
@@ -78,64 +88,140 @@ namespace InDevelopment.Mechanics.Enemy
         private void Update()
         {
             CheckWaypointIndex();
+            DetectLossState();
 
             switch (states)
             {
                 case States.patrolling:
-                    
-                    targetPosition = waypoints[currentIndex].transform.position;
 
-                    MoveToTarget(targetPosition);
-
-                    if (CheckDistance(targetPosition))
+                    if (IsDetecting())
                     {
-                        previousState = States.patrolling;
-                        previousPos = transform.position;
-                        ChangeState(States.waitingAtPoint);
+                        DetectingPlayer();
+                    }
+                    else
+                    {
+                        if (waypoints != null) targetPosition = waypoints[currentIndex].transform.position;
+
+                        MoveToTarget(targetPosition);
+
+                        if (CheckDistance(targetPosition))
+                        {
+                            previousState = States.patrolling;
+                            previousPos = transform.position;
+                            ChangeState(States.waitingAtPoint);
+                        }
                     }
 
                     break;
 
                 case States.investigating:
-                    
-                    investigating = true;
-                    MoveToTarget(targetLastKnownPos);
-
-                    if (CheckDistance(targetLastKnownPos))
+                    //figure out how to get investigation threshold to work
+                    if (IsDetecting())
                     {
-                        ChangeState(States.waitingAtPoint);
+                        DetectingPlayer();
+                    }
+                    else
+                    {
+                        investigating = true;
+                        MoveToTarget(targetLastKnownPos);
+                        if (CheckDistance(targetLastKnownPos))
+                        {
+                            ChangeState(States.waitingAtPoint);
+                        }
                     }
 
                     break;
 
                 case States.stationary:
-                   
+
+                    if (IsDetecting())
+                    {
+                        DetectingPlayer();
+                        return;
+                    }
+                    else
+                    {
+                        transform.position = previousPos;
+                        transform.rotation = previousRot;
+                        LookLeftAndRight();
+                    }
+
                     //put in if statement that checks are you in your original spot if not move there
-                    transform.position = previousPos;
-                    transform.rotation = previousRot;
-                    LookLeftAndRight();
                     previousState = States.stationary;
-                   
+
                     break;
 
                 case States.waitingAtPoint:
-                    
+
+                    if (IsDetecting())
+                    {
+                        DetectingPlayer();
+                    }
+
                     if (!waiting)
                     {
                         StartCoroutine(WaitAtWaypoint());
                     }
 
+
                     break;
 
                 case States.returningToPos:
-                    
-                    MoveToTarget(previousPos);
-                    if (CheckDistance(previousPos))
+
+                    if (IsDetecting())
                     {
-                        states = previousState;
+                        DetectingPlayer();
+                    }
+                    else
+                    {
+                        DetectingPlayer();
+                        MoveToTarget(previousPos);
+                        if (CheckDistance(previousPos))
+                        {
+                            states = previousState;
+                        }
                     }
 
                     break;
+
+                case States.playerDetected:
+                    Debug.Log("player loses");
+                    // Scene scene = SceneManager.GetActiveScene();
+                    // SceneManager.LoadScene(scene.buildIndex);
+                    break;
+            }
+        }
+
+        public bool IsDetecting()
+        {
+            if (lineOfSight != null && lineOfSight.isDetecting)
+            {
+                transform.LookAt(lineOfSight.player.transform.position);
+                return true;
+            }
+
+            return false;
+        }
+
+        public void DetectingPlayer()
+        {
+            //check if detection meter is above half way, if so then go into investigation state
+            //pass in player gameobject referenced in line of sight script as target position
+            //maybe move checks for is null and is detecting into here
+            if (lineOfSight.detectionMeter >= investigationThreshold)
+            {
+                targetLastKnownPos = lineOfSight.player.gameObject.transform.position;
+                lineOfSight.stopDecrease = true;
+                Debug.Log("Investigating");
+                ChangeState(States.investigating);
+            }
+        }
+
+        public void DetectLossState()
+        {
+            if (lineOfSight.detectionMeter >= maxDetection)
+            {
+                ChangeState(States.playerDetected);
             }
         }
 
@@ -165,8 +251,15 @@ namespace InDevelopment.Mechanics.Enemy
             transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
             Vector3 direction = (target - transform.position).normalized;
 
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            transform.rotation = lookRotation;
+            if (!lineOfSight.isDetecting)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
+                transform.rotation = lookRotation;
+            }
+            else
+            {
+                transform.LookAt(lineOfSight.player.transform.position);
+            }
         }
 
         private void CheckWaypointIndex()
@@ -182,6 +275,11 @@ namespace InDevelopment.Mechanics.Enemy
             waiting = true;
             yield return new WaitForSeconds(WaitTime);
             waiting = false;
+            if (IsDetecting())
+            {
+                ChangeState(States.waitingAtPoint);
+            }
+
             if (investigating)
             {
                 targetLastKnownPos = new Vector3(9999999, 99999999, 9999999);

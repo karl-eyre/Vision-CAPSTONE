@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1252993601337556536}
   - component: {fileID: 1252993601337556537}
   - component: {fileID: 2030028518}
+  - component: {fileID: 5689473979151110931}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252993601337556538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06280708, y: 6.105832, z: 7.5165615}
+  m_LocalPosition: {x: -0.06280708, y: 5.819, z: 7.319}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -90,7 +91,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252993601337556538}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -109,17 +110,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypoints:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   speed: 5
   WaitTime: 1
   rotSpeed: 2
   maxRotation: 45
   investigating: 0
-  stationary: 0
+  stationary: 1
   targetLastKnownPos: {x: 0, y: 0, z: 0}
   states: 0
+  lineOfSight: {fileID: 0}
+  investigationThreshold: 50
+  maxDetection: 100
 --- !u!114 &2030028518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,3 +135,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visionMat: {fileID: 2100000, guid: 4872271247e770e429ad315b32b08d85, type: 2}
   defaultMat: {fileID: 2100000, guid: af405d8458df1e14089523beff06ca87, type: 2}
+  useCustomRenderer: 0
+--- !u!114 &5689473979151110931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252993601337556538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b0d5c3ee86989a448d05ab988f8004a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewDistance: 10
+  viewAngle: 90
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 16384
+  player: {fileID: 0}
+  detectionMeter: 0
+  fillSpeed: 8
+  reduceSpeed: 0.1
+  isDetecting: 0
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  stopDecrease: 0

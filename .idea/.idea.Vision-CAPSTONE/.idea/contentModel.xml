@@ -9,30 +9,41 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Editor" t="Include">
+          <e p="LineOfSightEditor.cs" t="Include" />
+        </e>
         <e p="FMOD Scripts" t="Include">
+          <e p="F_Occlusion.cs" t="Include" />
           <e p="F_Test.cs" t="Include" />
         </e>
         <e p="InDevelopment" t="Include">
+          <e p="ActionMap" t="Include">
+            <e p="GameControls.cs" t="Include" />
+          </e>
           <e p="Alex" t="Include">
             <e p="PlayerRB.cs" t="Include" />
           </e>
           <e p="Mechanics" t="Include">
             <e p="AbilityBase.cs" t="Include" />
-            <e p="ActionMap" t="Include">
-              <e p="GameControls.cs" t="Include" />
-            </e>
             <e p="Enemy" t="Include">
-              <e p="EnemyMovement.cs" t="Include" />
+              <e p="EnemyStateMachine.cs" t="Include" />
+            </e>
+            <e p="LineOfSight" t="Include">
+              <e p="LineOfSight.cs" t="Include" />
             </e>
             <e p="ObjectDistraction" t="Include">
               <e p="DistractionAbility.cs" t="Include" />
-              <e p="SoundMaker.cs" t="Include" />
+              <e p="GeneralSoundMaker.cs" t="Include" />
+              <e p="ObjectSoundMaker.cs" t="Include" />
               <e p="ThrowableObject.cs" t="Include" />
             </e>
             <e p="Player" t="Include">
               <e p="MouseLook.cs" t="Include" />
               <e p="PlayerMovementCC.cs" t="Include" />
               <e p="PlayerMovementRB.cs" t="Include" />
+            </e>
+            <e p="TeleportAbility" t="Include">
+              <e p="TeleportAbility.cs" t="Include" />
             </e>
             <e p="VisionAbility" t="Include">
               <e p="Shaders" t="Include">

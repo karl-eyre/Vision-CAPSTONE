@@ -21,14 +21,18 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             Collider[] enemiesInRange = Physics.OverlapSphere(soundLocation, loudnessOfSound, enemyLayer);
             if (enemiesInRange.Length <= 0) return;
             
-            
+            //add in line cast that basically decreases the range of the sound and redo
+            //the sphere cast and if their still in then tell them to investigate
             
             foreach (var enemy in enemiesInRange)
             {
                 EnemyStateMachine enemyScript = enemy.GetComponent<EnemyStateMachine>();
                 //call notify enemy of sound and pass in sound location for position
-                enemyScript.targetLastKnownPos = soundLocation;
-                enemyScript.ChangeState(EnemyStateMachine.States.investigating);
+                if (!enemyScript.lineOfSight.isDetecting)
+                {
+                    enemyScript.targetLastKnownPos = soundLocation;
+                    enemyScript.ChangeState(EnemyStateMachine.States.investigating);
+                }
             }
         }
     }
