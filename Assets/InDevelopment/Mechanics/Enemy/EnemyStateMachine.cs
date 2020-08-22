@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using InDevelopment.Mechanics.LineOfSight;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.SceneManagement;
 
 namespace InDevelopment.Mechanics.Enemy
@@ -94,12 +95,9 @@ namespace InDevelopment.Mechanics.Enemy
             {
                 case States.patrolling:
 
-                    if (IsDetecting())
+                    if (!IsDetecting())
                     {
-                        DetectingPlayer();
-                    }
-                    else
-                    {
+                        InvestigationTrigger();
                         if (waypoints != null) targetPosition = waypoints[currentIndex].transform.position;
 
                         MoveToTarget(targetPosition);
@@ -116,12 +114,9 @@ namespace InDevelopment.Mechanics.Enemy
 
                 case States.investigating:
                     //figure out how to get investigation threshold to work
-                    if (IsDetecting())
+                    if (!IsDetecting())
                     {
-                        DetectingPlayer();
-                    }
-                    else
-                    {
+                        InvestigationTrigger();
                         investigating = true;
                         MoveToTarget(targetLastKnownPos);
                         if (CheckDistance(targetLastKnownPos))
@@ -134,13 +129,9 @@ namespace InDevelopment.Mechanics.Enemy
 
                 case States.stationary:
 
-                    if (IsDetecting())
+                    if (!IsDetecting())
                     {
-                        DetectingPlayer();
-                        return;
-                    }
-                    else
-                    {
+                        InvestigationTrigger();
                         transform.position = previousPos;
                         transform.rotation = previousRot;
                         LookLeftAndRight();
@@ -153,11 +144,11 @@ namespace InDevelopment.Mechanics.Enemy
 
                 case States.waitingAtPoint:
 
-                    if (IsDetecting())
+                    if (!IsDetecting())
                     {
-                        DetectingPlayer();
+                        InvestigationTrigger();
                     }
-
+                    
                     if (!waiting)
                     {
                         StartCoroutine(WaitAtWaypoint());
@@ -168,13 +159,9 @@ namespace InDevelopment.Mechanics.Enemy
 
                 case States.returningToPos:
 
-                    if (IsDetecting())
+                    if (!IsDetecting())
                     {
-                        DetectingPlayer();
-                    }
-                    else
-                    {
-                        DetectingPlayer();
+                        InvestigationTrigger();
                         MoveToTarget(previousPos);
                         if (CheckDistance(previousPos))
                         {
@@ -196,24 +183,39 @@ namespace InDevelopment.Mechanics.Enemy
         {
             if (lineOfSight != null && lineOfSight.isDetecting)
             {
-                transform.LookAt(lineOfSight.player.transform.position);
+                targetLastKnownPos = lineOfSight.player.gameObject.transform.position;
+                LookAt(lineOfSight.player.transform);
                 return true;
             }
 
             return false;
         }
 
-        public void DetectingPlayer()
+        private void LookAt(Transform target)
+        {
+            transform.LookAt(target.transform.position);
+        }
+
+        public bool InvestigationThresholdExceeded()
+        {
+            if (lineOfSight.detectionMeter >= investigationThreshold)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public void InvestigationTrigger()
         {
             //check if detection meter is above half way, if so then go into investigation state
             //pass in player gameobject referenced in line of sight script as target position
             //maybe move checks for is null and is detecting into here
-            if (lineOfSight.detectionMeter >= investigationThreshold)
+            if (!InvestigationThresholdExceeded()) return;
+            if (lineOfSight.DistToTarget() > lineOfSight.ViewDistanceHalf())
             {
-                targetLastKnownPos = lineOfSight.player.gameObject.transform.position;
-                lineOfSight.stopDecrease = true;
-                Debug.Log("Investigating");
                 ChangeState(States.investigating);
+                lineOfSight.stopDecrease = true;
             }
         }
 
@@ -275,19 +277,23 @@ namespace InDevelopment.Mechanics.Enemy
             waiting = true;
             yield return new WaitForSeconds(WaitTime);
             waiting = false;
-            if (IsDetecting())
-            {
-                ChangeState(States.waitingAtPoint);
-            }
-
+            lineOfSight.stopDecrease = false;
+            
+            
             if (investigating)
             {
-                targetLastKnownPos = new Vector3(9999999, 99999999, 9999999);
+                targetLastKnownPos = previousPos;
                 investigating = false;
                 ChangeState(States.returningToPos);
                 yield break;
             }
-
+            
+            if (IsDetecting() && lineOfSight.DistToTarget() < lineOfSight.ViewDistanceHalf())
+            {
+                ChangeState(States.investigating);
+                yield break;
+            }
+            
             currentIndex++;
             ChangeState(States.returningToPos);
         }
