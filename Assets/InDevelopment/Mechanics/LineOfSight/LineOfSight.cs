@@ -64,9 +64,9 @@ namespace InDevelopment.Mechanics.LineOfSight
             return Vector3.Distance(player.transform.position, transform.position);
         }
 
-        public float ViewDistanceHalf()
+        public float ViewDistance()
         {
-            return viewDistance  / 2f;
+            return viewDistance;
         }
 
         IEnumerator RaycastToPlayer(float delay)

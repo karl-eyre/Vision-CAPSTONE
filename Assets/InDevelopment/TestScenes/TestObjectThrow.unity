@@ -784,7 +784,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 218234729}
+      objectReference: {fileID: 1723412211}
     - target: {fileID: 5689473979151110931, guid: 170a423499333c445a8c8894529f52ab,
         type: 3}
       propertyPath: viewAngle
@@ -1251,7 +1251,7 @@ PrefabInstance:
     - target: {fileID: 7510376709348068934, guid: 3ab37abb5adda8b4891be0e45e753a6d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.46
+      value: -12.58
       objectReference: {fileID: 0}
     - target: {fileID: 7510376709348068934, guid: 3ab37abb5adda8b4891be0e45e753a6d,
         type: 3}
@@ -1261,7 +1261,7 @@ PrefabInstance:
     - target: {fileID: 7510376709348068934, guid: 3ab37abb5adda8b4891be0e45e753a6d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.53
+      value: -20.38
       objectReference: {fileID: 0}
     - target: {fileID: 7510376709348068934, guid: 3ab37abb5adda8b4891be0e45e753a6d,
         type: 3}
@@ -1581,6 +1581,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1723412211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 151678080719381678, guid: 3ab37abb5adda8b4891be0e45e753a6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1533797036}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1756675629
 GameObject:
   m_ObjectHideFlags: 0

@@ -86,7 +86,7 @@ namespace InDevelopment.Mechanics.Enemy
             waiting = false;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             CheckWaypointIndex();
             DetectLossState();
@@ -114,10 +114,10 @@ namespace InDevelopment.Mechanics.Enemy
 
                 case States.investigating:
                     //figure out how to get investigation threshold to work
+                    investigating = true;
+
                     if (!IsDetecting())
                     {
-                        InvestigationTrigger();
-                        investigating = true;
                         MoveToTarget(targetLastKnownPos);
                         if (CheckDistance(targetLastKnownPos))
                         {
@@ -148,12 +148,11 @@ namespace InDevelopment.Mechanics.Enemy
                     {
                         InvestigationTrigger();
                     }
-                    
+
                     if (!waiting)
                     {
                         StartCoroutine(WaitAtWaypoint());
                     }
-
 
                     break;
 
@@ -168,7 +167,7 @@ namespace InDevelopment.Mechanics.Enemy
                             states = previousState;
                         }
                     }
-
+                    
                     break;
 
                 case States.playerDetected:
@@ -179,7 +178,7 @@ namespace InDevelopment.Mechanics.Enemy
             }
         }
 
-        public bool IsDetecting()
+        private bool IsDetecting()
         {
             if (lineOfSight != null && lineOfSight.isDetecting)
             {
@@ -196,7 +195,7 @@ namespace InDevelopment.Mechanics.Enemy
             transform.LookAt(target.transform.position);
         }
 
-        public bool InvestigationThresholdExceeded()
+        private bool InvestigationThresholdExceeded()
         {
             if (lineOfSight.detectionMeter >= investigationThreshold)
             {
@@ -206,20 +205,18 @@ namespace InDevelopment.Mechanics.Enemy
             return false;
         }
 
-        public void InvestigationTrigger()
+        private void InvestigationTrigger()
         {
             //check if detection meter is above half way, if so then go into investigation state
             //pass in player gameobject referenced in line of sight script as target position
             //maybe move checks for is null and is detecting into here
             if (!InvestigationThresholdExceeded()) return;
-            if (lineOfSight.DistToTarget() > lineOfSight.ViewDistanceHalf())
-            {
-                ChangeState(States.investigating);
-                lineOfSight.stopDecrease = true;
-            }
+
+            ChangeState(States.investigating);
+            lineOfSight.stopDecrease = true;
         }
 
-        public void DetectLossState()
+        private void DetectLossState()
         {
             if (lineOfSight.detectionMeter >= maxDetection)
             {
@@ -242,12 +239,12 @@ namespace InDevelopment.Mechanics.Enemy
             return false;
         }
 
-        public void LookLeftAndRight()
+        private void LookLeftAndRight()
         {
             transform.rotation = Quaternion.Euler(0f, maxRotation * Mathf.Sin(Time.time * rotSpeed), 0f);
         }
 
-        public void MoveToTarget(Vector3 target)
+        private void MoveToTarget(Vector3 target)
         {
             //TODO: Change to move by navmesh agent rather than transform position
             transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
@@ -278,22 +275,22 @@ namespace InDevelopment.Mechanics.Enemy
             yield return new WaitForSeconds(WaitTime);
             waiting = false;
             lineOfSight.stopDecrease = false;
-            
-            
+
             if (investigating)
             {
                 targetLastKnownPos = previousPos;
                 investigating = false;
+                lineOfSight.detectionMeter = investigationThreshold - 5;
                 ChangeState(States.returningToPos);
                 yield break;
             }
-            
-            if (IsDetecting() && lineOfSight.DistToTarget() < lineOfSight.ViewDistanceHalf())
+
+            if (IsDetecting() && lineOfSight.DistToTarget() < lineOfSight.ViewDistance())
             {
                 ChangeState(States.investigating);
                 yield break;
             }
-            
+
             currentIndex++;
             ChangeState(States.returningToPos);
         }
