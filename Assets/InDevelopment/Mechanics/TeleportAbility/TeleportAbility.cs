@@ -98,6 +98,16 @@ namespace InDevelopment.Mechanics.TeleportAbility
                     canTeleport = false;
                 }
             }
+            else if (Physics.Raycast(ray, out hitInfo, teleportRange, teleportLayer))
+            {
+                targetObj = hitInfo.collider.gameObject;
+                canTeleport = true;
+            }
+            else
+            {
+                canTeleport = false;
+            }
+            
 
             //this is just the part the "picks up" the objects in the level
             //to save on performance, the object that is raycast to if it is a throwable object then turn it off and "add" it
