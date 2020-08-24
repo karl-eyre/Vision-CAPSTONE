@@ -1,4 +1,5 @@
 ﻿using System;
+using Enemy;
 using UnityEngine;
 
 namespace InDevelopment.Mechanics.ObjectDistraction
@@ -6,7 +7,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
     /// <summary>
     /// will be used when it has to make noise
     /// </summary>
-    [RequireComponent(typeof(Rigidbody)),RequireComponent(typeof(ObjectSoundMaker))]
+    [RequireComponent(typeof(Rigidbody)),RequireComponent(typeof(ObjectSoundMaker)),RequireComponent(typeof(VisionEffectActivation))]
     public class ThrowableObject : MonoBehaviour
     {
         public int noiseLoudness;

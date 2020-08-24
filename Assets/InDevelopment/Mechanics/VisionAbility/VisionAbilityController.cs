@@ -7,7 +7,6 @@ namespace VisionAbility
 {
     public class VisionAbilityController : AbilityBase
     {
-        [SerializeField]
         private bool isActive;
 
         private float visionAbilityDuration;

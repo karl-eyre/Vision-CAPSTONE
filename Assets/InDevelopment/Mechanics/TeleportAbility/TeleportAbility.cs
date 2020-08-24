@@ -18,18 +18,22 @@ namespace InDevelopment.Mechanics.TeleportAbility
         public LayerMask teleportLayer;
 
         private bool canTeleport;
-        private GameObject targetPosition;
+        private GameObject targetObj;
 
         [SerializeField]
         private float heightOffset;
 
         private RaycastHit hitInfo;
         private Ray ray;
-        
+
         [SerializeField]
         private GeneralSoundMaker generalSoundMaker;
 
+        [HideInInspector]
         public float noiseLevel;
+
+        public LayerMask unphaseableLayer;
+        public LayerMask phaseableLayer;
 
         private void Start()
         {
@@ -53,17 +57,20 @@ namespace InDevelopment.Mechanics.TeleportAbility
         {
             if (CanTeleport())
             {
-                TeleportToPosition(targetPosition);
+                TeleportToPosition(targetObj);
             }
         }
 
         private void TeleportToPosition(GameObject targetObject)
         {
+            var tgt = targetObject;
             //TODO add height offset to other object
-            Vector3 origin = new Vector3(transform.position.x,transform.position.y + heightOffset, transform.position.z);
-            transform.position = targetObject.transform.position;
-            targetObject.transform.position = origin;
-            targetObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            Vector3 origin = new Vector3(transform.position.x, transform.position.y + heightOffset,
+                transform.position.z);
+            transform.position = tgt.transform.position;
+            tgt.transform.position = origin;
+            tgt.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            targetObj = null;
             generalSoundMaker.MakeSound(noiseLevel);
         }
 
@@ -74,19 +81,27 @@ namespace InDevelopment.Mechanics.TeleportAbility
             Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
 
             ray = camera.ScreenPointToRay(mousePosition);
-           
-            //this is just the part the "picks up" the objects in the level
-            //to save on performance, the object that is raycast to if it is a throwable object then turn it off and "add" it
-            //to the players hand, however instead it simply turns it off 
-            if (Physics.Raycast(ray, out hitInfo, teleportRange, teleportLayer))
-            {
-                targetPosition = hitInfo.collider.gameObject;
-                canTeleport = true;
-            }
-            else
+
+            if (Physics.Raycast(ray, out hitInfo, teleportRange, unphaseableLayer))
             {
                 canTeleport = false;
             }
+            else if (Physics.Raycast(ray, out hitInfo, teleportRange, phaseableLayer))
+            {
+                if (Physics.Raycast(ray, out hitInfo, teleportRange, teleportLayer))
+                {
+                    targetObj = hitInfo.collider.gameObject;
+                    canTeleport = true;
+                }
+                else
+                {
+                    canTeleport = false;
+                }
+            }
+
+            //this is just the part the "picks up" the objects in the level
+            //to save on performance, the object that is raycast to if it is a throwable object then turn it off and "add" it
+            //to the players hand, however instead it simply turns it off 
 
             return canTeleport;
         }

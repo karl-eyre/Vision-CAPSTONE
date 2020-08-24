@@ -6,22 +6,36 @@ namespace Enemy
     public class VisionEffectActivation : MonoBehaviour
     {
         private bool visionActivated;
+
+        [Header("Vision Effector Settings")]
         public Material visionMat;
+
         public Material defaultMat;
-        public bool useCustomRenderer;
+
+        // public bool useCustomRenderer;
 
         public void Start()
         {
             VisionAbilityController.visionActivation += UpdateVision;
-            if (useCustomRenderer)
+            GetReferences();
+            // if (useCustomRenderer)
+            // {
+            //     VisionAbilityController.visionActivation += ChangeLayer;
+            // }
+        }
+
+        private void GetReferences()
+        {
+            if (defaultMat == null)
             {
-                VisionAbilityController.visionActivation += ChangeLayer;
+                defaultMat = GetComponent<Renderer>().material;
             }
         }
 
         private void Update()
         {
-            if (visionActivated && !useCustomRenderer)
+            // && !useCustomRenderer
+            if (visionActivated)
             {
                 GetComponent<Renderer>().material = visionMat;
             }

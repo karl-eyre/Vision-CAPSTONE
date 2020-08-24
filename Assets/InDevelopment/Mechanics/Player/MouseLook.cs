@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Player
+namespace InDevelopment.Mechanics.Player
 {
     public class MouseLook : MonoBehaviour
     {

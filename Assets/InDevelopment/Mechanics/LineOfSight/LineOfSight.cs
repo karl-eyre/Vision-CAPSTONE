@@ -9,6 +9,7 @@ namespace InDevelopment.Mechanics.LineOfSight
 {
     public class LineOfSight : MonoBehaviour
     {
+        [Header("Line of Sight Settings")]
         public float viewDistance;
 
         [Range(0, 360)]
@@ -16,20 +17,21 @@ namespace InDevelopment.Mechanics.LineOfSight
 
         public LayerMask obstacleMask;
         private bool inRange;
-
-        public GameObject player;
-        private float timeSinceLastSeen;
-
         public float detectionMeter;
         public float fillSpeed;
         public float reduceSpeed;
+        
 
+        [Header("Other Settings")]
+        public GameObject player;
+        private float timeSinceLastSeen;
+        public LayerMask playerMask;
         public bool isDetecting;
 
         private RaycastHit hitInfo;
 
         private float deltaTime;
-        public LayerMask playerMask;
+        
         
         [HideInInspector]
         public bool stopDecrease;
@@ -40,7 +42,7 @@ namespace InDevelopment.Mechanics.LineOfSight
             //perhaps find a better way to assign player
             if (player == null)
             {
-                player = FindObjectOfType<PlayerMovementRB>().gameObject;
+                player = FindObjectOfType<PlayerMovementRb>().gameObject;
             }
         }
 
@@ -93,7 +95,7 @@ namespace InDevelopment.Mechanics.LineOfSight
                 if (Physics.Raycast(ray, out hitInfo, viewDistance, obstacleMask) ||
                     Vector3.Distance(player.transform.position, transform.position) > viewDistance)
                 {
-                    Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1);
+                    // Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1);
                     isDetecting = false;
                     return;
                 }
@@ -101,7 +103,7 @@ namespace InDevelopment.Mechanics.LineOfSight
                 //figure out why raycast is going through walls
                 if (Physics.Raycast(ray, out hitInfo, viewDistance, playerMask))
                 {
-                    Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1);
+                    // Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1);
                     isDetecting = true;
                     //scale detection meter by time since last seen
                     //not being filled when investigating

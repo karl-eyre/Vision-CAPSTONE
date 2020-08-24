@@ -8,8 +8,7 @@ namespace InDevelopment.Mechanics.Player
     /// <summary>
     /// this is player movement based on the rigidbody
     /// </summary>
-    // ReSharper disable once InconsistentNaming
-    public class PlayerMovementRB : MonoBehaviour
+    public class PlayerMovementRb : MonoBehaviour
     {
         private GameControls controls;
         private Vector2 moveDirection;
@@ -19,25 +18,31 @@ namespace InDevelopment.Mechanics.Player
 
         private Transform rbTransform;
         private Vector3 movement;
-        
+
         private float moveSpeed;
-        
+
         [Header("Movement Settings")]
         public float walkSpeed;
+
         public float sprintSpeed;
+
+        [HideInInspector]
         public float walkNoiseLevel;
+
+        [HideInInspector]
         public float sprintNoiseLevel;
-        
+
         private float currentNoiseLevel;
-        
+
         public float maxSlopeAngle = 120;
         private float groundAngle;
 
         [Header("Jump Settings")]
         public float jumpForce;
-        public bool isGrounded;
-        public LayerMask playerMask;
-        
+
+        private bool isGrounded;
+        private LayerMask playerMask;
+
         [Header("Other Settings")]
         public Camera cam;
 
@@ -60,14 +65,14 @@ namespace InDevelopment.Mechanics.Player
 
         private Vector3 forwardTransform;
         private RaycastHit hitInfo;
-        
+
         private bool hasForward;
         private bool isCrouching;
 
-        [SerializeField]
+        // [SerializeField]
         private GeneralSoundMaker generalSoundMaker;
-        
-        
+
+
         private void OnEnable()
         {
             if (controls != null) controls.Enable();
@@ -90,7 +95,7 @@ namespace InDevelopment.Mechanics.Player
             controls.InGame.Sprint.started += ReadSprint;
             controls.InGame.Sprint.canceled += ReadWalk;
         }
-        
+
         private void Start()
         {
             SetUpControls();
@@ -101,7 +106,7 @@ namespace InDevelopment.Mechanics.Player
             playerMask = ~playerMask;
             GetReferences();
         }
-        
+
         private void GetReferences()
         {
             VisionAbilityController.visionActivation += () => visionActivated = !visionActivated;
@@ -119,10 +124,11 @@ namespace InDevelopment.Mechanics.Player
 
         private void ReadSprint(InputAction.CallbackContext obj)
         {
-            if(isCrouching)
+            if (isCrouching)
             {
                 return;
             }
+
             moveSpeed = sprintSpeed;
             currentNoiseLevel = sprintNoiseLevel;
         }
@@ -151,8 +157,10 @@ namespace InDevelopment.Mechanics.Player
 
         private bool IsGrounded()
         {
-            Vector3 boxColliderTransform = new Vector3(fricStub.transform.localScale.x/4,fricStub.transform.localScale.y/4,fricStub.transform.localScale.z/4);
-            Collider[] cols = Physics.OverlapBox(fricStub.transform.position, boxColliderTransform,Quaternion.identity, playerMask);
+            Vector3 boxColliderTransform = new Vector3(fricStub.transform.localScale.x / 4,
+                fricStub.transform.localScale.y / 4, fricStub.transform.localScale.z / 4);
+            Collider[] cols = Physics.OverlapBox(fricStub.transform.position, boxColliderTransform, Quaternion.identity,
+                playerMask);
             if (cols.Length == 0)
             {
                 isGrounded = false;
@@ -172,7 +180,7 @@ namespace InDevelopment.Mechanics.Player
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
         }
-        
+
         private void ApplyMovement()
         {
             //ensures that if the slope is too high then you can't move
@@ -186,7 +194,6 @@ namespace InDevelopment.Mechanics.Player
             {
                 //GroundSpeed
                 rb.velocity = movement.normalized * (moveSpeed * Time.deltaTime);
-                
             }
             else
             {
@@ -251,13 +258,15 @@ namespace InDevelopment.Mechanics.Player
         //TODO: remove debug/gizmos after fully tested
         private void DrawDebugLines()
         {
-            Debug.DrawLine(rbTransform.transform.position, rbTransform.transform.position + forwardTransform, Color.blue);
+            Debug.DrawLine(rbTransform.transform.position, rbTransform.transform.position + forwardTransform,
+                Color.blue);
         }
 
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.green;
-            Vector3 gizmoBox = new Vector3(fricStub.transform.localScale.x/4,fricStub.transform.localScale.y/4,fricStub.transform.localScale.z/4);
+            Vector3 gizmoBox = new Vector3(fricStub.transform.localScale.x / 4, fricStub.transform.localScale.y / 4,
+                fricStub.transform.localScale.z / 4);
             Gizmos.DrawWireCube(fricStub.transform.position, gizmoBox);
         }
 
@@ -279,7 +288,7 @@ namespace InDevelopment.Mechanics.Player
             {
                 rb.velocity = Vector3.zero;
             }
-            
+
             //TODO:Move into a script on the fric stub
             if (IsMoving())
             {

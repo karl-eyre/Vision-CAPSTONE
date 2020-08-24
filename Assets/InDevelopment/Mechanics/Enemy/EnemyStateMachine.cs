@@ -77,6 +77,7 @@ namespace InDevelopment.Mechanics.Enemy
             }
 
             states = States.patrolling;
+            //add in check to simply change enemy to stationary if no waypoints are in list
             if (stationary)
             {
                 states = States.stationary;
