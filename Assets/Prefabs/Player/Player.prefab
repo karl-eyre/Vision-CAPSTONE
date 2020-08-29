@@ -1272,10 +1272,10 @@ GameObject:
   - component: {fileID: 7510376709348068941}
   - component: {fileID: 8909996923399485891}
   - component: {fileID: 7510376709348068949}
-  - component: {fileID: 7510376709348068943}
   - component: {fileID: 7510376709348068951}
   - component: {fileID: 7510376709348068950}
   - component: {fileID: 5418936103087415064}
+  - component: {fileID: 3323470903385831385}
   m_Layer: 13
   m_Name: Player
   m_TagString: Untagged
@@ -1427,35 +1427,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &7510376709348068943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7510376709348068936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2beb4d7daf5e0c94f990988cabfb6bf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 7510376709348068941}
-  walkSpeed: 335
-  sprintSpeed: 460
-  walkNoiseLevel: 0
-  sprintNoiseLevel: 0
-  maxSlopeAngle: 120
-  jumpForce: 6
-  isGrounded: 0
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  cam: {fileID: 2181429914995191669}
-  fricStub: {fileID: 8251156080780276633}
-  fricStubCol: {fileID: 7737595605828000114}
-  lowFrictionMat: {fileID: 13400000, guid: fdc4b2292872bd946be18e32d3417c65, type: 2}
-  frictionMat: {fileID: 13400000, guid: 3e67949a86c20d6448b77ceca256ea86, type: 2}
-  generalSoundMaker: {fileID: 849851151}
 --- !u!114 &7510376709348068951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1468,7 +1439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705b305f991596847bd6a2bc7503e974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActive: 0
   maxVisionAbilityDuration: 3
 --- !u!114 &7510376709348068950
 MonoBehaviour:
@@ -1514,6 +1484,36 @@ MonoBehaviour:
   heightOffset: 0.5
   generalSoundMaker: {fileID: 849851151}
   noiseLevel: 0
+  unphaseableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  phaseableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &3323470903385831385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7510376709348068936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2beb4d7daf5e0c94f990988cabfb6bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  walkSpeed: 335
+  sprintSpeed: 460
+  walkNoiseLevel: 0
+  sprintNoiseLevel: 0
+  maxSlopeAngle: 120
+  jumpForce: 6
+  cam: {fileID: 2181429914995191669}
+  fricStub: {fileID: 8251156080780276633}
+  fricStubCol: {fileID: 7737595605828000114}
+  lowFrictionMat: {fileID: 13400000, guid: fdc4b2292872bd946be18e32d3417c65, type: 2}
+  frictionMat: {fileID: 13400000, guid: 3e67949a86c20d6448b77ceca256ea86, type: 2}
 --- !u!1 &8251156080780276633
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ namespace InDevelopment.Mechanics.Player
     /// <summary>
     /// this is player movement based on the rigidbody
     /// </summary>
-    public class PlayerMovementRb : MonoBehaviour
+    public class PlayerMovementRB: MonoBehaviour
     {
         private GameControls controls;
         private Vector2 moveDirection;

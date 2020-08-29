@@ -21,7 +21,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
         private GameObject targetObj;
 
         [SerializeField]
-        private float heightOffset;
+        private float heightOffset = 0.5f;
 
         private RaycastHit hitInfo;
         private Ray ray;
@@ -44,6 +44,9 @@ namespace InDevelopment.Mechanics.TeleportAbility
         private void SetReferences()
         {
             generalSoundMaker = GetComponentInChildren<GeneralSoundMaker>();
+            teleportLayer = LayerMask.GetMask("ThrowableObjects");
+            unphaseableLayer = LayerMask.GetMask("Unphaseable");
+            phaseableLayer = LayerMask.GetMask("Phaseable");
         }
 
         private void SetUpControls()
@@ -116,10 +119,10 @@ namespace InDevelopment.Mechanics.TeleportAbility
             return canTeleport;
         }
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.black;
-            Gizmos.DrawRay(camera.transform.position, ray.direction * teleportRange);
-        }
+        // private void OnDrawGizmos()
+        // {
+        //     Gizmos.color = Color.black;
+        //     Gizmos.DrawRay(camera.transform.position, ray.direction * teleportRange);
+        // }
     }
 }

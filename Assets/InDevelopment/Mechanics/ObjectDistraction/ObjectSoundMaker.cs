@@ -21,8 +21,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             Collider[] enemiesInRange = Physics.OverlapSphere(soundLocation, loudnessOfSound, enemyLayer);
             if (enemiesInRange.Length <= 0) return;
             
-            //add in line cast that basically decreases the range of the sound and redo
             //the sphere cast and if their still in then tell them to investigate
+            //use raycast to determine who should've heard the sound
             
             foreach (var enemy in enemiesInRange)
             {

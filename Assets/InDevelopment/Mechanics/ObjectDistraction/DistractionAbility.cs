@@ -99,6 +99,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         private void CalculateThrowForce()
         {
+            //change based on mouse y rotation 
             
         }
 
@@ -118,7 +119,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             TryToPickupObject();
         }
 
-        private void RotateHand()
+        private void RotateThrowPos()
         {
             Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
 
@@ -141,7 +142,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         /// </summary>
         private void PredictPath()
         {
-            RotateHand();
+            RotateThrowPos();
             throwDirection = handPosition.transform.forward;
 
             points.Clear();
@@ -166,6 +167,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
                     //need to change to a box cast along the raycast line
                     //basically if the raycast hits anything just make that the last point, rather than the points continuing through the ground
+                    //change to box cast
                     if (Physics.Raycast(ray, out hit, Vector3.Distance(point1, point2), groundLayerMask))
                     {
                         hitGround = true;
@@ -196,7 +198,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         /// <returns></returns>
         private Vector3 PointPosition(float time)
         {
-            //TODO
+            
             Vector3 currentPosition = handPosition.position + (throwDirection * throwForce * time) +
                                       0.5f * Physics.gravity * (time * time);
             return currentPosition;

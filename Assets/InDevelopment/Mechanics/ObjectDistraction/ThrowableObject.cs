@@ -17,7 +17,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             //this is just to make sure that any item that this script is
             //attached to worked without worrying about having to change the layer manually
             //Problem may arise if layer orders are changed
-            gameObject.layer = 11;
+            gameObject.layer = LayerMask.NameToLayer("ThrowableObjects");
             _objectSoundMaker = GetComponent<ObjectSoundMaker>();
         }
 
