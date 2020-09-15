@@ -792,6 +792,7 @@ GameObject:
   - component: {fileID: 2181429914995191668}
   - component: {fileID: 2181429914995191624}
   - component: {fileID: 2181429914995191627}
+  - component: {fileID: 1630993745073735058}
   m_Layer: 13
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -884,9 +885,9 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8192
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -909,10 +910,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 8
   minUpLookAngle: -50
-  maxDownLookAngle: 60
+  maxDownLookAngle: 70
   playerBody: {fileID: 7510376709348068934}
   mouseLocked: 1
   InvertMouseY: 0
+--- !u!114 &1630993745073735058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2181429914995191671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: f3bcd02e30dcfaf4283e47b79a48c21e, type: 2}
 --- !u!1 &5682576756924185905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,6 +1294,7 @@ GameObject:
   - component: {fileID: 7510376709348068950}
   - component: {fileID: 5418936103087415064}
   - component: {fileID: 3323470903385831385}
+  - component: {fileID: 7872017459535385605}
   m_Layer: 13
   m_Name: Player
   m_TagString: Untagged
@@ -1439,7 +1458,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705b305f991596847bd6a2bc7503e974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
+  visionAbilityDuration: 0
+  visionEnergy: 100
+  abilityUseCost: 25
+  visionEnergyFillRate: 5
+  maxEnergyFill: 100
   maxVisionAbilityDuration: 3
+  postProcessing: {fileID: 1630993745073735058}
 --- !u!114 &7510376709348068950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1478,6 +1504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 2181429914995191669}
   teleportRange: 20
+  teleportDelay: 3
   teleportLayer:
     serializedVersion: 2
     m_Bits: 2048
@@ -1505,8 +1532,10 @@ MonoBehaviour:
   rb: {fileID: 0}
   walkSpeed: 335
   sprintSpeed: 460
-  walkNoiseLevel: 0
-  sprintNoiseLevel: 0
+  sprintEnergy: 100
+  sprintDrainRate: 2
+  sprintRefillRate: 2
+  maxSprintEnergy: 100
   maxSlopeAngle: 120
   jumpForce: 6
   cam: {fileID: 2181429914995191669}
@@ -1514,6 +1543,21 @@ MonoBehaviour:
   fricStubCol: {fileID: 7737595605828000114}
   lowFrictionMat: {fileID: 13400000, guid: fdc4b2292872bd946be18e32d3417c65, type: 2}
   frictionMat: {fileID: 13400000, guid: 3e67949a86c20d6448b77ceca256ea86, type: 2}
+  walkNoiseLevel: 0
+  sprintNoiseLevel: 0
+--- !u!114 &7872017459535385605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7510376709348068936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4596daf15781b045897f512132c44d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: {x: 0, y: 0}
 --- !u!1 &8251156080780276633
 GameObject:
   m_ObjectHideFlags: 0

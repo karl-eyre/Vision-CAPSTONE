@@ -42,7 +42,7 @@ namespace InDevelopment.Mechanics.LineOfSight
             //perhaps find a better way to assign player
             if (player == null)
             {
-                player = FindObjectOfType<PlayerMovementRB>().gameObject;
+                player = FindObjectOfType<PlayerMovement>().gameObject;
             }
         }
 

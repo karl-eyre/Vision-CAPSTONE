@@ -1,22 +1,22 @@
 ﻿using InDevelopment.Mechanics.ObjectDistraction;
+using InDevelopment.Mechanics.VisionAbility;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using VisionAbility;
 
 namespace InDevelopment.Mechanics.Player
 {
     /// <summary>
     /// this is player movement based on the rigidbody
     /// </summary>
-    public class PlayerMovementRB: MonoBehaviour
+    [RequireComponent(typeof(PlayerController))]
+    public class PlayerMovement : MonoBehaviour
     {
-        private GameControls controls;
+        private PlayerController controller;
         private Vector2 moveDirection;
 
         [SerializeField]
         private Rigidbody rb;
 
-        private Transform rbTransform;
         private Vector3 movement;
 
         private float moveSpeed;
@@ -26,15 +26,13 @@ namespace InDevelopment.Mechanics.Player
 
         public float sprintSpeed;
 
-        [HideInInspector]
-        public float walkNoiseLevel;
+        public float sprintEnergy = 100f;
+        public float sprintDrainRate = 2f;
+        public float sprintRefillRate = 2f;
+        public float maxSprintEnergy = 100f;
+        private bool isSprinting;
 
-        [HideInInspector]
-        public float sprintNoiseLevel;
-
-        private float currentNoiseLevel;
-
-        public float maxSlopeAngle = 120;
+        public float maxSlopeAngle = 120f;
         private float groundAngle;
 
         [Header("Jump Settings")]
@@ -72,87 +70,80 @@ namespace InDevelopment.Mechanics.Player
         // [SerializeField]
         private GeneralSoundMaker generalSoundMaker;
 
+        [Header("Noise Settings")]
+        public float walkNoiseLevel;
 
-        private void OnEnable()
-        {
-            if (controls != null) controls.Enable();
-        }
+        public float sprintNoiseLevel;
 
-        private void OnDisable()
-        {
-            if (controls != null) controls.Disable();
-        }
-
-        private void SetUpControls()
-        {
-            controls = new GameControls();
-            controls.Enable();
-            controls.InGame.Jump.performed += ReadJumpInput;
-            controls.InGame.Movement.performed += ReadMoveInput;
-            controls.InGame.Movement.canceled += ReadMoveInput;
-            controls.InGame.Crouch.started += ReadCrouch;
-            controls.InGame.Crouch.canceled += ReadUnCrouch;
-            controls.InGame.Sprint.started += ReadSprint;
-            controls.InGame.Sprint.canceled += ReadWalk;
-        }
+        private float currentNoiseLevel;
 
         private void Start()
         {
-            SetUpControls();
+            SetupVariables();
+            GetReferences();
+        }
+
+        private void SetupVariables()
+        {
             visionActivated = false;
             moveSpeed = walkSpeed;
             currentNoiseLevel = walkNoiseLevel;
             playerMask = 1 << 13;
             playerMask = ~playerMask;
-            GetReferences();
         }
 
         private void GetReferences()
         {
+            controller = GetComponent<PlayerController>();
             VisionAbilityController.visionActivation += () => visionActivated = !visionActivated;
             rb = GetComponent<Rigidbody>();
-            rbTransform = rb.transform;
             disToGround = GetComponent<Collider>().bounds.extents.y;
             generalSoundMaker = GetComponentInChildren<GeneralSoundMaker>();
         }
 
-        private void ReadWalk(InputAction.CallbackContext obj)
+        public void Walk(InputAction.CallbackContext obj)
         {
             moveSpeed = walkSpeed;
             currentNoiseLevel = walkNoiseLevel;
+            isSprinting = false;
         }
 
-        private void ReadSprint(InputAction.CallbackContext obj)
+        public void Sprint(InputAction.CallbackContext obj)
         {
-            if (isCrouching)
+            if (isCrouching || sprintEnergy <= 0)
             {
                 return;
             }
 
+            isSprinting = true;
             moveSpeed = sprintSpeed;
             currentNoiseLevel = sprintNoiseLevel;
         }
 
-        private void ReadUnCrouch(InputAction.CallbackContext obj)
+        public void UnCrouch(InputAction.CallbackContext obj)
         {
-            isCrouching = false;
-            transform.localScale = new Vector3(1f, transform.localScale.y * 2, 1f);
+            if (CanUncrouch())
+            {
+                isCrouching = false;
+
+                transform.localScale = new Vector3(1f, transform.localScale.y * 2, 1f);
+            }
         }
 
-        private void ReadCrouch(InputAction.CallbackContext obj)
+        public void Crouch(InputAction.CallbackContext obj)
         {
             isCrouching = true;
             transform.localScale = new Vector3(1f, transform.localScale.y / 2, 1f);
         }
-
-        private void ReadJumpInput(InputAction.CallbackContext obj)
+        
+        private bool CanUncrouch()
         {
-            Jump();
+            return false;
         }
 
-        private void ReadMoveInput(InputAction.CallbackContext obj)
+        public void MoveInput(InputAction.CallbackContext obj)
         {
-            moveDirection = controls.InGame.Movement.ReadValue<Vector2>();
+            controller.moveDirection = obj.ReadValue<Vector2>();
         }
 
         private bool IsGrounded()
@@ -173,7 +164,9 @@ namespace InDevelopment.Mechanics.Player
             return isGrounded;
         }
 
-        private void Jump()
+       
+
+        public void Jump(InputAction.CallbackContext obj)
         {
             if (IsGrounded())
             {
@@ -189,7 +182,7 @@ namespace InDevelopment.Mechanics.Player
                 return;
             }
 
-            movement = (moveDirection.y * forwardTransform) + (moveDirection.x * transform.right);
+            movement = (controller.moveDirection.y * forwardTransform) + (controller.moveDirection.x * transform.right);
             if (IsGrounded() && hasForward)
             {
                 //GroundSpeed
@@ -240,10 +233,10 @@ namespace InDevelopment.Mechanics.Player
             }
         }
 
-        //TODO:Move into a script on the fric stub
         private bool IsMoving()
         {
-            if (moveDirection.x < 0 || moveDirection.x > 0 || moveDirection.y < 0 || moveDirection.y > 0)
+            if (controller.moveDirection.x < 0 || controller.moveDirection.x > 0 || controller.moveDirection.y < 0 ||
+                controller.moveDirection.y > 0)
             {
                 isMoving = true;
             }
@@ -255,41 +248,38 @@ namespace InDevelopment.Mechanics.Player
             return isMoving;
         }
 
-        //TODO: remove debug/gizmos after fully tested
-        private void DrawDebugLines()
-        {
-            Debug.DrawLine(rbTransform.transform.position, rbTransform.transform.position + forwardTransform,
-                Color.blue);
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.green;
-            Vector3 gizmoBox = new Vector3(fricStub.transform.localScale.x / 4, fricStub.transform.localScale.y / 4,
-                fricStub.transform.localScale.z / 4);
-            Gizmos.DrawWireCube(fricStub.transform.position, gizmoBox);
-        }
-
         private void Update()
         {
             CalculateForward();
             CalculateGroundAngle();
             CheckForwardTransform();
-            DrawDebugLines();
         }
 
-        private void FixedUpdate()
+        private void CheckSprint()
         {
-            if (!visionActivated)
+            if (isSprinting && isMoving && !visionActivated && !isCrouching)
             {
-                ApplyMovement();
+                sprintEnergy -= Time.deltaTime * sprintDrainRate;
             }
             else
             {
-                rb.velocity = Vector3.zero;
+                sprintEnergy += Time.deltaTime * sprintRefillRate;
             }
 
-            //TODO:Move into a script on the fric stub
+            if (sprintEnergy >= maxSprintEnergy)
+            {
+                sprintEnergy = maxSprintEnergy;
+            }
+
+            if (sprintEnergy <= 0f)
+            {
+                moveSpeed = walkSpeed;
+                sprintEnergy = 0f;
+            }
+        }
+
+        private void SwapPhysicsMats()
+        {
             if (IsMoving())
             {
                 fricStubCol.sharedMaterial = lowFrictionMat;
@@ -299,6 +289,25 @@ namespace InDevelopment.Mechanics.Player
             {
                 fricStubCol.sharedMaterial = frictionMat;
             }
+        }
+
+        private void VisionActivated()
+        {
+            if (!visionActivated)
+            {
+                ApplyMovement();
+            }
+            else
+            {
+                rb.velocity = Vector3.zero;
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            VisionActivated();
+            SwapPhysicsMats();
+            CheckSprint();
         }
     }
 }

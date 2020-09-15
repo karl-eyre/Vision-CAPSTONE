@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using VisionAbility;
+﻿using InDevelopment.Mechanics.VisionAbility;
+using UnityEngine;
 
 namespace Enemy
 {

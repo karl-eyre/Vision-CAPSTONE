@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -48,6 +47,10 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         [SerializeField]
         private LayerMask groundLayerMask;
 
+        private bool isHit;
+        private RaycastHit hit;
+        private Ray ray;
+
         private void Awake()
         {
             SetUpControls();
@@ -81,7 +84,20 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                     PredictPath();
                 }
             }
-            
+            CastRay();
+        }
+
+        //used for object outline but could be expensive since its it called constantly in update
+        //move to selection manager?
+        private void CastRay()
+        {
+            Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
+            ray = camera.ScreenPointToRay(mousePosition);
+            isHit = Physics.Raycast(ray, out hit, PickupRange, pickupObjectLayer);
+            if (isHit)
+            {
+                Debug.Log("Object Hit");
+            }
         }
 
         private void ThrowObjectInput(InputAction.CallbackContext obj)
@@ -100,7 +116,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         private void CalculateThrowForce()
         {
             //change based on mouse y rotation 
-            
         }
 
         private void PredictPathInput(InputAction.CallbackContext obj)
@@ -168,6 +183,15 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                     //need to change to a box cast along the raycast line
                     //basically if the raycast hits anything just make that the last point, rather than the points continuing through the ground
                     //change to box cast
+
+                    // bool isHit = Physics.BoxCast(handPosition.position, throwableObjectPrefab.transform.lossyScale,
+                    //     point1 - point2, out hit,Quaternion.identity,groundLayerMask);
+                    //
+                    // if (isHit)
+                    // {
+                    //     hitGround = true;
+                    // }
+
                     if (Physics.Raycast(ray, out hit, Vector3.Distance(point1, point2), groundLayerMask))
                     {
                         hitGround = true;
@@ -198,12 +222,10 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         /// <returns></returns>
         private Vector3 PointPosition(float time)
         {
-            
             Vector3 currentPosition = handPosition.position + (throwDirection * throwForce * time) +
                                       0.5f * Physics.gravity * (time * time);
             return currentPosition;
         }
-
 
         private Vector3 CalculateThrowDirection(Vector3 direction)
         {
@@ -235,15 +257,15 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             //if really neede this top few lines can be moved to update to do a raycast every frame but won't be efficient
 
             //reads the mouse position and converts it into a ray position for the raycast to use
-            Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
-
-            Ray ray = camera.ScreenPointToRay(mousePosition);
-            RaycastHit hit;
+            // Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
+            // Ray ray = camera.ScreenPointToRay(mousePosition);
+            // RaycastHit hit;
+            // isHit = Physics.Raycast(ray, out hit, PickupRange, pickupObjectLayer);
 
             //this is just the part the "picks up" the objects in the level
             //to save on performance, the object that is raycast to if it is a throwable object then turn it off and "add" it
             //to the players hand, however instead it simply turns it off 
-            if (Physics.Raycast(ray, out hit, PickupRange, pickupObjectLayer))
+            if (isHit)
             {
                 //when animations need to be added just have the object destroy delayed for the duration of the animations
                 Debug.Log("UseObject");

@@ -1,6 +1,5 @@
-﻿using System;
+﻿using System.Collections;
 using InDevelopment.Mechanics.ObjectDistraction;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +14,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
         private Camera camera;
 
         public float teleportRange;
+        public float teleportDelay;
         public LayerMask teleportLayer;
 
         private bool canTeleport;
@@ -34,6 +34,8 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         public LayerMask unphaseableLayer;
         public LayerMask phaseableLayer;
+        private bool onCooldown;
+
 
         private void Start()
         {
@@ -47,6 +49,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
             teleportLayer = LayerMask.GetMask("ThrowableObjects");
             unphaseableLayer = LayerMask.GetMask("Unphaseable");
             phaseableLayer = LayerMask.GetMask("Phaseable");
+            onCooldown = false;
         }
 
         private void SetUpControls()
@@ -58,16 +61,17 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         private void ReadTeleportInput(InputAction.CallbackContext obj)
         {
-            if (CanTeleport())
+            if (CanTeleport() && !onCooldown)
             {
-                TeleportToPosition(targetObj);
+                // TeleportToPosition(targetObj);
+                StartCoroutine(Teleport(targetObj));
             }
+            
         }
 
         private void TeleportToPosition(GameObject targetObject)
         {
             var tgt = targetObject;
-            //TODO add height offset to other object
             Vector3 origin = new Vector3(transform.position.x, transform.position.y + heightOffset,
                 transform.position.z);
             transform.position = tgt.transform.position;
@@ -77,10 +81,23 @@ namespace InDevelopment.Mechanics.TeleportAbility
             generalSoundMaker.MakeSound(noiseLevel);
         }
 
+        private IEnumerator Teleport(GameObject targetObject)
+        {
+            onCooldown = true;
+            var tgt = targetObject;
+            Vector3 origin = new Vector3(transform.position.x, transform.position.y + heightOffset,
+                transform.position.z);
+            transform.position = tgt.transform.position;
+            tgt.transform.position = origin;
+            tgt.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            targetObj = null;
+            generalSoundMaker.MakeSound(noiseLevel);
+            yield return new WaitForSeconds(teleportDelay);
+            onCooldown = false;
+        }
+
         private bool CanTeleport()
         {
-            //add check for if raycast is valid
-
             Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
 
             ray = camera.ScreenPointToRay(mousePosition);
@@ -110,7 +127,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
             {
                 canTeleport = false;
             }
-            
+
 
             //this is just the part the "picks up" the objects in the level
             //to save on performance, the object that is raycast to if it is a throwable object then turn it off and "add" it
@@ -118,11 +135,5 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
             return canTeleport;
         }
-
-        // private void OnDrawGizmos()
-        // {
-        //     Gizmos.color = Color.black;
-        //     Gizmos.DrawRay(camera.transform.position, ray.direction * teleportRange);
-        // }
     }
 }

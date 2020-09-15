@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
-using InDevelopment.Mechanics.LineOfSight;
 using UnityEngine;
-using UnityEngine.ProBuilder.MeshOperations;
-using UnityEngine.SceneManagement;
 
 namespace InDevelopment.Mechanics.Enemy
 {

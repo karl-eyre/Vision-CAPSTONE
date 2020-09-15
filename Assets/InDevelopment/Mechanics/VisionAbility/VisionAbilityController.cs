@@ -2,54 +2,117 @@
 using Abilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
-namespace VisionAbility
+
+namespace InDevelopment.Mechanics.VisionAbility
 {
     public class VisionAbilityController : AbilityBase
     {
+        [SerializeField]
         private bool isActive;
 
+        [SerializeField]
         private float visionAbilityDuration;
+
+        public float visionEnergy = 100f;
+        public float abilityUseCost = 25f;
+        public float visionEnergyFillRate = 5f;
+        public float maxEnergyFill = 100f;
         public float maxVisionAbilityDuration = 3f;
         public static event Action visionActivation;
 
         [SerializeField]
+        private Volume postProcessing;
+
+        private ChromaticAberration cb;
+        private Vignette v;
+        
         private GameControls controls;
+
+        private void Awake()
+        {
+            GetReferences();
+        }
 
         private void Start()
         {
             controls = new GameControls();
             controls.Enable();
-            controls.InGame.VisionAbilityActivation.performed += UseVisionAbility;
+            controls.InGame.VisionAbilityActivation.performed += UseVisionAbilityInput;
+        }
+
+        private void GetReferences()
+        {
+            postProcessing.profile.TryGet(out cb);
+            postProcessing.profile.TryGet(out v);
+            cb.intensity.value = 0f;
+            v.intensity.value = 0f;
         }
 
         public void FixedUpdate()
         {
-            CheckAbility();
+            ReduceTime();
+            if (!isActive)
+            {
+                RefillEnergy();
+            }
         }
 
-        private void CheckAbility()
+        private void ReduceTime()
         {
             if (visionAbilityDuration > 0)
             {
                 visionAbilityDuration -= Time.deltaTime;
             }
 
-            if (visionAbilityDuration < 0)
+            if (visionAbilityDuration <= 0 && isActive)
             {
-                visionAbilityDuration = 0;
+                visionAbilityDuration = 0f;
                 CallEvent();
                 isActive = false;
+                // cb.intensity.value = Mathf.Lerp(1, 0, 1f);
+                // v.intensity.value = Mathf.Lerp(1, 0, 1f);
+                
             }
         }
 
-        private void UseVisionAbility(InputAction.CallbackContext context)
+        private void RefillEnergy()
         {
-            if (!isActive)
+            if (visionEnergy < maxEnergyFill)
             {
-                isActive = true;
-                visionAbilityDuration = maxVisionAbilityDuration;
-                CallEvent();
+                visionEnergy += Time.deltaTime * visionEnergyFillRate;
+            }
+            else
+            {
+                visionEnergy = maxEnergyFill;
+            }
+        }
+
+        private void UseVisionAbilityInput(InputAction.CallbackContext context)
+        {
+            UseVisionAbility();
+        }
+
+        private void UseVisionAbility()
+        {
+            if (visionEnergy > abilityUseCost)
+            {
+                visionAbilityDuration = 0f;
+                if (!isActive)
+                {
+                    isActive = true;
+                    visionAbilityDuration = maxVisionAbilityDuration;
+                    visionEnergy -= abilityUseCost;
+                    CallEvent();
+                    // cb.intensity.value = Mathf.Lerp(0, 1, 1);
+                    // v.intensity.value = Mathf.Lerp(0, 1, 1);
+                }
+            }
+            else
+            {
+                visionAbilityDuration = 0f;
             }
         }
 

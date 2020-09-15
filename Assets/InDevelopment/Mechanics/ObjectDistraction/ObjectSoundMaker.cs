@@ -1,7 +1,5 @@
-﻿using System;
-using InDevelopment.Mechanics.Enemy;
+﻿using InDevelopment.Mechanics.Enemy;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace InDevelopment.Mechanics.ObjectDistraction
 {
