@@ -11,6 +11,7 @@ namespace Enemy
         public Material visionMat;
 
         public Material defaultMat;
+        public bool isSelected;
 
         // public bool useCustomRenderer;
 
@@ -35,13 +36,16 @@ namespace Enemy
         private void Update()
         {
             // && !useCustomRenderer
-            if (visionActivated)
+            if (!isSelected)
             {
-                GetComponent<Renderer>().material = visionMat;
-            }
-            else
-            {
-                GetComponent<Renderer>().material = defaultMat;
+                if (visionActivated )
+                {
+                    GetComponent<Renderer>().material = visionMat;
+                }
+                else
+                {
+                    GetComponent<Renderer>().material = defaultMat;
+                }
             }
         }
 

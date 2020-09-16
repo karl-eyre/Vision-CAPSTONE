@@ -1504,7 +1504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 2181429914995191669}
   teleportRange: 20
-  teleportDelay: 3
+  teleportDelay: 5
   teleportLayer:
     serializedVersion: 2
     m_Bits: 2048
@@ -1513,10 +1513,10 @@ MonoBehaviour:
   noiseLevel: 0
   unphaseableLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65536
   phaseableLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 32768
 --- !u!114 &3323470903385831385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1529,12 +1529,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2beb4d7daf5e0c94f990988cabfb6bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 7510376709348068941}
   walkSpeed: 335
   sprintSpeed: 460
   sprintEnergy: 100
-  sprintDrainRate: 2
-  sprintRefillRate: 2
+  sprintDrainRate: 10
+  sprintRefillRate: 5
   maxSprintEnergy: 100
   maxSlopeAngle: 120
   jumpForce: 6
@@ -1545,6 +1545,10 @@ MonoBehaviour:
   frictionMat: {fileID: 13400000, guid: 3e67949a86c20d6448b77ceca256ea86, type: 2}
   walkNoiseLevel: 0
   sprintNoiseLevel: 0
+  playerHeight: 3.2
+  obstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 16384
 --- !u!114 &7872017459535385605
 MonoBehaviour:
   m_ObjectHideFlags: 0

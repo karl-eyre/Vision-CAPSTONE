@@ -30,8 +30,8 @@ namespace InDevelopment.Mechanics.Player
             controls.InGame.Jump.performed += playerMovement.Jump;
             controls.InGame.Movement.performed += playerMovement.MoveInput;
             controls.InGame.Movement.canceled += playerMovement.MoveInput;
-            controls.InGame.Crouch.started += playerMovement.Crouch;
-            controls.InGame.Crouch.canceled += playerMovement.UnCrouch;
+            // controls.InGame.Crouch.started += playerMovement.Crouch;
+            // controls.InGame.Crouch.canceled += playerMovement.StandUp;
             controls.InGame.Sprint.started += playerMovement.Sprint;
             controls.InGame.Sprint.canceled += playerMovement.Walk;
         }

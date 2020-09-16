@@ -13,7 +13,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         //just use game control events to read when something is happening and set noise accordingly
         
         public LayerMask enemyLayer;
-
+        
         public void MakeSound(Vector3 soundLocation, float loudnessOfSound)
         {
             Collider[] enemiesInRange = Physics.OverlapSphere(soundLocation, loudnessOfSound, enemyLayer);
@@ -21,6 +21,11 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             
             //the sphere cast and if their still in then tell them to investigate
             //use raycast to determine who should've heard the sound
+            
+            foreach (var enemy in enemiesInRange)
+            {
+                
+            }
             
             foreach (var enemy in enemiesInRange)
             {

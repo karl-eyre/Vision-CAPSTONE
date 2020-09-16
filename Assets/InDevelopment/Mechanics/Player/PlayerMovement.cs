@@ -1,5 +1,6 @@
 ﻿using InDevelopment.Mechanics.ObjectDistraction;
 using InDevelopment.Mechanics.VisionAbility;
+using UnityEditor.Rendering.Universal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,12 +12,20 @@ namespace InDevelopment.Mechanics.Player
     [RequireComponent(typeof(PlayerController))]
     public class PlayerMovement : MonoBehaviour
     {
+        
+        
         private PlayerController controller;
         private Vector2 moveDirection;
 
+        [Header("Misc")]
         [SerializeField]
         private Rigidbody rb;
 
+        [SerializeField]
+        private float playerHeight = 3.2f;
+
+        public LayerMask obstacleLayerMask;
+        
         private Vector3 movement;
 
         private float moveSpeed;
@@ -86,6 +95,7 @@ namespace InDevelopment.Mechanics.Player
         private void SetupVariables()
         {
             visionActivated = false;
+            isCrouching = false;
             moveSpeed = walkSpeed;
             currentNoiseLevel = walkNoiseLevel;
             playerMask = 1 << 13;
@@ -97,9 +107,9 @@ namespace InDevelopment.Mechanics.Player
             controller = GetComponent<PlayerController>();
             VisionAbilityController.visionActivation += () => visionActivated = !visionActivated;
             rb = GetComponent<Rigidbody>();
-            disToGround = GetComponent<Collider>().bounds.extents.y;
+            disToGround = GetComponent<BoxCollider>().bounds.extents.y;
             generalSoundMaker = GetComponentInChildren<GeneralSoundMaker>();
-        }
+            }
 
         public void Walk(InputAction.CallbackContext obj)
         {
@@ -120,25 +130,39 @@ namespace InDevelopment.Mechanics.Player
             currentNoiseLevel = sprintNoiseLevel;
         }
 
-        public void UnCrouch(InputAction.CallbackContext obj)
+        //works but hacky because it isn't using events
+        private void CrouchCheck()
         {
-            if (CanUncrouch())
+            if (Keyboard.current.cKey.isPressed)
             {
-                isCrouching = false;
-
-                transform.localScale = new Vector3(1f, transform.localScale.y * 2, 1f);
+                Crouch();
+            }
+            else
+            {
+                StandUp();
+            }
+        }
+        
+        public void Crouch()
+        {
+            if (!isCrouching)
+            {
+                isCrouching = true;
+                transform.localScale = new Vector3(1, transform.localScale.y / 2f, 1);
             }
         }
 
-        public void Crouch(InputAction.CallbackContext obj)
+        public void StandUp()
         {
-            isCrouching = true;
-            transform.localScale = new Vector3(1f, transform.localScale.y / 2, 1f);
-        }
-        
-        private bool CanUncrouch()
-        {
-            return false;
+            if (isCrouching)
+            {
+                bool canStand = !Physics.Raycast(transform.position, Vector3.up, playerHeight + 0.3f,obstacleLayerMask);
+                if (canStand)
+                {
+                    isCrouching = false;
+                    transform.localScale = new Vector3(1, transform.localScale.y * 2f, 1);
+                }
+            }
         }
 
         public void MoveInput(InputAction.CallbackContext obj)
@@ -164,7 +188,6 @@ namespace InDevelopment.Mechanics.Player
             return isGrounded;
         }
 
-       
 
         public void Jump(InputAction.CallbackContext obj)
         {
@@ -248,13 +271,6 @@ namespace InDevelopment.Mechanics.Player
             return isMoving;
         }
 
-        private void Update()
-        {
-            CalculateForward();
-            CalculateGroundAngle();
-            CheckForwardTransform();
-        }
-
         private void CheckSprint()
         {
             if (isSprinting && isMoving && !visionActivated && !isCrouching)
@@ -301,6 +317,14 @@ namespace InDevelopment.Mechanics.Player
             {
                 rb.velocity = Vector3.zero;
             }
+        }
+
+        private void Update()
+        {
+            CalculateForward();
+            CalculateGroundAngle();
+            CheckForwardTransform();
+            CrouchCheck();
         }
 
         private void FixedUpdate()

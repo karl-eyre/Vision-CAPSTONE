@@ -6,7 +6,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 {
     public class DistractionAbility : MonoBehaviour
     {
-        //TODO: apply outline to object when it is being looked at.
         //TODO: change throwforce depending on raycast distance or change based on how high and down the player is looking
         private GameControls controls;
 
@@ -17,15 +16,12 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         private bool hasObjectToThrow;
         private bool predictingThrow;
 
-        [Header("Throw Settings")]
-        public float PickupRange;
-
         public bool useThrowArc;
 
-        public LayerMask pickupObjectLayer;
         private GameObject throwableObjectPrefab;
         private GameObject oldThrowableObjectPrefab;
         public float throwForce;
+        private float defaultThrowForce;
 
         [Header("Line Renderer Settings")]
         [SerializeField]
@@ -47,9 +43,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         [SerializeField]
         private LayerMask groundLayerMask;
 
-        private bool isHit;
-        private RaycastHit hit;
-        private Ray ray;
+        private SelectionOutline selectionOutline;
 
         private void Awake()
         {
@@ -57,6 +51,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             SetUpLineRenderer();
             hasObjectToThrow = false;
             predictingThrow = false;
+            selectionOutline = GetComponent<SelectionOutline>();
+            defaultThrowForce = throwForce;
         }
 
         private void SetUpLineRenderer()
@@ -84,20 +80,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                     PredictPath();
                 }
             }
-            CastRay();
-        }
-
-        //used for object outline but could be expensive since its it called constantly in update
-        //move to selection manager?
-        private void CastRay()
-        {
-            Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
-            ray = camera.ScreenPointToRay(mousePosition);
-            isHit = Physics.Raycast(ray, out hit, PickupRange, pickupObjectLayer);
-            if (isHit)
-            {
-                Debug.Log("Object Hit");
-            }
         }
 
         private void ThrowObjectInput(InputAction.CallbackContext obj)
@@ -111,11 +93,15 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             predictingThrow = false;
             lineRenderer.positionCount = 0;
             ThrowObject();
+            throwForce = defaultThrowForce;
         }
 
         private void CalculateThrowForce()
         {
-            //change based on mouse y rotation 
+            //have both tested to see if these are necessary
+            // throwForce = defaultThrowForce / 2 + points.Count;
+            throwForce = points.Count;
+
         }
 
         private void PredictPathInput(InputAction.CallbackContext obj)
@@ -152,9 +138,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             }
         }
 
-        /// <summary>
-        /// handles predicting the trajectory of the throw arc
-        /// </summary>
         private void PredictPath()
         {
             RotateThrowPos();
@@ -184,8 +167,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                     //basically if the raycast hits anything just make that the last point, rather than the points continuing through the ground
                     //change to box cast
 
-                    // bool isHit = Physics.BoxCast(handPosition.position, throwableObjectPrefab.transform.lossyScale,
-                    //     point1 - point2, out hit,Quaternion.identity,groundLayerMask);
+                    // bool isHit = Physics.BoxCast(point1, throwableObjectPrefab.GetComponent<Renderer>().bounds.extents,
+                    //     point2 - point1, out hit,Quaternion.identity,groundLayerMask);
                     //
                     // if (isHit)
                     // {
@@ -244,7 +227,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             throwableObject.transform.position = handPosition.position;
             throwableObject.transform.rotation = handPosition.rotation;
             throwableObject.SetActive(true);
-
+            
             rb.AddForce(CalculateThrowDirection(throwDirection) * throwForce, ForceMode.Impulse);
 
             //these two need to be in there
@@ -254,38 +237,30 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         private void TryToPickupObject()
         {
-            //if really neede this top few lines can be moved to update to do a raycast every frame but won't be efficient
-
-            //reads the mouse position and converts it into a ray position for the raycast to use
-            // Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
-            // Ray ray = camera.ScreenPointToRay(mousePosition);
-            // RaycastHit hit;
-            // isHit = Physics.Raycast(ray, out hit, PickupRange, pickupObjectLayer);
-
             //this is just the part the "picks up" the objects in the level
             //to save on performance, the object that is raycast to if it is a throwable object then turn it off and "add" it
             //to the players hand, however instead it simply turns it off 
-            if (isHit)
+            if (!(selectionOutline is null) && selectionOutline.isHit)
             {
                 //when animations need to be added just have the object destroy delayed for the duration of the animations
                 Debug.Log("UseObject");
-                var hitObject = hit.collider.gameObject;
+                var hitObject = selectionOutline.hit.collider.gameObject;
 
                 if (throwableObjectPrefab == null)
                 {
-                    throwableObjectPrefab = hit.collider.gameObject;
+                    throwableObjectPrefab = selectionOutline.hit.collider.gameObject;
                 }
 
                 oldThrowableObjectPrefab = throwableObjectPrefab;
 
-                oldThrowableObjectPrefab.transform.position = hit.collider.transform.position;
+                oldThrowableObjectPrefab.transform.position = selectionOutline.hit.collider.transform.position;
 
                 Rigidbody rb = oldThrowableObjectPrefab.GetComponent<Rigidbody>();
                 rb.velocity = Vector3.zero;
                 oldThrowableObjectPrefab.transform.rotation = Quaternion.identity;
                 oldThrowableObjectPrefab.SetActive(true);
 
-                throwableObjectPrefab = hit.collider.gameObject;
+                throwableObjectPrefab = selectionOutline.hit.collider.gameObject;
 
                 hitObject.SetActive(false);
                 hasObjectToThrow = true;

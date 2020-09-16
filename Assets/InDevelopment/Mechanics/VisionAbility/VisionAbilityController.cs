@@ -31,6 +31,9 @@ namespace InDevelopment.Mechanics.VisionAbility
         
         private GameControls controls;
 
+        private static float t1;
+        private static float t2;
+
         private void Awake()
         {
             GetReferences();
@@ -48,7 +51,7 @@ namespace InDevelopment.Mechanics.VisionAbility
             postProcessing.profile.TryGet(out cb);
             postProcessing.profile.TryGet(out v);
             cb.intensity.value = 0f;
-            v.intensity.value = 0f;
+            v.intensity.value = 0f;    
         }
 
         public void FixedUpdate()
@@ -58,6 +61,9 @@ namespace InDevelopment.Mechanics.VisionAbility
             {
                 RefillEnergy();
             }
+            
+            // t1 = Mathf.Lerp(1, 0, 0.1f);
+            // t2 = Mathf.Lerp(0, 1, 0.1f);
         }
 
         private void ReduceTime()
@@ -72,9 +78,10 @@ namespace InDevelopment.Mechanics.VisionAbility
                 visionAbilityDuration = 0f;
                 CallEvent();
                 isActive = false;
-                // cb.intensity.value = Mathf.Lerp(1, 0, 1f);
-                // v.intensity.value = Mathf.Lerp(1, 0, 1f);
-                
+                //turning off post processing
+                // cb.intensity.value = t2;
+                // v.intensity.value = t2;
+
             }
         }
 
@@ -106,8 +113,9 @@ namespace InDevelopment.Mechanics.VisionAbility
                     visionAbilityDuration = maxVisionAbilityDuration;
                     visionEnergy -= abilityUseCost;
                     CallEvent();
-                    // cb.intensity.value = Mathf.Lerp(0, 1, 1);
-                    // v.intensity.value = Mathf.Lerp(0, 1, 1);
+                    //turning post processing on
+                    // cb.intensity.value = t1;
+                    // v.intensity.value = t1;
                 }
             }
             else
