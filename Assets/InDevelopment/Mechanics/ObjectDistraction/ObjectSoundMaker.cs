@@ -29,12 +29,13 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             
             foreach (var enemy in enemiesInRange)
             {
-                EnemyStateMachine enemyScript = enemy.GetComponent<EnemyStateMachine>();
+                EnemyModel enemyScript = enemy.GetComponent<EnemyModel>();
                 //call notify enemy of sound and pass in sound location for position
                 if (!enemyScript.lineOfSight.isDetecting)
                 {
                     enemyScript.targetLastKnownPos = soundLocation;
-                    enemyScript.ChangeState(EnemyStateMachine.States.investigating);
+                    //TODO: Change this to Event driven system.
+                    //enemyScript.ChangeState(EnemyModel.States.investigating);
                 }
             }
         }

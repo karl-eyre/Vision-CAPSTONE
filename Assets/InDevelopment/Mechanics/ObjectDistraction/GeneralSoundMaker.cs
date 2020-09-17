@@ -27,11 +27,12 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         public void OnCollisionEnter(Collision other)
         {
-            if (!other.gameObject.GetComponent<EnemyStateMachine>()) return;
+            if (!other.gameObject.GetComponent<EnemyModel>()) return;
             
-            var enemyScript = other.gameObject.GetComponent<EnemyStateMachine>();
+            var enemyScript = other.gameObject.GetComponent<EnemyModel>();
             enemyScript.targetLastKnownPos = transform.position;
-            enemyScript.ChangeState(EnemyStateMachine.States.investigating);
+            //TODO: Change to Event Driven system.
+            //enemyScript.ChangeState(EnemyModel.States.investigating);
         }
 
         private IEnumerator WaitTime()

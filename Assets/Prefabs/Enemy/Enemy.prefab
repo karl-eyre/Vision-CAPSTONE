@@ -12,6 +12,13 @@ GameObject:
   - component: {fileID: 1252993601337556534}
   - component: {fileID: 1252993601337556535}
   - component: {fileID: 1252993601337556536}
+  - component: {fileID: 3436074114252926986}
+  - component: {fileID: 3345674805096424803}
+  - component: {fileID: 2732581974927345951}
+  - component: {fileID: 5824143131245617173}
+  - component: {fileID: 4567425350731780394}
+  - component: {fileID: 900327945803984749}
+  - component: {fileID: 3909694181088097223}
   - component: {fileID: 1252993601337556537}
   - component: {fileID: 2030028518}
   - component: {fileID: 5689473979151110931}
@@ -96,6 +103,108 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3436074114252926986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252993601337556538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2344dd077026d349918f7e2338b96c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: {fileID: 2732581974927345951}
+--- !u!114 &3345674805096424803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252993601337556538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4c84166e6eb66a4d9743019cca0c1d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateManager: {fileID: 0}
+  stateToChangeTo: {fileID: 0}
+  enemyModel: {fileID: 0}
+  waitingAtPointState: {fileID: 0}
+--- !u!114 &2732581974927345951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252993601337556538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74e64cc3e4867f4d912324ec9253a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateManager: {fileID: 0}
+  enemyModel: {fileID: 0}
+  waitingAtPointState: {fileID: 0}
+--- !u!114 &5824143131245617173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252993601337556538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d8191bd78e2a3c4c9f51e921312c703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateManager: {fileID: 0}
+  enemyModel: {fileID: 0}
+--- !u!114 &4567425350731780394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252993601337556538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c997878a879ba2c4ea5bfe4bde54f473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateManager: {fileID: 0}
+  enemyModel: {fileID: 0}
+--- !u!114 &900327945803984749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252993601337556538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a0fd2cb1ede5c94486036d4c887d9c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateManager: {fileID: 0}
+  enemyModel: {fileID: 0}
+--- !u!114 &3909694181088097223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252993601337556538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800c4122bed820246ba9bc5a07ed9778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateManager: {fileID: 0}
+  enemyModel: {fileID: 0}
+  InvestigatingState: {fileID: 0}
+  returningToPosState: {fileID: 0}
 --- !u!114 &1252993601337556537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,14 +218,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
+  currentIndex: 0
   speed: 5
   WaitTime: 4
   rotSpeed: 2
   maxRotation: 45
   investigating: 0
+  waiting: 0
   stationary: 1
   targetLastKnownPos: {x: 0, y: 0, z: 0}
-  states: 0
+  targetPosition: {x: 0, y: 0, z: 0}
+  previousPos: {x: 0, y: 0, z: 0}
+  previousRot: {x: 0, y: 0, z: 0, w: 0}
+  stateManager: {fileID: 3436074114252926986}
+  playerDetectedState: {fileID: 0}
+  InvestigatingState: {fileID: 3345674805096424803}
   lineOfSight: {fileID: 5689473979151110931}
   investigationThreshold: 50
   maxDetection: 100
@@ -134,6 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visionMat: {fileID: 2100000, guid: 4872271247e770e429ad315b32b08d85, type: 2}
   defaultMat: {fileID: 2100000, guid: af405d8458df1e14089523beff06ca87, type: 2}
+  isSelected: 0
 --- !u!114 &5689473979151110931
 MonoBehaviour:
   m_ObjectHideFlags: 0

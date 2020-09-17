@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Dylan\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Dylan\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_Vision-CAPSTONE.1004608169.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Dylan\Desktop\Capstone Project\Vision-CAPSTONE" t="IncludeRecursive">
+    <e p="C:\Users\Slex\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Slex\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_Vision-CAPSTONE.-526213450.00" t="ExcludeRecursive" />
+    <e p="E:\01__Code_Lounge\Vision-CAPSTONE" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -21,12 +21,23 @@
             <e p="GameControls.cs" t="Include" />
           </e>
           <e p="Alex" t="Include">
+            <e p="EnemyStates" t="Include">
+              <e p="EnemyController.cs" t="Include" />
+              <e p="InvestigatingState.cs" t="Include" />
+              <e p="PatrollingState.cs" t="Include" />
+              <e p="PlayerDetectedState.cs" t="Include" />
+              <e p="ReturningToPosState.cs" t="Include" />
+              <e p="StationaryState.cs" t="Include" />
+              <e p="WaitingAtPointState.cs" t="Include" />
+            </e>
             <e p="PlayerRB.cs" t="Include" />
+            <e p="StateBase.cs" t="Include" />
+            <e p="StateManager.cs" t="Include" />
           </e>
           <e p="Mechanics" t="Include">
             <e p="AbilityBase.cs" t="Include" />
             <e p="Enemy" t="Include">
-              <e p="EnemyStateMachine.cs" t="Include" />
+              <e p="EnemyModel.cs" t="Include" />
             </e>
             <e p="LineOfSight" t="Include">
               <e p="LineOfSight.cs" t="Include" />
@@ -35,12 +46,14 @@
               <e p="DistractionAbility.cs" t="Include" />
               <e p="GeneralSoundMaker.cs" t="Include" />
               <e p="ObjectSoundMaker.cs" t="Include" />
+              <e p="SelectionOutline.cs" t="Include" />
               <e p="ThrowableObject.cs" t="Include" />
             </e>
             <e p="Player" t="Include">
               <e p="MouseLook.cs" t="Include" />
+              <e p="PlayerController.cs" t="Include" />
+              <e p="PlayerMovement.cs" t="Include" />
               <e p="PlayerMovementCC.cs" t="Include" />
-              <e p="PlayerMovementRB.cs" t="Include" />
             </e>
             <e p="TeleportAbility" t="Include">
               <e p="TeleportAbility.cs" t="Include" />
