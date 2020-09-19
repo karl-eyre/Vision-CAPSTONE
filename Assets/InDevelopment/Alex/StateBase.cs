@@ -10,7 +10,12 @@ namespace InDevelopment.Alex
 
 		public void Awake()
 		{
-			stateManager = GetComponent<StateManager>();
+			if (!stateManager)
+			{
+				stateManager = GetComponent<StateManager>();
+			}
+
+			
 		}
 
 		public virtual void Enter()
