@@ -16,7 +16,6 @@ namespace InDevelopment.Alex
 		public virtual void Enter()
 		{
 			Debug.Log("I have entered into the " + this.GetType() + " state.");
-
 		}
 	
 		public virtual void Exit()

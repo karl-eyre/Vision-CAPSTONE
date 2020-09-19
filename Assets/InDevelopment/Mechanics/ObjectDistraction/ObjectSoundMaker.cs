@@ -29,7 +29,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             
             foreach (var enemy in enemiesInRange)
             {
-                EnemyModel enemyScript = enemy.GetComponent<EnemyModel>();
+                EnemyStateMachine enemyScript = enemy.GetComponent<EnemyStateMachine>();
                 //call notify enemy of sound and pass in sound location for position
                 if (!enemyScript.lineOfSight.isDetecting)
                 {

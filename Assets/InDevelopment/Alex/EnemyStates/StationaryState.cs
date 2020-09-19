@@ -4,7 +4,6 @@ namespace InDevelopment.Alex.EnemyStates
 {
     public class StationaryState : StateBase
     {
-        public EnemyModel enemyModel;
 
         public override void Enter()
         {
@@ -19,17 +18,7 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Execute()
         {
             base.Execute();
-            if (!enemyModel.IsDetecting())
-            {
-                enemyModel.InvestigationTrigger();
-                transform.position = enemyModel.previousPos;
-                transform.rotation = enemyModel.previousRot;
-                enemyModel.LookLeftAndRight();
-            }
-
-            //put in if statement that checks are you in your original spot if not move there
-            //enemyModel.previousState = EnemyModel.States.stationary;
-
+            
         }
     }
 }

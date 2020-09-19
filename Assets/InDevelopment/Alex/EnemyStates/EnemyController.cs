@@ -1,46 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using InDevelopment.Alex;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+
+    /// <summary>
+    /// What do i want this enemy to do?
+    /// Patrol, Investigate, Stationary,, WaitingAtPoint, ReturnToPos, DetectPlayer
+    /// 
+    /// </summary>
+
 #region Variables
 
-    [Header("Enemy Settings")]
-    public List<GameObject> waypoints;
+    public float speed = 5;
 
-    private int currentIndex = 0;
-
-    public float speed;
-    private float WaypointRadius = 1;
-
-
-    public float WaitTime;
-
-    public float rotSpeed = 2f;
-    public float maxRotation = 45f;
-
-    [HideInInspector]
-    public bool investigating;
-
-    private bool waiting;
-
-    [SerializeField]
-    private bool stationary;
-
-    [HideInInspector]
-    public Vector3 targetLastKnownPos;
-
-    private Vector3 targetPosition;
-    private Vector3 previousPos;
-    private Quaternion previousRot;
-    
-    [Header("Debug"), Tooltip("Leave ALONE")]
-    public float investigationThreshold = 50f;
-    public float maxDetection = 100f;
-
-
-    
+    public StateManager stateManager;
     
 #endregion
     // Start is called before the first frame update
@@ -48,6 +24,15 @@ public class EnemyController : MonoBehaviour
     {
         
     }
+
+    public void MoveToTarget(Vector3 tgt)
+    {
+        var position = transform.position;
+        position = Vector3.MoveTowards(position, tgt, Time.deltaTime * speed);
+        transform.position = position;
+        Vector3 direction = (tgt - position).normalized;
+    }
+    
 
     // Update is called once per frame
     void Update()

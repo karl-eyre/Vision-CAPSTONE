@@ -5,7 +5,7 @@ namespace InDevelopment.Alex.EnemyStates
 {
     public class PlayerDetectedState : StateBase
     {
-        public EnemyModel enemyModel;
+        public EnemyStateMachine enemyStateMachine;
 
         public override void Enter()
         {
