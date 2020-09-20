@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace InDevelopment.Alex.EnemyStates
 {
-    public class InvestigatingState : StateBase
+    public class InvestigatingEnemyState : EnemyStateBase
     {
         public override void Enter()
         {

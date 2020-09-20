@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace InDevelopment.Alex
 {
-	public class StateBase : MonoBehaviour
+	public class EnemyStateBase : MonoBehaviour
 	{
 		[HideInInspector]
 		public StateManager stateManager;

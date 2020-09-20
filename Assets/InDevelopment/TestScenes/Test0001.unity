@@ -836,17 +836,17 @@ PrefabInstance:
     - target: {fileID: 1252993601337556533, guid: 170a423499333c445a8c8894529f52ab,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8861189
+      value: -1.77
       objectReference: {fileID: 0}
     - target: {fileID: 1252993601337556533, guid: 170a423499333c445a8c8894529f52ab,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.625
+      value: 0.98
       objectReference: {fileID: 0}
     - target: {fileID: 1252993601337556533, guid: 170a423499333c445a8c8894529f52ab,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.9694073
+      value: 8.02
       objectReference: {fileID: 0}
     - target: {fileID: 1252993601337556533, guid: 170a423499333c445a8c8894529f52ab,
         type: 3}
@@ -892,6 +892,61 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605883517561385362, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: waypoints.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605883517561385362, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 862103369}
+    - target: {fileID: 1605883517561385362, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 975396686}
+    - target: {fileID: 1605883517561385362, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: waypoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 120511701}
+    - target: {fileID: 1605883517561385362, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: waypoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 1047854520}
+    - target: {fileID: 1605883517561385362, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: waypoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 196205095}
+    - target: {fileID: 1605883517561385362, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: waypoints.Array.data[5]
+      value: 
+      objectReference: {fileID: 477980770}
+    - target: {fileID: 1605883517561385362, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: patrolType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172676412890344984, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: maxLandRturn
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172676412890344984, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: waitTimer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172676412890344984, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: rotSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7882496296033794333, guid: 170a423499333c445a8c8894529f52ab,
         type: 3}

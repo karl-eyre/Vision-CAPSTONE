@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace InDevelopment.Alex.EnemyStates
 {
-    public class StationaryState : StateBase
+    public class StationaryEnemyState : EnemyStateBase
     {
         private EnemyController _enemyController;
 
@@ -36,7 +36,7 @@ namespace InDevelopment.Alex.EnemyStates
         IEnumerator waitForSec()
         {
             yield return new WaitForSeconds(3f);
-            stateManager.ChangeState(_enemyController.patrollingState);
+            stateManager.ChangeState(_enemyController.patrollingEnemyState);
         }
         
         

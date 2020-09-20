@@ -4,21 +4,21 @@ namespace InDevelopment.Alex
 {
    public class StateManager : MonoBehaviour
    {
-      public StateBase currentState;
-      public StateBase previousState;
+      public EnemyStateBase currentEnemyState;
+      public EnemyStateBase previousEnemyState;
       
-      public void ChangeState(StateBase newState)
+      public void ChangeState(EnemyStateBase newEnemyState)
       {
          //Check if the newState is different
-         previousState = currentState;
-         currentState?.Exit();
-         newState?.Enter();
-         currentState = newState;
+         previousEnemyState = currentEnemyState;
+         currentEnemyState?.Exit();
+         newEnemyState?.Enter();
+         currentEnemyState = newEnemyState;
       }
 
       public void Update()
       {
-         currentState?.Execute();
+         currentEnemyState?.Execute();
       }
    }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace InDevelopment.Alex.EnemyStates
 {
-    public class WaitingAtPointState : StateBase
+    public class WaitingAtPointEnemyState : EnemyStateBase
     {
         public float waitTimer = 1.0f;
         public float maxLandRturn = 60;
@@ -31,19 +31,20 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Execute()
         {
             base.Execute();
-            LookLeftAndRight();
+            _enemyController.LookLeftAndRight();
         }
 
-        private void LookLeftAndRight()
-        {
-            _enemyController.transform.rotation = Quaternion.Euler(0f, maxLandRturn * Mathf.Sin(Time.time * rotSpeed), 0f);
-        }
+        // private void LookLeftAndRight()
+        // {
+        //     //Quaternion parentRotation = _enemyController.transform.rotation;
+        //     _enemyController.transform.rotation = Quaternion.Euler(0f, maxLandRturn * Mathf.Sin(Time.time * rotSpeed), 0f);
+        //    //parentRotation = Quaternion.Euler(parentRotation.x, parentRotation.y * Mathf.Sin(Time.time * rotSpeed), parentRotation.z);
+        // }
         
         IEnumerator waitForSec()
         {
-            
             yield return new WaitForSeconds(waitTimer);
-            stateManager.ChangeState(stateManager.previousState);
+            stateManager.ChangeState(stateManager.previousEnemyState);
         }
         
     }

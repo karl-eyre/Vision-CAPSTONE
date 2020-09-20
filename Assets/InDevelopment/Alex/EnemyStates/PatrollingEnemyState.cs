@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace InDevelopment.Alex.EnemyStates
 {
-    public class PatrollingState : StateBase
+    public class PatrollingEnemyState : EnemyStateBase
     {
         /// <summary>
         /// What does this state need?
@@ -61,7 +61,7 @@ namespace InDevelopment.Alex.EnemyStates
             }
             else
             {
-                stateManager.ChangeState(_enemyController.waitingAtPointState);
+                stateManager.ChangeState(_enemyController.waitingAtPointEnemyState);
                 GetTarget();
                 
             }

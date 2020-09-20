@@ -140,6 +140,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   stateManager: {fileID: 51001221349860988}
+  patrollingEnemyState: {fileID: 0}
+  stationaryEnemyState: {fileID: 0}
+  waitingAtPointEnemyState: {fileID: 0}
+  returningToPosEnemyState: {fileID: 0}
+  investigatingEnemyState: {fileID: 0}
 --- !u!114 &2030028518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,13 +196,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1578609342260508480}
   - component: {fileID: 51001221349860988}
-  - component: {fileID: 1520526852339225314}
-  - component: {fileID: 6956243188742272576}
-  - component: {fileID: 7882496296033794333}
-  - component: {fileID: 1773000783544436532}
-  - component: {fileID: 7964619440118590003}
-  - component: {fileID: 8976570103014545459}
-  - component: {fileID: 5597171815701871720}
+  - component: {fileID: 346023010754892516}
+  - component: {fileID: 4172676412890344984}
+  - component: {fileID: 1605883517561385362}
+  - component: {fileID: 9037918217293044000}
+  - component: {fileID: 948685719704122036}
+  - component: {fileID: 3071357345889532625}
+  - component: {fileID: 7113781451953816315}
   m_Layer: 12
   m_Name: StateSystem
   m_TagString: Untagged
@@ -231,9 +236,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2344dd077026d349918f7e2338b96c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 7882496296033794333}
-  previousState: {fileID: 0}
---- !u!114 &1520526852339225314
+  currentEnemyState: {fileID: 0}
+  previousEnemyState: {fileID: 0}
+--- !u!114 &346023010754892516
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateManager: {fileID: 0}
---- !u!114 &6956243188742272576
+--- !u!114 &4172676412890344984
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,13 +260,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4601507014533632085}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4c84166e6eb66a4d9743019cca0c1d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 800c4122bed820246ba9bc5a07ed9778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stateManager: {fileID: 0}
-  enemyStateMachine: {fileID: 0}
-  waitingAtPointState: {fileID: 0}
---- !u!114 &7882496296033794333
+  waitTimer: 1
+  maxLandRturn: 60
+  rotSpeed: 5
+--- !u!114 &1605883517561385362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,34 +280,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateManager: {fileID: 0}
---- !u!114 &1773000783544436532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4601507014533632085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d8191bd78e2a3c4c9f51e921312c703, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateManager: {fileID: 0}
-  enemyStateMachine: {fileID: 0}
---- !u!114 &7964619440118590003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4601507014533632085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c997878a879ba2c4ea5bfe4bde54f473, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateManager: {fileID: 0}
---- !u!114 &8976570103014545459
+  minDistancedForIsReached: 0.1
+  patrolType: 0
+  waypoints: []
+--- !u!114 &9037918217293044000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -314,7 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateManager: {fileID: 0}
---- !u!114 &5597171815701871720
+--- !u!114 &948685719704122036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -323,7 +305,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 4601507014533632085}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 800c4122bed820246ba9bc5a07ed9778, type: 3}
+  m_Script: {fileID: 11500000, guid: c4c84166e6eb66a4d9743019cca0c1d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateManager: {fileID: 0}
+--- !u!114 &3071357345889532625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601507014533632085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d8191bd78e2a3c4c9f51e921312c703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateManager: {fileID: 0}
+--- !u!114 &7113781451953816315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601507014533632085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c997878a879ba2c4ea5bfe4bde54f473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stateManager: {fileID: 0}

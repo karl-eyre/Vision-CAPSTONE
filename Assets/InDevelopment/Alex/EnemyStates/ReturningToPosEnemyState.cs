@@ -2,7 +2,7 @@
 
 namespace InDevelopment.Alex.EnemyStates
 {
-    public class ReturningToPosState : StateBase
+    public class ReturningToPosEnemyState : EnemyStateBase
     {
 
         public override void Enter()
