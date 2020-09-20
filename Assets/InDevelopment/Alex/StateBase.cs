@@ -17,6 +17,10 @@ namespace InDevelopment.Alex
 
 		public virtual void Enter()
 		{
+			if (!stateManager)
+			{
+				stateManager = GetComponent<StateManager>();
+			}
 			Debug.Log("I have entered into the " + this.GetType() + " state.");
 		}
 	

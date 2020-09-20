@@ -18,12 +18,20 @@ public class EnemyController : MonoBehaviour
     public float speed = 5;
 
     public StateManager stateManager;
-    public StateBase state;
+    private StateBase _state; //Find a use for this or get rid of it later.
+
+    [Header("States")]
+    public PatrollingState patrollingState;
+    public StationaryState stationaryState;
+    public WaitingAtPointState waitingAtPointState;
+    public ReturningToPosState returningToPosState;
+    public InvestigatingState investigatingState;
+    
 #endregion
     // Start is called before the first frame update
     void Start()
     {
-        stateManager.ChangeState(state);
+        stateManager.ChangeState(stationaryState);
     }
 
     public void MoveToTarget(Vector3 tgt)

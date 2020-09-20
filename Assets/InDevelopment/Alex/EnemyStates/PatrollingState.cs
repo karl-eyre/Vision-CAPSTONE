@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using InDevelopment.Mechanics.Enemy;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace InDevelopment.Alex.EnemyStates
 {
@@ -11,10 +13,13 @@ namespace InDevelopment.Alex.EnemyStates
         /// What does this state need?
         /// Target(s), maybe through a simple waypoint system?
         /// </summary>
-
+        
+        [Tooltip("This is how close this object has to be to it's 'target' before it moves on to the next bit of code.")]
         public float minDistancedForIsReached = 0.5f;
-
+        public PatrolType patrolType = PatrolType.Ordered;
         public List<GameObject> waypoints;
+        
+        
         private int targetIndex = 0;
         private int targetIndexMax;
         private EnemyController _enemyController;
@@ -22,7 +27,11 @@ namespace InDevelopment.Alex.EnemyStates
         private GameObject _target;
 
         private Vector3 SpawnPosition;
-
+        public enum PatrolType
+        {
+            Ordered,
+            Random
+        }
         private void Awake()
         {
             _target = waypoints[targetIndex];
@@ -52,25 +61,39 @@ namespace InDevelopment.Alex.EnemyStates
             }
             else
             {
+                stateManager.ChangeState(_enemyController.waitingAtPointState);
                 GetTarget();
+                
             }
         }
 
         private GameObject GetTarget()
         {
             if (waypoints == null)
+            {
+                Debug.Log("PatrollingState: Waypoints is null.");
                 return null;
+            }
             
+
             targetIndexMax = waypoints.Count - 1;
 
-            if (targetIndex < targetIndexMax)
+            if (patrolType == PatrolType.Ordered)
             {
-                targetIndex++;
+                if (targetIndex < targetIndexMax)
+                {
+                    targetIndex++;
                 
+                }
+                else if (targetIndex >= targetIndexMax)
+                {
+                    targetIndex = 0;
+                }
             }
-            else if (targetIndex >= targetIndexMax)
+
+            if (patrolType == PatrolType.Random)
             {
-                targetIndex = 0;
+                targetIndex = Random.Range(0, (targetIndexMax + 1));
             }
             
             _target = waypoints[targetIndex];
