@@ -29,8 +29,13 @@ public class EnemyController : MonoBehaviour
     
 #endregion
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        patrollingState = GetComponentInChildren<PatrollingState>();
+        stationaryState = GetComponentInChildren<StationaryState>();
+        waitingAtPointState = GetComponentInChildren<WaitingAtPointState>();
+        returningToPosState = GetComponentInChildren<ReturningToPosState>();
+        investigatingState = GetComponentInChildren<InvestigatingState>();
         stateManager.ChangeState(stationaryState);
     }
 
