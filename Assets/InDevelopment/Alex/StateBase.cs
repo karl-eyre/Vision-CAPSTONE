@@ -5,17 +5,14 @@ namespace InDevelopment.Alex
 {
 	public class StateBase : MonoBehaviour
 	{
+		[HideInInspector]
 		public StateManager stateManager;
-
-
 		public void Awake()
 		{
 			if (!stateManager)
 			{
 				stateManager = GetComponent<StateManager>();
 			}
-
-			
 		}
 
 		public virtual void Enter()

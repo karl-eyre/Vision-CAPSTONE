@@ -5,13 +5,10 @@ namespace InDevelopment.Alex.EnemyStates
 {
     public class InvestigatingState : StateBase
     {
-        public EnemyStateMachine enemyStateMachine;
-        public WaitingAtPointState waitingAtPointState;
         public override void Enter()
         {
             base.Enter();
             Debug.Log("I am in the " + this.GetType() + " state.");
-            
         }
 
         public override void Exit()
@@ -24,8 +21,6 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Execute()
         {
             base.Execute();
-            
-            
         }
     }
 }
