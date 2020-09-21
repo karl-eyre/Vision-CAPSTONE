@@ -29,12 +29,12 @@ public class EnemyController : MonoBehaviour
     private EnemyStateBase _enemyState; 
 
     
-    [Header("States")]
-    public PatrollingEnemyState patrollingEnemyState;
-    public StationaryEnemyState stationaryEnemyState;
-    public WaitingAtPointEnemyState waitingAtPointEnemyState;
-    public ReturningToPosEnemyState returningToPosEnemyState;
-    public InvestigatingEnemyState investigatingEnemyState;
+    //[Header("States")]
+    [HideInInspector]public PatrollingEnemyState patrollingEnemyState;
+    [HideInInspector]public StationaryEnemyState stationaryEnemyState;
+    [HideInInspector]public WaitingAtPointEnemyState waitingAtPointEnemyState;
+    [HideInInspector]public ReturningToPosEnemyState returningToPosEnemyState;
+    [HideInInspector]public InvestigatingEnemyState investigatingEnemyState;
     
 #endregion
     // Start is called before the first frame update
@@ -67,10 +67,8 @@ public class EnemyController : MonoBehaviour
     public void LookLeftAndRight()
     {
         var t = transform.position;
-        rotation = Quaternion.Euler(0f, maxLandRturn * Mathf.Sin(Time.time * rotSpeed), 0f);
+        transform.rotation = Quaternion.Euler(0f, maxLandRturn * Mathf.Sin(Time.time * rotSpeed), 0f);
         //TODO: Fix this so that it does the look left and right thing based on its current looking direction!
-        //transform.LookAt(t.x, t.y, t.z);
-        //t1.rotation.y = Quaternion.Lerp(t1.rotation.y, t1.rotation.y + 60, 0.2);
     }
     
 
