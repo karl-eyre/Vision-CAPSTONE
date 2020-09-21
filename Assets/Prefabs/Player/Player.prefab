@@ -1295,6 +1295,7 @@ GameObject:
   - component: {fileID: 5418936103087415064}
   - component: {fileID: 3323470903385831385}
   - component: {fileID: 7872017459535385605}
+  - component: {fileID: 3892378076946611244}
   m_Layer: 13
   m_Name: Player
   m_TagString: Untagged
@@ -1479,11 +1480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 2181429914995191669}
-  PickupRange: 4
   useThrowArc: 0
-  pickupObjectLayer:
-    serializedVersion: 2
-    m_Bits: 2048
   throwForce: 10
   handPosition: {fileID: 6210708696012539873}
   numberOfPoints: 20
@@ -1530,6 +1527,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7510376709348068941}
+  playerHeight: 3.2
+  obstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 16384
   walkSpeed: 335
   sprintSpeed: 460
   sprintEnergy: 100
@@ -1545,10 +1546,6 @@ MonoBehaviour:
   frictionMat: {fileID: 13400000, guid: 3e67949a86c20d6448b77ceca256ea86, type: 2}
   walkNoiseLevel: 0
   sprintNoiseLevel: 0
-  playerHeight: 3.2
-  obstacleLayerMask:
-    serializedVersion: 2
-    m_Bits: 16384
 --- !u!114 &7872017459535385605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1562,6 +1559,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0}
+--- !u!114 &3892378076946611244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7510376709348068936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88b9e69a6c19e3418da129b6a3636ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 2181429914995191669}
+  isHit: 0
+  PickupRange: 5
+  pickupObjectLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  highlightMat: {fileID: 2100000, guid: 379806bee2e230a4ebd07da5d7ac384b, type: 2}
+  defaultMat: {fileID: 0}
+  selectedObject: {fileID: 0}
 --- !u!1 &8251156080780276633
 GameObject:
   m_ObjectHideFlags: 0

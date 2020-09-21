@@ -1,5 +1,5 @@
 ﻿using System;
-using Enemy;
+using InDevelopment.Mechanics.VisionAbility;
 using UnityEngine;
 
 namespace InDevelopment.Mechanics.ObjectDistraction
@@ -13,7 +13,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         public bool isHit;
         public RaycastHit hit;
-        public Ray ray;
+        private Ray ray;
 
         [Header("Throw Settings")]
         public float PickupRange;

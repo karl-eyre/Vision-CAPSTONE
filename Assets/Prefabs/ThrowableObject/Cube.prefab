@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7411825657087232549}
   - component: {fileID: 7411825657087232574}
   - component: {fileID: 7411825657087232548}
+  - component: {fileID: 4383535367483454252}
   m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
@@ -140,3 +141,21 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 5632
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+--- !u!114 &4383535367483454252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7411825657087232575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 868ec46ec4983ad4392dc16f5e8acf29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visionMat: {fileID: 2100000, guid: f02236d9eb4faa649b2bf0e96c7a15a2, type: 2}
+  defaultMat: {fileID: 0}
+  isSelected: 0
