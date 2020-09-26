@@ -30,7 +30,6 @@ namespace InDevelopment.Alex.EnemyStates
         {
             base.Execute();
             Debug.Log("StationaryState: Active.");
-            
         }
 
         IEnumerator waitForSec()

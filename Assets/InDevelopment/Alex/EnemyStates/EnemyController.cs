@@ -10,7 +10,8 @@ public class EnemyController : MonoBehaviour
     /// <summary>
     /// What do i want this enemy to do?
     /// Patrol, Investigate, Stationary,, WaitingAtPoint, ReturnToPos, DetectPlayer
-    /// 
+    ///
+    /// Detect and handle sound.
     /// </summary>
 
 #region Variables

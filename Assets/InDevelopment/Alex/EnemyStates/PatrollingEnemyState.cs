@@ -43,7 +43,6 @@ namespace InDevelopment.Alex.EnemyStates
         {
             base.Enter();
             gameObject.GetComponent<EnemyController>();
-            
         }
 
         public override void Exit()
@@ -63,7 +62,6 @@ namespace InDevelopment.Alex.EnemyStates
             {
                 stateManager.ChangeState(_enemyController.waitingAtPointEnemyState);
                 GetTarget();
-                
             }
         }
 
