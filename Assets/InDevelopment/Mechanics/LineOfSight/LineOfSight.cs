@@ -9,27 +9,34 @@ namespace InDevelopment.Mechanics.LineOfSight
 {
     public class LineOfSight : MonoBehaviour
     {
+        /// <summary>
+        /// For the most part nothing needs to get referenced from this script except variables.
+        /// </summary>
+        
+        
         [Header("Line of Sight Settings")]
-        public float viewDistance;
+        public float viewDistance = 10f;
+        public LayerMask playerMask;
 
         [Range(0, 360)]
-        public float viewAngle;
+        public float viewAngle = 100f;
 
         public LayerMask obstacleMask;
-        private bool inRange;
-        public float detectionMeter;
-        public float fillSpeed;
-        public float reduceSpeed;
+        public float fillSpeed = 10;
+        public float reduceSpeed = 0.1f;
         
 
-        [Header("Other Settings")]
+        [Header("Referenced Variables")]
         public GameObject player;
-        private float timeSinceLastSeen;
-        public LayerMask playerMask;
         public bool isDetecting;
-
+        public float detectionMeter;
+        public float detectionThreshold = 50;
+        
+        
+        
         private RaycastHit hitInfo;
-
+        private float timeSinceLastSeen;
+        private bool inRange;
         private float deltaTime;
         
         
@@ -73,6 +80,7 @@ namespace InDevelopment.Mechanics.LineOfSight
 
         public float ViewDistance()
         {
+            //Yes, We get it! (Leave this alone just because!)
             return viewDistance;
         }
 
@@ -97,6 +105,7 @@ namespace InDevelopment.Mechanics.LineOfSight
             {
                 Ray ray = new Ray(transform.position, dirToTarget);
 
+                //This is for obstacles getting in the way.
                 if (Physics.Raycast(ray, out hitInfo, viewDistance, obstacleMask) ||
                     Vector3.Distance(player.transform.position, transform.position) > viewDistance)
                 {
@@ -104,8 +113,8 @@ namespace InDevelopment.Mechanics.LineOfSight
                     isDetecting = false;
                     return;
                 }
-
-                //figure out why raycast is going through walls
+                
+                //This is where the actual player detection happens
                 if (Physics.Raycast(ray, out hitInfo, viewDistance, playerMask))
                 {
                     // Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1);

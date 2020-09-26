@@ -72,8 +72,6 @@ namespace InDevelopment.Alex.EnemyStates
                 Debug.Log("PatrollingState: Waypoints is null.");
                 return null;
             }
-            
-
             targetIndexMax = waypoints.Count - 1;
 
             if (patrolType == PatrolType.Ordered)
@@ -109,7 +107,7 @@ namespace InDevelopment.Alex.EnemyStates
             return Vector3.zero;
         }
         
-        bool IsReached()
+        public bool IsReached()
         {
             float dist = (Vector3.Distance(_enemyController.transform.position, _target.transform.position));
             if (dist <= minDistancedForIsReached)
@@ -118,6 +116,7 @@ namespace InDevelopment.Alex.EnemyStates
             }
             return false;
         }
+
         
         
     }

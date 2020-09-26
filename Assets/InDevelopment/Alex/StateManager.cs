@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace InDevelopment.Alex
 {
@@ -6,7 +7,14 @@ namespace InDevelopment.Alex
    {
       public EnemyStateBase currentEnemyState;
       public EnemyStateBase previousEnemyState;
-      
+      public EnemyStateBase initialState;
+      public EnemyStateBase interruptedState;
+
+      private void Awake()
+      {
+         initialState = currentEnemyState;
+      }
+
       public void ChangeState(EnemyStateBase newEnemyState)
       {
          //Check if the newState is different
