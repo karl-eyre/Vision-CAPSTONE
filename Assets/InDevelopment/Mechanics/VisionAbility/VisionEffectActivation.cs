@@ -1,7 +1,6 @@
-﻿using InDevelopment.Mechanics.VisionAbility;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Enemy
+namespace InDevelopment.Mechanics.VisionAbility
 {
     public class VisionEffectActivation : MonoBehaviour
     {

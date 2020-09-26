@@ -6,7 +6,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 {
     public class DistractionAbility : MonoBehaviour
     {
-        //TODO: change throwforce depending on raycast distance or change based on how high and down the player is looking
         private GameControls controls;
 
         [Header("Camera")]
@@ -44,6 +43,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         private LayerMask groundLayerMask;
 
         private SelectionOutline selectionOutline;
+        private GameObject hitObject;
 
         private void Awake()
         {
@@ -79,6 +79,12 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                     CalculateThrowForce();
                     PredictPath();
                 }
+            }
+
+            if (hasObjectToThrow)
+            {
+                hitObject.transform.position = handPosition.transform.position;
+                hitObject.transform.rotation = handPosition.transform.rotation;
             }
         }
 
@@ -163,13 +169,10 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                     Ray ray = new Ray(point1, point2 - point1);
                     RaycastHit hit;
 
-                    //need to change to a box cast along the raycast line
-                    //basically if the raycast hits anything just make that the last point, rather than the points continuing through the ground
-                    //change to box cast
+                    // bool isHit = Physics.BoxCast(point1, throwableObjectPrefab.GetComponent<Renderer>().bounds.extents, point2 - point1, out hit,Quaternion.identity,groundLayerMask);
 
-                    // bool isHit = Physics.BoxCast(point1, throwableObjectPrefab.GetComponent<Renderer>().bounds.extents,
-                    //     point2 - point1, out hit,Quaternion.identity,groundLayerMask);
-                    //
+                    // bool isHit = Physics.SphereCast(ray, throwableObjectPrefab.transform.lossyScale.x ,out hit,Vector3.Distance(point1, point2),groundLayerMask);
+                    
                     // if (isHit)
                     // {
                     //     hitGround = true;
@@ -244,7 +247,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             {
                 //when animations need to be added just have the object destroy delayed for the duration of the animations
                 Debug.Log("UseObject");
-                var hitObject = selectionOutline.hit.collider.gameObject;
+                hitObject = selectionOutline.hit.collider.gameObject;
 
                 if (throwableObjectPrefab == null)
                 {
@@ -262,7 +265,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
                 throwableObjectPrefab = selectionOutline.hit.collider.gameObject;
 
-                hitObject.SetActive(false);
+                // hitObject.SetActive(false);
+                // hitObject.transform.position = handPosition.position;
                 hasObjectToThrow = true;
             }
         }
