@@ -31,7 +31,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             
             var enemyScript = other.gameObject.GetComponent<EnemyStateMachine>();
             enemyScript.targetLastKnownPos = transform.position;
-            enemyScript.ChangeState(EnemyStateMachine.States.investigating);
+            //TODO: Change to Event Driven system.
+            //enemyScript.ChangeState(EnemyModel.States.investigating);
         }
 
         private IEnumerator WaitTime()

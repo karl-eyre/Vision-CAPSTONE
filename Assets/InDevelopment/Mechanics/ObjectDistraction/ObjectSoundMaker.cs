@@ -31,13 +31,9 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                 
                 if (actuallyHeardSound)
                 {
-                    EnemyStateMachine enemyScript = enemy.GetComponent<EnemyStateMachine>();
-                    //call notify enemy of sound and pass in sound location for position
-                    if (!enemyScript.lineOfSight.isDetecting)
-                    {
-                        enemyScript.targetLastKnownPos = soundLocation;
-                        enemyScript.ChangeState(EnemyStateMachine.States.investigating);
-                    }
+                    enemyScript.targetLastKnownPos = soundLocation;
+                    //TODO: Change this to Event driven system.
+                    //enemyScript.ChangeState(EnemyModel.States.investigating);
                 }
             }
         }

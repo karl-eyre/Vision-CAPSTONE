@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace AlexM
+namespace InDevelopment.Alex
 {
     public class PlayerRB : MonoBehaviour
     {
