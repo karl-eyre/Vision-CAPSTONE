@@ -31,7 +31,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                 
                 if (actuallyHeardSound)
                 {
-                    enemyScript.targetLastKnownPos = soundLocation;
+                    // enemyScript.targetLastKnownPos = soundLocation;
                     //TODO: Change this to Event driven system.
                     //enemyScript.ChangeState(EnemyModel.States.investigating);
                 }
