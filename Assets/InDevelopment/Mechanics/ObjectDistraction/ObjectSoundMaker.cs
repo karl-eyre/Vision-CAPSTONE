@@ -13,6 +13,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         //just use game control events to read when something is happening and set noise accordingly
         
         public LayerMask enemyLayer;
+        public LayerMask obstacleLayer;
         
         public void MakeSound(Vector3 soundLocation, float loudnessOfSound)
         {
@@ -24,17 +25,19 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             
             foreach (var enemy in enemiesInRange)
             {
+                bool actuallyHeardSound = !Physics.Linecast(soundLocation, enemy.transform.position, obstacleLayer);
                 
-            }
-            
-            foreach (var enemy in enemiesInRange)
-            {
-                EnemyStateMachine enemyScript = enemy.GetComponent<EnemyStateMachine>();
-                //call notify enemy of sound and pass in sound location for position
-                if (!enemyScript.lineOfSight.isDetecting)
+                //var actuallyHeardSound = Physics.RaycastAll(soundLocation, enemy.transform.position, loudnessOfSound);
+                
+                if (actuallyHeardSound)
                 {
-                    enemyScript.targetLastKnownPos = soundLocation;
-                    enemyScript.ChangeState(EnemyStateMachine.States.investigating);
+                    EnemyStateMachine enemyScript = enemy.GetComponent<EnemyStateMachine>();
+                    //call notify enemy of sound and pass in sound location for position
+                    if (!enemyScript.lineOfSight.isDetecting)
+                    {
+                        enemyScript.targetLastKnownPos = soundLocation;
+                        enemyScript.ChangeState(EnemyStateMachine.States.investigating);
+                    }
                 }
             }
         }
