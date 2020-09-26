@@ -47,6 +47,8 @@ public class EnemyController : MonoBehaviour
         waitingAtPointEnemyState = GetComponentInChildren<WaitingAtPointEnemyState>();
         returningToPosEnemyState = GetComponentInChildren<ReturningToPosEnemyState>();
         investigatingEnemyState = GetComponentInChildren<InvestigatingEnemyState>();
+        
+        
         stateManager.ChangeState(stationaryEnemyState);
     }
 

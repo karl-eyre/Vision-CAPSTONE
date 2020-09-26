@@ -29,7 +29,7 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Execute()
         {
             base.Execute();
-            Debug.Log("StationaryState: Active.");
+            enemyController.LookAtTarget(lineOfSight.player.transform.position);
         }
 
         IEnumerator waitForSec()

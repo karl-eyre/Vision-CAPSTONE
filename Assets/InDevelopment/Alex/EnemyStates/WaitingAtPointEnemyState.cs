@@ -10,12 +10,6 @@ namespace InDevelopment.Alex.EnemyStates
         public float waitTimer = 1.0f;
         public float maxLandRturn = 60;
         public float rotSpeed = 5;
-        private EnemyController _enemyController;
-
-        public void Start()
-        {
-            _enemyController = GetComponentInParent<EnemyController>();
-        }
 
         public override void Enter()
         {
@@ -26,18 +20,21 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Exit()
         {
             base.Exit();
+            
         }
 
         public override void Execute()
         {
             base.Execute();
-            _enemyController.LookLeftAndRight();
+            enemyController.LookLeftAndRight();
+            
         }
 
         IEnumerator waitForSec()
         {
             yield return new WaitForSeconds(waitTimer);
             stateManager.ChangeState(stateManager.previousEnemyState);
+            //stateManager.ChangeState(enemyController.returningToPosEnemyState);
         }
         
     }
