@@ -24,6 +24,9 @@ namespace InDevelopment.Alex
 		[HideInInspector]
 		public Vector3 posWhenInterrupted;
 
+		[HideInInspector]
+		public Transform lastKnownPlayerPosition;
+
 		private void Init()
 		{
 			if (!stateManager)
@@ -67,19 +70,35 @@ namespace InDevelopment.Alex
 		{
 			if (lineOfSight.isDetecting)
 			{
-				if (lineOfSight.detectionMeter > lineOfSight.detectionThreshold)
+				//ALWAYS HAPPENS
+				//enemyController.LookAtTarget(lineOfSight.player.transform.position);
+				enemyController.LookAtTarget(lineOfSight.player.transform.position);
+				stateManager.interruptedState = stateManager.currentEnemyState;
+				lastKnownPlayerPosition = lineOfSight.player.transform;
+				if (lineOfSight.detectionMeter > lineOfSight.investigationThreshold)
 				{
-					stateManager.interruptedState = stateManager.currentEnemyState;
-					posWhenInterrupted = enemyController.transform.position;
-					stateManager.ChangeState(enemyController.playerDetectedState);
+					if (stateManager.currentEnemyState != enemyController.investigatingEnemyState)
+					{
+						posWhenInterrupted = enemyController.transform.position;
+						stateManager.ChangeState(enemyController.investigatingEnemyState);
+					}
+					//NOT DOING SHIT
 				}
 				else
 				{
-					stateManager.ChangeState(stateManager.currentEnemyState);	
+					stateManager.ChangeState(enemyController.stationaryEnemyState);	
 				}
-				//enemyController.LookAtTarget(lineOfSight.player.transform.position);
+				
 				
 			}
+			else
+			{
+				//WHAT DO I DO WHEN I STOP DETECTING
+				//STOP CHASING!
+				//stateManager.ChangeState(stateManager.interruptedState);
+			}
 		}
+		
+		
 	}
 }

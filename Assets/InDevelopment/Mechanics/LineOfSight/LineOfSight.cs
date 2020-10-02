@@ -30,7 +30,7 @@ namespace InDevelopment.Mechanics.LineOfSight
         public GameObject player;
         public bool isDetecting;
         public float detectionMeter;
-        public float detectionThreshold = 50;
+        public float investigationThreshold = 50;
         
         
         

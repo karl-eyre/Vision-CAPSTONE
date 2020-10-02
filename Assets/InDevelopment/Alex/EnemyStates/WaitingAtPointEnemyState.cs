@@ -20,7 +20,6 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Exit()
         {
             base.Exit();
-            
         }
 
         public override void Execute()
@@ -33,6 +32,11 @@ namespace InDevelopment.Alex.EnemyStates
         IEnumerator waitForSec()
         {
             yield return new WaitForSeconds(waitTimer);
+            if (stateManager.previousEnemyState == enemyController.investigatingEnemyState)
+            {
+                stateManager.ChangeState(stateManager.interruptedState);
+            }
+            
             stateManager.ChangeState(stateManager.previousEnemyState);
             //stateManager.ChangeState(enemyController.returningToPosEnemyState);
         }

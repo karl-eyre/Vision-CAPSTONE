@@ -10,7 +10,7 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Enter()
         {
             base.Enter();
-            target = lineOfSight.player.transform;
+            target = lastKnownPlayerPosition;
             Debug.Log("I am in the " + this.GetType() + " state.");
         }
 
@@ -19,7 +19,7 @@ namespace InDevelopment.Alex.EnemyStates
             base.Exit();
             if (!lineOfSight.isDetecting)
             {
-                lineOfSight.detectionMeter = lineOfSight.detectionThreshold - 5;    
+                lineOfSight.detectionMeter = lineOfSight.investigationThreshold - 5;    
             }
         }
 
@@ -29,7 +29,17 @@ namespace InDevelopment.Alex.EnemyStates
             //LookLeftAndRight + waitAtPoint
             if (target)
             {
-                enemyController.MoveToTarget(target.position);
+
+                if (lineOfSight.isDetecting)
+                {
+                    enemyController.MoveToTarget(target.position);
+                }
+                else
+                {
+                    stateManager.ChangeState(enemyController.waitingAtPointEnemyState);
+                }
+                
+                
                 if (enemyController.patrollingEnemyState.IsReached())
                 {
                     enemyController.LookLeftAndRight();

@@ -60,7 +60,7 @@ public class EnemyController : MonoBehaviour
         LookAtTarget(tgt);
         transform.position = position;
         direction = (tgt - position).normalized;
-        rotation = transform.rotation;
+        //rotation = transform.rotation;
     }
 
     public void LookAtTarget(Vector3 tgt)

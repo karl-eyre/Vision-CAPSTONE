@@ -60,7 +60,11 @@ namespace InDevelopment.Alex.EnemyStates
             }
             else
             {
-                stateManager.ChangeState(_enemyController.waitingAtPointEnemyState);
+
+                if (stateManager.currentEnemyState != _enemyController.waitingAtPointEnemyState)
+                {
+                    stateManager.ChangeState(_enemyController.waitingAtPointEnemyState);
+                }
                 GetTarget();
             }
         }

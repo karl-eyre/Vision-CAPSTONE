@@ -10,7 +10,7 @@ namespace InDevelopment.Alex
       public EnemyStateBase initialState;
       public EnemyStateBase interruptedState;
 
-      private void Awake()
+      private void Start()
       {
          initialState = currentEnemyState;
       }
@@ -18,8 +18,8 @@ namespace InDevelopment.Alex
       public void ChangeState(EnemyStateBase newEnemyState)
       {
          //Check if the newState is different
-         previousEnemyState = currentEnemyState;
          currentEnemyState?.Exit();
+         previousEnemyState = currentEnemyState;
          newEnemyState?.Enter();
          currentEnemyState = newEnemyState;
       }
