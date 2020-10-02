@@ -24,6 +24,7 @@ namespace InDevelopment.Alex.EnemyStates
 
         public override void Execute()
         {
+            //wait for so long, then either continue patrolling or
             base.Execute();
             enemyController.LookLeftAndRight();
             
@@ -35,9 +36,12 @@ namespace InDevelopment.Alex.EnemyStates
             if (stateManager.previousEnemyState == enemyController.investigatingEnemyState)
             {
                 stateManager.ChangeState(stateManager.interruptedState);
+                yield break;
             }
             
             stateManager.ChangeState(stateManager.previousEnemyState);
+            
+            // stateManager.ChangeState(stateManager.previousEnemyState);
             //stateManager.ChangeState(enemyController.returningToPosEnemyState);
         }
         

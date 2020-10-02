@@ -27,6 +27,9 @@ namespace InDevelopment.Alex
 		[HideInInspector]
 		public Transform lastKnownPlayerPosition;
 
+		[HideInInspector]
+		public bool isAlerted;
+
 		private void Init()
 		{
 			if (!stateManager)
@@ -68,15 +71,16 @@ namespace InDevelopment.Alex
 
 		public void LOSFunc()
 		{
-			if (lineOfSight.isDetecting)
+			if (lineOfSight.canSeePlayer)
 			{
 				//ALWAYS HAPPENS
 				//enemyController.LookAtTarget(lineOfSight.player.transform.position);
 				enemyController.LookAtTarget(lineOfSight.player.transform.position);
-				stateManager.interruptedState = stateManager.currentEnemyState;
+				
 				lastKnownPlayerPosition = lineOfSight.player.transform;
 				if (lineOfSight.detectionMeter > lineOfSight.investigationThreshold)
 				{
+					stateManager.interruptedState = stateManager.currentEnemyState;
 					if (stateManager.currentEnemyState != enemyController.investigatingEnemyState)
 					{
 						posWhenInterrupted = enemyController.transform.position;
@@ -86,10 +90,8 @@ namespace InDevelopment.Alex
 				}
 				else
 				{
-					stateManager.ChangeState(enemyController.stationaryEnemyState);	
+					stateManager.ChangeState(enemyController.stationaryEnemyState);
 				}
-				
-				
 			}
 			else
 			{
@@ -98,7 +100,19 @@ namespace InDevelopment.Alex
 				//stateManager.ChangeState(stateManager.interruptedState);
 			}
 		}
-		
-		
+
+		public bool IsAlerted()
+		{
+			if (lineOfSight.detectionMeter > 0)
+			{
+				isAlerted = true;
+			}
+			else
+			{
+				isAlerted = false;
+			}
+			
+			return isAlerted;
+		}
 	}
 }

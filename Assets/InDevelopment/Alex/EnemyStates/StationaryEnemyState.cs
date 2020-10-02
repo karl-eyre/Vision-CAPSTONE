@@ -41,8 +41,9 @@ namespace InDevelopment.Alex.EnemyStates
 
         public override void Execute()
         {
+            //look around until you see the player then trigger investigation state
             base.Execute();
-            if (lineOfSight.isDetecting)
+            if (lineOfSight.canSeePlayer)
             {
                 enemyController.LookAtTarget(lineOfSight.player.transform.position);
             }
@@ -56,7 +57,7 @@ namespace InDevelopment.Alex.EnemyStates
         {
             yield return new WaitForSeconds(waitTime);
 
-            if (!lineOfSight.isDetecting)
+            if (!lineOfSight.canSeePlayer)
             {
                 stateManager.ChangeState(state);
             }

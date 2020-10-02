@@ -28,7 +28,7 @@ namespace InDevelopment.Mechanics.LineOfSight
 
         [Header("Referenced Variables")]
         public GameObject player;
-        public bool isDetecting;
+        public bool canSeePlayer;
         public float detectionMeter;
         public float investigationThreshold = 50;
         
@@ -42,6 +42,9 @@ namespace InDevelopment.Mechanics.LineOfSight
         
         [HideInInspector]
         public bool stopDecrease;
+
+        public float resetDelay = 2f;
+        private bool isResetting;
 
         private void Start()
         {
@@ -60,7 +63,7 @@ namespace InDevelopment.Mechanics.LineOfSight
 
         private void Update()
         {
-            if (!isDetecting && !stopDecrease)
+            if (!canSeePlayer && !stopDecrease)
             {
                 if (detectionMeter > 0)
                 {
@@ -110,7 +113,7 @@ namespace InDevelopment.Mechanics.LineOfSight
                     Vector3.Distance(player.transform.position, transform.position) > viewDistance)
                 {
                     // Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1);
-                    isDetecting = false;
+                    canSeePlayer = false;
                     return;
                 }
                 
@@ -118,7 +121,7 @@ namespace InDevelopment.Mechanics.LineOfSight
                 if (Physics.Raycast(ray, out hitInfo, viewDistance, playerMask))
                 {
                     // Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1);
-                    isDetecting = true;
+                    canSeePlayer = true;
                     //scale detection meter by time since last seen
                     //not being filled when investigating
                     detectionMeter += fillSpeed * deltaTime;
@@ -126,8 +129,7 @@ namespace InDevelopment.Mechanics.LineOfSight
             }
             else
             {
-                isDetecting = false;
-                stopDecrease = false;
+                canSeePlayer = false;
             }
         }
         
@@ -140,6 +142,24 @@ namespace InDevelopment.Mechanics.LineOfSight
             }
 
             return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+        }
+
+        public void ResetLos()
+        {
+            if (!isResetting)
+            {
+                isResetting = true;
+                StartCoroutine(ResetLOS());
+            }
+            
+        }
+
+        private IEnumerator ResetLOS()
+        {
+            yield return new WaitForSeconds(resetDelay);
+            detectionMeter = investigationThreshold - 5;
+            stopDecrease = false;
+            isResetting = false;
         }
     }
 }

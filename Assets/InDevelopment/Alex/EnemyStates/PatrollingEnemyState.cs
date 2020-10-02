@@ -52,6 +52,7 @@ namespace InDevelopment.Alex.EnemyStates
 
         public override void Execute()
         {
+            //moves from point to point till player is spotted then go into investigation state at player last know pos
             base.Execute();
 
             if (!IsReached())

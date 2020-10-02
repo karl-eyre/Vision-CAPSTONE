@@ -21,6 +21,8 @@ namespace InDevelopment.Alex.EnemyStates
 
         public override void Execute()
         {
+            //should return to previous duty, so if they were patrolling return to patroll route, is stationary
+            //return to stationary position
             base.Execute();
             enemyController.MoveToTarget(target.position);
             

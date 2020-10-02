@@ -176,7 +176,7 @@ namespace InDevelopment.Mechanics.Enemy
 
         private bool IsDetecting()
         {
-            if (lineOfSight != null && lineOfSight.isDetecting)
+            if (lineOfSight != null && lineOfSight.canSeePlayer)
             {
                 targetLastKnownPos = lineOfSight.player.gameObject.transform.position;
                 LookAt(lineOfSight.player.transform);
@@ -246,7 +246,7 @@ namespace InDevelopment.Mechanics.Enemy
             transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
             Vector3 direction = (target - transform.position).normalized;
 
-            if (!lineOfSight.isDetecting)
+            if (!lineOfSight.canSeePlayer)
             {
                 Quaternion lookRotation = Quaternion.LookRotation(direction);
                 transform.rotation = lookRotation;

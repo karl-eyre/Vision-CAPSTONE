@@ -19,17 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="099d4599-28c3-4b48-8cd4-945b670a75f7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStateBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStateBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/EnemyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/InvestigatingEnemyState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/InvestigatingEnemyState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PatrollingEnemyState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PatrollingEnemyState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/ReturningToPosEnemyState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/ReturningToPosEnemyState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/StationaryEnemyState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/StationaryEnemyState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/WaitingAtPointEnemyState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/WaitingAtPointEnemyState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InDevelopment/Alex/StateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InDevelopment/Alex/StateManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/LineOfSight/LineOfSight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/LineOfSight/LineOfSight.cs" afterDir="false" />
-    </list>
+    <list default="true" id="099d4599-28c3-4b48-8cd4-945b670a75f7" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +39,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/StateManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStateBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Enemy/MovementManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E98ED036-8295-432E-8C11-E52D6243EE11/06/8d86c212/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/InvestigatingEnemyState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PatrollingEnemyState.cs" root0="FORCE_HIGHLIGHTING" />
@@ -65,8 +56,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/LineOfSight/LineOfSight.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/VisionAbility/Shaders/One Color/VisionShader.shader" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Enemy/MovementManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/VisionAbility/VisionAbilityController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/VisionAbility/VisionAbilityController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/VisionAbility/Shaders/Texture/VisionAbilityTexture.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/LineOfSightEditor.cs" root0="FORCE_HIGHLIGHTING" />
@@ -83,8 +72,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/VisionAbility/VisionAbilityController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyVisionActivation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Abilities/AbilityBase.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Abilities/VisionAbility/VisionAbilityController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovementRB.cs" />
@@ -126,16 +113,16 @@
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/WaitingAtPointState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PatrollingState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PlayerDetectedState.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/LineOfSight/LineOfSight.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/StateManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/EnemyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/ObjectSoundMaker.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/ReturningToPosEnemyState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/WaitingAtPointEnemyState.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/StateManager.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PatrollingEnemyState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/StationaryEnemyState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStateBase.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/InvestigatingEnemyState.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/EnemyController.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/ObjectSoundMaker.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/LineOfSight/LineOfSight.cs" />
       </list>
     </option>
   </component>
