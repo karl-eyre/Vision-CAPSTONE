@@ -71,11 +71,11 @@ namespace InDevelopment.Alex
 				{
 					stateManager.interruptedState = stateManager.currentEnemyState;
 					posWhenInterrupted = enemyController.transform.position;
-					stateManager.ChangeState(enemyController.investigatingEnemyState);
+					stateManager.ChangeState(enemyController.playerDetectedState);
 				}
 				else
 				{
-					stateManager.ChangeState(enemyController.stationaryEnemyState);	
+					stateManager.ChangeState(stateManager.currentEnemyState);	
 				}
 				//enemyController.LookAtTarget(lineOfSight.player.transform.position);
 				

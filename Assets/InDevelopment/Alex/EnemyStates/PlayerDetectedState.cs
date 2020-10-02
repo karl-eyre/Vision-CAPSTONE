@@ -5,9 +5,12 @@ namespace InDevelopment.Alex.EnemyStates
 {
     public class PlayerDetectedState : EnemyStateBase
     {
+        private GameObject player;
+        
         public override void Enter()
         {
             base.Enter();
+            player = GetComponentInParent<EnemyController>().gameObject;
         }
 
         public override void Exit()
