@@ -133,6 +133,32 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 494129521}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &299525299 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4601507014533632085, guid: 170a423499333c445a8c8894529f52ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 411499488}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &299525309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299525299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49a9da15c15bd2489e6dc2590e00ada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyController: {fileID: 0}
+  stateManager: {fileID: 0}
+  lineOfSight: {fileID: 0}
+  posWhenInterrupted: {x: 0, y: 0, z: 0}
+  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
+  isAlerted: 0
+  waitTime: 2
+  stayStationary: 0
 --- !u!1001 &411499488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -798,7 +824,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1714
+  m_Name: pb_Mesh-31450
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1098,7 +1124,7 @@ PrefabInstance:
     - target: {fileID: 7510376709348068934, guid: 3ab37abb5adda8b4891be0e45e753a6d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.44
+      value: -4.74
       objectReference: {fileID: 0}
     - target: {fileID: 7510376709348068934, guid: 3ab37abb5adda8b4891be0e45e753a6d,
         type: 3}
@@ -1108,7 +1134,7 @@ PrefabInstance:
     - target: {fileID: 7510376709348068934, guid: 3ab37abb5adda8b4891be0e45e753a6d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.72
+      value: -6.44
       objectReference: {fileID: 0}
     - target: {fileID: 7510376709348068934, guid: 3ab37abb5adda8b4891be0e45e753a6d,
         type: 3}

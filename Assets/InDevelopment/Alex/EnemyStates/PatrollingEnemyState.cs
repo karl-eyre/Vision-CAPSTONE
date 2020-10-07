@@ -13,30 +13,30 @@ namespace InDevelopment.Alex.EnemyStates
         /// What does this state need?
         /// Target(s), maybe through a simple waypoint system?
         /// </summary>
-        
-        [Tooltip("This is how close this object has to be to it's 'target' before it moves on to the next bit of code.")]
+        [Tooltip(
+            "This is how close this object has to be to it's 'target' before it moves on to the next bit of code.")]
         public float minDistancedForIsReached = 0.5f;
+
         public PatrolType patrolType = PatrolType.Ordered;
         public List<GameObject> waypoints;
-        
-        
+
+
         private int targetIndex = 0;
         private int targetIndexMax;
-        private EnemyController _enemyController;
-
-        private GameObject _target;
+        private GameObject target;
 
         private Vector3 SpawnPosition;
+
         public enum PatrolType
         {
             Ordered,
             Random
         }
+
         private void Awake()
         {
-            _target = waypoints[targetIndex];
-            _enemyController = GetComponentInParent<EnemyController>();
-            SpawnPosition = _enemyController.transform.position;
+            target = waypoints[targetIndex];
+            // SpawnPosition = enemyController.transform.position;
         }
 
         public override void Enter()
@@ -54,19 +54,23 @@ namespace InDevelopment.Alex.EnemyStates
         {
             //moves from point to point till player is spotted then go into investigation state at player last know pos
             base.Execute();
+            LOSFunc();
 
-            if (!IsReached())
+            if (!CanSeePlayer())
             {
-                _enemyController.MoveToTarget(GetTargetPosition());
-            }
-            else
-            {
-
-                if (stateManager.currentEnemyState != _enemyController.waitingAtPointEnemyState)
+                if (!IsReached())
                 {
-                    stateManager.ChangeState(_enemyController.waitingAtPointEnemyState);
+                    enemyController.MoveToTarget(GetTargetPosition());
                 }
-                GetTarget();
+                else
+                {
+                    if (stateManager.currentEnemyState != enemyController.waitingAtPointEnemyState)
+                    {
+                        stateManager.ChangeState(enemyController.waitingAtPointEnemyState);
+                    }
+
+                    GetTarget();
+                }
             }
         }
 
@@ -77,6 +81,7 @@ namespace InDevelopment.Alex.EnemyStates
                 Debug.Log("PatrollingState: Waypoints is null.");
                 return null;
             }
+
             targetIndexMax = waypoints.Count - 1;
 
             if (patrolType == PatrolType.Ordered)
@@ -84,7 +89,6 @@ namespace InDevelopment.Alex.EnemyStates
                 if (targetIndex < targetIndexMax)
                 {
                     targetIndex++;
-                
                 }
                 else if (targetIndex >= targetIndexMax)
                 {
@@ -96,12 +100,12 @@ namespace InDevelopment.Alex.EnemyStates
             {
                 targetIndex = Random.Range(0, (targetIndexMax + 1));
             }
-            
-            _target = waypoints[targetIndex];
+
+            target = waypoints[targetIndex];
             GetTargetPosition();
             return waypoints[targetIndex];
         }
-        
+
         private Vector3 GetTargetPosition()
         {
             if (waypoints != null)
@@ -111,18 +115,16 @@ namespace InDevelopment.Alex.EnemyStates
 
             return Vector3.zero;
         }
-        
+
         public bool IsReached()
         {
-            float dist = (Vector3.Distance(_enemyController.transform.position, _target.transform.position));
+            float dist = (Vector3.Distance(enemyController.transform.position, target.transform.position));
             if (dist <= minDistancedForIsReached)
             {
                 return true;
             }
+
             return false;
         }
-
-        
-        
     }
 }

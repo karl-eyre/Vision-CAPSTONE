@@ -1,4 +1,5 @@
-﻿using InDevelopment.Mechanics.Enemy;
+﻿using InDevelopment.Alex;
+using InDevelopment.Mechanics.Enemy;
 using UnityEngine;
 
 namespace InDevelopment.Mechanics.ObjectDistraction
@@ -25,15 +26,16 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             
             foreach (var enemy in enemiesInRange)
             {
+                //change to other bool if you don't want walls to completely block sound
                 bool actuallyHeardSound = !Physics.Linecast(soundLocation, enemy.transform.position, obstacleLayer);
                 
                 //var actuallyHeardSound = Physics.RaycastAll(soundLocation, enemy.transform.position, loudnessOfSound);
                 
                 if (actuallyHeardSound)
                 {
-                    // enemyScript.targetLastKnownPos = soundLocation;
                     //TODO: Change this to Event driven system.
-                    //enemyScript.ChangeState(EnemyModel.States.investigating);
+                    // enemy.GetComponent<EnemyStateBase>().lastKnownPlayerPosition = soundLocation;
+                    // enemy.GetComponentInChildren<StateManager>().ChangeState(enemy.GetComponent<EnemyController>().investigatingEnemyState);
                 }
             }
         }

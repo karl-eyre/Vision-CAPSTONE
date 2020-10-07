@@ -8,30 +8,9 @@ namespace InDevelopment.Alex.EnemyStates
 {
     public class StationaryEnemyState : EnemyStateBase
     {
-        [Tooltip("This will determine how long it takes to go back to its previous state if it was interrupted by other functions.")]
-        public float waitTime = 2f;
-        public bool stayStationary;
-
-
-        private void Start()
-        {
-            
-        }
-
         public override void Enter()
         {
             base.Enter();
-            if (stayStationary)
-            {
-                //StartCoroutine(waitForSec(stateManager.interruptedState));
-                //DO NOTHING
-            }
-            else
-            {
-                StartCoroutine(waitForSec(enemyController.patrollingEnemyState));
-            }
-           
-           
         }
 
         public override void Exit()
@@ -43,26 +22,9 @@ namespace InDevelopment.Alex.EnemyStates
         {
             //look around until you see the player then trigger investigation state
             base.Execute();
-            if (lineOfSight.canSeePlayer)
-            {
-                enemyController.LookAtTarget(lineOfSight.player.transform.position);
-            }
-            else
-            {
-                enemyController.LookLeftAndRight();
-            }
+            LOSFunc();
+            
+            enemyController.LookLeftAndRight();
         }
-
-        IEnumerator waitForSec(EnemyStateBase state)
-        {
-            yield return new WaitForSeconds(waitTime);
-
-            if (!lineOfSight.canSeePlayer)
-            {
-                stateManager.ChangeState(state);
-            }
-        }
-        
-        
     }
 }

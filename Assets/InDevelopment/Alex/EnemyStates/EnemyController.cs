@@ -37,6 +37,8 @@ public class EnemyController : MonoBehaviour
     [HideInInspector]public ReturningToPosEnemyState returningToPosEnemyState;
     [HideInInspector]public InvestigatingEnemyState investigatingEnemyState;
     [HideInInspector]public PlayerDetectedState playerDetectedState;
+    [HideInInspector]public StartingState startingState;
+    [HideInInspector]public SpottingState spottingState;
     
 #endregion
     // Start is called before the first frame update
@@ -49,8 +51,10 @@ public class EnemyController : MonoBehaviour
         returningToPosEnemyState = GetComponentInChildren<ReturningToPosEnemyState>();
         investigatingEnemyState = GetComponentInChildren<InvestigatingEnemyState>();
         playerDetectedState = GetComponentInChildren<PlayerDetectedState>();
+        startingState = GetComponentInChildren<StartingState>();
+        spottingState = GetComponentInChildren<SpottingState>();
         
-        stateManager.ChangeState(stationaryEnemyState);
+        stateManager.ChangeState(startingState);
     }
 
     public void MoveToTarget(Vector3 tgt)

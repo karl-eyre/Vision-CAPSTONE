@@ -12,10 +12,9 @@ namespace InDevelopment.Mechanics.LineOfSight
         /// <summary>
         /// For the most part nothing needs to get referenced from this script except variables.
         /// </summary>
-        
-        
         [Header("Line of Sight Settings")]
         public float viewDistance = 10f;
+
         public LayerMask playerMask;
 
         [Range(0, 360)]
@@ -24,22 +23,23 @@ namespace InDevelopment.Mechanics.LineOfSight
         public LayerMask obstacleMask;
         public float fillSpeed = 10;
         public float reduceSpeed = 0.1f;
-        
+
 
         [Header("Referenced Variables")]
         public GameObject player;
+
         public bool canSeePlayer;
         public float detectionMeter;
-        public float investigationThreshold = 50;
-        
-        
-        
+        public float investigationThreshold = 50f;
+        public float maxDetectionValue = 100f;
+
+
         private RaycastHit hitInfo;
         private float timeSinceLastSeen;
         private bool inRange;
         private float deltaTime;
-        
-        
+
+
         [HideInInspector]
         public bool stopDecrease;
 
@@ -57,6 +57,7 @@ namespace InDevelopment.Mechanics.LineOfSight
                     Debug.Log("No player exists in the scene");
                     return;
                 }
+
                 player = FindObjectOfType<PlayerMovement>().gameObject;
             }
         }
@@ -73,6 +74,11 @@ namespace InDevelopment.Mechanics.LineOfSight
                 {
                     detectionMeter = 0;
                 }
+            }
+
+            if (canSeePlayer)
+            {
+                detectionMeter += fillSpeed * deltaTime;
             }
         }
 
@@ -103,7 +109,7 @@ namespace InDevelopment.Mechanics.LineOfSight
 
             Vector3 dirToTarget = (player.transform.position - transform.position);
             deltaTime = Time.timeSinceLevelLoad - timeSinceLastSeen;
-            
+
             if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
             {
                 Ray ray = new Ray(transform.position, dirToTarget);
@@ -116,15 +122,12 @@ namespace InDevelopment.Mechanics.LineOfSight
                     canSeePlayer = false;
                     return;
                 }
-                
+
                 //This is where the actual player detection happens
                 if (Physics.Raycast(ray, out hitInfo, viewDistance, playerMask))
                 {
                     // Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1);
                     canSeePlayer = true;
-                    //scale detection meter by time since last seen
-                    //not being filled when investigating
-                    detectionMeter += fillSpeed * deltaTime;
                 }
             }
             else
@@ -132,7 +135,7 @@ namespace InDevelopment.Mechanics.LineOfSight
                 canSeePlayer = false;
             }
         }
-        
+
         //used by editor script
         public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
         {
@@ -144,22 +147,44 @@ namespace InDevelopment.Mechanics.LineOfSight
             return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
         }
 
-        public void ResetLos()
+        public void SoftResetLos()
         {
             if (!isResetting)
             {
                 isResetting = true;
-                StartCoroutine(ResetLOS());
+                StartCoroutine(SoftResetLOS());
             }
-            
         }
 
-        private IEnumerator ResetLOS()
+        public void HardResetLos()
+        {
+            if (!isResetting)
+            {
+                isResetting = true;
+                StartCoroutine(HardResetLOS());
+            }
+        }
+
+        private IEnumerator SoftResetLOS()
         {
             yield return new WaitForSeconds(resetDelay);
-            detectionMeter = investigationThreshold - 5;
-            stopDecrease = false;
-            isResetting = false;
+            if (!canSeePlayer)
+            {
+                detectionMeter = investigationThreshold - 5;
+                stopDecrease = false;
+                isResetting = false;
+            }
+        }
+
+        private IEnumerator HardResetLOS()
+        {
+            yield return new WaitForSeconds(resetDelay);
+            if (!canSeePlayer)
+            {
+                detectionMeter = 0;
+                stopDecrease = false;
+                isResetting = false;
+            }
         }
     }
 }

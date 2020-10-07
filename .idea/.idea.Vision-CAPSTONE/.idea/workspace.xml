@@ -31,6 +31,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/ObjectSoundMaker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/GeneralSoundMaker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/StartingState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/ThrowableObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E98ED036-8295-432E-8C11-E52D6243EE11/30/36abebc5/LayerMask.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E98ED036-8295-432E-8C11-E52D6243EE11/c9/fa922e8c/Component.cs" root0="SKIP_HIGHLIGHTING" />
@@ -61,6 +62,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Editor/LineOfSightEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E98ED036-8295-432E-8C11-E52D6243EE11/f4/d2a3a3c6/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UniversalRenderingPipeline/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/SpottingState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/SelectionOutline.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/PlayerRB.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FMOD Scripts/F_Occlusion.cs" root0="FORCE_HIGHLIGHTING" />
@@ -72,8 +74,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Abilities/AbilityBase.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Abilities/VisionAbility/VisionAbilityController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovementRB.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovementCC.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/Prefabs/PlayerMovementRB.cs" />
@@ -114,15 +114,17 @@
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PatrollingState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PlayerDetectedState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/StateManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/EnemyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/StartingState.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/LineOfSight/LineOfSight.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/ObjectSoundMaker.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/InvestigatingEnemyState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/ReturningToPosEnemyState.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/WaitingAtPointEnemyState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PatrollingEnemyState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/StationaryEnemyState.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/EnemyController.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStateBase.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/InvestigatingEnemyState.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/LineOfSight/LineOfSight.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/SpottingState.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/WaitingAtPointEnemyState.cs" />
       </list>
     </option>
   </component>
@@ -352,9 +354,10 @@
     <state width="1877" height="375" key="GridCell.Tab.3.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1596121438274" />
     <state width="1877" height="375" key="GridCell.Tab.3.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596434635619" />
     <state width="1877" height="379" key="GridCell.Tab.3.right/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1600616021317" />
-    <state x="727" y="249" key="RiderGenerateDialog" timestamp="1600234987931">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="606" y="204" key="RiderGenerateDialog" timestamp="1601955885857">
+      <screen x="0" y="0" width="1600" height="860" />
     </state>
+    <state x="606" y="204" key="RiderGenerateDialog/0.0.1600.860@0.0.1600.860" timestamp="1601955885857" />
     <state x="727" y="249" key="RiderGenerateDialog/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1600234987931" />
     <state x="774" y="173" key="SettingsEditor" timestamp="1596435165341">
       <screen x="0" y="0" width="1920" height="1040" />

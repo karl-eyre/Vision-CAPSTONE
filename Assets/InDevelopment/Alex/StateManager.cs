@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace InDevelopment.Alex
@@ -9,6 +10,7 @@ namespace InDevelopment.Alex
       public EnemyStateBase previousEnemyState;
       public EnemyStateBase initialState;
       public EnemyStateBase interruptedState;
+      public List<EnemyStateBase> listOfStates = new List<EnemyStateBase>();
 
       private void Start()
       {
@@ -22,6 +24,8 @@ namespace InDevelopment.Alex
          previousEnemyState = currentEnemyState;
          newEnemyState?.Enter();
          currentEnemyState = newEnemyState;
+         
+         listOfStates.Add(currentEnemyState);
       }
 
       public void Update()

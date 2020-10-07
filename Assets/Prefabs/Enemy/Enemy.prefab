@@ -121,6 +121,9 @@ MonoBehaviour:
   waitingAtPointEnemyState: {fileID: 0}
   returningToPosEnemyState: {fileID: 0}
   investigatingEnemyState: {fileID: 0}
+  playerDetectedState: {fileID: 0}
+  startingState: {fileID: 0}
+  spottingState: {fileID: 0}
 --- !u!114 &2030028518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,19 +152,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewDistance: 10
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 8192
   viewAngle: 100
   obstacleMask:
     serializedVersion: 2
     m_Bits: 16384
-  detectionMeter: 0
-  fillSpeed: 10
+  fillSpeed: 0.1
   reduceSpeed: 0.1
   player: {fileID: 0}
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 8192
-  isDetecting: 0
+  canSeePlayer: 0
+  detectionMeter: 0
+  investigationThreshold: 50
+  maxDetectionValue: 100
   stopDecrease: 0
+  resetDelay: 2
 --- !u!1 &4601507014533632085
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +185,8 @@ GameObject:
   - component: {fileID: 948685719704122036}
   - component: {fileID: 3071357345889532625}
   - component: {fileID: 7113781451953816315}
+  - component: {fileID: 8907245879249638597}
+  - component: {fileID: 8337493973409675680}
   m_Layer: 12
   m_Name: StateSystem
   m_TagString: Untagged
@@ -214,6 +222,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentEnemyState: {fileID: 0}
   previousEnemyState: {fileID: 0}
+  initialState: {fileID: 0}
+  interruptedState: {fileID: 0}
+  listOfStates: []
 --- !u!114 &346023010754892516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +237,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29873307387715e498298170cfc008ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyController: {fileID: 0}
   stateManager: {fileID: 0}
+  lineOfSight: {fileID: 0}
+  posWhenInterrupted: {x: 0, y: 0, z: 0}
+  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
+  isAlerted: 0
 --- !u!114 &4172676412890344984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +255,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 800c4122bed820246ba9bc5a07ed9778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyController: {fileID: 0}
   stateManager: {fileID: 0}
+  lineOfSight: {fileID: 0}
+  posWhenInterrupted: {x: 0, y: 0, z: 0}
+  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
+  isAlerted: 0
   waitTimer: 1
   maxLandRturn: 180
   rotSpeed: 20
@@ -255,7 +276,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d74e64cc3e4867f4d912324ec9253a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyController: {fileID: 0}
   stateManager: {fileID: 0}
+  lineOfSight: {fileID: 0}
+  posWhenInterrupted: {x: 0, y: 0, z: 0}
+  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
+  isAlerted: 0
   minDistancedForIsReached: 0.1
   patrolType: 0
   waypoints:
@@ -277,7 +303,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a0fd2cb1ede5c94486036d4c887d9c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyController: {fileID: 0}
   stateManager: {fileID: 0}
+  lineOfSight: {fileID: 0}
+  posWhenInterrupted: {x: 0, y: 0, z: 0}
+  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
+  isAlerted: 0
 --- !u!114 &948685719704122036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +321,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c84166e6eb66a4d9743019cca0c1d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyController: {fileID: 0}
   stateManager: {fileID: 0}
+  lineOfSight: {fileID: 0}
+  posWhenInterrupted: {x: 0, y: 0, z: 0}
+  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
+  isAlerted: 0
+  target: {x: 0, y: 0, z: 0}
 --- !u!114 &3071357345889532625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,7 +340,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8191bd78e2a3c4c9f51e921312c703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyController: {fileID: 0}
   stateManager: {fileID: 0}
+  lineOfSight: {fileID: 0}
+  posWhenInterrupted: {x: 0, y: 0, z: 0}
+  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
+  isAlerted: 0
 --- !u!114 &7113781451953816315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +358,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c997878a879ba2c4ea5bfe4bde54f473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyController: {fileID: 0}
   stateManager: {fileID: 0}
+  lineOfSight: {fileID: 0}
+  posWhenInterrupted: {x: 0, y: 0, z: 0}
+  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
+  isAlerted: 0
+  target: {x: 0, y: 0, z: 0}
+--- !u!114 &8907245879249638597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601507014533632085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49a9da15c15bd2489e6dc2590e00ada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyController: {fileID: 0}
+  stateManager: {fileID: 0}
+  lineOfSight: {fileID: 0}
+  posWhenInterrupted: {x: 0, y: 0, z: 0}
+  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
+  isAlerted: 0
+  waitTime: 2
+  stayStationary: 0
+--- !u!114 &8337493973409675680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601507014533632085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99aefadb1da3614aa51267e57fac761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyController: {fileID: 0}
+  stateManager: {fileID: 0}
+  lineOfSight: {fileID: 0}
+  posWhenInterrupted: {x: 0, y: 0, z: 0}
+  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
+  isAlerted: 0
 --- !u!1 &5219686029784979695
 GameObject:
   m_ObjectHideFlags: 0

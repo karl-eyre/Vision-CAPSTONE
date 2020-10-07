@@ -26,8 +26,8 @@ namespace InDevelopment.Alex.EnemyStates
         {
             //wait for so long, then either continue patrolling or
             base.Execute();
+            LOSFunc();
             enemyController.LookLeftAndRight();
-            
         }
 
         IEnumerator waitForSec()
@@ -35,15 +35,17 @@ namespace InDevelopment.Alex.EnemyStates
             yield return new WaitForSeconds(waitTimer);
             if (stateManager.previousEnemyState == enemyController.investigatingEnemyState)
             {
-                stateManager.ChangeState(stateManager.interruptedState);
-                yield break;
+                stateManager.ChangeState(enemyController.returningToPosEnemyState);
             }
-            
-            stateManager.ChangeState(stateManager.previousEnemyState);
-            
-            // stateManager.ChangeState(stateManager.previousEnemyState);
-            //stateManager.ChangeState(enemyController.returningToPosEnemyState);
+            else if (stateManager.previousEnemyState == enemyController.patrollingEnemyState)
+            {
+                stateManager.ChangeState(stateManager.previousEnemyState);
+            }
+            else if(stateManager.currentEnemyState == enemyController.spottingState)
+            {
+                //should hopefully reset the thing if it breaks
+                stateManager.ChangeState(stateManager.interruptedState);
+            }
         }
-        
     }
 }

@@ -5,57 +5,43 @@ namespace InDevelopment.Alex.EnemyStates
 {
     public class InvestigatingEnemyState : EnemyStateBase
     {
-        private Transform target;
+        public Vector3 target;
 
         public override void Enter()
         {
             base.Enter();
             target = lastKnownPlayerPosition;
+
             Debug.Log("I am in the " + this.GetType() + " state.");
         }
 
         public override void Exit()
         {
             base.Exit();
-            if (!lineOfSight.canSeePlayer)
-            {
-                lineOfSight.ResetLos();
-            }
+            lineOfSight.SoftResetLos();
         }
 
         public override void Execute()
         {
+            base.Execute();
+            LOSFunc();
             //Move to last know player position if you lose player otherwise slowing move towards while continuing to detect player
             //once player is lost wait at last know pos
-            
-            
+
+
             //LookLeftAndRight + waitAtPoint
-            if (target)
+            if (CanSeePlayer())
             {
-                if (lineOfSight.canSeePlayer)
-                {
-                    enemyController.MoveToTarget(target.position);
-                }
-                else
-                {
-                    stateManager.ChangeState(enemyController.waitingAtPointEnemyState);
-                }
-
-                if (enemyController.patrollingEnemyState.IsReached())
-                {
-                    enemyController.LookLeftAndRight();
-
-                    //stateManager.ChangeState(enemyController.waitingAtPointEnemyState);
-                }
-
-
-                if (!lineOfSight.canSeePlayer)
+                enemyController.MoveToTarget(target);
+            }
+            else
+            {
+                enemyController.MoveToTarget(target);
+                if (Vector3.Distance(transform.position, target) < 0.5f)
                 {
                     stateManager.ChangeState(enemyController.waitingAtPointEnemyState);
                 }
             }
-
-            base.Execute();
         }
     }
 }

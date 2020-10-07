@@ -6,7 +6,7 @@ namespace InDevelopment.Alex.EnemyStates
     public class PlayerDetectedState : EnemyStateBase
     {
         private GameObject player;
-        
+
         public override void Enter()
         {
             base.Enter();
@@ -21,7 +21,7 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Execute()
         {
             base.Execute();
-            
+
             Debug.Log("player loses");
             // Scene scene = SceneManager.GetActiveScene();
             // SceneManager.LoadScene(scene.buildIndex);
