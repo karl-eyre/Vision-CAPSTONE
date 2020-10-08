@@ -54,7 +54,7 @@ namespace InDevelopment.Alex.EnemyStates
         {
             //moves from point to point till player is spotted then go into investigation state at player last know pos
             base.Execute();
-            LOSFunc();
+            // LOSFunc();
 
             if (!CanSeePlayer())
             {

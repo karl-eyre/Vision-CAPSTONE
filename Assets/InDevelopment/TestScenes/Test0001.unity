@@ -133,32 +133,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 494129521}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &299525299 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4601507014533632085, guid: 170a423499333c445a8c8894529f52ab,
-    type: 3}
-  m_PrefabInstance: {fileID: 411499488}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &299525309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299525299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d49a9da15c15bd2489e6dc2590e00ada, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyController: {fileID: 0}
-  stateManager: {fileID: 0}
-  lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
-  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
-  isAlerted: 0
-  waitTime: 2
-  stayStationary: 0
 --- !u!1001 &411499488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -261,11 +235,6 @@ PrefabInstance:
       propertyPath: minDistancedForIsReached
       value: 0.6
       objectReference: {fileID: 0}
-    - target: {fileID: 4172676412890344984, guid: 170a423499333c445a8c8894529f52ab,
-        type: 3}
-      propertyPath: waitTimer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5219686029784979695, guid: 170a423499333c445a8c8894529f52ab,
         type: 3}
       propertyPath: m_Name
@@ -274,7 +243,17 @@ PrefabInstance:
     - target: {fileID: 5689473979151110931, guid: 170a423499333c445a8c8894529f52ab,
         type: 3}
       propertyPath: viewAngle
-      value: 180
+      value: 355
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689473979151110931, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1652683267}
+    - target: {fileID: 8907245879249638597, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: stayStationary
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037918217293044000, guid: 170a423499333c445a8c8894529f52ab,
         type: 3}
@@ -824,7 +803,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-31450
+  m_Name: pb_Mesh-1304
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -981,6 +960,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1652683267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7510376709348068936, guid: 3ab37abb5adda8b4891be0e45e753a6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2070438722}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2008777608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,7 +1054,7 @@ Transform:
   m_GameObject: {fileID: 2008777608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 0.25, z: 30}
+  m_LocalScale: {x: 158.22299, y: 0.25, z: 132.651}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3

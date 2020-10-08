@@ -26,26 +26,33 @@ namespace InDevelopment.Alex.EnemyStates
         {
             //wait for so long, then either continue patrolling or
             base.Execute();
-            LOSFunc();
             enemyController.LookLeftAndRight();
         }
 
         IEnumerator waitForSec()
         {
             yield return new WaitForSeconds(waitTimer);
-            if (stateManager.previousEnemyState == enemyController.investigatingEnemyState)
+
+            if (!CanSeePlayer())
             {
-                stateManager.ChangeState(enemyController.returningToPosEnemyState);
+                if (stateManager.previousEnemyState == enemyController.investigatingEnemyState)
+                {
+                    stateManager.ChangeState(enemyController.returningToPosEnemyState);
+                }
+                else if (stateManager.previousEnemyState == enemyController.patrollingEnemyState)
+                {
+                    stateManager.ChangeState(stateManager.previousEnemyState);
+                }
+                else if(stateManager.currentEnemyState == enemyController.spottingState)
+                {
+                    stateManager.ChangeState(stateManager.initialState);
+                }
             }
-            else if (stateManager.previousEnemyState == enemyController.patrollingEnemyState)
+            else
             {
-                stateManager.ChangeState(stateManager.previousEnemyState);
+                StartCoroutine(waitForSec());
             }
-            else if(stateManager.currentEnemyState == enemyController.spottingState)
-            {
-                //should hopefully reset the thing if it breaks
-                stateManager.ChangeState(stateManager.interruptedState);
-            }
+            
         }
     }
 }

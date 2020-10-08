@@ -11,7 +11,6 @@ namespace InDevelopment.Alex.EnemyStates
         {
             base.Enter();
             target = lastKnownPlayerPosition;
-
             Debug.Log("I am in the " + this.GetType() + " state.");
         }
 
@@ -24,14 +23,11 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Execute()
         {
             base.Execute();
-            LOSFunc();
             //Move to last know player position if you lose player otherwise slowing move towards while continuing to detect player
             //once player is lost wait at last know pos
-
-
-            //LookLeftAndRight + waitAtPoint
             if (CanSeePlayer())
             {
+                target = lastKnownPlayerPosition;
                 enemyController.MoveToTarget(target);
             }
             else

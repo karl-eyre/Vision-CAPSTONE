@@ -19,6 +19,7 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Exit()
         {
             base.Exit();
+            lineOfSight.SoftResetLos();
         }
 
         public override void Execute()
@@ -26,8 +27,12 @@ namespace InDevelopment.Alex.EnemyStates
             //should return to previous duty, so if they were patrolling return to patroll route, is stationary
             //return to stationary position
             base.Execute();
-            LOSFunc();
+            // LOSFunc();
             enemyController.MoveToTarget(target);
+            if (Vector3.Distance(transform.position, target) < 0.5f)
+            {
+                stateManager.ChangeState(stateManager.initialState);
+            }
         }
     }
 }

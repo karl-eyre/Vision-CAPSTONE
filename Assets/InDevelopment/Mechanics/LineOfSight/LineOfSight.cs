@@ -44,7 +44,7 @@ namespace InDevelopment.Mechanics.LineOfSight
         public bool stopDecrease;
 
         public float resetDelay = 2f;
-        private bool isResetting;
+        private bool isResetting = false;
 
         private void Start()
         {
@@ -172,8 +172,9 @@ namespace InDevelopment.Mechanics.LineOfSight
             {
                 detectionMeter = investigationThreshold - 5;
                 stopDecrease = false;
-                isResetting = false;
             }
+
+            isResetting = false;
         }
 
         private IEnumerator HardResetLOS()
@@ -183,8 +184,9 @@ namespace InDevelopment.Mechanics.LineOfSight
             {
                 detectionMeter = 0;
                 stopDecrease = false;
-                isResetting = false;
             }
+
+            isResetting = false;
         }
     }
 }

@@ -8,8 +8,9 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Enter()
         {
             base.Enter();
+            //TODO:figure out why pos when interrupted is not being assigned
             stateManager.interruptedState = stateManager.previousEnemyState;
-            posWhenInterrupted = enemyController.transform.position;
+            posWhenInterrupted = transform.position;
         }
 
         public override void Exit()
@@ -21,12 +22,23 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Execute()
         {
             base.Execute();
-            LOSFunc();
-            if (CanSeePlayer())
+
+            if (AboveInvestigationThresholdCheck())
             {
-                AssignPlayerPos();
-                LookAtPlayer();
+                if (stateManager.currentEnemyState != enemyController.investigatingEnemyState)
+                {
+                    stateManager.ChangeState(enemyController.investigatingEnemyState);
+                }
             }
+            else
+            {
+                if (!CanSeePlayer())
+                {
+                    stateManager.ChangeState(stateManager.interruptedState);
+                }
+            }
+
+            LookAtPlayer();
         }
     }
 }
