@@ -22,7 +22,7 @@ public class F_Occlusion : MonoBehaviour
     void Start()
     {
         music = RuntimeManager.CreateInstance(eventPath);
-        music.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
+        RuntimeManager.AttachInstanceToGameObject(music, transform, GetComponent<Rigidbody>());
         music.start();
     }
 
@@ -40,6 +40,10 @@ public class F_Occlusion : MonoBehaviour
         if (distance <= lookRadius)
         {
             Occlusion();
+        }
+        else
+        {
+            music.setParameterByName("LowPass", 0, false);
         }
     }
 

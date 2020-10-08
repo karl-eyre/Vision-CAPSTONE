@@ -76,6 +76,11 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
-  Banks: []
+  Banks:
+  - Enemies
+  - Environment
+  - Music
+  - Player
+  - Ui
   BanksToLoad: []
   LiveUpdatePort: 9264
