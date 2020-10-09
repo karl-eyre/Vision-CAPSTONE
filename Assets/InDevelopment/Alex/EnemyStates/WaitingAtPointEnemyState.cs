@@ -10,11 +10,16 @@ namespace InDevelopment.Alex.EnemyStates
         public float waitTimer = 1.0f;
         public float maxLandRturn = 60;
         public float rotSpeed = 5;
+        private bool waiting;
 
         public override void Enter()
         {
             base.Enter();
-            StartCoroutine(waitForSec());
+            if (!waiting)
+            {
+                waiting = true;
+                StartCoroutine(waitForSec());
+            }
         }
 
         public override void Exit()
@@ -43,16 +48,18 @@ namespace InDevelopment.Alex.EnemyStates
                 {
                     stateManager.ChangeState(stateManager.previousEnemyState);
                 }
-                else if(stateManager.currentEnemyState == enemyController.spottingState)
+                else if (stateManager.previousEnemyState == enemyController.spottingState)
                 {
-                    stateManager.ChangeState(stateManager.initialState);
+                    //TODO: figure out why it jumps loops back to waiting for no reason
+                    stateManager.ChangeState(enemyController.patrollingEnemyState);
                 }
             }
-            else
-            {
-                StartCoroutine(waitForSec());
-            }
-            
+            // else
+            // {
+            //     StartCoroutine(waitForSec());
+            // }
+
+            waiting = false;
         }
     }
 }

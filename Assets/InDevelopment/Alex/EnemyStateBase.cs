@@ -24,7 +24,7 @@ namespace InDevelopment.Alex
         [HideInInspector]
         public Vector3 posWhenInterrupted;
 
-
+        [HideInInspector]
         public Vector3 lastKnownPlayerPosition;
 
         [HideInInspector]

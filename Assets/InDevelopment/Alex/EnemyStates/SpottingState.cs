@@ -5,10 +5,11 @@ namespace InDevelopment.Alex.EnemyStates
     public class SpottingState : EnemyStateBase
     {
         //merely stands still and looks at player.
+
+        public Vector3 enemyPosWhenInterrupted;
         public override void Enter()
         {
             base.Enter();
-            //TODO:figure out why pos when interrupted is not being assigned
             stateManager.interruptedState = stateManager.previousEnemyState;
             posWhenInterrupted = transform.position;
         }
@@ -16,7 +17,7 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Exit()
         {
             base.Exit();
-            posWhenInterrupted = enemyController.transform.position;
+            enemyPosWhenInterrupted = posWhenInterrupted;
         }
 
         public override void Execute()

@@ -237,6 +237,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             throwableObjectPrefab = null;
             hasObjectToThrow = false;
         }
+        
+        //TODO: don't allow picking up through a wall
 
         private void TryToPickupObject()
         {
