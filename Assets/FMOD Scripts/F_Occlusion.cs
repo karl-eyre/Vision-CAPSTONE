@@ -11,6 +11,8 @@ public class F_Occlusion : MonoBehaviour
     [FMODUnity.EventRef]
     public string eventPath;
 
+    Animator animator;
+
     public EventInstance music;
 
     [SerializeField]
@@ -19,8 +21,11 @@ public class F_Occlusion : MonoBehaviour
     private RaycastHit hit;
     public Transform player;
 
+    bool patroling;
+
     void Start()
     {
+        animator = GetComponent<Animator>();
         music = RuntimeManager.CreateInstance(eventPath);
         RuntimeManager.AttachInstanceToGameObject(music, transform, GetComponent<Rigidbody>());
         music.start();
@@ -32,14 +37,15 @@ public class F_Occlusion : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 
-    public void Update()
+    private void FixedUpdate()
     {
-        Lowpass();
         float distance = Vector3.Distance(transform.position, player.position);
 
         if (distance <= lookRadius)
         {
             Occlusion();
+            Lowpass();
+            animation();
         }
         else
         {
@@ -47,6 +53,16 @@ public class F_Occlusion : MonoBehaviour
         }
     }
 
+    void animation()
+    {
+        if (patroling == false)
+        {
+            RuntimeManager.PlayOneShotAttached("event:/Enemies/Searching", this.gameObject);
+            animator.SetBool("Start", true);
+            patroling = true;
+        }
+     
+    }
     void Occlusion()
     {
         float dist = Vector3.Distance(transform.position, player.position);
@@ -65,7 +81,7 @@ public class F_Occlusion : MonoBehaviour
                 music.setParameterByName("LowPass", 1, false);
             }             
         }
-        else
+        if (hit.collider == null)
         {
             Debug.Log("No wall");
             music.setParameterByName("LowPass", 0, false);

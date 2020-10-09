@@ -47,7 +47,6 @@ public class F_Player : MonoBehaviour
         
         if (distance <= radius)
         {
-            Debug.Log("Entered Radius");
             musicTrack.setParameterByName("Intencity", distance, false);
         }
     }

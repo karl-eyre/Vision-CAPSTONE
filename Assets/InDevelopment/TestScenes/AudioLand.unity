@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 4431978}
   - component: {fileID: 4431977}
   - component: {fileID: 4431976}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cube (7)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ MonoBehaviour:
   eventPath: event:/Player/Footsteps
   lm:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 16384
   player: {fileID: 800781884}
 --- !u!1 &64584941
 GameObject:
@@ -823,7 +823,7 @@ GameObject:
   - component: {fileID: 155588617}
   - component: {fileID: 155588616}
   - component: {fileID: 155588615}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cube (10)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1460,7 +1460,7 @@ GameObject:
   - component: {fileID: 360766766}
   - component: {fileID: 360766765}
   - component: {fileID: 360766764}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cube (11)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -3464,7 +3464,7 @@ GameObject:
   - component: {fileID: 1142336464}
   - component: {fileID: 1142336463}
   - component: {fileID: 1142336462}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cube (8)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -3737,7 +3737,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1232
+  m_Name: pb_Mesh-1204
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
