@@ -20,7 +20,10 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         public void MakeSound(Vector3 soundLocation, float loudnessOfSound)
         {
             Collider[] enemiesInRange = Physics.OverlapSphere(soundLocation, loudnessOfSound, enemyLayer);
-            if (enemiesInRange.Length <= 0) return;
+            if (enemiesInRange.Length <= 0)
+            {
+                return;
+            }
             
             //the sphere cast and if their still in then tell them to investigate
             //use raycast to determine who should've heard the sound
@@ -30,14 +33,14 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                 //change to other bool if you don't want walls to completely block sound
                 // bool actuallyHeardSound = !Physics.Linecast(soundLocation, enemy.transform.position, obstacleLayer);
                 
-                var actuallyHeardSound = Physics.Raycast(soundLocation, enemy.transform.position, loudnessOfSound);
+                Ray ray = new Ray(soundLocation, soundLocation - enemy.transform.position);
+                
+                bool actuallyHeardSound = Physics.Raycast(ray, loudnessOfSound);
                 
                 if (actuallyHeardSound)
                 {
                     //TODO: change to use state machine
-                    enemy.GetComponent<InvestigatingEnemyState>().lastKnownPlayerPosition = soundLocation;
-                    enemy.GetComponentInChildren<StateManager>().ChangeState(enemy.GetComponent<EnemyController>().investigatingEnemyState);
-                    enemy.GetComponent<LineOfSight.LineOfSight>().SoundDistraction(loudnessOfSound);
+                    enemy.gameObject.GetComponentInChildren<EnemyStateBase>().GetDistracted(soundLocation);
                 }
             }
         }

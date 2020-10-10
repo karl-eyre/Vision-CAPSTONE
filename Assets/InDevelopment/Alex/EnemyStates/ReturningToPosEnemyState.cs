@@ -12,13 +12,26 @@ namespace InDevelopment.Alex.EnemyStates
         {
             base.Enter();
 
-            target = enemyController.spottingState.enemyPosWhenInterrupted;
+            if (beingDistracted)
+            {
+                target = posWhenInterrupted;
+                
+            }
+            else
+            {
+                target = enemyController.spottingState.enemyPosWhenInterrupted;
+            }
+            
         }
 
         public override void Exit()
         {
             base.Exit();
             lineOfSight.SoftResetLos();
+            if (beingDistracted)
+            {
+                Distracted();
+            }
         }
 
         public override void Execute()

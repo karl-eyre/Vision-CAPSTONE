@@ -21,10 +21,9 @@ namespace InDevelopment.Alex
         [HideInInspector]
         public LineOfSight lineOfSight;
 
-        [HideInInspector]
+
         public Vector3 posWhenInterrupted;
 
-        [HideInInspector]
         public Vector3 lastKnownPlayerPosition;
 
         [HideInInspector]
@@ -33,8 +32,11 @@ namespace InDevelopment.Alex
 
         private bool isResetting;
 
+        public bool beingDistracted;
+
         private void Init()
         {
+            beingDistracted = false;
             if (!stateManager)
             {
                 stateManager = GetComponent<StateManager>();
@@ -86,33 +88,27 @@ namespace InDevelopment.Alex
             {
                 AssignPlayerPos();
 
-                // if (AboveInvestigationThresholdCheck())
-                // {
-                //     if (stateManager.currentEnemyState != enemyController.investigatingEnemyState)
-                //     {
-                //         stateManager.ChangeState(enemyController.investigatingEnemyState);
-                //     }
-                // }
-
                 if (stateManager.currentEnemyState != enemyController.spottingState)
                 {
                     stateManager.ChangeState(enemyController.spottingState);
                 }
             }
 
-            if (!CanSeePlayer())
+            if (beingDistracted)
+            {
+                if (stateManager.currentEnemyState != enemyController.investigatingEnemyState)
+                {
+                    stateManager.ChangeState(enemyController.investigatingEnemyState);
+                }
+            }
+
+            if (!CanSeePlayer() && !beingDistracted)
             {
                 //TODO:find good place for reset
                 if (stateManager.previousEnemyState != enemyController.spottingState)
                 {
                     lineOfSight.HardResetLos();
                 }
-
-                // else if (stateManager.currentEnemyState == enemyController.spottingState &&
-                //          !AboveInvestigationThresholdCheck())
-                // {
-                //     stateManager.ChangeState(stateManager.interruptedState);
-                // }
             }
         }
 
@@ -125,6 +121,25 @@ namespace InDevelopment.Alex
 
             LOSFunc();
             PlayerDetected();
+        }
+
+        public void GetDistracted(Vector3 location)
+        {
+            if (stateManager.currentEnemyState != enemyController.spottingState)
+            {
+                Distracted();
+                enemyController.investigatingEnemyState.lastKnownPlayerPosition = location;
+                enemyController.returningToPosEnemyState.posWhenInterrupted = transform.position;
+                if (stateManager.currentEnemyState != enemyController.investigatingEnemyState)
+                {
+                    stateManager.ChangeState(enemyController.investigatingEnemyState);
+                }
+            }
+        }
+
+        public void Distracted()
+        {
+            beingDistracted = !beingDistracted;
         }
 
         //called when wanting to look at player

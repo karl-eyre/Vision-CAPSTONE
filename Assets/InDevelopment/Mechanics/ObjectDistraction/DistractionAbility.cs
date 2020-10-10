@@ -248,7 +248,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             if (!(selectionOutline is null) && selectionOutline.isHit)
             {
                 //when animations need to be added just have the object destroy delayed for the duration of the animations
-                Debug.Log("UseObject");
+                // Debug.Log("UseObject");
                 hitObject = selectionOutline.hit.collider.gameObject;
 
                 if (throwableObjectPrefab == null)

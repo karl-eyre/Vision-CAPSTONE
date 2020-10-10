@@ -18,6 +18,7 @@ namespace InDevelopment.Alex.EnemyStates
         {
             base.Exit();
             lineOfSight.SoftResetLos();
+            
         }
 
         public override void Execute()

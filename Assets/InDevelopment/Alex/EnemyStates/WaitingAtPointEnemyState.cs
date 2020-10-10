@@ -32,33 +32,42 @@ namespace InDevelopment.Alex.EnemyStates
             //wait for so long, then either continue patrolling or
             base.Execute();
             enemyController.LookLeftAndRight();
+
+
+            if (!waiting)
+            {
+                if (beingDistracted)
+                {
+                    stateManager.ChangeState(stateManager.interruptedState);
+                    // Distracted();
+                }
+                else
+                {
+                    if (!CanSeePlayer())
+                    {
+                        if (stateManager.previousEnemyState == enemyController.investigatingEnemyState)
+                        {
+                            stateManager.ChangeState(enemyController.returningToPosEnemyState);
+                        }
+                        else if (stateManager.previousEnemyState == enemyController.patrollingEnemyState)
+                        {
+                            stateManager.ChangeState(stateManager.previousEnemyState);
+                        }
+                        else if (stateManager.previousEnemyState == enemyController.spottingState)
+                        {
+                            stateManager.ChangeState(enemyController.patrollingEnemyState);
+                        }
+                
+                    }
+                }
+            }
+            
         }
 
         IEnumerator waitForSec()
         {
             yield return new WaitForSeconds(waitTimer);
-
-            if (!CanSeePlayer())
-            {
-                if (stateManager.previousEnemyState == enemyController.investigatingEnemyState)
-                {
-                    stateManager.ChangeState(enemyController.returningToPosEnemyState);
-                }
-                else if (stateManager.previousEnemyState == enemyController.patrollingEnemyState)
-                {
-                    stateManager.ChangeState(stateManager.previousEnemyState);
-                }
-                else if (stateManager.previousEnemyState == enemyController.spottingState)
-                {
-                    //TODO: figure out why it jumps loops back to waiting for no reason
-                    stateManager.ChangeState(enemyController.patrollingEnemyState);
-                }
-            }
-            // else
-            // {
-            //     StartCoroutine(waitForSec());
-            // }
-
+            
             waiting = false;
         }
     }
