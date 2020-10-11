@@ -36,6 +36,7 @@ namespace InDevelopment.Alex.EnemyStates
         private void Awake()
         {
             target = waypoints[targetIndex];
+            //TODO: set spawn point for enemies
             // SpawnPosition = enemyController.transform.position;
         }
 

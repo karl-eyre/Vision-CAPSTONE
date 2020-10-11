@@ -150,6 +150,7 @@ namespace InDevelopment.Mechanics.LineOfSight
         public void SoundDistraction(float noiseLoudness)
         {
             detectionMeter += noiseLoudness;
+            stopDecrease = true;
         }
         
         public void SoftResetLos()
@@ -175,7 +176,15 @@ namespace InDevelopment.Mechanics.LineOfSight
             yield return new WaitForSeconds(resetDelay);
             if (!canSeePlayer)
             {
-                detectionMeter = investigationThreshold - 5;
+                if (detectionMeter >= investigationThreshold)
+                {
+                    detectionMeter = investigationThreshold - 5;
+                }
+                else
+                {
+                    detectionMeter = detectionMeter;
+                }
+                
                 stopDecrease = false;
             }
 

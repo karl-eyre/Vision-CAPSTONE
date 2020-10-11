@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9124225803127713544}
   - component: {fileID: 2030028518}
   - component: {fileID: 5689473979151110931}
+  - component: {fileID: 7636972994651757841}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Enemy
@@ -110,12 +111,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c63c99d5b9fbe45902f5fed5454ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  maxLandRturn: 60
+  maxLandReturn: 60
   rotSpeed: 5
+  moveSpeed: 5
   rotation: {x: 0, y: 0, z: 0, w: 0}
   direction: {x: 0, y: 0, z: 0}
   stateManager: {fileID: 51001221349860988}
+  beingDistracted: 0
+  posWhenInterrupted: {x: 0, y: 0, z: 0}
   patrollingEnemyState: {fileID: 0}
   stationaryEnemyState: {fileID: 0}
   waitingAtPointEnemyState: {fileID: 0}
@@ -168,6 +171,28 @@ MonoBehaviour:
   maxDetectionValue: 100
   stopDecrease: 0
   resetDelay: 2
+--- !u!195 &7636972994651757841
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252993601337556538}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &4601507014533632085
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,10 +265,8 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
-  beingDistracted: 0
 --- !u!114 &4172676412890344984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,13 +282,9 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
-  beingDistracted: 0
   waitTimer: 2
-  maxLandRturn: 180
-  rotSpeed: 20
 --- !u!114 &1605883517561385362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,10 +300,8 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
-  beingDistracted: 0
   minDistancedForIsReached: 0.1
   patrolType: 0
   waypoints:
@@ -309,10 +326,8 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
-  beingDistracted: 0
 --- !u!114 &948685719704122036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,10 +343,8 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
-  beingDistracted: 0
   target: {x: 0, y: 0, z: 0}
 --- !u!114 &3071357345889532625
 MonoBehaviour:
@@ -348,10 +361,8 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
-  beingDistracted: 0
 --- !u!114 &7113781451953816315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,10 +378,8 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
-  beingDistracted: 0
   target: {x: 0, y: 0, z: 0}
 --- !u!114 &8907245879249638597
 MonoBehaviour:
@@ -387,10 +396,8 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
-  beingDistracted: 0
   waitTime: 2
   stayStationary: 0
 --- !u!114 &8337493973409675680
@@ -408,10 +415,8 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
-  beingDistracted: 0
   enemyPosWhenInterrupted: {x: 0, y: 0, z: 0}
 --- !u!1 &5219686029784979695
 GameObject:

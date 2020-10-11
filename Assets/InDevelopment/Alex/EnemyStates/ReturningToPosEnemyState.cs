@@ -12,15 +12,15 @@ namespace InDevelopment.Alex.EnemyStates
         {
             base.Enter();
 
-            if (beingDistracted)
-            {
-                target = posWhenInterrupted;
-                
-            }
-            else
-            {
-                target = enemyController.spottingState.enemyPosWhenInterrupted;
-            }
+            // if (enemyController.beingDistracted)
+            // {
+            //     target = enemyController.posWhenInterrupted;
+            //     
+            // }
+            // else
+            // {
+                target = enemyController.posWhenInterrupted;
+            // }
             
         }
 
@@ -28,7 +28,7 @@ namespace InDevelopment.Alex.EnemyStates
         {
             base.Exit();
             lineOfSight.SoftResetLos();
-            if (beingDistracted)
+            if (enemyController.beingDistracted)
             {
                 Distracted();
             }

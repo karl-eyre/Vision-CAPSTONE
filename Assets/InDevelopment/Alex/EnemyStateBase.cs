@@ -22,7 +22,7 @@ namespace InDevelopment.Alex
         public LineOfSight lineOfSight;
 
 
-        public Vector3 posWhenInterrupted;
+        // public Vector3 posWhenInterrupted;
 
         public Vector3 lastKnownPlayerPosition;
 
@@ -32,11 +32,11 @@ namespace InDevelopment.Alex
 
         private bool isResetting;
 
-        public bool beingDistracted;
+        // public bool beingDistracted;
 
         private void Init()
         {
-            beingDistracted = false;
+            
             if (!stateManager)
             {
                 stateManager = GetComponent<StateManager>();
@@ -51,6 +51,7 @@ namespace InDevelopment.Alex
             {
                 enemyController = GetComponentInParent<EnemyController>();
             }
+            enemyController.beingDistracted = false;
         }
 
         public void Awake()
@@ -86,25 +87,23 @@ namespace InDevelopment.Alex
             //only call function in each state manually it seems to be causing problems for currently
             if (CanSeePlayer() && stateManager.currentEnemyState != enemyController.investigatingEnemyState)
             {
-                AssignPlayerPos();
-
                 if (stateManager.currentEnemyState != enemyController.spottingState)
                 {
                     stateManager.ChangeState(enemyController.spottingState);
                 }
             }
 
-            if (beingDistracted)
+            if (enemyController.beingDistracted)
             {
                 if (stateManager.currentEnemyState != enemyController.investigatingEnemyState)
                 {
                     stateManager.ChangeState(enemyController.investigatingEnemyState);
                 }
             }
+            //TODO:reset in better place
 
-            if (!CanSeePlayer() && !beingDistracted)
+            if (!CanSeePlayer() && !enemyController.beingDistracted)
             {
-                //TODO:find good place for reset
                 if (stateManager.previousEnemyState != enemyController.spottingState)
                 {
                     lineOfSight.HardResetLos();
@@ -117,6 +116,7 @@ namespace InDevelopment.Alex
             if (CanSeePlayer())
             {
                 IsAlerted();
+                AssignPlayerPos();
             }
 
             LOSFunc();
@@ -125,11 +125,14 @@ namespace InDevelopment.Alex
 
         public void GetDistracted(Vector3 location)
         {
+            if(enemyController.beingDistracted) return;
+
             if (stateManager.currentEnemyState != enemyController.spottingState)
             {
                 Distracted();
                 enemyController.investigatingEnemyState.lastKnownPlayerPosition = location;
-                enemyController.returningToPosEnemyState.posWhenInterrupted = transform.position;
+                enemyController.posWhenInterrupted = transform.position;
+                stateManager.interruptedState = stateManager.currentEnemyState;
                 if (stateManager.currentEnemyState != enemyController.investigatingEnemyState)
                 {
                     stateManager.ChangeState(enemyController.investigatingEnemyState);
@@ -139,7 +142,7 @@ namespace InDevelopment.Alex
 
         public void Distracted()
         {
-            beingDistracted = !beingDistracted;
+            enemyController.beingDistracted = !enemyController.beingDistracted;
         }
 
         //called when wanting to look at player

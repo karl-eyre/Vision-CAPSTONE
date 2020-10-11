@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using InDevelopment.Alex;
 using UnityEngine;
 using InDevelopment.Mechanics.Enemy;
 
@@ -29,10 +30,9 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         {
             if (!other.gameObject.GetComponent<EnemyStateMachine>()) return;
             
-            var enemyScript = other.gameObject.GetComponent<EnemyStateMachine>();
-            enemyScript.targetLastKnownPos = transform.position;
+            var enemyScript = other.gameObject.GetComponent<EnemyStateBase>();
+            // enemyScript.GetDistracted(transform.position);
             //TODO: Change to Event Driven system.
-            //enemyScript.ChangeState(EnemyModel.States.investigating);
         }
 
         private IEnumerator WaitTime()

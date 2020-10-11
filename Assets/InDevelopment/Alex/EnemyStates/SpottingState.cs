@@ -11,13 +11,13 @@ namespace InDevelopment.Alex.EnemyStates
         {
             base.Enter();
             stateManager.interruptedState = stateManager.previousEnemyState;
-            posWhenInterrupted = transform.position;
+            enemyController.posWhenInterrupted = transform.position;
         }
 
         public override void Exit()
         {
             base.Exit();
-            enemyPosWhenInterrupted = posWhenInterrupted;
+            enemyPosWhenInterrupted = enemyController.posWhenInterrupted;
         }
 
         public override void Execute()

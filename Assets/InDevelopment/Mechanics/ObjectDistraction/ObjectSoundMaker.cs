@@ -41,6 +41,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                 {
                     //TODO: change to use state machine
                     enemy.gameObject.GetComponentInChildren<EnemyStateBase>().GetDistracted(soundLocation);
+                    enemy.gameObject.GetComponentInParent<LineOfSight.LineOfSight>().SoundDistraction(loudnessOfSound);
                 }
             }
         }

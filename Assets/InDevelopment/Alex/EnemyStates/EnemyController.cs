@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using InDevelopment.Alex;
 using InDevelopment.Alex.EnemyStates;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -16,9 +18,9 @@ public class EnemyController : MonoBehaviour
 
 #region Variables
 
-    public float speed = 5;
-    public float maxLandRturn = 60;
+    public float maxLandReturn = 60;
     public float rotSpeed = 5;
+    public float moveSpeed;
 
     [Header("=Debug=")]
     public Quaternion rotation;
@@ -27,8 +29,15 @@ public class EnemyController : MonoBehaviour
     
     [HideInInspector]
     public StateManager stateManager;
-    private EnemyStateBase _enemyState; 
+    private EnemyStateBase _enemyState;
 
+    [HideInInspector]
+    public bool beingDistracted;
+
+    // [HideInInspector]
+    public Vector3 posWhenInterrupted;
+
+    private NavMeshAgent agent;
     
     //[Header("States")]
     [HideInInspector]public PatrollingEnemyState patrollingEnemyState;
@@ -40,9 +49,24 @@ public class EnemyController : MonoBehaviour
     [HideInInspector]public StartingState startingState;
     [HideInInspector]public SpottingState spottingState;
     
-#endregion
+    
+
+    #endregion
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
+    {
+        SetupStates();
+        SetupNavmesh();
+    }
+
+    void SetupNavmesh()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.autoBraking = true;
+        agent.speed = moveSpeed;
+    }
+
+    void SetupStates()
     {
         stateManager = GetComponentInChildren<StateManager>();
         patrollingEnemyState = GetComponentInChildren<PatrollingEnemyState>();
@@ -59,12 +83,21 @@ public class EnemyController : MonoBehaviour
 
     public void MoveToTarget(Vector3 tgt)
     {
+        if (agent.isStopped || agent.remainingDistance < 0.5f)
+        {
+            agent.ResetPath();
+        }
+        
+        agent.SetDestination(tgt);
+        /* old movement
         var position = transform.position;
-        position = Vector3.MoveTowards(position, tgt, Time.deltaTime * speed);
+        position = Vector3.MoveTowards(position, tgt, Time.deltaTime * moveSpeed);
         LookAtTarget(tgt);
         transform.position = position;
         direction = (tgt - position).normalized;
         //rotation = transform.rotation;
+        */
+       
     }
 
     public void LookAtTarget(Vector3 tgt)
@@ -75,7 +108,7 @@ public class EnemyController : MonoBehaviour
     public void LookLeftAndRight()
     {
         var t = transform.position;
-        transform.rotation = Quaternion.Euler(0f, maxLandRturn * Mathf.Sin(Time.time * rotSpeed), 0f);
+        transform.rotation = Quaternion.Euler(0f, maxLandReturn * Mathf.Sin(Time.time * rotSpeed), 0f);
         //TODO: Fix this so that it does the look left and right thing based on its current looking direction!
     }
     

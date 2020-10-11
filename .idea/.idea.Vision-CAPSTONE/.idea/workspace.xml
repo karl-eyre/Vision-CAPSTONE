@@ -74,7 +74,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovementRB.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovementCC.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/Prefabs/PlayerMovementRB.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/PlayerRB.cs" />
@@ -102,7 +101,6 @@
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/TeleportAbility/TeleportAbility.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Player/PlayerMovementRB.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Enemy/EnemyModel.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/GeneralSoundMaker.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Enemy/EnemyStateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/ReturningToPosState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/InvestigatingState.cs" />
@@ -112,19 +110,21 @@
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/WaitingAtPointState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PatrollingState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/StartingState.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/EnemyController.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/StateManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PatrollingEnemyState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/StationaryEnemyState.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/LineOfSight/LineOfSight.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/SpottingState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PlayerDetectedState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/DistractionAbility.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/ObjectSoundMaker.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/InvestigatingEnemyState.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStateBase.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/WaitingAtPointEnemyState.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/ObjectSoundMaker.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/LineOfSight/LineOfSight.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/SpottingState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/ReturningToPosEnemyState.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/GeneralSoundMaker.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Enemy/MovementManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PatrollingEnemyState.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStateBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/EnemyController.cs" />
       </list>
     </option>
   </component>
@@ -152,7 +152,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
     <property name="settings.editor.splitter.proportion" value="0.24668705" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -166,10 +166,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="19072">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="19072" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -217,6 +217,8 @@
       <workItem from="1602053590109" duration="12108000" />
       <workItem from="1602209526238" duration="4131000" />
       <workItem from="1602214249699" duration="7159000" />
+      <workItem from="1602311352781" duration="3254000" />
+      <workItem from="1602391362642" duration="1879000" />
     </task>
     <servers />
   </component>
@@ -362,10 +364,10 @@
     </state>
     <state x="606" y="204" key="RiderGenerateDialog/0.0.1600.860@0.0.1600.860" timestamp="1601955885857" />
     <state x="727" y="249" key="RiderGenerateDialog/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1600234987931" />
-    <state x="774" y="173" key="SettingsEditor" timestamp="1596435165341">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-33" y="0" key="SettingsEditor" timestamp="1602391507725">
+      <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="-33" y="0" width="1249" height="860" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1600227489728" />
+    <state x="-33" y="0" width="1249" height="860" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1602391507725" />
     <state x="774" y="173" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596435165341" />
     <state x="92" y="92" width="1736" height="866" key="VCS.FileHistoryDialog" timestamp="1600610977628">
       <screen x="0" y="0" width="1920" height="1050" />
@@ -376,9 +378,10 @@
     </state>
     <state width="807" height="437" key="XDebugger.FullValuePopup/0.0.1600.860@0.0.1600.860" timestamp="1597824011055" />
     <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596434074606" />
-    <state x="251" y="0" width="1478" height="1037" key="dock-window-1" timestamp="1601093150410">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="0" y="0" width="1573" height="847" key="dock-window-1" timestamp="1602312251693">
+      <screen x="0" y="0" width="1600" height="860" />
     </state>
+    <state x="0" y="0" width="1573" height="847" key="dock-window-1/0.0.1600.860@0.0.1600.860" timestamp="1602312251693" />
     <state x="251" y="0" width="1478" height="1037" key="dock-window-1/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1601093150410" />
     <state x="-1849" y="0" width="1494" height="1037" key="dock-window-2" timestamp="1600328596602">
       <screen x="-1920" y="0" width="1920" height="1050" />
@@ -388,10 +391,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="746" y="170" width="714" height="534" key="find.popup/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1600613943225" />
-    <state x="547" y="238" key="run.anything.popup" timestamp="1600604772039">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="456" y="195" key="run.anything.popup" timestamp="1602312507495">
+      <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1597291535334" />
+    <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1602312507495" />
     <state x="547" y="238" key="run.anything.popup/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1600604772039" />
     <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1602054948967">
       <screen x="0" y="0" width="1600" height="860" />

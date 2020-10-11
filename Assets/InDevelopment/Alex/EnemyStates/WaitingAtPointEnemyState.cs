@@ -8,8 +8,6 @@ namespace InDevelopment.Alex.EnemyStates
     public class WaitingAtPointEnemyState : EnemyStateBase
     {
         public float waitTimer = 1.0f;
-        public float maxLandRturn = 60;
-        public float rotSpeed = 5;
         private bool waiting;
 
         public override void Enter()
@@ -36,10 +34,12 @@ namespace InDevelopment.Alex.EnemyStates
 
             if (!waiting)
             {
-                if (beingDistracted)
+                if (enemyController.beingDistracted)
                 {
-                    stateManager.ChangeState(stateManager.interruptedState);
-                    // Distracted();
+                    if (stateManager.currentEnemyState != stateManager.interruptedState)
+                    {
+                        stateManager.ChangeState(stateManager.interruptedState);
+                    }
                 }
                 else
                 {
@@ -57,17 +57,15 @@ namespace InDevelopment.Alex.EnemyStates
                         {
                             stateManager.ChangeState(enemyController.patrollingEnemyState);
                         }
-                
                     }
                 }
             }
-            
         }
 
         IEnumerator waitForSec()
         {
             yield return new WaitForSeconds(waitTimer);
-            
+
             waiting = false;
         }
     }

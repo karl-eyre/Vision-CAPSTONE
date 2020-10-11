@@ -34,7 +34,7 @@ namespace InDevelopment.Alex.EnemyStates
             else
             {
                 enemyController.MoveToTarget(target);
-                if (Vector3.Distance(transform.position, target) < 0.5f)
+                if (Vector3.Distance(transform.position, target) < 0.5f && stateManager.currentEnemyState != enemyController.waitingAtPointEnemyState)
                 {
                     stateManager.ChangeState(enemyController.waitingAtPointEnemyState);
                 }
