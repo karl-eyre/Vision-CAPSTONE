@@ -1,4 +1,5 @@
 ﻿using InDevelopment.Alex;
+using InDevelopment.Alex.EnemyStates;
 using InDevelopment.Mechanics.Enemy;
 using UnityEngine;
 
@@ -19,7 +20,10 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         public void MakeSound(Vector3 soundLocation, float loudnessOfSound)
         {
             Collider[] enemiesInRange = Physics.OverlapSphere(soundLocation, loudnessOfSound, enemyLayer);
-            if (enemiesInRange.Length <= 0) return;
+            if (enemiesInRange.Length <= 0)
+            {
+                return;
+            }
             
             //the sphere cast and if their still in then tell them to investigate
             //use raycast to determine who should've heard the sound
@@ -27,15 +31,17 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             foreach (var enemy in enemiesInRange)
             {
                 //change to other bool if you don't want walls to completely block sound
-                bool actuallyHeardSound = !Physics.Linecast(soundLocation, enemy.transform.position, obstacleLayer);
+                // bool actuallyHeardSound = !Physics.Linecast(soundLocation, enemy.transform.position, obstacleLayer);
                 
-                //var actuallyHeardSound = Physics.RaycastAll(soundLocation, enemy.transform.position, loudnessOfSound);
+                Ray ray = new Ray(soundLocation, soundLocation - enemy.transform.position);
+                
+                bool actuallyHeardSound = Physics.Raycast(ray, loudnessOfSound);
                 
                 if (actuallyHeardSound)
                 {
-                    //TODO: Change this to Event driven system.
-                    // enemy.GetComponent<EnemyStateBase>().lastKnownPlayerPosition = soundLocation;
-                    // enemy.GetComponentInChildren<StateManager>().ChangeState(enemy.GetComponent<EnemyController>().investigatingEnemyState);
+                    //TODO: change to use state machine
+                    enemy.gameObject.GetComponentInChildren<EnemyStateBase>().GetDistracted(soundLocation);
+                    enemy.gameObject.GetComponentInParent<LineOfSight.LineOfSight>().SoundDistraction(loudnessOfSound);
                 }
             }
         }
