@@ -237,6 +237,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             throwableObjectPrefab = null;
             hasObjectToThrow = false;
         }
+        
+        //TODO: don't allow picking up through a wall
 
         private void TryToPickupObject()
         {
@@ -246,9 +248,9 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             if (!(selectionOutline is null) && selectionOutline.isHit)
             {
                 //when animations need to be added just have the object destroy delayed for the duration of the animations
-                Debug.Log("UseObject");
+                // Debug.Log("UseObject");
                 hitObject = selectionOutline.hit.collider.gameObject;
-
+                
                 if (throwableObjectPrefab == null)
                 {
                     throwableObjectPrefab = selectionOutline.hit.collider.gameObject;

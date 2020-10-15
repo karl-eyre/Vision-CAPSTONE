@@ -12,6 +12,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
     {
         public int noiseLoudness;
         private ObjectSoundMaker objectSoundMaker;
+        
         private void Start()
         {
             //this is just to make sure that any item that this script is
@@ -23,8 +24,14 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         private void OnCollisionEnter(Collision other)
         {
-            //Add in some check for how this function is called
-            //maybe depending on the objects rb's relative velocity?
+            //TODO:add in a transform check so that it has to be more than a certain distance for it to work,
+            //so that enemies that push the objects around don't re-trigger the sound again for themselves or other enemies nearby
+            //TODO:add in speed check so that when level starts they don't automatically trigger enemies
+            
+            if (other.collider.CompareTag("Enemy")) return;
+            
+            //TODO:Add in some check for how this function is called
+            
             objectSoundMaker.MakeSound(gameObject.transform.position, noiseLoudness);
         }
 

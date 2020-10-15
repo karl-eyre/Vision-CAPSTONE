@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using InDevelopment.Alex;
 using UnityEngine;
 using InDevelopment.Mechanics.Enemy;
 
@@ -27,12 +28,12 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         public void OnCollisionEnter(Collision other)
         {
-            if (!other.gameObject.GetComponent<EnemyStateMachine>()) return;
+            //maybe raycast to any enemy in range to see if they heard it, if hit they did else it hit a wall and they didn't 
+            if (!other.gameObject.GetComponent<EnemyStateBase>()) return;
+            //TODO:uncomment below and test
+            var enemyScript = other.gameObject.GetComponent<EnemyStateBase>();
+            // enemyScript.GetDistracted(transform.position);
             
-            var enemyScript = other.gameObject.GetComponent<EnemyStateMachine>();
-            enemyScript.targetLastKnownPos = transform.position;
-            //TODO: Change to Event Driven system.
-            //enemyScript.ChangeState(EnemyModel.States.investigating);
         }
 
         private IEnumerator WaitTime()

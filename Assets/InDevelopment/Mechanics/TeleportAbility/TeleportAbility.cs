@@ -47,7 +47,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
         {
             generalSoundMaker = GetComponentInChildren<GeneralSoundMaker>();
             teleportLayer = LayerMask.GetMask("ThrowableObjects");
-            unphaseableLayer = LayerMask.GetMask("Unphaseable");
+            // unphaseableLayer = LayerMask.GetMask("Unphaseable");
             phaseableLayer = LayerMask.GetMask("Phaseable");
             onCooldown = false;
         }
