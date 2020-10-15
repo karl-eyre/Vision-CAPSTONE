@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using InDevelopment.Mechanics.Player;
-using Player;
 using UnityEngine;
 
 namespace InDevelopment.Mechanics.LineOfSight

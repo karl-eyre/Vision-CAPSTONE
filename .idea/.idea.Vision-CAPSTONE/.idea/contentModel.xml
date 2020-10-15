@@ -12,11 +12,12 @@
         <e p="Editor" t="Include">
           <e p="LineOfSightEditor.cs" t="Include" />
         </e>
-        <e p="F_EnemyPatrol.cs" t="Include" />
-        <e p="F_Player.cs" t="Include" />
         <e p="FMOD Scripts" t="Include">
+          <e p="F_EnemyPatrol.cs" t="Include" />
           <e p="F_Occlusion.cs" t="Include" />
+          <e p="F_Player.cs" t="Include" />
           <e p="F_Test.cs" t="Include" />
+          <e p="SnapShotTrigger.cs" t="Include" />
         </e>
         <e p="InDevelopment" t="Include">
           <e p="ActionMap" t="Include">
@@ -150,7 +151,6 @@
             </e>
           </e>
         </e>
-        <e p="SnapShotTrigger.cs" t="Include" />
         <e p="UniversalRenderingPipeline" t="Include">
           <e p="Scripts" t="Include">
             <e p="SimpleCameraController.cs" t="Include" />
