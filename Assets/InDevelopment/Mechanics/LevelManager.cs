@@ -11,10 +11,15 @@ namespace InDevelopment.Mechanics
             if (other.CompareTag("Player"))
             {
                 Scene scene = SceneManager.GetActiveScene();
-                SceneManager.LoadScene(scene.buildIndex + 1);
-               
+                SceneManager.LoadScene(scene.buildIndex + 1);               
                
             }
+        }
+
+        public void ExitGame()
+        {
+            Application.Quit();
+            Debug.Log("We Finished");
         }
     }
 }
