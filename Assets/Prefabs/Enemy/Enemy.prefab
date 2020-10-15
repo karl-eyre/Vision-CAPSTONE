@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9124225803127713544}
   - component: {fileID: 2030028518}
   - component: {fileID: 5689473979151110931}
+  - component: {fileID: 7636972994651757841}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Enemy
@@ -110,12 +111,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c63c99d5b9fbe45902f5fed5454ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  maxLandRturn: 60
+  maxLandReturn: 60
   rotSpeed: 5
+  moveSpeed: 5
   rotation: {x: 0, y: 0, z: 0, w: 0}
   direction: {x: 0, y: 0, z: 0}
   stateManager: {fileID: 51001221349860988}
+  beingDistracted: 0
+  posWhenInterrupted: {x: 0, y: 0, z: 0}
+  agent: {fileID: 0}
   patrollingEnemyState: {fileID: 0}
   stationaryEnemyState: {fileID: 0}
   waitingAtPointEnemyState: {fileID: 0}
@@ -159,7 +163,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 16384
-  fillSpeed: 0.1
+  fillSpeed: 0.5
   reduceSpeed: 0.1
   player: {fileID: 0}
   canSeePlayer: 0
@@ -168,6 +172,28 @@ MonoBehaviour:
   maxDetectionValue: 100
   stopDecrease: 0
   resetDelay: 2
+--- !u!195 &7636972994651757841
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252993601337556538}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &4601507014533632085
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,13 +205,13 @@ GameObject:
   - component: {fileID: 1578609342260508480}
   - component: {fileID: 51001221349860988}
   - component: {fileID: 346023010754892516}
-  - component: {fileID: 4172676412890344984}
+  - component: {fileID: 8907245879249638597}
   - component: {fileID: 1605883517561385362}
+  - component: {fileID: 4172676412890344984}
   - component: {fileID: 9037918217293044000}
   - component: {fileID: 948685719704122036}
   - component: {fileID: 3071357345889532625}
   - component: {fileID: 7113781451953816315}
-  - component: {fileID: 8907245879249638597}
   - component: {fileID: 8337493973409675680}
   m_Layer: 12
   m_Name: StateSystem
@@ -240,10 +266,9 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
---- !u!114 &4172676412890344984
+--- !u!114 &8907245879249638597
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -252,18 +277,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4601507014533632085}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 800c4122bed820246ba9bc5a07ed9778, type: 3}
+  m_Script: {fileID: 11500000, guid: d49a9da15c15bd2489e6dc2590e00ada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
-  waitTimer: 1
-  maxLandRturn: 180
-  rotSpeed: 20
+  waitTime: 2
+  stayStationary: 0
 --- !u!114 &1605883517561385362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,10 +302,9 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
-  minDistancedForIsReached: 0.1
+  minDistancedForIsReached: 0.6
   patrolType: 0
   waypoints:
   - {fileID: 0}
@@ -291,6 +313,24 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &4172676412890344984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601507014533632085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800c4122bed820246ba9bc5a07ed9778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyController: {fileID: 0}
+  stateManager: {fileID: 0}
+  lineOfSight: {fileID: 0}
+  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
+  isAlerted: 0
+  waitTimer: 2
 --- !u!114 &9037918217293044000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +346,6 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
 --- !u!114 &948685719704122036
@@ -324,7 +363,6 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
   target: {x: 0, y: 0, z: 0}
@@ -343,7 +381,6 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
 --- !u!114 &7113781451953816315
@@ -361,30 +398,9 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
   target: {x: 0, y: 0, z: 0}
---- !u!114 &8907245879249638597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4601507014533632085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d49a9da15c15bd2489e6dc2590e00ada, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyController: {fileID: 0}
-  stateManager: {fileID: 0}
-  lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
-  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
-  isAlerted: 0
-  waitTime: 2
-  stayStationary: 0
 --- !u!114 &8337493973409675680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,9 +416,9 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   stateManager: {fileID: 0}
   lineOfSight: {fileID: 0}
-  posWhenInterrupted: {x: 0, y: 0, z: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
+  enemyPosWhenInterrupted: {x: 0, y: 0, z: 0}
 --- !u!1 &5219686029784979695
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +508,7 @@ BoxCollider:
   m_GameObject: {fileID: 5219686029784979695}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

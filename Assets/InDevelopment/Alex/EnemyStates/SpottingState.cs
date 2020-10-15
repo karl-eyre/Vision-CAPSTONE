@@ -5,28 +5,43 @@ namespace InDevelopment.Alex.EnemyStates
     public class SpottingState : EnemyStateBase
     {
         //merely stands still and looks at player.
+
+        [HideInInspector]
+        public Vector3 enemyPosWhenInterrupted;
         public override void Enter()
         {
             base.Enter();
+            enemyController.agent.ResetPath();
             stateManager.interruptedState = stateManager.previousEnemyState;
-            posWhenInterrupted = enemyController.transform.position;
+            enemyController.posWhenInterrupted = transform.position;
         }
 
         public override void Exit()
         {
             base.Exit();
-            posWhenInterrupted = enemyController.transform.position;
+            enemyPosWhenInterrupted = enemyController.posWhenInterrupted;
         }
 
         public override void Execute()
         {
             base.Execute();
-            LOSFunc();
-            if (CanSeePlayer())
+
+            if (AboveInvestigationThresholdCheck())
             {
-                AssignPlayerPos();
-                LookAtPlayer();
+                if (stateManager.currentEnemyState != enemyController.investigatingEnemyState)
+                {
+                    stateManager.ChangeState(enemyController.investigatingEnemyState);
+                }
             }
+            else
+            {
+                if (!CanSeePlayer())
+                {
+                    stateManager.ChangeState(stateManager.interruptedState);
+                }
+            }
+
+            LookAtPlayer();
         }
     }
 }

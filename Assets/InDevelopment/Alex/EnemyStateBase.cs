@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Threading;
+using InDevelopment.Alex.EnemyStates;
 using InDevelopment.Mechanics.LineOfSight;
 using UnityEngine;
 
@@ -20,9 +22,7 @@ namespace InDevelopment.Alex
         [HideInInspector]
         public LineOfSight lineOfSight;
 
-        [HideInInspector]
-        public Vector3 posWhenInterrupted;
-
+        // public Vector3 posWhenInterrupted;
         [HideInInspector]
         public Vector3 lastKnownPlayerPosition;
 
@@ -32,8 +32,11 @@ namespace InDevelopment.Alex
 
         private bool isResetting;
 
+        // public bool beingDistracted;
+
         private void Init()
         {
+            
             if (!stateManager)
             {
                 stateManager = GetComponent<StateManager>();
@@ -48,6 +51,7 @@ namespace InDevelopment.Alex
             {
                 enemyController = GetComponentInParent<EnemyController>();
             }
+            enemyController.beingDistracted = false;
         }
 
         public void Awake()
@@ -68,66 +72,107 @@ namespace InDevelopment.Alex
 
         public virtual void Execute()
         {
-            IsAlerted();
             Debug.Log("I am executing the " + this.GetType() + " state.");
         }
 
-        //call in each state when required
-        //look at moving into line of sight script and just calling it all the time,
+        public void Update()
+        {
+            CalledAllTheTime();
+        }
+
+        //look at moving into line of sight script and just calling it all the time
         //that would remove the state issue i believe
         public void LOSFunc()
         {
-            if (PlayerDetected())
-            {
-                stateManager.ChangeState(enemyController.playerDetectedState);
-                return;
-            }
-
+            //TODO:make so that no states change if in player detected state
+            
             //only call function in each state manually it seems to be causing problems for currently
-            if (lineOfSight.canSeePlayer && isAlerted)
+            if (CanSeePlayer() && stateManager.currentEnemyState != enemyController.investigatingEnemyState)
             {
-                lastKnownPlayerPosition = lineOfSight.player.transform.position;
-
-                if (AboveInvestigationThresholdCheck())
-                {
-                    if (stateManager.currentEnemyState != enemyController.investigatingEnemyState)
-                    {
-                        stateManager.ChangeState(enemyController.investigatingEnemyState);
-                    }
-                }
-                else if (stateManager.currentEnemyState != enemyController.spottingState)
+                if (stateManager.currentEnemyState != enemyController.spottingState)
                 {
                     stateManager.ChangeState(enemyController.spottingState);
                 }
             }
-            else
+
+            if (!(enemyController is null) && enemyController.beingDistracted)
             {
-                if (isAlerted && stateManager.currentEnemyState != enemyController.investigatingEnemyState)
+                if (stateManager.currentEnemyState != enemyController.investigatingEnemyState)
+                {
+                    stateManager.ChangeState(enemyController.investigatingEnemyState);
+                }
+            }
+            
+            //TODO:reset in better place
+
+            if (!CanSeePlayer() && !enemyController.beingDistracted)
+            {
+                if (stateManager.previousEnemyState != enemyController.spottingState)
                 {
                     lineOfSight.HardResetLos();
-                }
-                else if (stateManager.currentEnemyState == enemyController.spottingState && !AboveInvestigationThresholdCheck())
-                {
-                    stateManager.ChangeState(stateManager.previousEnemyState);
                 }
             }
         }
 
+        private void CalledAllTheTime()
+        {
+            if (CanSeePlayer())
+            {
+                IsAlerted();
+                AssignPlayerPos();
+            }
+
+            LOSFunc();
+            PlayerDetected();
+        }
+
+        public void GetDistracted(Vector3 location)
+        {
+            if(enemyController.beingDistracted) return;
+
+            if (stateManager.currentEnemyState != enemyController.spottingState)
+            {
+                Distracted();
+                enemyController.investigatingEnemyState.lastKnownPlayerPosition = location;
+                enemyController.posWhenInterrupted = transform.position;
+                stateManager.interruptedState = stateManager.currentEnemyState;
+                if (stateManager.currentEnemyState != enemyController.investigatingEnemyState)
+                {
+                    stateManager.ChangeState(enemyController.investigatingEnemyState);
+                }
+            }
+        }
+
+        public void Distracted()
+        {
+            enemyController.beingDistracted = !enemyController.beingDistracted;
+        }
+
+        //called when wanting to look at player
         public void LookAtPlayer()
         {
             enemyController.LookAtTarget(lineOfSight.player.transform.position);
         }
 
-        private bool PlayerDetected()
+        //needs to be called all the time
+        private void PlayerDetected()
         {
-            return lineOfSight.detectionMeter > lineOfSight.maxDetectionValue;
+            if (lineOfSight.detectionMeter > lineOfSight.maxDetectionValue)
+            {
+                if (stateManager.currentEnemyState != enemyController.playerDetectedState)
+                {
+                    stateManager.ChangeState(enemyController.playerDetectedState);
+                    return;
+                }
+            }
         }
 
-        private bool AboveInvestigationThresholdCheck()
+        public bool AboveInvestigationThresholdCheck()
         {
             return lineOfSight.detectionMeter >= lineOfSight.investigationThreshold;
         }
 
+        //needs to be called all the time
         private void IsAlerted()
         {
             if (lineOfSight.detectionMeter > 0)
@@ -141,14 +186,16 @@ namespace InDevelopment.Alex
             }
         }
 
+        //needs to be called all the time
         public void AssignPlayerPos()
         {
             lastKnownPlayerPosition = lineOfSight.player.transform.position;
+            // posWhenInterrupted = enemyController.transform.position;
         }
 
         public bool CanSeePlayer()
         {
-            return lineOfSight.canSeePlayer;
+            return !(lineOfSight is null) && lineOfSight.canSeePlayer;
         }
     }
 }

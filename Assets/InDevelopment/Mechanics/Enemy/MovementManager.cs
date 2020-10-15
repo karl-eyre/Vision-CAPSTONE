@@ -20,6 +20,7 @@ namespace InDevelopment.Mechanics.Enemy
         public bool randomPatrol;
         public float distanceThreshold = 0.5f;
 
+        //move to enemy controller
         private void Start()
         {
             currentIndex = 0;
@@ -30,6 +31,7 @@ namespace InDevelopment.Mechanics.Enemy
             MoveToPoint(waypoints[currentIndex].position);
         }
 
+        //move to enemy controller
         private void MoveToPoint(Vector3 targetPos)
         {
             if (waypoints.Count == 0) 
@@ -66,45 +68,10 @@ namespace InDevelopment.Mechanics.Enemy
             return currentIndex;
         }
 
+        //move to patrolling state
         private bool CheckDistance()
         {
             return agent.remainingDistance < distanceThreshold && !agent.pathPending;
-        }
-
-        private bool Investigating()
-        {
-            //add in actual investigation check when state machine is finished
-            return false;
-        }
-
-        private bool Waiting()
-        {
-            //add in actual waiting check when state machine is finished
-            return false;
-        }
-
-        private void Patrol()
-        {
-            if (CheckDistance() && !Waiting())
-            {
-                ChangeIndex();
-                MoveToPoint(waypoints[currentIndex].position);
-                transform.LookAt(waypoints[currentIndex].position);
-            }
-        }
-        
-        private void Update()
-        {
-            //finished when state machine is completed
-            if (!Investigating() && targetPosition != null)
-            {
-                Patrol();
-            }
-            else
-            {
-                targetPosition = waypoints[0].transform;
-                MoveToPoint(targetPosition.position);
-            }
         }
     }
 }

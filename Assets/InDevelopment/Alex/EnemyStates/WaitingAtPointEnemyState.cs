@@ -8,13 +8,16 @@ namespace InDevelopment.Alex.EnemyStates
     public class WaitingAtPointEnemyState : EnemyStateBase
     {
         public float waitTimer = 1.0f;
-        public float maxLandRturn = 60;
-        public float rotSpeed = 5;
+        private bool waiting;
 
         public override void Enter()
         {
             base.Enter();
-            StartCoroutine(waitForSec());
+            if (!waiting)
+            {
+                waiting = true;
+                StartCoroutine(waitForSec());
+            }
         }
 
         public override void Exit()
@@ -26,26 +29,44 @@ namespace InDevelopment.Alex.EnemyStates
         {
             //wait for so long, then either continue patrolling or
             base.Execute();
-            LOSFunc();
             enemyController.LookLeftAndRight();
+
+
+            if (!waiting)
+            {
+                if (enemyController.beingDistracted)
+                {
+                    if (stateManager.currentEnemyState != stateManager.interruptedState)
+                    {
+                        stateManager.ChangeState(stateManager.interruptedState);
+                    }
+                }
+                else
+                {
+                    if (!CanSeePlayer())
+                    {
+                        if (stateManager.previousEnemyState == enemyController.investigatingEnemyState)
+                        {
+                            stateManager.ChangeState(enemyController.returningToPosEnemyState);
+                        }
+                        else if (stateManager.previousEnemyState == enemyController.patrollingEnemyState)
+                        {
+                            stateManager.ChangeState(stateManager.previousEnemyState);
+                        }
+                        else if (stateManager.previousEnemyState == enemyController.spottingState)
+                        {
+                            stateManager.ChangeState(enemyController.patrollingEnemyState);
+                        }
+                    }
+                }
+            }
         }
 
         IEnumerator waitForSec()
         {
             yield return new WaitForSeconds(waitTimer);
-            if (stateManager.previousEnemyState == enemyController.investigatingEnemyState)
-            {
-                stateManager.ChangeState(enemyController.returningToPosEnemyState);
-            }
-            else if (stateManager.previousEnemyState == enemyController.patrollingEnemyState)
-            {
-                stateManager.ChangeState(stateManager.previousEnemyState);
-            }
-            else if(stateManager.currentEnemyState == enemyController.spottingState)
-            {
-                //should hopefully reset the thing if it breaks
-                stateManager.ChangeState(stateManager.interruptedState);
-            }
+
+            waiting = false;
         }
     }
 }
