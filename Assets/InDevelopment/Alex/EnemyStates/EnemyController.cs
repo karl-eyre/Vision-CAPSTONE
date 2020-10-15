@@ -34,10 +34,11 @@ public class EnemyController : MonoBehaviour
     [HideInInspector]
     public bool beingDistracted;
 
-    // [HideInInspector]
+    [HideInInspector]
     public Vector3 posWhenInterrupted;
 
-    private NavMeshAgent agent;
+    [HideInInspector]
+    public NavMeshAgent agent;
     
     //[Header("States")]
     [HideInInspector]public PatrollingEnemyState patrollingEnemyState;
@@ -83,6 +84,12 @@ public class EnemyController : MonoBehaviour
 
     public void MoveToTarget(Vector3 tgt)
     {
+        // if (stateManager.currentEnemyState == spottingState)
+        // {
+        //     agent.ResetPath();
+        //     return;
+        // }
+        //
         if (agent.isStopped || agent.remainingDistance < 0.5f)
         {
             agent.ResetPath();

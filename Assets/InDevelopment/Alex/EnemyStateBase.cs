@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Threading;
 using InDevelopment.Alex.EnemyStates;
 using InDevelopment.Mechanics.LineOfSight;
 using UnityEngine;
@@ -21,9 +22,8 @@ namespace InDevelopment.Alex
         [HideInInspector]
         public LineOfSight lineOfSight;
 
-
         // public Vector3 posWhenInterrupted;
-
+        [HideInInspector]
         public Vector3 lastKnownPlayerPosition;
 
         [HideInInspector]
@@ -84,6 +84,8 @@ namespace InDevelopment.Alex
         //that would remove the state issue i believe
         public void LOSFunc()
         {
+            //TODO:make so that no states change if in player detected state
+            
             //only call function in each state manually it seems to be causing problems for currently
             if (CanSeePlayer() && stateManager.currentEnemyState != enemyController.investigatingEnemyState)
             {
@@ -100,6 +102,7 @@ namespace InDevelopment.Alex
                     stateManager.ChangeState(enemyController.investigatingEnemyState);
                 }
             }
+            
             //TODO:reset in better place
 
             if (!CanSeePlayer() && !enemyController.beingDistracted)
@@ -192,7 +195,7 @@ namespace InDevelopment.Alex
 
         public bool CanSeePlayer()
         {
-            return lineOfSight.canSeePlayer;
+            return !(lineOfSight is null) && lineOfSight.canSeePlayer;
         }
     }
 }

@@ -5,6 +5,7 @@ namespace InDevelopment.Alex.EnemyStates
 {
     public class ReturningToPosEnemyState : EnemyStateBase
     {
+        [HideInInspector]
         public Vector3 target;
 
 
@@ -44,6 +45,8 @@ namespace InDevelopment.Alex.EnemyStates
             if (Vector3.Distance(transform.position, target) < 0.5f)
             {
                 stateManager.ChangeState(stateManager.initialState);
+                //TODO:do check in waiting at point state so that if it is interrupted it remembers its previous state
+                // stateManager.ChangeState(stateManager.interruptedState);
             }
         }
     }

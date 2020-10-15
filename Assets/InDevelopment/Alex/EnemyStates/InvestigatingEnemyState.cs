@@ -5,6 +5,7 @@ namespace InDevelopment.Alex.EnemyStates
 {
     public class InvestigatingEnemyState : EnemyStateBase
     {
+        [HideInInspector]
         public Vector3 target;
 
         public override void Enter()
@@ -34,7 +35,7 @@ namespace InDevelopment.Alex.EnemyStates
             else
             {
                 enemyController.MoveToTarget(target);
-                if (Vector3.Distance(transform.position, target) < 0.5f && stateManager.currentEnemyState != enemyController.waitingAtPointEnemyState)
+                if (Vector3.Distance(transform.position, target) < 0.6f && stateManager.currentEnemyState != enemyController.waitingAtPointEnemyState)
                 {
                     stateManager.ChangeState(enemyController.waitingAtPointEnemyState);
                 }

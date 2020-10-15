@@ -6,10 +6,12 @@ namespace InDevelopment.Alex.EnemyStates
     {
         //merely stands still and looks at player.
 
+        [HideInInspector]
         public Vector3 enemyPosWhenInterrupted;
         public override void Enter()
         {
             base.Enter();
+            enemyController.agent.ResetPath();
             stateManager.interruptedState = stateManager.previousEnemyState;
             enemyController.posWhenInterrupted = transform.position;
         }
