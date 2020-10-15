@@ -95,7 +95,7 @@ namespace InDevelopment.Alex
                 }
             }
 
-            if (enemyController.beingDistracted)
+            if (!(enemyController is null) && enemyController.beingDistracted)
             {
                 if (stateManager.currentEnemyState != enemyController.investigatingEnemyState)
                 {
