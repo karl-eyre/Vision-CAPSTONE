@@ -12,6 +12,8 @@ namespace InDevelopment.Mechanics
             {
                 Scene scene = SceneManager.GetActiveScene();
                 SceneManager.LoadScene(scene.buildIndex + 1);
+               
+               
             }
         }
     }
