@@ -6,23 +6,18 @@ using FMOD.Studio;
 
 public class F_Player : MonoBehaviour
 {
-    EventInstance musicTrack;
+    public static EventInstance musicTrack;
     EventInstance amb;
     EventInstance ambInterior;
     
     [SerializeField]
-    private float radius = 30f;
-
-    public Transform enemy;
-
+    private float MusicRadius = 30f;
 
     void Start()
     {
         backgroundMusic();
         amb = RuntimeManager.CreateInstance("event:/Ambience/AmbOutside");
-        amb.start();
-
-       
+        amb.start();      
     }
 
     void backgroundMusic()
@@ -32,22 +27,8 @@ public class F_Player : MonoBehaviour
         musicTrack.release();
     }
 
-    void OnDrawGizmosSelected()
+    void Footsteps()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);
-    }
-  
-   
-    void Update()
-    {
-        float distance = Vector3.Distance(transform.position, enemy.transform.position);
-        //Debug.Log(distance);
 
-        
-        if (distance <= radius)
-        {
-            musicTrack.setParameterByName("Intencity", distance, false);
-        }
     }
 }
