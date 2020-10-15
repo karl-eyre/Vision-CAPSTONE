@@ -22,8 +22,6 @@ namespace InDevelopment.Alex.EnemyStates
         {
             //look around until you see the player then trigger investigation state
             base.Execute();
-            LOSFunc();
-            
             enemyController.LookLeftAndRight();
         }
     }

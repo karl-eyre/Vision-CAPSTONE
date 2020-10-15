@@ -21,10 +21,8 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Execute()
         {
             base.Execute();
-
+            //TODO:chase player until the player is caught
             Debug.Log("player loses");
-            // Scene scene = SceneManager.GetActiveScene();
-            // SceneManager.LoadScene(scene.buildIndex);
         }
     }
 }

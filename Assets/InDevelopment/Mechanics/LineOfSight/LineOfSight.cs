@@ -44,7 +44,7 @@ namespace InDevelopment.Mechanics.LineOfSight
         public bool stopDecrease;
 
         public float resetDelay = 2f;
-        private bool isResetting;
+        private bool isResetting = false;
 
         private void Start()
         {
@@ -147,6 +147,12 @@ namespace InDevelopment.Mechanics.LineOfSight
             return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
         }
 
+        public void SoundDistraction(float noiseLoudness)
+        {
+            detectionMeter += noiseLoudness;
+            stopDecrease = true;
+        }
+        
         public void SoftResetLos()
         {
             if (!isResetting)
@@ -170,10 +176,19 @@ namespace InDevelopment.Mechanics.LineOfSight
             yield return new WaitForSeconds(resetDelay);
             if (!canSeePlayer)
             {
-                detectionMeter = investigationThreshold - 5;
+                if (detectionMeter >= investigationThreshold)
+                {
+                    detectionMeter = investigationThreshold - 5;
+                }
+                else
+                {
+                    detectionMeter = detectionMeter;
+                }
+                
                 stopDecrease = false;
-                isResetting = false;
             }
+
+            isResetting = false;
         }
 
         private IEnumerator HardResetLOS()
@@ -183,8 +198,9 @@ namespace InDevelopment.Mechanics.LineOfSight
             {
                 detectionMeter = 0;
                 stopDecrease = false;
-                isResetting = false;
             }
+
+            isResetting = false;
         }
     }
 }
