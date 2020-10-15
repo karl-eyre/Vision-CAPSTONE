@@ -19,6 +19,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         public float PickupRange;
 
         public LayerMask pickupObjectLayer;
+        public LayerMask levelLayer;
 
         [SerializeField]
         private Material highlightMat;
@@ -31,9 +32,10 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         private void Start()
         {
             SetUpControls();
+            // levelLayer = ~pickupObjectLayer;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             HighlightObject();
         }
@@ -54,6 +56,9 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
             Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
             ray = camera.ScreenPointToRay(mousePosition);
+
+            if (Physics.Raycast(ray, out hit, PickupRange, levelLayer)) return;
+            
             isHit = Physics.Raycast(ray, out hit, PickupRange, pickupObjectLayer);
 
             if (isHit)

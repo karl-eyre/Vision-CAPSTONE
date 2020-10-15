@@ -909,7 +909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 8
-  minUpLookAngle: -50
+  minUpLookAngle: -85
   maxDownLookAngle: 70
   playerBody: {fileID: 7510376709348068934}
   mouseLocked: 1
@@ -1480,8 +1480,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 2181429914995191669}
-  useThrowArc: 0
-  throwForce: 10
+  useThrowArc: 1
+  throwForce: 20
   handPosition: {fileID: 6210708696012539873}
   numberOfPoints: 20
   groundLayerMask:
@@ -1510,7 +1510,7 @@ MonoBehaviour:
   noiseLevel: 0
   unphaseableLayer:
     serializedVersion: 2
-    m_Bits: 65536
+    m_Bits: 81920
   phaseableLayer:
     serializedVersion: 2
     m_Bits: 32768
@@ -1577,6 +1577,9 @@ MonoBehaviour:
   pickupObjectLayer:
     serializedVersion: 2
     m_Bits: 2048
+  levelLayer:
+    serializedVersion: 2
+    m_Bits: 49152
   highlightMat: {fileID: 2100000, guid: 379806bee2e230a4ebd07da5d7ac384b, type: 2}
   defaultMat: {fileID: 0}
   selectedObject: {fileID: 0}

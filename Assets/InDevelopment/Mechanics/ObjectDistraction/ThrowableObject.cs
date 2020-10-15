@@ -26,6 +26,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         {
             //TODO:add in a transform check so that it has to be more than a certain distance for it to work,
             //so that enemies that push the objects around don't re-trigger the sound again for themselves or other enemies nearby
+            //TODO:add in speed check so that when level starts they don't automatically trigger enemies
+            
             if (other.collider.CompareTag("Enemy")) return;
             
             //TODO:Add in some check for how this function is called

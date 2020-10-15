@@ -28,6 +28,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         public void OnCollisionEnter(Collision other)
         {
+            //maybe raycast to any enemy in range to see if they heard it, if hit they did else it hit a wall and they didn't 
             if (!other.gameObject.GetComponent<EnemyStateBase>()) return;
             //TODO:uncomment below and test
             var enemyScript = other.gameObject.GetComponent<EnemyStateBase>();
