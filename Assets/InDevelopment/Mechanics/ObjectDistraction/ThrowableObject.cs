@@ -11,6 +11,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
     public class ThrowableObject : MonoBehaviour
     {
         public int noiseLoudness;
+        private int startingNoiseLoudness;
         private ObjectSoundMaker objectSoundMaker;
         
         private void Start()
@@ -20,6 +21,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             //Problem may arise if layer orders are changed
             gameObject.layer = LayerMask.NameToLayer("ThrowableObjects");
             objectSoundMaker = GetComponent<ObjectSoundMaker>();
+            startingNoiseLoudness = noiseLoudness;
         }
 
         private void OnCollisionEnter(Collision other)
@@ -32,7 +34,19 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             
             //TODO:Add in some check for how this function is called
             
+            
+            noiseLoudness += noiseLoudness * (Mathf.RoundToInt(GetComponent<Rigidbody>().velocity.magnitude) / 3);
+            if (noiseLoudness < 6)
+            {
+              Debug.Log("thing happened");
+              return;
+            }
             objectSoundMaker.MakeSound(gameObject.transform.position, noiseLoudness);
+        }
+
+        private void OnCollisionExit(Collision other)
+        {
+            noiseLoudness = startingNoiseLoudness;
         }
 
         private void OnDrawGizmosSelected()

@@ -69,7 +69,7 @@ namespace InDevelopment.Mechanics.Player
         private PhysicMaterial lowFrictionMat;
 
         [SerializeField]
-        private PhysicMaterial frictionMat;
+        private PhysicMaterial highFrictionMat;
 
         private Vector3 forwardTransform;
         private RaycastHit hitInfo;
@@ -121,9 +121,11 @@ namespace InDevelopment.Mechanics.Player
                 return;
             }
 
-            moveSpeed = walkSpeed;
-            currentNoiseLevel = walkNoiseLevel;
-            isSprinting = false;
+            
+                moveSpeed = walkSpeed;
+                currentNoiseLevel = walkNoiseLevel;
+                isSprinting = false;
+            
         }
 
         public void Sprint(InputAction.CallbackContext obj)
@@ -153,6 +155,7 @@ namespace InDevelopment.Mechanics.Player
 
         public void Crouch()
         {
+            //TODO: Change how the crouch works. Less snapping, and move legs up instead of head down? or something?...we gotta figure it out
             if (!isCrouching)
             {
                 isCrouching = true;
@@ -225,8 +228,10 @@ namespace InDevelopment.Mechanics.Player
             else
             {
                 //AirSpeed
-                //TODO:give slight air control
-                rb.AddForce((movement.normalized * (moveSpeed * Time.deltaTime)) / 2, ForceMode.Acceleration);
+                //TODO:Test the new air control, adjust later if needed.
+                // rb.AddForce((movement.normalized * (moveSpeed * Time.deltaTime)) / 2, ForceMode.Acceleration);
+                rb.AddForce((movement.normalized * (moveSpeed * Time.deltaTime)), ForceMode.Acceleration);
+
             }
         }
 
@@ -308,14 +313,14 @@ namespace InDevelopment.Mechanics.Player
 
         private void SwapPhysicsMats()
         {
-            if (IsMoving())
+            if (IsMoving() && !visionActivated)
             {
                 fricStubCol.sharedMaterial = lowFrictionMat;
                 generalSoundMaker.MakeSound(currentNoiseLevel);
             }
             else
             {
-                fricStubCol.sharedMaterial = frictionMat;
+                fricStubCol.sharedMaterial = highFrictionMat;
             }
         }
 
@@ -327,8 +332,11 @@ namespace InDevelopment.Mechanics.Player
             }
             else
             {
-                //TODO:change so that player doesn't stop mid air,
-                rb.velocity = Vector3.zero;
+                if (isGrounded)
+                {
+                    rb.velocity = Vector3.zero;
+                    //moveSpeed = 0;
+                }
             }
         }
 
