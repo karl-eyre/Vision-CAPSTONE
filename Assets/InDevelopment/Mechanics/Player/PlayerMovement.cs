@@ -38,15 +38,16 @@ namespace InDevelopment.Mechanics.Player
         public float sprintDrainRate = 2f;
         public float sprintRefillRate = 2f;
         public float maxSprintEnergy = 100f;
-        private bool isSprinting;
+        [HideInInspector]
+        public bool isSprinting;
 
         public float maxSlopeAngle = 120f;
         private float groundAngle;
 
         [Header("Jump Settings")]
         public float jumpForce;
-
-        private bool isGrounded;
+        [HideInInspector]
+        public bool isGrounded;
         private LayerMask playerMask;
 
         [Header("Other Settings")]
@@ -59,7 +60,8 @@ namespace InDevelopment.Mechanics.Player
         private Collider fricStubCol;
 
         private bool visionActivated;
-        private bool isMoving;
+        [HideInInspector]
+        public bool isMoving;
 
         private float disToGround;
 
@@ -73,7 +75,9 @@ namespace InDevelopment.Mechanics.Player
         private RaycastHit hitInfo;
 
         private bool hasForward;
-        private bool isCrouching;
+
+        [HideInInspector]
+        public bool isCrouching;
 
         // [SerializeField]
         private GeneralSoundMaker generalSoundMaker;
