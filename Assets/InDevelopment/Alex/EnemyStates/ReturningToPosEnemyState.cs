@@ -1,4 +1,4 @@
-﻿using InDevelopment.Mechanics.Enemy;
+﻿﻿using InDevelopment.Mechanics.Enemy;
 using UnityEngine;
 
 namespace InDevelopment.Alex.EnemyStates
@@ -45,7 +45,6 @@ namespace InDevelopment.Alex.EnemyStates
             if (Vector3.Distance(transform.position, target) < 0.5f)
             {
                 stateManager.ChangeState(stateManager.initialState);
-                //TODO:do check in waiting at point state so that if it is interrupted it remembers its previous state
                 // stateManager.ChangeState(stateManager.interruptedState);
             }
         }

@@ -1,4 +1,4 @@
-﻿using InDevelopment.Mechanics.Enemy;
+﻿﻿using InDevelopment.Mechanics.Enemy;
 using UnityEngine;
 
 namespace InDevelopment.Alex.EnemyStates
@@ -35,7 +35,7 @@ namespace InDevelopment.Alex.EnemyStates
             else
             {
                 enemyController.MoveToTarget(target);
-                if (Vector3.Distance(transform.position, target) < 0.6f && stateManager.currentEnemyState != enemyController.waitingAtPointEnemyState)
+                if (Vector3.Distance(transform.position, target) < 0.8f && stateManager.currentEnemyState != enemyController.waitingAtPointEnemyState)
                 {
                     stateManager.ChangeState(enemyController.waitingAtPointEnemyState);
                 }

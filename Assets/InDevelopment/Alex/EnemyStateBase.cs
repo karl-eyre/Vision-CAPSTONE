@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections;
 using System.Threading;
 using InDevelopment.Alex.EnemyStates;
@@ -54,7 +54,7 @@ namespace InDevelopment.Alex
             enemyController.beingDistracted = false;
         }
 
-        public void Awake()
+        public void OnEnable()
         {
             Init();
         }
@@ -72,7 +72,7 @@ namespace InDevelopment.Alex
 
         public virtual void Execute()
         {
-            Debug.Log("I am executing the " + this.GetType() + " state.");
+           // Debug.Log("I am executing the " + this.GetType() + " state.");
         }
 
         public void Update()
@@ -84,32 +84,32 @@ namespace InDevelopment.Alex
         //that would remove the state issue i believe
         public void LOSFunc()
         {
-            //TODO:make so that no states change if in player detected state
-            
             //only call function in each state manually it seems to be causing problems for currently
-            if (CanSeePlayer() && stateManager.currentEnemyState != enemyController.investigatingEnemyState)
+            if (stateManager.currentEnemyState != enemyController.playerDetectedState)
             {
-                if (stateManager.currentEnemyState != enemyController.spottingState)
+                if (CanSeePlayer() && stateManager.currentEnemyState != enemyController.investigatingEnemyState)
                 {
-                    stateManager.ChangeState(enemyController.spottingState);
+                    if (stateManager.currentEnemyState != enemyController.spottingState)
+                    {
+                        stateManager.ChangeState(enemyController.spottingState);
+                    }
                 }
-            }
 
-            if (!(enemyController is null) && enemyController.beingDistracted)
-            {
-                if (stateManager.currentEnemyState != enemyController.investigatingEnemyState)
+                if (!(enemyController is null) && enemyController.beingDistracted)
                 {
-                    stateManager.ChangeState(enemyController.investigatingEnemyState);
+                    if (stateManager.currentEnemyState != enemyController.investigatingEnemyState)
+                    {
+                        stateManager.ChangeState(enemyController.investigatingEnemyState);
+                    }
                 }
-            }
             
-            //TODO:reset in better place
 
-            if (!CanSeePlayer() && !enemyController.beingDistracted)
-            {
-                if (stateManager.previousEnemyState != enemyController.spottingState)
+                if (!CanSeePlayer() && !enemyController.beingDistracted)
                 {
-                    lineOfSight.SoftResetLos();
+                    if (stateManager.previousEnemyState != enemyController.spottingState)
+                    {
+                        lineOfSight.HardResetLos();
+                    }
                 }
             }
         }
