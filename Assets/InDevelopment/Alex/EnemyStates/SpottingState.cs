@@ -6,8 +6,8 @@ namespace InDevelopment.Alex.EnemyStates
     {
         //merely stands still and looks at player.
 
-        [HideInInspector]
-        public Vector3 enemyPosWhenInterrupted;
+        // [HideInInspector]
+        // public Vector3 enemyPosWhenInterrupted;
         public override void Enter()
         {
             base.Enter();
@@ -19,7 +19,7 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Exit()
         {
             base.Exit();
-            enemyPosWhenInterrupted = enemyController.posWhenInterrupted;
+            // enemyPosWhenInterrupted = enemyController.posWhenInterrupted;
         }
 
         public override void Execute()
