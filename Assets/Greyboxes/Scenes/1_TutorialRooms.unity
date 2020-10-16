@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -10631,6 +10631,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 800781885, guid: 3ab37abb5adda8b4891be0e45e753a6d, type: 3}
+      propertyPath: crouchingSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 800781885, guid: 3ab37abb5adda8b4891be0e45e753a6d, type: 3}
+      propertyPath: walkingBackwardSpeed
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 1925349059835918761, guid: 3ab37abb5adda8b4891be0e45e753a6d,
         type: 3}
       propertyPath: m_Mesh
@@ -11011,7 +11019,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-35162
+  m_Name: pb_Mesh-27382
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
