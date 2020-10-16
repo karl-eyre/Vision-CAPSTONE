@@ -1,4 +1,5 @@
-﻿using InDevelopment.Mechanics.ObjectDistraction;
+﻿using System.Threading;
+using InDevelopment.Mechanics.ObjectDistraction;
 using InDevelopment.Mechanics.VisionAbility;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,8 +12,6 @@ namespace InDevelopment.Mechanics.Player
     [RequireComponent(typeof(PlayerController))]
     public class PlayerMovement : MonoBehaviour
     {
-        
-        
         private PlayerController controller;
         private Vector2 moveDirection;
 
@@ -24,9 +23,10 @@ namespace InDevelopment.Mechanics.Player
         private float playerHeight = 3.2f;
 
         public LayerMask obstacleLayerMask;
-        
+
         private Vector3 movement;
 
+        [SerializeField]
         private float moveSpeed;
 
         [Header("Movement Settings")]
@@ -112,10 +112,15 @@ namespace InDevelopment.Mechanics.Player
             rb = GetComponent<Rigidbody>();
             disToGround = GetComponent<BoxCollider>().bounds.extents.y;
             generalSoundMaker = GetComponentInChildren<GeneralSoundMaker>();
-            }
+        }
 
         public void Walk(InputAction.CallbackContext obj)
         {
+            if (isCrouching)
+            {
+                return;
+            }
+
             moveSpeed = walkSpeed;
             currentNoiseLevel = walkNoiseLevel;
             isSprinting = false;
@@ -145,12 +150,13 @@ namespace InDevelopment.Mechanics.Player
                 StandUp();
             }
         }
-        
+
         public void Crouch()
         {
             if (!isCrouching)
             {
                 isCrouching = true;
+                moveSpeed = walkSpeed / 2;
                 transform.localScale = new Vector3(1, transform.localScale.y / 2f, 1);
             }
         }
@@ -159,10 +165,12 @@ namespace InDevelopment.Mechanics.Player
         {
             if (isCrouching)
             {
-                bool canStand = !Physics.Raycast(transform.position, Vector3.up, playerHeight + 0.3f,obstacleLayerMask);
-                if (canStand)
+                bool canStand =
+                    !Physics.Raycast(transform.position, Vector3.up, playerHeight + 0.3f, obstacleLayerMask);
+                if (canStand && !isSprinting)
                 {
                     isCrouching = false;
+                    moveSpeed = walkSpeed;
                     transform.localScale = new Vector3(1, transform.localScale.y * 2f, 1);
                 }
             }
@@ -217,6 +225,7 @@ namespace InDevelopment.Mechanics.Player
             else
             {
                 //AirSpeed
+                //TODO:give slight air control
                 rb.AddForce((movement.normalized * (moveSpeed * Time.deltaTime)) / 2, ForceMode.Acceleration);
             }
         }
@@ -318,6 +327,7 @@ namespace InDevelopment.Mechanics.Player
             }
             else
             {
+                //TODO:change so that player doesn't stop mid air,
                 rb.velocity = Vector3.zero;
             }
         }

@@ -109,7 +109,7 @@ namespace InDevelopment.Alex
             {
                 if (stateManager.previousEnemyState != enemyController.spottingState)
                 {
-                    lineOfSight.HardResetLos();
+                    lineOfSight.SoftResetLos();
                 }
             }
         }
