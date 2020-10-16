@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1540,7 +1540,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-24340
+  m_Name: pb_Mesh-9932
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1764,6 +1764,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411825657087232574, guid: 1d4d0a84b0c012b478794523ad4864bd,
+        type: 3}
+      propertyPath: noiseLoudness
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7411825657087232575, guid: 1d4d0a84b0c012b478794523ad4864bd,
         type: 3}
@@ -1992,6 +1997,12 @@ PrefabInstance:
       propertyPath: mouseLocked
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3323470903385831385, guid: 3ab37abb5adda8b4891be0e45e753a6d,
+        type: 3}
+      propertyPath: highFrictionMat
+      value: 
+      objectReference: {fileID: 13400000, guid: 3e67949a86c20d6448b77ceca256ea86,
+        type: 2}
     - target: {fileID: 4107646514212720875, guid: 3ab37abb5adda8b4891be0e45e753a6d,
         type: 3}
       propertyPath: m_LocalPosition.x

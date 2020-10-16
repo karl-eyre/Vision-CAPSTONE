@@ -85,6 +85,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             {
                 hitObject.transform.position = handPosition.transform.position;
                 hitObject.transform.rotation = handPosition.transform.rotation;
+                throwableObjectPrefab.GetComponent<BoxCollider>().enabled = false;
             }
         }
 
@@ -234,11 +235,11 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             rb.AddForce(CalculateThrowDirection(throwDirection) * throwForce, ForceMode.Impulse);
 
             //these two need to be in there
+            throwableObjectPrefab.GetComponent<BoxCollider>().enabled = true;
             throwableObjectPrefab = null;
             hasObjectToThrow = false;
         }
         
-        //TODO: don't allow picking up through a wall
 
         private void TryToPickupObject()
         {

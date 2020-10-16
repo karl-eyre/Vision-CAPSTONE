@@ -242,7 +242,6 @@ namespace InDevelopment.Mechanics.Enemy
 
         private void MoveToTarget(Vector3 target)
         {
-            //TODO: Change to move by navmesh agent rather than transform position
             transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
             Vector3 direction = (target - transform.position).normalized;
 

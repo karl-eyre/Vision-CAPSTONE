@@ -19,7 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="099d4599-28c3-4b48-8cd4-945b670a75f7" name="Default Changelist" comment="" />
+    <list default="true" id="099d4599-28c3-4b48-8cd4-945b670a75f7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStateBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStateBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/InvestigatingEnemyState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/InvestigatingEnemyState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/ReturningToPosEnemyState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/ReturningToPosEnemyState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,48 +34,52 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/ObjectSoundMaker.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/GeneralSoundMaker.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/StartingState.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/ThrowableObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E98ED036-8295-432E-8C11-E52D6243EE11/30/36abebc5/LayerMask.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E98ED036-8295-432E-8C11-E52D6243EE11/c9/fa922e8c/Component.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/DistractionAbility.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/StateManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStateBase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Enemy/MovementManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E98ED036-8295-432E-8C11-E52D6243EE11/06/8d86c212/Component.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/InvestigatingEnemyState.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PatrollingEnemyState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Actions/InputActionState.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/VisionAbility/VisionEffectActivation.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Enemy/EnemyStateMachine.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PlayerDetectedState.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/ReturningToPosEnemyState.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Player/MouseLook.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E98ED036-8295-432E-8C11-E52D6243EE11/a3/e14e8bc5/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/StationaryEnemyState.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Player/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/WaitingAtPointEnemyState.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/LineOfSight/LineOfSight.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/VisionAbility/Shaders/One Color/VisionShader.shader" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/VisionAbility/VisionAbilityController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/VisionAbility/Shaders/Texture/VisionAbilityTexture.shader" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Editor/LineOfSightEditor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E98ED036-8295-432E-8C11-E52D6243EE11/f4/d2a3a3c6/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/UniversalRenderingPipeline/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/SpottingState.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/LevelManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/SelectionOutline.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/PlayerRB.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/FMOD Scripts/F_Occlusion.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/TeleportAbility/TeleportAbility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/ActionMap/GameControls.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UniversalRenderingPipeline/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/SettingsEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/SelectionOutline.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/VisionAbility/VisionEffectActivation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///InvestigatingEnemyState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///EnemyStateBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///EnemyStateBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Enemy/EnemyStateMachine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/LevelManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Player/MouseLook.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E98ED036-8295-432E-8C11-E52D6243EE11/fb/bee601d6/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///SimpleCameraController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///EnemyStateBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///EnemyStateBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Enemy/MovementManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/WaitingAtPointEnemyState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/VisionAbility/VisionAbilityController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/StationaryEnemyState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/VisionAbility/Shaders/One Color/VisionShader.shader" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/PlayerRB.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/ReturningToPosEnemyState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PlayerDetectedState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Player/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/VisionAbility/Shaders/Texture/VisionAbilityTexture.shader" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PatrollingEnemyState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/LineOfSightEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/InvestigatingEnemyState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStateBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/TeleportAbility/TeleportAbility.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/LineOfSight/LineOfSight.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///EnemyStateBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/GeneralSoundMaker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///EnemyStateBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/StateManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/ObjectSoundMaker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UniversalRenderingPipeline/Scripts/SimpleCameraController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/ThrowableObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/SpottingState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/DistractionAbility.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/StartingState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FMOD Scripts/F_Occlusion.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -113,8 +122,6 @@
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/PatrollingEnemyState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/MenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/LevelManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/SpottingState.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/InvestigatingEnemyState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/ReturningToPosEnemyState.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/DistractionAbility.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/GeneralSoundMaker.cs" />
@@ -123,9 +130,11 @@
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/ObjectDistraction/SelectionOutline.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/LineOfSight/LineOfSight.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Player/PlayerMovementCC.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStateBase.cs" />
-        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/EnemyController.cs" />
         <option value="$PROJECT_DIR$/Assets/InDevelopment/Mechanics/Player/PlayerMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/EnemyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/SpottingState.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStates/InvestigatingEnemyState.cs" />
+        <option value="$PROJECT_DIR$/Assets/InDevelopment/Alex/EnemyStateBase.cs" />
       </list>
     </option>
   </component>
@@ -162,22 +171,16 @@
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
-      <option name="selectedOptions">
-        <set />
-      </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="5392">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="5392" />
-      <option name="selectedOptions">
-        <set />
-      </option>
+      <option name="pid" />
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -221,7 +224,7 @@
       <workItem from="1602311352781" duration="3254000" />
       <workItem from="1602391362642" duration="1879000" />
       <workItem from="1602572393805" duration="2421000" />
-      <workItem from="1602718534964" duration="12791000" />
+      <workItem from="1602718534964" duration="18553000" />
     </task>
     <servers />
   </component>
@@ -233,11 +236,41 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:E:/01__Code_Lounge/Vision-CAPSTONE/Assets/InDevelopment/Alex" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State />
           </value>
         </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
@@ -254,6 +287,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="472" height="464" key="DebuggerActiveHint/0.0.1600.860@0.0.1600.860" timestamp="1602745249725" />
+    <state x="92" y="92" width="1736" height="866" key="DiffContextDialog" timestamp="1602823745249">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="92" y="92" width="1736" height="866" key="DiffContextDialog/-1080.-387.1080.1890/-2160.-387.1080.1890/0.0.1920.1050@0.0.1920.1050" timestamp="1602823745249" />
     <state width="1557" height="185" key="GridCell.Tab.0.bottom" timestamp="1602762867750">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -376,15 +413,24 @@
     </state>
     <state x="-33" y="0" width="1249" height="860" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1602391507725" />
     <state x="774" y="173" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596435165341" />
-    <state x="92" y="92" width="1736" height="866" key="VCS.FileHistoryDialog" timestamp="1600610977628">
+    <state x="92" y="92" width="1736" height="866" key="VCS.FileHistoryDialog" timestamp="1602823745249">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state x="92" y="92" width="1736" height="866" key="VCS.FileHistoryDialog/-1080.-387.1080.1890/-2160.-387.1080.1890/0.0.1920.1050@0.0.1920.1050" timestamp="1602823745249" />
     <state x="92" y="92" width="1736" height="866" key="VCS.FileHistoryDialog/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1600610977628" />
     <state width="807" height="437" key="XDebugger.FullValuePopup" timestamp="1597824011055">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="807" height="437" key="XDebugger.FullValuePopup/0.0.1600.860@0.0.1600.860" timestamp="1597824011055" />
     <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596434074606" />
+    <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1602823745249">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/-1080.-387.1080.1890/-2160.-387.1080.1890/0.0.1920.1050@0.0.1920.1050" timestamp="1602823745249" />
+    <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602823745249">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog/-1080.-387.1080.1890/-2160.-387.1080.1890/0.0.1920.1050@0.0.1920.1050" timestamp="1602823745249" />
     <state x="0" y="0" width="1573" height="847" key="dock-window-1" timestamp="1602312251693">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -394,9 +440,10 @@
       <screen x="-1920" y="0" width="1920" height="1050" />
     </state>
     <state x="-1849" y="0" width="1494" height="1037" key="dock-window-2/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1600328596602" />
-    <state x="746" y="170" width="714" height="534" key="find.popup" timestamp="1600613943225">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="622" y="139" width="714" height="534" key="find.popup" timestamp="1602817021227">
+      <screen x="0" y="0" width="1600" height="860" />
     </state>
+    <state x="622" y="139" width="714" height="534" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1602817021227" />
     <state x="746" y="170" width="714" height="534" key="find.popup/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1600613943225" />
     <state x="456" y="195" key="run.anything.popup" timestamp="1602312507495">
       <screen x="0" y="0" width="1600" height="860" />
@@ -422,7 +469,7 @@
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
-        <PinnedItemInfo parentTag="Frame#InDevelopment.Mechanics.ObjectDistraction.SelectionOutline.HighlightObject" memberName="this" />
+        <PinnedItemInfo />
       </pinned-members>
     </pin-to-top-manager>
   </component>
