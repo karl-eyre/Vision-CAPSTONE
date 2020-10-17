@@ -97,6 +97,14 @@ public class @GameControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""144e66a7-813c-48e1-83c1-e45f046bf09b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -264,6 +272,17 @@ public class @GameControls : IInputActionCollection, IDisposable
                     ""action"": ""TeleportToItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""39f2a398-3dd0-4e0f-8914-a60714879bcd"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -282,6 +301,7 @@ public class @GameControls : IInputActionCollection, IDisposable
         m_InGame_PickUpObject = m_InGame.FindAction("PickUpObject", throwIfNotFound: true);
         m_InGame_ThrowObject = m_InGame.FindAction("ThrowObject", throwIfNotFound: true);
         m_InGame_TeleportToItem = m_InGame.FindAction("TeleportToItem", throwIfNotFound: true);
+        m_InGame_Exit = m_InGame.FindAction("Exit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -341,6 +361,7 @@ public class @GameControls : IInputActionCollection, IDisposable
     private readonly InputAction m_InGame_PickUpObject;
     private readonly InputAction m_InGame_ThrowObject;
     private readonly InputAction m_InGame_TeleportToItem;
+    private readonly InputAction m_InGame_Exit;
     public struct InGameActions
     {
         private @GameControls m_Wrapper;
@@ -355,6 +376,7 @@ public class @GameControls : IInputActionCollection, IDisposable
         public InputAction @PickUpObject => m_Wrapper.m_InGame_PickUpObject;
         public InputAction @ThrowObject => m_Wrapper.m_InGame_ThrowObject;
         public InputAction @TeleportToItem => m_Wrapper.m_InGame_TeleportToItem;
+        public InputAction @Exit => m_Wrapper.m_InGame_Exit;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -394,6 +416,9 @@ public class @GameControls : IInputActionCollection, IDisposable
                 @TeleportToItem.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnTeleportToItem;
                 @TeleportToItem.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnTeleportToItem;
                 @TeleportToItem.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnTeleportToItem;
+                @Exit.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnExit;
+                @Exit.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnExit;
+                @Exit.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnExit;
             }
             m_Wrapper.m_InGameActionsCallbackInterface = instance;
             if (instance != null)
@@ -428,6 +453,9 @@ public class @GameControls : IInputActionCollection, IDisposable
                 @TeleportToItem.started += instance.OnTeleportToItem;
                 @TeleportToItem.performed += instance.OnTeleportToItem;
                 @TeleportToItem.canceled += instance.OnTeleportToItem;
+                @Exit.started += instance.OnExit;
+                @Exit.performed += instance.OnExit;
+                @Exit.canceled += instance.OnExit;
             }
         }
     }
@@ -444,5 +472,6 @@ public class @GameControls : IInputActionCollection, IDisposable
         void OnPickUpObject(InputAction.CallbackContext context);
         void OnThrowObject(InputAction.CallbackContext context);
         void OnTeleportToItem(InputAction.CallbackContext context);
+        void OnExit(InputAction.CallbackContext context);
     }
 }
