@@ -38,6 +38,7 @@ namespace InDevelopment.Mechanics.Player
         public float sprintDrainRate = 2f;
         public float sprintRefillRate = 2f;
         public float maxSprintEnergy = 100f;
+
         [HideInInspector]
         public bool isSprinting;
 
@@ -46,8 +47,10 @@ namespace InDevelopment.Mechanics.Player
 
         [Header("Jump Settings")]
         public float jumpForce;
+
         [HideInInspector]
         public bool isGrounded;
+
         private LayerMask playerMask;
 
         [Header("Other Settings")]
@@ -60,6 +63,7 @@ namespace InDevelopment.Mechanics.Player
         private Collider fricStubCol;
 
         private bool visionActivated;
+
         [HideInInspector]
         public bool isMoving;
 
@@ -121,11 +125,10 @@ namespace InDevelopment.Mechanics.Player
                 return;
             }
 
-            
-                moveSpeed = walkSpeed;
-                currentNoiseLevel = walkNoiseLevel;
-                isSprinting = false;
-            
+
+            moveSpeed = walkSpeed;
+            currentNoiseLevel = walkNoiseLevel;
+            isSprinting = false;
         }
 
         public void Sprint(InputAction.CallbackContext obj)
@@ -231,7 +234,6 @@ namespace InDevelopment.Mechanics.Player
                 //TODO:Test the new air control, adjust later if needed.
                 // rb.AddForce((movement.normalized * (moveSpeed * Time.deltaTime)) / 2, ForceMode.Acceleration);
                 rb.AddForce((movement.normalized * (moveSpeed * Time.deltaTime)), ForceMode.Acceleration);
-
             }
         }
 

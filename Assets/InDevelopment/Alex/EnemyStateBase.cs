@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections;
 using System.Threading;
 using InDevelopment.Alex.EnemyStates;
@@ -62,12 +62,12 @@ namespace InDevelopment.Alex
         public virtual void Enter()
         {
             Init();
-            Debug.Log("I have entered into the " + this.GetType() + " state.");
+            // Debug.Log("I have entered into the " + this.GetType() + " state.");
         }
 
         public virtual void Exit()
         {
-            Debug.Log("I have exited into the " + this.GetType() + " state.");
+            // Debug.Log("I have exited into the " + this.GetType() + " state.");
         }
 
         public virtual void Execute()

@@ -285,6 +285,44 @@ public class @GameControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""7b700070-7cdd-4dff-88f6-ff2e3dfc06e0"",
+            ""actions"": [
+                {
+                    ""name"": ""OpenPauseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""bf1cfc4c-931e-45a4-a49f-e7384621ac89"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""7c3bb50a-0935-4f0a-8fed-108030d2abf5"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenPauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c73e222f-68d2-4955-a958-c1d4a76d9ae4"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenPauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -302,6 +340,9 @@ public class @GameControls : IInputActionCollection, IDisposable
         m_InGame_ThrowObject = m_InGame.FindAction("ThrowObject", throwIfNotFound: true);
         m_InGame_TeleportToItem = m_InGame.FindAction("TeleportToItem", throwIfNotFound: true);
         m_InGame_Exit = m_InGame.FindAction("Exit", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_OpenPauseMenu = m_Menu.FindAction("OpenPauseMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -460,6 +501,39 @@ public class @GameControls : IInputActionCollection, IDisposable
         }
     }
     public InGameActions @InGame => new InGameActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_OpenPauseMenu;
+    public struct MenuActions
+    {
+        private @GameControls m_Wrapper;
+        public MenuActions(@GameControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @OpenPauseMenu => m_Wrapper.m_Menu_OpenPauseMenu;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @OpenPauseMenu.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnOpenPauseMenu;
+                @OpenPauseMenu.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnOpenPauseMenu;
+                @OpenPauseMenu.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnOpenPauseMenu;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @OpenPauseMenu.started += instance.OnOpenPauseMenu;
+                @OpenPauseMenu.performed += instance.OnOpenPauseMenu;
+                @OpenPauseMenu.canceled += instance.OnOpenPauseMenu;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     public interface IInGameActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -473,5 +547,9 @@ public class @GameControls : IInputActionCollection, IDisposable
         void OnThrowObject(InputAction.CallbackContext context);
         void OnTeleportToItem(InputAction.CallbackContext context);
         void OnExit(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnOpenPauseMenu(InputAction.CallbackContext context);
     }
 }

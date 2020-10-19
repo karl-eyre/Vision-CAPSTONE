@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c63c99d5b9fbe45902f5fed5454ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLandReturn: 60
+  turnRadius: 60
   rotSpeed: 5
   moveSpeed: 5
   rotation: {x: 0, y: 0, z: 0, w: 0}
@@ -418,7 +418,6 @@ MonoBehaviour:
   lineOfSight: {fileID: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
-  enemyPosWhenInterrupted: {x: 0, y: 0, z: 0}
 --- !u!1 &5219686029784979695
 GameObject:
   m_ObjectHideFlags: 0

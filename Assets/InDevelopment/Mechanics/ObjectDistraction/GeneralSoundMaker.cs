@@ -8,9 +8,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
     public class GeneralSoundMaker : MonoBehaviour
     {
         public Collider noiseLevelCollider;
-
-        public LayerMask enemyLayer;
-
         private float noiseLevelDebug;
         private bool waiting;
 
@@ -26,14 +23,15 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             StartCoroutine(WaitTime());
         }
 
-        public void OnCollisionEnter(Collision other)
+        public void OnTriggerEnter(Collider other)
         {
             //maybe raycast to any enemy in range to see if they heard it, if hit they did else it hit a wall and they didn't 
-            if (!other.gameObject.GetComponent<EnemyStateBase>()) return;
+            if (!other.gameObject.GetComponentInChildren<EnemyStateBase>()) return;
             //TODO:uncomment below and test
-            var enemyScript = other.gameObject.GetComponent<EnemyStateBase>();
+            Debug.Log("Footstep heard");
+            // var enemyScript = other.gameObject.GetComponentInChildren<EnemyStateBase>();
             // enemyScript.GetDistracted(transform.position);
-            
+
         }
 
         private IEnumerator WaitTime()

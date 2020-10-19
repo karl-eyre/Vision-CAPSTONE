@@ -8,6 +8,7 @@ namespace InDevelopment.Mechanics.Player
         private GameControls controls;
         private PlayerMovement playerMovement;
 
+        [HideInInspector]
         public Vector2 moveDirection;
 
         private void Awake()

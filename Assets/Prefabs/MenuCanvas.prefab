@@ -369,7 +369,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7232842043121780630}
+      - m_Target: {fileID: 0}
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7232842043121780630}
+      - m_Target: {fileID: 0}
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 7232842043121780713}
   - component: {fileID: 7232842043121780712}
   - component: {fileID: 7232842043121780715}
-  - component: {fileID: 7232842043121780630}
+  - component: {fileID: 5621663462262770793}
   m_Layer: 5
   m_Name: Buttons Controller
   m_TagString: Untagged
@@ -772,7 +772,7 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
---- !u!114 &7232842043121780630
+--- !u!114 &5621663462262770793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -781,7 +781,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7232842043121780717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb20667ba8a16744698110cdea84067f, type: 3}
+  m_Script: {fileID: 11500000, guid: 66d1832aed00c81458d0dd3bb1a5fe5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7232842043305400148
@@ -1059,7 +1059,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7232842043121780630}
+      - m_Target: {fileID: 0}
         m_MethodName: Credits
         m_Mode: 1
         m_Arguments:
@@ -1263,7 +1263,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7232842043121780630}
+      - m_Target: {fileID: 0}
         m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
@@ -1393,7 +1393,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7232842043121780630}
+      - m_Target: {fileID: 0}
         m_MethodName: Settings
         m_Mode: 1
         m_Arguments:

@@ -991,7 +991,7 @@ MonoBehaviour:
   noiseLevelCollider: {fileID: 9050641371892335291}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 5632
+    m_Bits: 4096
 --- !u!1 &6543801910820431185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,6 +1533,7 @@ MonoBehaviour:
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 16384
+  moveSpeed: 0
   walkSpeed: 335
   sprintSpeed: 460
   sprintEnergy: 100
@@ -1548,7 +1549,7 @@ MonoBehaviour:
   fricStubCol: {fileID: 7737595605828000114}
   isMoving: 0
   lowFrictionMat: {fileID: 13400000, guid: fdc4b2292872bd946be18e32d3417c65, type: 2}
-  frictionMat: {fileID: 13400000, guid: 3e67949a86c20d6448b77ceca256ea86, type: 2}
+  highFrictionMat: {fileID: 13400000, guid: 3e67949a86c20d6448b77ceca256ea86, type: 2}
   isCrouching: 0
   walkNoiseLevel: 0
   sprintNoiseLevel: 0
@@ -1604,6 +1605,7 @@ MonoBehaviour:
   walkingSpeed: 0.7
   runningSpeed: 0.3
   crouchingSpeed: 0.9
+  walkingBackwardSpeed: 0
 --- !u!114 &800781886
 MonoBehaviour:
   m_ObjectHideFlags: 0
