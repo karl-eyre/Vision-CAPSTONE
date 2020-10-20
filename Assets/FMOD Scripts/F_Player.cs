@@ -33,13 +33,13 @@ public class F_Player : MonoBehaviour
         InvokeRepeating("FootstepsWalk", 0, walkingSpeed);
         InvokeRepeating("FootstepsRun", 0, runningSpeed);
         InvokeRepeating("CrouchingWalk", 0, crouchingSpeed);
-        InvokeRepeating("WalkingBackwards", 0, walkingBackwardSpeed);
+        InvokeRepeating("WalkingBackWards", 0, walkingBackwardSpeed);
     }
 
     void backgroundMusic()
     {
-        musicTrack = RuntimeManager.CreateInstance("event:/Music/MusicTest");
-        //musicTrack.start();
+        musicTrack = RuntimeManager.CreateInstance("event:/Music/AmbientMusic");
+        musicTrack.start();
         musicTrack.release();
     }
 

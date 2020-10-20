@@ -6,24 +6,22 @@ using FMODUnity;
 
 public class SnapShotTrigger : MonoBehaviour
 {
-    EventInstance snapshot;
-    EventInstance snapshot2;
-    EventInstance ambInterior;
-
-    public GameObject Player;
+    [FMODUnity.EventRef]
+    public string eventpath;
+    public EventInstance snapshot; 
+    GameObject Player;
     void Start()
     {
-        snapshot = RuntimeManager.CreateInstance("snapshot:/Area1 Tutorial");
-        snapshot2 = RuntimeManager.CreateInstance("snapshot:/Area2 Tutorial");
-        ambInterior = RuntimeManager.CreateInstance("event:/Ambience/RoomTone");
+        snapshot = RuntimeManager.CreateInstance(eventpath);
+        Player = GameObject.Find("Player");
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == Player)
         {
+            Debug.Log("SnapshotStarted");
             snapshot.start();         
-            ambInterior.start();
         }    
     }
     private void OnTriggerExit(Collider other)

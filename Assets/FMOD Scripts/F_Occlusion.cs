@@ -19,19 +19,20 @@ public class F_Occlusion : MonoBehaviour
     [SerializeField]
     private LayerMask lm;
     private RaycastHit hit;
-    public Transform player;
+    Transform player;
 
     //Testing
     bool patroling;
-    Animator animator;
+    //Animator animator;
 
     void Start()
     {
-        animator = GetComponent<Animator>();
+        player = GameObject.Find("Player").GetComponent<Transform>();
+        //animator = GetComponent<Animator>();
         music = RuntimeManager.CreateInstance(eventPath);
         RuntimeManager.AttachInstanceToGameObject(music, transform, GetComponent<Rigidbody>());
         music.start();
-
+        F_Player.musicTrack.setParameterByName("Intencity", 100f, false);
         searching = RuntimeManager.CreateInstance("event:/Enemies/Searching");
         RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
     }
@@ -64,14 +65,19 @@ public class F_Occlusion : MonoBehaviour
     private void Update()
     {
         Music();
+        
     }
     void Music() //Fade In More Intense Music depending on how close player is. 
     {
        float musicDist = Vector3.Distance(transform.position, player.transform.position);
+        Debug.Log(musicDist);
 
-        if (musicDist <= MusicRadius)
+        if (player != null)
         {
-            F_Player.musicTrack.setParameterByName("Intencity", musicDist, false);
+            if (musicDist <= MusicRadius)
+            {
+                F_Player.musicTrack.setParameterByName("Intencity", musicDist, false);
+            }
         }
     }
 
@@ -81,7 +87,7 @@ public class F_Occlusion : MonoBehaviour
         if (patroling == false)
         {
             //searching.start();
-            animator.SetBool("Start", true);
+            //animator.SetBool("Start", true);
             patroling = true;
         }             
     }
@@ -108,5 +114,11 @@ public class F_Occlusion : MonoBehaviour
             //Debug.Log("No wall");
             music.setParameterByName("LowPass", 0, false);
         }
+    }
+
+    private void OnDestroy()
+    {
+        music.release();
+        F_Player.musicTrack.setParameterByName("Intencity", 100f, false);
     }
 }
