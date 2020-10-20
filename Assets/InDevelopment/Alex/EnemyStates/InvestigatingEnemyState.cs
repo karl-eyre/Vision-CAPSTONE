@@ -5,8 +5,10 @@ namespace InDevelopment.Alex.EnemyStates
 {
     public class InvestigatingEnemyState : EnemyStateBase
     {
-        [HideInInspector]
+        // [HideInInspector]
         public Vector3 target;
+
+        private float distanceThreshold = 0.8f;
 
         public override void Enter()
         {
@@ -35,7 +37,7 @@ namespace InDevelopment.Alex.EnemyStates
             else
             {
                 enemyController.MoveToTarget(target);
-                if (Vector3.Distance(transform.position, target) < 0.8f && stateManager.currentEnemyState != enemyController.waitingAtPointEnemyState)
+                if (Vector2.Distance(new Vector2(transform.position.x,transform.position.z), new Vector2(target.x,target.z)) < distanceThreshold && stateManager.currentEnemyState != enemyController.waitingAtPointEnemyState)
                 {
                     stateManager.ChangeState(enemyController.waitingAtPointEnemyState);
                 }

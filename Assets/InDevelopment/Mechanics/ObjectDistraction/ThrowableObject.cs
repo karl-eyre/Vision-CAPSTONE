@@ -41,6 +41,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
               Debug.Log("thing happened");
               return;
             }
+            //TODO:ensure that the sound is made at the x and z positions not the y
             objectSoundMaker.MakeSound(gameObject.transform.position, noiseLoudness);
         }
 

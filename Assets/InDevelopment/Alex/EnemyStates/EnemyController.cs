@@ -103,6 +103,10 @@ namespace InDevelopment.Alex.EnemyStates
             //     return;
             // }
             //
+            
+            //TODO uncomment and test to see if this keeps doesn't bug enemies when object is thrown at wall
+            // tgt = new Vector3(tgt.x,transform.position.y,tgt.z);
+            
             if (agent.isStopped || agent.remainingDistance < 0.5f)
             {
                 agent.ResetPath();
@@ -129,13 +133,6 @@ namespace InDevelopment.Alex.EnemyStates
             var t = transform.position;
             transform.rotation = Quaternion.Euler(0f, turnRadius * Mathf.Sin(Time.time * rotSpeed), 0f);
             //TODO: Fix this so that it does the look left and right thing based on its current looking direction!
-        }
-
-
-        // Update is called once per frame
-        void FixedUpdate()
-        {
-            //transform.rotation = rotation;
         }
     }
 }

@@ -4,6 +4,7 @@ using InDevelopment.Mechanics.VisionAbility;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 namespace InDevelopment.Mechanics.Player
 {
     /// <summary>
@@ -12,6 +13,7 @@ namespace InDevelopment.Mechanics.Player
     [RequireComponent(typeof(PlayerController))]
     public class PlayerMovement : MonoBehaviour
     {
+        //TODO remake player prefab to see if it fixes object pick up bug in backstreet level
         private PlayerController controller;
         private Vector2 moveDirection;
 
@@ -125,7 +127,6 @@ namespace InDevelopment.Mechanics.Player
                 return;
             }
 
-
             moveSpeed = walkSpeed;
             currentNoiseLevel = walkNoiseLevel;
             isSprinting = false;
@@ -173,6 +174,7 @@ namespace InDevelopment.Mechanics.Player
             {
                 bool canStand =
                     !Physics.Raycast(transform.position, Vector3.up, playerHeight + 0.3f, obstacleLayerMask);
+                //TODO if you press sprint while crouching it keeps player crouched permanently
                 if (canStand && !isSprinting)
                 {
                     isCrouching = false;
@@ -208,7 +210,7 @@ namespace InDevelopment.Mechanics.Player
 
         public void Jump(InputAction.CallbackContext obj)
         {
-            if (IsGrounded())
+            if (IsGrounded() && !isCrouching)
             {
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
