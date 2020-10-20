@@ -281,7 +281,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1642794083}
+      - m_Target: {fileID: 0}
         m_MethodName: Credits
         m_Mode: 1
         m_Arguments:
@@ -581,7 +581,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1642794083}
+      - m_Target: {fileID: 0}
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -1071,7 +1071,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1642794083}
+      - m_Target: {fileID: 0}
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -1460,7 +1460,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1642794081}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb20667ba8a16744698110cdea84067f, type: 3}
+  m_Script: {fileID: 11500000, guid: 66d1832aed00c81458d0dd3bb1a5fe5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1642794084
@@ -1685,7 +1685,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1642794083}
+      - m_Target: {fileID: 0}
         m_MethodName: Settings
         m_Mode: 1
         m_Arguments:
