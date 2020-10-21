@@ -318,7 +318,7 @@ namespace InDevelopment.Mechanics.Player
 
         private void SwapPhysicsMats()
         {
-            if (IsMoving() && !visionActivated)
+            if (IsMoving() && !visionActivated || !IsGrounded())
             {
                 fricStubCol.sharedMaterial = lowFrictionMat;
                 generalSoundMaker.MakeSound(currentNoiseLevel);
