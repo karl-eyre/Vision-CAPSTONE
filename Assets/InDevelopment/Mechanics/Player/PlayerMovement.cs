@@ -174,8 +174,7 @@ namespace InDevelopment.Mechanics.Player
             {
                 bool canStand =
                     !Physics.Raycast(transform.position, Vector3.up, playerHeight + 0.3f, obstacleLayerMask);
-                //TODO if you press sprint while crouching it keeps player crouched permanently
-                if (canStand && !isSprinting)
+                if (canStand)
                 {
                     isCrouching = false;
                     moveSpeed = walkSpeed;

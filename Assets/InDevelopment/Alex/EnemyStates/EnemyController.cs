@@ -131,16 +131,14 @@ namespace InDevelopment.Alex.EnemyStates
                     agent.SetDestination(hit.position);
                 }
             }
-
-            
             /* old movement
-        var position = transform.position;
-        position = Vector3.MoveTowards(position, tgt, Time.deltaTime * moveSpeed);
-        LookAtTarget(tgt);
-        transform.position = position;
-        direction = (tgt - position).normalized;
-        //rotation = transform.rotation;
-        */
+            var position = transform.position;
+            position = Vector3.MoveTowards(position, tgt, Time.deltaTime * moveSpeed);
+            LookAtTarget(tgt);
+            transform.position = position;
+            direction = (tgt - position).normalized;
+            //rotation = transform.rotation;
+            */
         }
 
         public void LookAtTarget(Vector3 tgt)

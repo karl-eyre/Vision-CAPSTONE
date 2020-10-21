@@ -56,8 +56,12 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
             Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
             ray = camera.ScreenPointToRay(mousePosition);
-
-            if (Physics.Raycast(ray, out hit, PickupRange, levelLayer)) return;
+            
+            //TODO ALEX ITS HERE have it checked out as to why it doesn't work
+            if (Physics.Raycast(ray, out hit, PickupRange, levelLayer))
+            {
+                return;
+            }
             
             isHit = Physics.Raycast(ray, out hit, PickupRange, pickupObjectLayer);
 
