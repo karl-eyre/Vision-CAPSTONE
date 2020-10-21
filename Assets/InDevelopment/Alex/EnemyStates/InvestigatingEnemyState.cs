@@ -29,6 +29,8 @@ namespace InDevelopment.Alex.EnemyStates
             base.Execute();
             //Move to last know player position if you lose player otherwise slowing move towards while continuing to detect player
             //once player is lost wait at last know pos
+            //TODO put check in to see if pos is on nav mesh otherwise assign target as closest point
+
             if (CanSeePlayer())
             {
                 target = lastKnownPlayerPosition;

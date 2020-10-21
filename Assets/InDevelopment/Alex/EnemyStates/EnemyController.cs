@@ -113,6 +113,26 @@ namespace InDevelopment.Alex.EnemyStates
             }
 
             agent.SetDestination(tgt);
+            
+            if (agent.pathPending)
+            {
+                if (agent.pathStatus == NavMeshPathStatus.PathComplete)
+                {
+                    agent.SetDestination(tgt);
+                }
+                else if(agent.pathStatus == NavMeshPathStatus.PathInvalid)
+                {
+                    agent.ResetPath();
+                }
+                else if(agent.pathStatus == NavMeshPathStatus.PathPartial)
+                {
+                    NavMeshHit hit;
+                    agent.FindClosestEdge(out hit);
+                    agent.SetDestination(hit.position);
+                }
+            }
+
+            
             /* old movement
         var position = transform.position;
         position = Vector3.MoveTowards(position, tgt, Time.deltaTime * moveSpeed);
