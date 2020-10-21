@@ -190,6 +190,8 @@ namespace InDevelopment.Mechanics.Player
 
         private bool IsGrounded()
         {
+            //TODO change to different check otherwise reverb zone messes with jump
+            //change to compare tag to ground maybe?
             Vector3 boxColliderTransform = new Vector3(fricStub.transform.localScale.x / 4,
                 fricStub.transform.localScale.y / 4, fricStub.transform.localScale.z / 4);
             Collider[] cols = Physics.OverlapBox(fricStub.transform.position, boxColliderTransform, Quaternion.identity,
