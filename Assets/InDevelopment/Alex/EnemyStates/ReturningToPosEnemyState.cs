@@ -1,4 +1,4 @@
-﻿﻿using InDevelopment.Mechanics.Enemy;
+﻿using InDevelopment.Mechanics.Enemy;
 using UnityEngine;
 
 namespace InDevelopment.Alex.EnemyStates
@@ -13,16 +13,14 @@ namespace InDevelopment.Alex.EnemyStates
         {
             base.Enter();
 
-            // if (enemyController.beingDistracted)
-            // {
-            //     target = enemyController.posWhenInterrupted;
-            //     
-            // }
-            // else
-            // {
+            if (enemyController.startingState.stayStationary)
+            {
+                target = enemyController.startingState.intialPos;
+            }
+            else
+            {
                 target = enemyController.posWhenInterrupted;
-            // }
-            
+            }
         }
 
         public override void Exit()
@@ -40,7 +38,7 @@ namespace InDevelopment.Alex.EnemyStates
             //should return to previous duty, so if they were patrolling return to patroll route, is stationary
             //return to stationary position
             base.Execute();
-            
+
             enemyController.MoveToTarget(target);
             if (Vector3.Distance(transform.position, target) < 0.5f)
             {

@@ -13,7 +13,7 @@ namespace InDevelopment.Alex.EnemyStates
 
         public bool stayStationary;
 
-        private Vector3 intialPos;
+        public Vector3 intialPos;
         private bool isWaiting;
 
         private void Start()
@@ -30,6 +30,7 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Exit()
         {
             base.Exit();
+            waitTime = 0.1f;
         }
 
         public override void Execute()

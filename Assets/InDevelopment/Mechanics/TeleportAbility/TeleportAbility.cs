@@ -27,9 +27,10 @@ namespace InDevelopment.Mechanics.TeleportAbility
         private Ray ray;
 
         [SerializeField]
-        private GeneralSoundMaker generalSoundMaker;
+        // private GeneralSoundMaker generalSoundMaker;
 
-        [HideInInspector]
+        private ObjectSoundMaker objectSoundMaker;
+        
         public float noiseLevel;
 
         public LayerMask unphaseableLayer;
@@ -45,7 +46,8 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         private void SetReferences()
         {
-            generalSoundMaker = GetComponentInChildren<GeneralSoundMaker>();
+            // generalSoundMaker = GetComponentInChildren<GeneralSoundMaker>();
+            objectSoundMaker = GetComponent<ObjectSoundMaker>();
             teleportLayer = LayerMask.GetMask("ThrowableObjects");
             // unphaseableLayer = LayerMask.GetMask("Unphaseable");
             phaseableLayer = LayerMask.GetMask("Phaseable");
@@ -78,7 +80,8 @@ namespace InDevelopment.Mechanics.TeleportAbility
             tgt.transform.position = origin;
             tgt.GetComponent<Rigidbody>().velocity = Vector3.zero;
             targetObj = null;
-            generalSoundMaker.MakeSound(noiseLevel);
+            objectSoundMaker.MakeSound(transform.position,noiseLevel);
+            // generalSoundMaker.MakeSound(noiseLevel);
         }
 
         private IEnumerator Teleport(GameObject targetObject)
@@ -91,7 +94,8 @@ namespace InDevelopment.Mechanics.TeleportAbility
             tgt.transform.position = origin;
             tgt.GetComponent<Rigidbody>().velocity = Vector3.zero;
             targetObj = null;
-            generalSoundMaker.MakeSound(noiseLevel);
+            objectSoundMaker.MakeSound(transform.position,noiseLevel);
+            // generalSoundMaker.MakeSound(noiseLevel);
             yield return new WaitForSeconds(teleportDelay);
             onCooldown = false;
         }
