@@ -104,7 +104,7 @@ namespace InDevelopment.Alex.EnemyStates
             // }
             //
             
-            //TODO uncomment and test to see if this keeps doesn't bug enemies when object is thrown at wall
+            //TODO: use this if fix for object being thrown at wall doesn't work
             // tgt = new Vector3(tgt.x,transform.position.y,tgt.z);
             
             if (agent.isStopped || agent.remainingDistance < 0.5f)

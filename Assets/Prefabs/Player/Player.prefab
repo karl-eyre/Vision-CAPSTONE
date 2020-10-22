@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7510376709348068934}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1925349059835918761
 MeshFilter:
@@ -810,7 +810,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 3.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6210708696012539873}
   m_Father: {fileID: 7510376709348068934}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -961,7 +962,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7510376709348068934}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &9050641371892335291
 SphereCollider:
@@ -1013,11 +1014,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6543801910820431185}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.275, y: 2.76, z: 0.59}
+  m_LocalPosition: {x: 0.275, y: -0.3399999, z: 0.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7510376709348068934}
-  m_RootOrder: 3
+  m_Father: {fileID: 2181429914995191626}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7480642392501943876
 GameObject:
@@ -1316,7 +1317,6 @@ Transform:
   - {fileID: 2181429914995191626}
   - {fileID: 5130670204202587256}
   - {fileID: 7480642393434289600}
-  - {fileID: 6210708696012539873}
   - {fileID: 4107646514212720875}
   - {fileID: 4669542822231286119}
   m_Father: {fileID: 0}
@@ -1505,7 +1505,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   heightOffset: 0.5
-  generalSoundMaker: {fileID: 849851151}
+  objectSoundMaker: {fileID: 0}
   noiseLevel: 0
   unphaseableLayer:
     serializedVersion: 2

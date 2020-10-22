@@ -13,7 +13,6 @@ namespace InDevelopment.Mechanics.Player
     [RequireComponent(typeof(PlayerController))]
     public class PlayerMovement : MonoBehaviour
     {
-        //TODO remake player prefab to see if it fixes object pick up bug in backstreet level
         private PlayerController controller;
         private Vector2 moveDirection;
 
@@ -147,7 +146,7 @@ namespace InDevelopment.Mechanics.Player
         //works but hacky because it isn't using events
         private void CrouchCheck()
         {
-            if (Keyboard.current.cKey.isPressed)
+            if (Keyboard.current.cKey.isPressed ||Keyboard.current.ctrlKey.isPressed)
             {
                 Crouch();
             }
@@ -162,9 +161,20 @@ namespace InDevelopment.Mechanics.Player
             //TODO: Change how the crouch works. Less snapping, and move legs up instead of head down? or something?...we gotta figure it out
             if (!isCrouching)
             {
-                isCrouching = true;
-                moveSpeed = walkSpeed / 2;
-                transform.localScale = new Vector3(1, transform.localScale.y / 2f, 1);
+                if (isGrounded)
+                {
+                    isCrouching = true;
+                    moveSpeed = walkSpeed / 2;
+                    transform.localScale = new Vector3(1, transform.localScale.y / 2f, 1);
+                }
+                else
+                {
+                    isCrouching = true;
+                    moveSpeed = walkSpeed / 2;
+                    transform.localScale = new Vector3(1, transform.localScale.y / 2f, 1);
+                    transform.position = new Vector3(transform.position.x,transform.position.y + 1.6f,transform.position.z);
+                }
+                
             }
         }
 
@@ -176,9 +186,20 @@ namespace InDevelopment.Mechanics.Player
                     !Physics.Raycast(transform.position, Vector3.up, playerHeight + 0.3f, obstacleLayerMask);
                 if (canStand)
                 {
-                    isCrouching = false;
-                    moveSpeed = walkSpeed;
-                    transform.localScale = new Vector3(1, transform.localScale.y * 2f, 1);
+                    if (isGrounded)
+                    {
+                        isCrouching = false;
+                        moveSpeed = walkSpeed;
+                        transform.localScale = new Vector3(1, transform.localScale.y * 2f, 1);
+                    }
+                    else
+                    {
+                        isCrouching = false;
+                        moveSpeed = walkSpeed;
+                        transform.localScale = new Vector3(1, transform.localScale.y * 2f, 1);
+                        transform.position = new Vector3(transform.position.x,transform.position.y - 1.6f,transform.position.z);
+                    }
+                   
                 }
             }
         }
@@ -234,7 +255,6 @@ namespace InDevelopment.Mechanics.Player
             else
             {
                 //AirSpeed
-                //TODO:Test the new air control, adjust later if needed.
                 // rb.AddForce((movement.normalized * (moveSpeed * Time.deltaTime)) / 2, ForceMode.Acceleration);
                 rb.AddForce((movement.normalized * (moveSpeed * Time.deltaTime)), ForceMode.Acceleration);
             }
@@ -339,6 +359,7 @@ namespace InDevelopment.Mechanics.Player
             {
                 if (isGrounded)
                 {
+                    //TODO make player slow down rather than just stop completely
                     rb.velocity = Vector3.zero;
                     //moveSpeed = 0;
                 }

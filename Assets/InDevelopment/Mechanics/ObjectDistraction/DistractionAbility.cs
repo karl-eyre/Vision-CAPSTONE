@@ -167,6 +167,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                     Vector3 point1 = PointPosition(loopCount * 0.1f);
                     Vector3 point2 = PointPosition((loopCount + 1f) * 0.1f);
 
+                     
                     Ray ray = new Ray(point1, point2 - point1);
                     RaycastHit hit;
 
@@ -180,10 +181,12 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                     // }
 
                     if (Physics.Raycast(ray, out hit, Vector3.Distance(point1, point2), groundLayerMask))
+                    // if (Physics.Raycast(ray, out hit, Vector3.Distance(point1, point2)))
                     {
                         hitGround = true;
                     }
-
+                    
+                    // Vector3 position = PointPosition(loopCount * 0.1f);
                     Vector3 position = PointPosition(loopCount * 0.1f);
                     points.Add(position);
 
@@ -209,8 +212,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         /// <returns></returns>
         private Vector3 PointPosition(float time)
         {
-            Vector3 currentPosition = handPosition.position + (throwDirection * throwForce * time) +
-                                      0.5f * Physics.gravity * (time * time);
+            Vector3 currentPosition = handPosition.position + (throwDirection * (throwForce * time)) +
+                                      Physics.gravity * (0.5f * (time * time));
             return currentPosition;
         }
 
