@@ -35,35 +35,35 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
             //TODO: test noiseLoudness 
 
-            if (other.collider.CompareTag("Wall"))
-            {
-                noiseLoudness += noiseLoudness * (Mathf.RoundToInt(GetComponent<Rigidbody>().velocity.magnitude) / 3);
-                Debug.Log(noiseLoudness);
-                if (noiseLoudness < noiseThreshold)
-                {
-                    Debug.Log("thing happened");
-                    return;
-                }
-
-                objectSoundMaker.MakeSound(gameObject.transform.position, noiseLoudness);
-            }
-
-            if (other.collider.CompareTag("Obstacles"))
-            {
-                noiseLoudness += noiseLoudness * (Mathf.RoundToInt(GetComponent<Rigidbody>().velocity.magnitude) / 3);
-                Debug.Log(noiseLoudness);
-                if (noiseLoudness < noiseThreshold)
-                {
-                    Debug.Log("thing happened again");
-                    return;
-                }
-
-                Vector3 transformToPass = new Vector3(gameObject.transform.position.x,
-                    gameObject.transform.position.y + noiseYOffset, gameObject.transform.position.z);
-                objectSoundMaker.MakeSound(transformToPass, noiseLoudness);
-            }
+            // if (other.collider.CompareTag("Wall"))
+            // {
+            //     noiseLoudness += noiseLoudness * (Mathf.RoundToInt(GetComponent<Rigidbody>().velocity.magnitude) / 3);
+            //     Debug.Log(noiseLoudness);
+            //     if (noiseLoudness < noiseThreshold)
+            //     {
+            //         Debug.Log("thing happened");
+            //         return;
+            //     }
+            //
+            //     objectSoundMaker.MakeSound(gameObject.transform.position, noiseLoudness);
+            // }
+            //
+            // if (other.collider.CompareTag("Obstacles"))
+            // {
+            //     noiseLoudness += noiseLoudness * (Mathf.RoundToInt(GetComponent<Rigidbody>().velocity.magnitude) / 3);
+            //     Debug.Log(noiseLoudness);
+            //     if (noiseLoudness < noiseThreshold)
+            //     {
+            //         Debug.Log("thing happened again");
+            //         return;
+            //     }
+            //
+            //     Vector3 transformToPass = new Vector3(gameObject.transform.position.x,
+            //         gameObject.transform.position.y + noiseYOffset, gameObject.transform.position.z);
+            //     objectSoundMaker.MakeSound(transformToPass, noiseLoudness);
+            // }
             
-            
+            objectSoundMaker.MakeSound(gameObject.transform.position, noiseLoudness);
         }
 
         private void OnCollisionStay(Collision other)
