@@ -67,7 +67,7 @@ public class F_Occlusion : MonoBehaviour
     void Music() //Fade In More Intense Music depending on how close player is. 
     {
        float musicDist = Vector3.Distance(transform.position, player.transform.position);
-        Debug.Log(musicDist);
+        //Debug.Log(musicDist);
 
         if (player != null)
         {

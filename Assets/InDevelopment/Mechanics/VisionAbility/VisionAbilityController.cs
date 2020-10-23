@@ -10,8 +10,8 @@ namespace InDevelopment.Mechanics.VisionAbility
 {
     public class VisionAbilityController : AbilityBase
     {
-        [SerializeField]
-        private bool isActive;
+        
+        public bool isActive;
 
         [SerializeField]
         private float visionAbilityDuration;
