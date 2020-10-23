@@ -23,12 +23,10 @@ public class F_Occlusion : MonoBehaviour
 
     //Testing
     bool patroling;
-    //Animator animator;
 
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Transform>();
-        //animator = GetComponent<Animator>();
         music = RuntimeManager.CreateInstance(eventPath);
         RuntimeManager.AttachInstanceToGameObject(music, transform, GetComponent<Rigidbody>());
         music.start();
@@ -53,12 +51,11 @@ public class F_Occlusion : MonoBehaviour
         {
             Occlusion();
             Lowpass();
-            Animation();
         }
         else
         {
             music.setParameterByName("LowPass", 0, false);
-            //searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             patroling = false;
         }
     }
@@ -79,17 +76,6 @@ public class F_Occlusion : MonoBehaviour
                 F_Player.musicTrack.setParameterByName("Intencity", musicDist, false);
             }
         }
-    }
-
-    void Animation()
-    {
-        //For Testing
-        if (patroling == false)
-        {
-            //searching.start();
-            //animator.SetBool("Start", true);
-            patroling = true;
-        }             
     }
     void Occlusion() //Raycast From sound Source to Player
     {
