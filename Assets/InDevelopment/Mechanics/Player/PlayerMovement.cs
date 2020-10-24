@@ -218,7 +218,7 @@ namespace InDevelopment.Mechanics.Player
         private bool IsGrounded()
         {
             Vector3 boxColliderTransform = new Vector3(fricStub.transform.localScale.x / 4,
-                fricStub.transform.localScale.y / 3, fricStub.transform.localScale.z / 4);
+                fricStub.transform.localScale.y / 4, fricStub.transform.localScale.z / 4);
             Collider[] cols = Physics.OverlapBox(fricStub.transform.position, boxColliderTransform, Quaternion.identity,
                 playerMask);
             
