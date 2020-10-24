@@ -47,6 +47,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         private SelectionOutline selectionOutline;
         private GameObject hitObject;
         private bool pickingUp;
+        public float pickupDelay = 0.5f;
 
         private void Awake()
         {
@@ -298,7 +299,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         IEnumerator PickUpObject()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(pickupDelay);
             hasObjectToThrow = true;
             pickingUp = false;
         }
