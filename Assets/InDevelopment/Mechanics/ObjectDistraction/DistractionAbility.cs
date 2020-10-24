@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using InDevelopment.Mechanics.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -44,6 +46,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         private SelectionOutline selectionOutline;
         private GameObject hitObject;
+        private bool pickingUp;
 
         private void Awake()
         {
@@ -51,6 +54,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             SetUpLineRenderer();
             hasObjectToThrow = false;
             predictingThrow = false;
+            pickingUp = false;
             selectionOutline = GetComponent<SelectionOutline>();
             defaultThrowForce = throwForce;
         }
@@ -74,7 +78,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         {
             if (useThrowArc)
             {
-                if (predictingThrow)
+                if (predictingThrow || Mouse.current.leftButton.isPressed && hasObjectToThrow)
                 {
                     CalculateThrowForce();
                     PredictPath();
@@ -273,7 +277,12 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
                 // hitObject.SetActive(false);
                 // hitObject.transform.position = handPosition.position;
-                hasObjectToThrow = true;
+                if (!pickingUp)
+                {
+                    pickingUp = true;
+                    StartCoroutine(PickUpObject());
+                }
+                
             }
         }
 
@@ -285,6 +294,13 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         private void OnDisable()
         {
             if (controls != null) controls.Disable();
+        }
+
+        IEnumerator PickUpObject()
+        {
+            yield return new WaitForSeconds(1f);
+            hasObjectToThrow = true;
+            pickingUp = false;
         }
     }
 }

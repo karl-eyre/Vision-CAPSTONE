@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace InDevelopment.Alex.EnemyStates
@@ -93,6 +94,12 @@ namespace InDevelopment.Alex.EnemyStates
             spottingState = GetComponentInChildren<SpottingState>();
 
             stateManager.ChangeState(startingState);
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            //check if player is hit and if so cause game over
+            
         }
 
         public void MoveToTarget(Vector3 tgt)

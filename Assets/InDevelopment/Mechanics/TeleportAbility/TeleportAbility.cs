@@ -102,6 +102,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         private bool CanTeleport()
         {
+            //made second coroutine to delay the intial jump, ask if noise is needed then
             Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
 
             ray = camera.ScreenPointToRay(mousePosition);
@@ -131,11 +132,6 @@ namespace InDevelopment.Mechanics.TeleportAbility
             {
                 canTeleport = false;
             }
-
-
-            //this is just the part the "picks up" the objects in the level
-            //to save on performance, the object that is raycast to if it is a throwable object then turn it off and "add" it
-            //to the players hand, however instead it simply turns it off 
 
             return canTeleport;
         }

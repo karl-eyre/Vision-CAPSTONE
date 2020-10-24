@@ -31,9 +31,9 @@ namespace InDevelopment.Mechanics.Player
         private float moveSpeed;
 
         [Header("Movement Settings")]
-        public float walkSpeed;
-
-        public float sprintSpeed;
+        public float walkMoveSpeed;
+        public float crouchMoveSpeed;
+        public float sprintMoveSpeed;
 
         public float sprintEnergy = 100f;
         public float sprintDrainRate = 2f;
@@ -52,6 +52,7 @@ namespace InDevelopment.Mechanics.Player
         [HideInInspector]
         public bool isGrounded;
 
+        [SerializeField]
         private LayerMask playerMask;
 
         [Header("Other Settings")]
@@ -89,7 +90,7 @@ namespace InDevelopment.Mechanics.Player
 
         [Header("Noise Settings")]
         public float walkNoiseLevel;
-
+        public float crouchNoiseLevel;
         public float sprintNoiseLevel;
 
         private float currentNoiseLevel;
@@ -104,9 +105,9 @@ namespace InDevelopment.Mechanics.Player
         {
             visionActivated = false;
             isCrouching = false;
-            moveSpeed = walkSpeed;
+            moveSpeed = walkMoveSpeed;
             currentNoiseLevel = walkNoiseLevel;
-            playerMask = 1 << 13;
+            // playerMask = 1 << 13;
             playerMask = ~playerMask;
         }
 
@@ -123,10 +124,11 @@ namespace InDevelopment.Mechanics.Player
         {
             if (isCrouching)
             {
+                currentNoiseLevel = crouchNoiseLevel;
                 return;
             }
 
-            moveSpeed = walkSpeed;
+            moveSpeed = walkMoveSpeed;
             currentNoiseLevel = walkNoiseLevel;
             isSprinting = false;
         }
@@ -135,11 +137,12 @@ namespace InDevelopment.Mechanics.Player
         {
             if (isCrouching || sprintEnergy <= 0)
             {
+                currentNoiseLevel = crouchNoiseLevel;
                 return;
             }
 
             isSprinting = true;
-            moveSpeed = sprintSpeed;
+            moveSpeed = sprintMoveSpeed;
             currentNoiseLevel = sprintNoiseLevel;
         }
 
@@ -158,19 +161,20 @@ namespace InDevelopment.Mechanics.Player
 
         public void Crouch()
         {
-            //TODO: Change how the crouch works. Less snapping, and move legs up instead of head down? or something?...we gotta figure it out
             if (!isCrouching)
             {
                 if (isGrounded)
                 {
                     isCrouching = true;
-                    moveSpeed = walkSpeed / 2;
+                    moveSpeed = crouchMoveSpeed;
+                    currentNoiseLevel = crouchNoiseLevel;
                     transform.localScale = new Vector3(1, transform.localScale.y / 2f, 1);
                 }
                 else
                 {
                     isCrouching = true;
-                    moveSpeed = walkSpeed / 2;
+                    moveSpeed = crouchMoveSpeed;
+                    currentNoiseLevel = crouchNoiseLevel;
                     transform.localScale = new Vector3(1, transform.localScale.y / 2f, 1);
                     transform.position = new Vector3(transform.position.x,transform.position.y + 1.6f,transform.position.z);
                 }
@@ -189,13 +193,15 @@ namespace InDevelopment.Mechanics.Player
                     if (isGrounded)
                     {
                         isCrouching = false;
-                        moveSpeed = walkSpeed;
+                        moveSpeed = walkMoveSpeed;
+                        currentNoiseLevel = walkNoiseLevel;
                         transform.localScale = new Vector3(1, transform.localScale.y * 2f, 1);
                     }
                     else
                     {
                         isCrouching = false;
-                        moveSpeed = walkSpeed;
+                        moveSpeed = walkMoveSpeed;
+                        currentNoiseLevel = walkNoiseLevel;
                         transform.localScale = new Vector3(1, transform.localScale.y * 2f, 1);
                         transform.position = new Vector3(transform.position.x,transform.position.y - 1.6f,transform.position.z);
                     }
@@ -211,12 +217,11 @@ namespace InDevelopment.Mechanics.Player
 
         private bool IsGrounded()
         {
-            //TODO change to different check otherwise reverb zone messes with jump
-            //change to compare tag to ground maybe?
             Vector3 boxColliderTransform = new Vector3(fricStub.transform.localScale.x / 4,
-                fricStub.transform.localScale.y / 4, fricStub.transform.localScale.z / 4);
+                fricStub.transform.localScale.y / 3, fricStub.transform.localScale.z / 4);
             Collider[] cols = Physics.OverlapBox(fricStub.transform.position, boxColliderTransform, Quaternion.identity,
                 playerMask);
+            
             if (cols.Length == 0)
             {
                 isGrounded = false;
@@ -228,7 +233,6 @@ namespace InDevelopment.Mechanics.Player
 
             return isGrounded;
         }
-
 
         public void Jump(InputAction.CallbackContext obj)
         {
@@ -331,7 +335,7 @@ namespace InDevelopment.Mechanics.Player
 
             if (sprintEnergy <= 0f)
             {
-                moveSpeed = walkSpeed;
+                moveSpeed = walkMoveSpeed;
                 sprintEnergy = 0f;
             }
         }

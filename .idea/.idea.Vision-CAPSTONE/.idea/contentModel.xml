@@ -13,12 +13,14 @@
           <e p="LineOfSightEditor.cs" t="Include" />
         </e>
         <e p="FMOD Scripts" t="Include">
+          <e p="F_AmbientSound.cs" t="Include" />
           <e p="F_EnemyPatrol.cs" t="Include" />
           <e p="F_Music.cs" t="Include" />
           <e p="F_Occlusion.cs" t="Include" />
           <e p="F_Player.cs" t="Include" />
           <e p="F_Test.cs" t="Include" />
           <e p="SnapShotTrigger.cs" t="Include" />
+          <e p="TriggerMovingSound.cs" t="Include" />
         </e>
         <e p="InDevelopment" t="Include">
           <e p="ActionMap" t="Include">
@@ -59,6 +61,7 @@
               <e p="ThrowableObject.cs" t="Include" />
             </e>
             <e p="Player" t="Include">
+              <e p="HeadBobScript.cs" t="Include" />
               <e p="MouseLook.cs" t="Include" />
               <e p="PlayerController.cs" t="Include" />
               <e p="PlayerMovement.cs" t="Include" />

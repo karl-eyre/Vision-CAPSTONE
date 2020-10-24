@@ -7,7 +7,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 {
     public class GeneralSoundMaker : MonoBehaviour
     {
-        public Collider noiseLevelCollider;
+        // public Collider noiseLevelCollider;
+        public SphereCollider noiseLevelCollider;
         private float noiseLevelDebug;
         private bool waiting;
 
@@ -16,8 +17,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         public void MakeSound(float noiseLevel)
         {
             noiseLevelDebug = noiseLevel;
-            noiseLevelCollider.transform.localScale = new Vector3(noiseLevel, noiseLevel, noiseLevel);
-
+            // noiseLevelCollider.transform.localScale = new Vector3(noiseLevel, noiseLevel, noiseLevel);
+            noiseLevelCollider.radius = noiseLevel;
             if (waiting) return;
             waiting = true;
             StartCoroutine(WaitTime());
