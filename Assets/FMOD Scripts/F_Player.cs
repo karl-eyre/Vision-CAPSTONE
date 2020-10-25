@@ -1,50 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using FMOD.Studio;
 using FMODUnity;
-using FMOD.Studio;
 using InDevelopment.Mechanics.Player;
 using InDevelopment.Mechanics.VisionAbility;
+using System.Collections;
+using UnityEngine;
 
 public class F_Player : MonoBehaviour
 {
-    public static EventInstance musicTrack;
     EventInstance amb;
-    EventInstance ambInterior;
     EventInstance running;
     EventInstance visionAbilitySound;
 
     PlayerMovement playerMovement;
     PlayerController playerController;
-    VisionAbilityController visionAbility;
 
     [SerializeField]
-    float walkingSpeed;
+    float walkingSpeed = 0.5f;
     [SerializeField]
-    float runningSpeed;
+    float runningSpeed = 0.3f;
     [SerializeField]
-    float crouchingSpeed;
-    [SerializeField]
-    float walkingBackwardSpeed;
+    float walkingBackwardSpeed = 0.6f;
+
+    //float crouchingSpeed = 0.7f;
     bool runningSoundPlayed;
     bool visionSoundPlayed;
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
-        visionAbility = GetComponent<VisionAbilityController>();
-
         amb = RuntimeManager.CreateInstance("event:/Ambience/AmbOutside");
         amb.start();
 
         running = RuntimeManager.CreateInstance("event:/Player/Running");
         visionAbilitySound = RuntimeManager.CreateInstance("event:/Player/Abilties/Vision");
-
-        backgroundMusic();
    
         InvokeRepeating("FootstepsWalk", 0, walkingSpeed);
         InvokeRepeating("FootstepsRun", 0, runningSpeed);
-        InvokeRepeating("CrouchingWalk", 0, crouchingSpeed);
         InvokeRepeating("WalkingBackWards", 0, walkingBackwardSpeed);
+
+        VisionAbilityController.visionActivation += VisionAbilitySoundPlay;
     }
 
     private void Update()
@@ -58,25 +51,22 @@ public class F_Player : MonoBehaviour
             running.setParameterByName("Running", 1f, false);
             runningSoundPlayed = false;
         }
-
-        Abilities();
     }
 
-    void Abilities()
+    void VisionAbilitySoundPlay()
     {
-        if (visionAbility.isActive && visionSoundPlayed == false)
+        if (visionSoundPlayed == false)
         {
             visionAbilitySound.start();
             visionAbilitySound.release();
             visionSoundPlayed = true;
         }
-        else if (visionAbility.isActive == false)
+        else
         {
             visionAbilitySound.setParameterByName("VisionAbilityOff", 1f, false);
             visionSoundPlayed = false;
-        }
+        }        
     }
-
     IEnumerator isRunning()
     {
         running.setParameterByName("Running", 0f, false);
@@ -87,13 +77,6 @@ public class F_Player : MonoBehaviour
             running.start();
             runningSoundPlayed = true;
         }
-    }
-
-    void backgroundMusic()
-    {
-        musicTrack = RuntimeManager.CreateInstance("event:/Music/AmbientMusic");
-        musicTrack.start();
-        musicTrack.release();
     }
 
     void FootstepsWalk()
@@ -110,13 +93,6 @@ public class F_Player : MonoBehaviour
             RuntimeManager.PlayOneShot("event:/Player/Footsteps", default);
         }
     }    
-    void CrouchingWalk()
-    {
-        if (playerMovement.isMoving == true && playerMovement.isCrouching == true && playerMovement.isGrounded == true)
-        {
-            RuntimeManager.PlayOneShot("event:/Player/Footsteps", default);
-        }
-    }
     void WalkingBackWards()
     {
         if (playerMovement.isMoving == true && playerMovement.isCrouching == true && playerMovement.isGrounded == true && playerController.moveDirection.y < 0)
@@ -128,5 +104,6 @@ public class F_Player : MonoBehaviour
     private void OnDestroy()
     {
         running.release();
+        VisionAbilityController.visionActivation -= VisionAbilitySoundPlay;
     }
 }

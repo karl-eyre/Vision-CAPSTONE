@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using FMOD.Studio;
+﻿using FMOD.Studio;
 using FMODUnity;
+using UnityEngine;
 
 public class F_Occlusion : MonoBehaviour
 {
@@ -17,20 +15,17 @@ public class F_Occlusion : MonoBehaviour
     EventInstance searching;
 
     [SerializeField]
-    private LayerMask lm;
+    private LayerMask lm = LayerMask.GetMask("Obstacle");
+
     private RaycastHit hit;
     Transform player;
-
-    //Testing
-    bool patroling;
-
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Transform>();
         music = RuntimeManager.CreateInstance(eventPath);
         RuntimeManager.AttachInstanceToGameObject(music, transform, GetComponent<Rigidbody>());
         music.start();
-        F_Player.musicTrack.setParameterByName("Intencity", 100f, false);
+        F_Music.music.setParameterByName("Intencity", 100f, false);
         searching = RuntimeManager.CreateInstance("event:/Enemies/Searching");
         RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
     }
@@ -56,7 +51,6 @@ public class F_Occlusion : MonoBehaviour
         {
             music.setParameterByName("LowPass", 0, false);
             searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            patroling = false;
         }
     }
     private void Update()
@@ -73,7 +67,7 @@ public class F_Occlusion : MonoBehaviour
         {
             if (musicDist <= MusicRadius)
             {
-                F_Player.musicTrack.setParameterByName("Intencity", musicDist, false);
+                F_Music.music.setParameterByName("Intencity", musicDist, false);
             }
         }
     }
@@ -105,6 +99,6 @@ public class F_Occlusion : MonoBehaviour
     private void OnDestroy()
     {
         music.release();
-        F_Player.musicTrack.setParameterByName("Intencity", 100f, false);
+        F_Music.music.setParameterByName("Intencity", 100f, false);
     }
 }

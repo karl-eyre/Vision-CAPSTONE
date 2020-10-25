@@ -1,19 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using FMOD;
+﻿using FMOD.Studio;
 using FMODUnity;
-using FMOD.Studio;
+using UnityEngine;
 
 public class F_Music : MonoBehaviour
 {
-    [EventRef]
-    public string eventpath;
-    EventInstance music;
+    public static EventInstance music;
 
     void Start()
     {
-        music = RuntimeManager.CreateInstance(eventpath);
+        music = RuntimeManager.CreateInstance("event:/Music/AmbientMusic");
         music.start();
         music.release();
     }
