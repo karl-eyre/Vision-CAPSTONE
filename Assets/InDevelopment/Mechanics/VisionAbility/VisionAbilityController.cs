@@ -22,6 +22,7 @@ namespace InDevelopment.Mechanics.VisionAbility
         public float maxEnergyFill = 100f;
         public float maxVisionAbilityDuration = 3f;
         public static event Action visionActivation;
+        public static event Action visionEnded;
 
         [SerializeField]
         private Volume postProcessing;
@@ -76,7 +77,8 @@ namespace InDevelopment.Mechanics.VisionAbility
             if (visionAbilityDuration <= 0 && isActive)
             {
                 visionAbilityDuration = 0f;
-                CallEvent();
+                CallActivationEvent();
+                CallEndEvent();
                 isActive = false;
                 //turning off post processing
                 // cb.intensity.value = t2;
@@ -112,7 +114,7 @@ namespace InDevelopment.Mechanics.VisionAbility
                     isActive = true;
                     visionAbilityDuration = maxVisionAbilityDuration;
                     visionEnergy -= abilityUseCost;
-                    CallEvent();
+                    CallActivationEvent();
                     //turning post processing on
                     // cb.intensity.value = t1;
                     // v.intensity.value = t1;
@@ -124,9 +126,14 @@ namespace InDevelopment.Mechanics.VisionAbility
             }
         }
 
-        private void CallEvent()
+        private void CallActivationEvent()
         {
             visionActivation?.Invoke();
+        }
+
+        private void CallEndEvent()
+        {
+            visionEnded?.Invoke();
         }
 
         private void OnEnable()
