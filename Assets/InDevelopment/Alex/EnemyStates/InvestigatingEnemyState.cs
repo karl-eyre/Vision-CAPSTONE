@@ -14,7 +14,7 @@ namespace InDevelopment.Alex.EnemyStates
         {
             base.Enter();
             target = lastKnownPlayerPosition;
-            Debug.Log("I am in the " + this.GetType() + " state.");
+            // Debug.Log("I am in the " + this.GetType() + " state.");
         }
 
         public override void Exit()

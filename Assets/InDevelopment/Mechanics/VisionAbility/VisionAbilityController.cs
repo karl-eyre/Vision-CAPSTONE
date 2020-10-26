@@ -83,7 +83,6 @@ namespace InDevelopment.Mechanics.VisionAbility
                 //turning off post processing
                 // cb.intensity.value = t2;
                 // v.intensity.value = t2;
-
             }
         }
 

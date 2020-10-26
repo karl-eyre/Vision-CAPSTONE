@@ -5,12 +5,13 @@ namespace InDevelopment.Alex.EnemyStates
 {
     public class PlayerDetectedState : EnemyStateBase
     {
-        private GameObject player;
+        private GameObject target;
 
         public override void Enter()
         {
             base.Enter();
-            player = GetComponentInParent<EnemyController>().gameObject;
+            target = lineOfSight.player;
+
         }
 
         public override void Exit()
@@ -22,6 +23,7 @@ namespace InDevelopment.Alex.EnemyStates
         {
             base.Execute();
             //TODO:chase player until the player is caught
+            enemyController.MoveToTarget(target.transform.position);
             Debug.Log("player loses");
         }
     }
