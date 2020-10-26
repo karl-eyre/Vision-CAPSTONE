@@ -42,13 +42,24 @@ public class F_Player : MonoBehaviour
 
     private void Update()
     {
-        if (playerMovement.isMoving == true && playerMovement.isSprinting == true && playerMovement.isGrounded == true)
+        RunningSound();
+    }
+
+    public void TurningSound()
+    {
+        RuntimeManager.PlayOneShot("event:/Player/TurningFast", default);
+    }
+
+    void RunningSound()
+    {
+        if (playerMovement.isMoving == true && playerMovement.isSprinting == true && playerMovement.isGrounded == true && runningSoundPlayed == false)
         {
-            StartCoroutine(isRunning());
+            running.start();
+            runningSoundPlayed = true;
         }
         else if (playerMovement.isSprinting == false)
         {
-            running.setParameterByName("Running", 1f, false);
+            running.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             runningSoundPlayed = false;
         }
     }
@@ -66,17 +77,6 @@ public class F_Player : MonoBehaviour
             visionAbilitySound.setParameterByName("VisionAbilityOff", 1f, false);
             visionSoundPlayed = false;
         }        
-    }
-    IEnumerator isRunning()
-    {
-        running.setParameterByName("Running", 0f, false);
-        yield return new WaitForSeconds(2.9f);
-
-        if (playerMovement.isSprinting == true && runningSoundPlayed == false)
-        {
-            running.start();
-            runningSoundPlayed = true;
-        }
     }
 
     void FootstepsWalk()

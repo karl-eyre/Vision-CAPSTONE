@@ -8,6 +8,8 @@ namespace InDevelopment.Mechanics.Player
         private Vector2 look;
         private float xRotation;
 
+        public UnityEngine.Events.UnityEvent playerTurnFast;
+
         [Header("Mouse Settings")]
         [SerializeField]
         private float mouseSensitivity = 100f;
@@ -56,6 +58,11 @@ namespace InDevelopment.Mechanics.Player
             var mouseX = look.x * mouseSensitivity * Time.deltaTime;
             var mouseY = look.y * mouseSensitivity * Time.deltaTime;
 
+            if (mouseX < -18 || mouseX > 18)
+            {
+                playerTurnFast.Invoke(); 
+            }
+            
             if (InvertMouseY)
             {
                 xRotation += mouseY;
