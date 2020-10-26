@@ -22,7 +22,6 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Execute()
         {
             base.Execute();
-            //TODO:chase player until the player is caught
             enemyController.MoveToTarget(target.transform.position);
             Debug.Log("player loses");
         }

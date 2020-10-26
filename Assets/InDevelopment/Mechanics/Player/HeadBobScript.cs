@@ -29,7 +29,7 @@ namespace InDevelopment.Mechanics.Player
 
         private void UpdateBobbingSpeed()
         {
-            if (playerMovement.isMoving && playerMovement.isGrounded)
+            if (playerMovement.isMoving && playerMovement.isGrounded && !playerMovement.visionActivated)
             {
                 if (playerMovement.isSprinting)
                 {
@@ -44,7 +44,7 @@ namespace InDevelopment.Mechanics.Player
 
         private void HeadBob()
         {
-            if(playerMovement.isMoving && playerMovement.isGrounded)
+            if(playerMovement.isMoving && playerMovement.isGrounded && !playerMovement.visionActivated)
             {
                 //Player is moving
                 timer += Time.deltaTime * bobbingSpeed;

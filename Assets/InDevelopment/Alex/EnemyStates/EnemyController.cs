@@ -98,6 +98,8 @@ namespace InDevelopment.Alex.EnemyStates
 
         private void OnCollisionEnter(Collision other)
         {
+            //TODO ask designers what they want to happen when player is caught
+            //TODO also are they caught straight away if they aren't detected but run into an AI?
             //check if player is hit and if so cause game over
             
         }

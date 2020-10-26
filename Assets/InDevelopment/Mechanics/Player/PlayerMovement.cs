@@ -64,7 +64,7 @@ namespace InDevelopment.Mechanics.Player
         [SerializeField]
         private Collider fricStubCol;
 
-        private bool visionActivated;
+        public bool visionActivated;
 
         [HideInInspector]
         public bool isMoving;
@@ -364,7 +364,7 @@ namespace InDevelopment.Mechanics.Player
                 if (isGrounded)
                 {
                     //TODO make player slow down rather than just stop completely
-                    rb.velocity = Vector3.zero;
+                    // rb.velocity = Vector3.zero;
                     //moveSpeed = 0;
                 }
             }
