@@ -110,7 +110,7 @@ namespace InDevelopment.Mechanics.Player
             // playerMask = 1 << 13;
             playerMask = ~playerMask;
         }
-
+        
         private void GetReferences()
         {
             controller = GetComponent<PlayerController>();

@@ -1,5 +1,6 @@
 ﻿
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace InDevelopment.Mechanics.Player
 {

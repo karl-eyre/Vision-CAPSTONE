@@ -112,6 +112,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         {
             //have both tested to see if these are necessary
             // throwForce = defaultThrowForce / 2 + points.Count;
+            //TODO test this
             throwForce = points.Count;
 
         }

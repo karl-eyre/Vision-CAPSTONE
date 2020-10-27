@@ -101,7 +101,6 @@ namespace InDevelopment.Alex.EnemyStates
             //TODO ask designers what they want to happen when player is caught
             //TODO also are they caught straight away if they aren't detected but run into an AI?
             //check if player is hit and if so cause game over
-            
         }
 
         public void MoveToTarget(Vector3 tgt)

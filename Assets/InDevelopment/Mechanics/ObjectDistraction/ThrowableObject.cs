@@ -14,10 +14,10 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         public int noiseLoudness;
         private int startingNoiseLoudness;
         private ObjectSoundMaker objectSoundMaker;
-
+        
         public float noiseYOffset;
         public float noiseThreshold;
-
+        
         private void Start()
         {
             //this is just to make sure that any item that this script is
@@ -27,7 +27,9 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             objectSoundMaker = GetComponent<ObjectSoundMaker>();
             startingNoiseLoudness = noiseLoudness;
         }
-
+        
+        //TODO make objects respawn after some time has passed
+        
         private void OnCollisionEnter(Collision other)
         {
             if (other.collider.CompareTag("Enemy")) return;
@@ -76,5 +78,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, noiseLoudness);
         }
+        
     }
 }
