@@ -910,6 +910,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b321480c4c67704aa710ae96c953d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTurnFast:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 800781885}
+        m_MethodName: TurningSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   mouseSensitivity: 8
   minUpLookAngle: -85
   maxDownLookAngle: 70
@@ -945,8 +959,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6633dc647cb3ca499a3c60265af352e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingBobbingSpeed: 14
-  sprintingBobbingSpeed: 20
+  walkingBobbingSpeed: 8
+  sprintingBobbingSpeed: 18
   bobbingAmount: 0.1
 --- !u!1 &5682576756924185905
 GameObject:
@@ -1517,7 +1531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 2181429914995191669}
-  teleportRange: 20
+  teleportRange: 50
   teleportDelay: 5
   teleportLayer:
     serializedVersion: 2
@@ -1566,6 +1580,7 @@ MonoBehaviour:
   cam: {fileID: 2181429914995191669}
   fricStub: {fileID: 8251156080780276633}
   fricStubCol: {fileID: 7737595605828000114}
+  visionActivated: 0
   isMoving: 0
   lowFrictionMat: {fileID: 13400000, guid: fdc4b2292872bd946be18e32d3417c65, type: 2}
   highFrictionMat: {fileID: 13400000, guid: 3e67949a86c20d6448b77ceca256ea86, type: 2}
@@ -1622,9 +1637,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e50604716257e04d8e6244e1e2a9a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSpeed: 0.7
+  walkingSpeed: 0.5
   runningSpeed: 0.3
-  crouchingSpeed: 0.9
   walkingBackwardSpeed: 0
 --- !u!114 &800781886
 MonoBehaviour:

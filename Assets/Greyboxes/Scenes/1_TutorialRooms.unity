@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1539,63 +1539,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 800781885, guid: 3ab37abb5adda8b4891be0e45e753a6d, type: 3}
-      propertyPath: Ability.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 800781885, guid: 3ab37abb5adda8b4891be0e45e753a6d, type: 3}
-      propertyPath: walkingSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 800781885, guid: 3ab37abb5adda8b4891be0e45e753a6d, type: 3}
-      propertyPath: Ability.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 800781885, guid: 3ab37abb5adda8b4891be0e45e753a6d, type: 3}
-      propertyPath: Ability.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 800781885, guid: 3ab37abb5adda8b4891be0e45e753a6d, type: 3}
-      propertyPath: Ability.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 750964108}
-    - target: {fileID: 800781885, guid: 3ab37abb5adda8b4891be0e45e753a6d, type: 3}
-      propertyPath: Ability.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_enabled
-      objectReference: {fileID: 0}
-    - target: {fileID: 800781885, guid: 3ab37abb5adda8b4891be0e45e753a6d, type: 3}
-      propertyPath: Ability.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 800781885, guid: 3ab37abb5adda8b4891be0e45e753a6d, type: 3}
-      propertyPath: crouchingSpeed
-      value: 0.7
-      objectReference: {fileID: 0}
     - target: {fileID: 1925349059835918761, guid: 3ab37abb5adda8b4891be0e45e753a6d,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 442624903}
-    - target: {fileID: 5375936053054210201, guid: 3ab37abb5adda8b4891be0e45e753a6d,
-        type: 3}
-      propertyPath: walkingBobbingSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5375936053054210201, guid: 3ab37abb5adda8b4891be0e45e753a6d,
-        type: 3}
-      propertyPath: sprintingBobbingSpeed
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418936103087415064, guid: 3ab37abb5adda8b4891be0e45e753a6d,
-        type: 3}
-      propertyPath: teleportRange
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480642393434289600, guid: 3ab37abb5adda8b4891be0e45e753a6d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7510376709348068934, guid: 3ab37abb5adda8b4891be0e45e753a6d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8707,7 +8655,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-16520
+  m_Name: pb_Mesh-18760
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14064,18 +14012,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &750964108 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7510376709348068951, guid: 3ab37abb5adda8b4891be0e45e753a6d,
-    type: 3}
-  m_PrefabInstance: {fileID: 57293363}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705b305f991596847bd6a2bc7503e974, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &751761874
 Mesh:
   m_ObjectHideFlags: 0
