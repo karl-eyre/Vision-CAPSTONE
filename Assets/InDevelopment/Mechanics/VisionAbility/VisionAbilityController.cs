@@ -79,6 +79,7 @@ namespace InDevelopment.Mechanics.VisionAbility
                 visionAbilityDuration = 0f;
                 CallActivationEvent();
                 CallEndEvent();
+                Debug.Log("end event");
                 isActive = false;
                 //turning off post processing
                 // cb.intensity.value = t2;

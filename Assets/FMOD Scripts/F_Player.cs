@@ -24,10 +24,12 @@ public class F_Player : MonoBehaviour
     //float crouchingSpeed = 0.7f;
     bool runningSoundPlayed;
     bool visionSoundPlayed;
+
+    EventInstance musicTest;
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
-        amb = RuntimeManager.CreateInstance("event:/Ambience/AmbOutside");
+        amb = RuntimeManager.CreateInstance("event:/Ambience/AmbInterior");
         amb.start();
 
         running = RuntimeManager.CreateInstance("event:/Player/Running");
@@ -104,6 +106,7 @@ public class F_Player : MonoBehaviour
     private void OnDestroy()
     {
         running.release();
+        running.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         VisionAbilityController.visionActivation -= VisionAbilitySoundPlay;
     }
 }

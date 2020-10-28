@@ -29,7 +29,6 @@ namespace InDevelopment.Alex
         [HideInInspector]
         public bool isAlerted;
 
-
         private bool isResetting;
 
         // public bool beingDistracted;
