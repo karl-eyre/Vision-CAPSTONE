@@ -66,12 +66,12 @@ namespace InDevelopment.Alex.EnemyStates
         public SpottingState spottingState;
 
         #endregion
+
         // Start is called before the first frame update
         private void Awake()
         {
             SetupStates();
             SetupNavmesh();
-
         }
 
         void SetupNavmesh()
@@ -92,61 +92,48 @@ namespace InDevelopment.Alex.EnemyStates
             playerDetectedState = GetComponentInChildren<PlayerDetectedState>();
             startingState = GetComponentInChildren<StartingState>();
             spottingState = GetComponentInChildren<SpottingState>();
-
             stateManager.ChangeState(startingState);
         }
 
         private void OnCollisionEnter(Collision other)
         {
-            //TODO ask designers what they want to happen when player is caught
-            //TODO also are they caught straight away if they aren't detected but run into an AI?
-            //check if player is hit and if so cause game over
+            if (other.collider.CompareTag("Player"))
+            {
+                //TODO end game
+            }
         }
 
         public void MoveToTarget(Vector3 tgt)
         {
-            // if (stateManager.currentEnemyState == spottingState)
-            // {
-            //     agent.ResetPath();
-            //     return;
-            // }
-            //
-            
             //TODO: use this if fix for object being thrown at wall doesn't work
             // tgt = new Vector3(tgt.x,transform.position.y,tgt.z);
-            
+
             if (agent.isStopped || agent.remainingDistance < 0.5f)
             {
                 agent.ResetPath();
             }
 
             agent.SetDestination(tgt);
-            
+
             if (agent.pathPending)
             {
                 if (agent.pathStatus == NavMeshPathStatus.PathComplete)
                 {
                     agent.SetDestination(tgt);
                 }
-                else if(agent.pathStatus == NavMeshPathStatus.PathInvalid)
+
+                if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
                 {
                     agent.ResetPath();
                 }
-                else if(agent.pathStatus == NavMeshPathStatus.PathPartial)
+
+                if (agent.pathStatus == NavMeshPathStatus.PathPartial)
                 {
                     NavMeshHit hit;
                     agent.FindClosestEdge(out hit);
                     agent.SetDestination(hit.position);
                 }
             }
-            /* old movement
-            var position = transform.position;
-            position = Vector3.MoveTowards(position, tgt, Time.deltaTime * moveSpeed);
-            LookAtTarget(tgt);
-            transform.position = position;
-            direction = (tgt - position).normalized;
-            //rotation = transform.rotation;
-            */
         }
 
         public void LookAtTarget(Vector3 tgt)
