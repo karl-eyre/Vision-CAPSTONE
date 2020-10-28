@@ -3,10 +3,12 @@ using InDevelopment.Mechanics.ObjectDistraction;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 namespace InDevelopment.Mechanics.TeleportAbility
 {
     public class TeleportAbility : MonoBehaviour
     {
+
         private GameControls controls;
 
         [Header("Camera")]
@@ -37,7 +39,6 @@ namespace InDevelopment.Mechanics.TeleportAbility
         public LayerMask phaseableLayer;
         private bool onCooldown;
 
-
         private void Start()
         {
             SetUpControls();
@@ -63,11 +64,13 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         private void ReadTeleportInput(InputAction.CallbackContext obj)
         {
+
             if (CanTeleport() && !onCooldown)
             {
                 // TeleportToPosition(targetObj);
                 StartCoroutine(Teleport(targetObj));
             }
+
             
         }
 
