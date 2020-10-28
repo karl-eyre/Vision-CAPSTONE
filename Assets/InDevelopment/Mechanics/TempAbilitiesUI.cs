@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
+using UnityEngine.InputSystem;
 
 public class TempAbilitiesUI : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class TempAbilitiesUI : MonoBehaviour
     void Teleport()
     {
 
-        if(Input.GetKey(teleport) && isCooldown == false)
+        if(Keyboard.current.eKey.isPressed && isCooldown == false)
         {
             isCooldown = true;
             TeleportUI.fillAmount = 1;
