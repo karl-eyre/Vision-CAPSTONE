@@ -14,18 +14,6 @@ namespace InDevelopment.Alex
 
         private static event Action<string> changeStateEvent;
 
-      public void ChangeState(EnemyStateBase newEnemyState)
-      {
-         
-         //Check if the newState is different
-         currentEnemyState?.Exit();
-         previousEnemyState = currentEnemyState;
-         newEnemyState?.Enter();
-         currentEnemyState = newEnemyState;
-         
-         listOfStates.Add(currentEnemyState);
-      }
-
         public void ChangeState(EnemyStateBase newEnemyState)
         {
             //Check if the newState is different
