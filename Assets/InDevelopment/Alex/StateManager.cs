@@ -12,7 +12,7 @@ namespace InDevelopment.Alex
         public EnemyStateBase interruptedState;
         public List<EnemyStateBase> listOfStates = new List<EnemyStateBase>();
 
-        private static event Action<string> changeStateEvent;
+        public static event Action<string> changeStateEvent;
 
         public void ChangeState(EnemyStateBase newEnemyState)
         {
