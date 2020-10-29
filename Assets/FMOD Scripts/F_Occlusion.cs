@@ -19,7 +19,7 @@ public class F_Occlusion : MonoBehaviour
     EnemyController enemyController;
 
     [SerializeField]
-    private LayerMask lm = LayerMask.GetMask("Obstacle");
+    private LayerMask lm;
 
     private RaycastHit hit;
     Transform player;
@@ -32,7 +32,7 @@ public class F_Occlusion : MonoBehaviour
         F_Music.music.setParameterByName("Intencity", 100f, false);
         searching = RuntimeManager.CreateInstance("event:/Enemies/Searching");
         RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
-
+        lm = LayerMask.GetMask("Obstacle");
         enemyController = GetComponent<EnemyController>();
 
         StateManager.changeStateEvent += MusicAndSounds;
