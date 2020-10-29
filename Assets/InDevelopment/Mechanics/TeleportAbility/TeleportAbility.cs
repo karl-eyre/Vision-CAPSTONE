@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using InDevelopment.Mechanics.ObjectDistraction;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -38,6 +39,8 @@ namespace InDevelopment.Mechanics.TeleportAbility
         public LayerMask unphaseableLayer;
         public LayerMask phaseableLayer;
         private bool onCooldown;
+
+        public static event Action teleportTrigger;
 
         private void Start()
         {
@@ -99,7 +102,9 @@ namespace InDevelopment.Mechanics.TeleportAbility
             targetObj = null;
             objectSoundMaker.MakeSound(transform.position,noiseLevel);
             // generalSoundMaker.MakeSound(noiseLevel);
+            teleportTrigger?.Invoke();
             yield return new WaitForSeconds(teleportDelay);
+            
             onCooldown = false;
         }
 

@@ -19,6 +19,7 @@ namespace InDevelopment.Alex.EnemyStates
         private void Start()
         {
             intialPos = transform.position;
+            stateManager.initialState = enemyController.startingState;
         }
 
         public override void Enter()

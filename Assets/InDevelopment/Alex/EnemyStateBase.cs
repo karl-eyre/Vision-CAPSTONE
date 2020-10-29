@@ -31,11 +31,11 @@ namespace InDevelopment.Alex
 
         private bool isResetting;
 
+        private static event Action playerDetected;
         // public bool beingDistracted;
 
         private void Init()
         {
-            
             if (!stateManager)
             {
                 stateManager = GetComponent<StateManager>();
@@ -51,6 +51,7 @@ namespace InDevelopment.Alex
                 enemyController = GetComponentInParent<EnemyController>();
             }
             enemyController.beingDistracted = false;
+            EnemyStateBase.playerDetected += TriggerPlayerDetection;
         }
 
         public void OnEnable()
@@ -161,9 +162,15 @@ namespace InDevelopment.Alex
                 if (stateManager.currentEnemyState != enemyController.playerDetectedState)
                 {
                     stateManager.ChangeState(enemyController.playerDetectedState);
+                    playerDetected?.Invoke();
                     return;
                 }
             }
+        }
+
+        private void TriggerPlayerDetection()
+        {
+            stateManager.ChangeState(enemyController.playerDetectedState);
         }
 
         public bool AboveInvestigationThresholdCheck()

@@ -1,4 +1,5 @@
-﻿using InDevelopment.Mechanics.Enemy;
+﻿using System;
+using InDevelopment.Mechanics.Enemy;
 using UnityEngine;
 
 namespace InDevelopment.Alex.EnemyStates
@@ -6,7 +7,7 @@ namespace InDevelopment.Alex.EnemyStates
     public class PlayerDetectedState : EnemyStateBase
     {
         private GameObject target;
-
+        
         public override void Enter()
         {
             base.Enter();
@@ -22,6 +23,7 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Execute()
         {
             base.Execute();
+            //TODO set off event to aleat all AI of player detection
             enemyController.MoveToTarget(target.transform.position);
             Debug.Log("player loses");
         }

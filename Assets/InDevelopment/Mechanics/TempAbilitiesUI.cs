@@ -1,50 +1,63 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using UnityEngine.UI; 
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
-public class TempAbilitiesUI : MonoBehaviour
+namespace InDevelopment.Mechanics
 {
-
-    [Header("Teleport")]
-    public Image TeleportUI;
-    public float cooldown1 = 5;
-    bool isCooldown = false;
-    public KeyCode teleport;
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        TeleportUI.fillAmount = 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Teleport();
-    }
-
-    void Teleport()
+    public class TempAbilitiesUI : MonoBehaviour
     {
 
-        if(Keyboard.current.eKey.isPressed && isCooldown == false)
+        [Header("Teleport")]
+        public Image TeleportUI;
+        private float cooldown1 = 5;
+        bool isCooldown = false;
+
+        private TeleportAbility.TeleportAbility teleportAbility;
+        
+        // Start is called before the first frame update
+        void Start()
+        {
+            teleportAbility = GetComponentInParent<TeleportAbility.TeleportAbility>();
+            TeleportAbility.TeleportAbility.teleportTrigger += TeleportTrigger;
+            TeleportUI.fillAmount = teleportAbility.teleportDelay;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            RefillUI();
+        }
+
+        public void TeleportTrigger()
         {
             isCooldown = true;
-            TeleportUI.fillAmount = 1;
+            TeleportUI.fillAmount = 0;
         }
 
-        if (isCooldown)
+        void RefillUI()
         {
-            TeleportUI.fillAmount -= 1 / cooldown1 * Time.deltaTime;
-
-            if(TeleportUI.fillAmount <= 0)
+            if (isCooldown)
             {
-                TeleportUI.fillAmount = 0;
-                isCooldown = false;
+                TeleportUI.fillAmount += 1 / cooldown1 * Time.deltaTime;
+
+                if(TeleportUI.fillAmount <= 0)
+                {
+                    TeleportUI.fillAmount = 0;
+                    isCooldown = false;
+                }
             }
+
+        }
+                
+        private void OnEnable()
+        {
+            TeleportAbility.TeleportAbility.teleportTrigger += TeleportTrigger;
         }
 
+        private void OnDisable()
+        {
+            TeleportAbility.TeleportAbility.teleportTrigger -= TeleportTrigger;
+        }
     }
 }

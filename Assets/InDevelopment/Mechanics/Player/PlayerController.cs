@@ -8,6 +8,7 @@ namespace InDevelopment.Mechanics.Player
     {
         private GameControls controls;
         private PlayerMovement playerMovement;
+        private TempAbilitiesUI tempAbilitiesUI;
 
         [HideInInspector]
         public Vector2 moveDirection;
@@ -22,6 +23,7 @@ namespace InDevelopment.Mechanics.Player
         private void GetReferences()
         {
             playerMovement = GetComponent<PlayerMovement>();
+            tempAbilitiesUI = GetComponentInChildren<TempAbilitiesUI>();
         }
 
         //maybe add other abilities here

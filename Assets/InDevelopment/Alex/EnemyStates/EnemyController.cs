@@ -92,7 +92,9 @@ namespace InDevelopment.Alex.EnemyStates
             playerDetectedState = GetComponentInChildren<PlayerDetectedState>();
             startingState = GetComponentInChildren<StartingState>();
             spottingState = GetComponentInChildren<SpottingState>();
+            
             stateManager.ChangeState(startingState);
+            // stateManager.initialState = startingState;
         }
 
         private void OnCollisionEnter(Collision other)
