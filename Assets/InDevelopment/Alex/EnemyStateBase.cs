@@ -118,10 +118,10 @@ namespace InDevelopment.Alex
         {
             if (CanSeePlayer())
             {
-                IsAlerted();
                 AssignPlayerPos();
             }
-
+            
+            IsAlerted();
             LOSFunc();
             PlayerDetected();
         }
@@ -178,7 +178,7 @@ namespace InDevelopment.Alex
             return lineOfSight.detectionMeter >= lineOfSight.investigationThreshold;
         }
 
-        //needs to be called all the time
+        //TODO use to turn detection ui on and off
         private void IsAlerted()
         {
             if (lineOfSight.detectionMeter > 0)

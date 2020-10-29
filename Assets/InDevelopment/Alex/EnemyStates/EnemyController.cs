@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 namespace InDevelopment.Alex.EnemyStates
 {
@@ -102,6 +103,7 @@ namespace InDevelopment.Alex.EnemyStates
             if (other.collider.CompareTag("Player"))
             {
                 //TODO end game
+                // SceneManager.LoadScene();
             }
         }
 

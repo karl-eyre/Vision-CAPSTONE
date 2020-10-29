@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace InDevelopment.Mechanics
 {
-    public class TempAbilitiesUI : MonoBehaviour
+    public class TeleportAbilitiesUI : MonoBehaviour
     {
 
         [Header("Teleport")]
