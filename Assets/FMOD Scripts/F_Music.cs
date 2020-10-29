@@ -14,14 +14,15 @@ public class F_Music : MonoBehaviour
         music.start();
         music.release();
 
-        StateManager.changeStateEvent += enemyState;
+        StateManager.changeStateEvent += MusicSwitcher;
     }
 
-    void MusicSwitcher()
-    {      
-        if (enemyState == "")
+    void MusicSwitcher(string enemyState)
+    {
+        
+        if (enemyState == "InDevelopment.Alex.EnemyStates.StationaryEnemyState")
         {
-
-        }
+            Debug.Log("Patroliing");
+        }    
     }
 }

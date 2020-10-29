@@ -33,6 +33,7 @@ namespace InDevelopment.Alex
         public void Update()
         {
             currentEnemyState?.Execute();
+
         }
     }
 }
