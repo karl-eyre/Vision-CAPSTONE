@@ -17,10 +17,10 @@ public class F_Music : MonoBehaviour
         StateManager.changeStateEvent += MusicSwitcher;
     }
 
-    void MusicSwitcher(string enemyState)
+    void MusicSwitcher(EnemyStateBase enemyState)
     {
-        
-        if (enemyState == "InDevelopment.Alex.EnemyStates.StationaryEnemyState")
+        //sorry if i broke it, its just this was causing a compile error
+        if (enemyState.ToString() == "InDevelopment.Alex.EnemyStates.StationaryEnemyState")
         {
             Debug.Log("Patroliing");
         }    
