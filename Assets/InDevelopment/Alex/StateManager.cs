@@ -12,7 +12,7 @@ namespace InDevelopment.Alex
         public EnemyStateBase interruptedState;
         public List<EnemyStateBase> listOfStates = new List<EnemyStateBase>();
 
-        public static event Action<string> changeStateEvent;
+        public static event Action<EnemyStateBase> changeStateEvent;
 
         public void ChangeState(EnemyStateBase newEnemyState)
         {
@@ -24,7 +24,7 @@ namespace InDevelopment.Alex
 
             if (!(currentEnemyState is null))
             {
-                changeStateEvent?.Invoke(currentEnemyState.name);
+                changeStateEvent?.Invoke(currentEnemyState);
             }
 
             listOfStates.Add(currentEnemyState);
