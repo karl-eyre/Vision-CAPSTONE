@@ -15,4 +15,13 @@ public class F_Music : MonoBehaviour
         music.start();
         music.release();
     }
+
+    void MusicSwitcher(EnemyStateBase enemyState)
+    {
+        //sorry if i broke it, its just this was causing a compile error
+        if (enemyState.ToString() == "InDevelopment.Alex.EnemyStates.StationaryEnemyState")
+        {
+            Debug.Log("Patroliing");
+        }    
+    }
 }
