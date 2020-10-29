@@ -1,6 +1,7 @@
 ﻿using FMOD.Studio;
 using FMODUnity;
 using InDevelopment.Alex;
+using InDevelopment.Alex.EnemyStates;
 using UnityEngine;
 
 public class F_Music : MonoBehaviour
@@ -13,8 +14,6 @@ public class F_Music : MonoBehaviour
         music = RuntimeManager.CreateInstance("event:/Music/AmbientMusic");
         music.start();
         music.release();
-
-        StateManager.changeStateEvent += MusicSwitcher;
     }
 
     void MusicSwitcher(EnemyStateBase enemyState)

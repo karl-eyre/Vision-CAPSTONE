@@ -1,5 +1,7 @@
 ﻿using FMOD.Studio;
 using FMODUnity;
+using InDevelopment.Alex;
+using InDevelopment.Alex.EnemyStates;
 using UnityEngine;
 
 public class F_Occlusion : MonoBehaviour
@@ -13,6 +15,8 @@ public class F_Occlusion : MonoBehaviour
     public string eventPath;
     EventInstance music;
     EventInstance searching;
+
+    EnemyController enemyController;
 
     [SerializeField]
     private LayerMask lm = LayerMask.GetMask("Obstacle");
@@ -28,9 +32,12 @@ public class F_Occlusion : MonoBehaviour
         F_Music.music.setParameterByName("Intencity", 100f, false);
         searching = RuntimeManager.CreateInstance("event:/Enemies/Searching");
         RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
+
+        enemyController = GetComponent<EnemyController>();
+
+        StateManager.changeStateEvent += MusicAndSounds;
     }
 
- 
     private void OnDrawGizmosSelected() //Visual Radius For Occlusion & Music.
     {
         Gizmos.color = Color.red;
@@ -50,15 +57,9 @@ public class F_Occlusion : MonoBehaviour
         else
         {
             music.setParameterByName("LowPass", 0, false);
-            searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
-    private void Update()
-    {
-        Music();
-        
-    }
-    void Music() //Fade In More Intense Music depending on how close player is. 
+    void MusicAndSounds(EnemyStateBase enemyState) //Fade In More Intense Music depending on how close player is. 
     {
        float musicDist = Vector3.Distance(transform.position, player.transform.position);
         //Debug.Log(musicDist);
@@ -67,8 +68,17 @@ public class F_Occlusion : MonoBehaviour
         {
             if (musicDist <= MusicRadius)
             {
-                F_Music.music.setParameterByName("Intencity", musicDist, false);
-            }
+                F_Music.music.setParameterByName("Intencity", musicDist, false);          
+            }          
+        }
+        if (enemyState == enemyController.investigatingEnemyState)
+        {
+            searching.start();
+        }
+        else if (enemyState == enemyController.patrollingEnemyState)
+        {
+            Debug.Log("patrolling");
+            searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
     void Occlusion() //Raycast From sound Source to Player
