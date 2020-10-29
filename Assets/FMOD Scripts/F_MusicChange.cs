@@ -13,6 +13,7 @@ public class F_MusicChange : MonoBehaviour
         enemyController = GameObject.Find("Enemy").GetComponent<EnemyController>();
 
         StateManager.changeStateEvent += MusicSwitcher;
+    
     }
     void MusicSwitcher(EnemyStateBase enemyState)
     {
@@ -20,13 +21,12 @@ public class F_MusicChange : MonoBehaviour
         {
             F_Music.music.setParameterByName("MusicState", 0f, false);
         }
-        else if (enemyState == enemyController.playerDetectedState)
+        if (enemyState == enemyController.playerDetectedState)
         {
+            Debug.Log("detected");
             F_Music.music.setParameterByName("MusicState", 1f, false);
         }
-        else if (enemyState == enemyController.playerDetectedState)
-        {
-            F_Music.music.setParameterByName("MusicState", 2f, false);
-        }
     }
+
+
 }

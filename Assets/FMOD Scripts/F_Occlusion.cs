@@ -15,6 +15,8 @@ public class F_Occlusion : MonoBehaviour
     public string eventPath;
     EventInstance music;
     EventInstance searching;
+    EventInstance intense;
+    EventInstance intenseSnapshot;
 
     EnemyController enemyController;
 
@@ -31,9 +33,13 @@ public class F_Occlusion : MonoBehaviour
         music.start();
         F_Music.music.setParameterByName("Intencity", 100f, false);
         searching = RuntimeManager.CreateInstance("event:/Enemies/Searching");
-        RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
+
+
         lm = LayerMask.GetMask("Obstacle");
         enemyController = GetComponent<EnemyController>();
+
+        intense = RuntimeManager.CreateInstance("event:/Music/Intense");
+        intenseSnapshot = RuntimeManager.CreateInstance("snapshot:/EnemySearching/EnemySearching");
 
         StateManager.changeStateEvent += MusicAndSounds;
     }
@@ -48,6 +54,7 @@ public class F_Occlusion : MonoBehaviour
     private void FixedUpdate()
     {
         float distance = Vector3.Distance(transform.position, player.position); //Distance Between player and sound source
+        RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
 
         if (distance <= OcclusionRadius)
         {
@@ -58,27 +65,36 @@ public class F_Occlusion : MonoBehaviour
         {
             music.setParameterByName("LowPass", 0, false);
         }
-    }
-    void MusicAndSounds(EnemyStateBase enemyState) //Fade In More Intense Music depending on how close player is. 
-    {
-       float musicDist = Vector3.Distance(transform.position, player.transform.position);
-        //Debug.Log(musicDist);
 
-        if (player != null)
+
+        float musicDist = Vector3.Distance(transform.position, player.transform.position);
+        if (distance <= OcclusionRadius)
         {
-            if (musicDist <= MusicRadius)
-            {
-                F_Music.music.setParameterByName("Intencity", musicDist, false);          
-            }          
+            //F_Music.music.setParameterByName("Intencity", musicDist, false);
         }
+           
+
+    }
+
+    void MusicAndSounds(EnemyStateBase enemyState) //Fade In More Intense Music depending on how close player is. 
+    {      
+        //Debug.Log(musicDist);
         if (enemyState == enemyController.investigatingEnemyState)
         {
             searching.start();
+            intense.start();
+            intenseSnapshot.start();
         }
         else if (enemyState == enemyController.patrollingEnemyState)
         {
-            Debug.Log("patrolling");
             searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            intense.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            intenseSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+        else if (enemyState == enemyController.playerDetectedState)
+        {
+            intense.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            intenseSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
     void Occlusion() //Raycast From sound Source to Player
