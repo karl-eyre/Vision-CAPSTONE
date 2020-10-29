@@ -13,7 +13,7 @@ public class F_Occlusion : MonoBehaviour
 
     [EventRef]
     public string eventPath;
-    EventInstance music;
+    EventInstance footsteps;
     EventInstance searching;
     EventInstance intense;
     EventInstance intenseSnapshot;
@@ -28,9 +28,9 @@ public class F_Occlusion : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Transform>();
-        music = RuntimeManager.CreateInstance(eventPath);
-        RuntimeManager.AttachInstanceToGameObject(music, transform, GetComponent<Rigidbody>());
-        music.start();
+        footsteps = RuntimeManager.CreateInstance("event:/Enemies/E_Footsteps");
+        footsteps.start();
+
         F_Music.music.setParameterByName("Intencity", 100f, false);
         searching = RuntimeManager.CreateInstance("event:/Enemies/Searching");
 
@@ -55,6 +55,7 @@ public class F_Occlusion : MonoBehaviour
     {
         float distance = Vector3.Distance(transform.position, player.position); //Distance Between player and sound source
         RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
+        RuntimeManager.AttachInstanceToGameObject(footsteps, transform, GetComponent<Rigidbody>());
 
         if (distance <= OcclusionRadius)
         {
@@ -63,7 +64,7 @@ public class F_Occlusion : MonoBehaviour
         }
         else
         {
-            music.setParameterByName("LowPass", 0, false);
+            footsteps.setParameterByName("LowPass", 0, false);
         }
 
 
@@ -112,19 +113,22 @@ public class F_Occlusion : MonoBehaviour
             if (hit.collider.gameObject.tag == "Wall")
             {
                 //Debug.Log("wall");
-                music.setParameterByName("LowPass", 1, false);
+                footsteps.setParameterByName("LowPass", 1, false);
             }             
         }
         if (hit.collider == null)
         {
             //Debug.Log("No wall");
-            music.setParameterByName("LowPass", 0, false);
+            footsteps.setParameterByName("LowPass", 0, false);
         }
     }
 
     private void OnDestroy()
     {
-        music.release();
+        footsteps.release();
+        searching.release();
+        intenseSnapshot.release();
         F_Music.music.setParameterByName("Intencity", 100f, false);
+        StateManager.changeStateEvent -= MusicAndSounds;
     }
 }

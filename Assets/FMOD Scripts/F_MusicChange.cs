@@ -27,6 +27,10 @@ public class F_MusicChange : MonoBehaviour
             F_Music.music.setParameterByName("MusicState", 1f, false);
         }
     }
+    private void OnDestroy()
+    {
+        StateManager.changeStateEvent -= MusicSwitcher;
+    }
 
 
 }

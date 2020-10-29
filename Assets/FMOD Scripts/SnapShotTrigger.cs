@@ -16,11 +16,15 @@ public class SnapShotTrigger : MonoBehaviour
         Player = GameObject.Find("Player");
     }
 
+    private void Update()
+    {
+        RuntimeManager.AttachInstanceToGameObject(snapshot, transform, GetComponent<Rigidbody>());
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == Player)
         {
-            Debug.Log("SnapshotStarted");
             snapshot.start();         
         }    
     }
@@ -28,7 +32,6 @@ public class SnapShotTrigger : MonoBehaviour
     {
         if (other.gameObject == Player)
         {
-            Debug.Log("exit");
             snapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
