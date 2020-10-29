@@ -32,19 +32,22 @@ namespace InDevelopment.Mechanics
         public void TeleportTrigger()
         {
             isCooldown = true;
-            TeleportUI.fillAmount = 0;
+            if (!(TeleportUI is null)) TeleportUI.fillAmount = 0;
         }
 
         void RefillUI()
         {
             if (isCooldown)
             {
-                TeleportUI.fillAmount += 1 / cooldown1 * Time.deltaTime;
-
-                if(TeleportUI.fillAmount <= 0)
+                if (!(TeleportUI is null))
                 {
-                    TeleportUI.fillAmount = 0;
-                    isCooldown = false;
+                    TeleportUI.fillAmount += 1 / cooldown1 * Time.deltaTime;
+
+                    if (TeleportUI.fillAmount <= 0)
+                    {
+                        TeleportUI.fillAmount = 0;
+                        isCooldown = false;
+                    }
                 }
             }
 

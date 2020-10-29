@@ -16,7 +16,7 @@ namespace InDevelopment.Mechanics
         private void Start()
         {
             visionAbilityController = GetComponentInParent<VisionAbilityController>();
-            visionEnergy.value = visionAbilityController.maxEnergyFill;
+            if (!(visionEnergy is null)) visionEnergy.value = visionAbilityController.maxEnergyFill;
         }
 
         private void Update()
@@ -26,7 +26,7 @@ namespace InDevelopment.Mechanics
 
         private void SetSliderValue()
         {
-            visionEnergy.value = visionAbilityController.visionEnergy;
+            if (!(visionEnergy is null)) visionEnergy.value = visionAbilityController.visionEnergy;
         }
     }
 }

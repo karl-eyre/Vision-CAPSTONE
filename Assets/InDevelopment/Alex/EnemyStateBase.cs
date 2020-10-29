@@ -34,13 +34,18 @@ namespace InDevelopment.Alex
         private static event Action playerDetected;
         // public bool beingDistracted;
 
+        private void Start()
+        {
+            Init();
+        }
+
         private void Init()
         {
             if (!stateManager)
             {
                 stateManager = GetComponent<StateManager>();
             }
-
+            
             if (!lineOfSight)
             {
                 lineOfSight = GetComponentInParent<LineOfSight>();
@@ -50,7 +55,8 @@ namespace InDevelopment.Alex
             {
                 enemyController = GetComponentInParent<EnemyController>();
             }
-            enemyController.beingDistracted = false;
+
+            if (!(enemyController is null)) enemyController.beingDistracted = false;
             EnemyStateBase.playerDetected += TriggerPlayerDetection;
         }
 

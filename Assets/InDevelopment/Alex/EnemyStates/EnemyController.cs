@@ -69,8 +69,9 @@ namespace InDevelopment.Alex.EnemyStates
         #endregion
 
         // Start is called before the first frame update
-        private void Awake()
+        private void Start()
         {
+            agent = GetComponent<NavMeshAgent>();
             SetupStates();
             SetupNavmesh();
         }
@@ -78,6 +79,8 @@ namespace InDevelopment.Alex.EnemyStates
         void SetupNavmesh()
         {
             agent = GetComponent<NavMeshAgent>();
+            agent.ResetPath();
+            agent.isStopped = true;
             agent.autoBraking = true;
             agent.speed = moveSpeed;
         }
@@ -103,7 +106,8 @@ namespace InDevelopment.Alex.EnemyStates
             if (other.collider.CompareTag("Player"))
             {
                 //TODO end game
-                // SceneManager.LoadScene();
+                Scene scene = SceneManager.GetActiveScene(); 
+                SceneManager.LoadScene(scene.name);
             }
         }
 
@@ -112,30 +116,33 @@ namespace InDevelopment.Alex.EnemyStates
             //TODO: use this if fix for object being thrown at wall doesn't work
             // tgt = new Vector3(tgt.x,transform.position.y,tgt.z);
 
-            if (agent.isStopped || agent.remainingDistance < 0.5f)
+            if (!(agent is null) && (agent.isStopped || agent.remainingDistance < 0.5f))
             {
                 agent.ResetPath();
             }
 
-            agent.SetDestination(tgt);
-
-            if (agent.pathPending)
+            if (!(agent is null))
             {
-                if (agent.pathStatus == NavMeshPathStatus.PathComplete)
-                {
-                    agent.SetDestination(tgt);
-                }
+                agent.SetDestination(tgt);
 
-                if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
+                if (agent.pathPending)
                 {
-                    agent.ResetPath();
-                }
+                    if (agent.pathStatus == NavMeshPathStatus.PathComplete)
+                    {
+                        agent.SetDestination(tgt);
+                    }
 
-                if (agent.pathStatus == NavMeshPathStatus.PathPartial)
-                {
-                    NavMeshHit hit;
-                    agent.FindClosestEdge(out hit);
-                    agent.SetDestination(hit.position);
+                    if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
+                    {
+                        agent.ResetPath();
+                    }
+
+                    if (agent.pathStatus == NavMeshPathStatus.PathPartial)
+                    {
+                        NavMeshHit hit;
+                        agent.FindClosestEdge(out hit);
+                        agent.SetDestination(hit.position);
+                    }
                 }
             }
         }

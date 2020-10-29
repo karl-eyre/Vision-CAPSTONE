@@ -26,20 +26,20 @@ namespace InDevelopment.Mechanics
 
         private void SetSliderVisiblity()
         {
-            if (stateBase.isAlerted)
+            if (!(stateBase is null) && stateBase.isAlerted)
             {
-                detectionMeter.gameObject.SetActive(true);
+                if (!(detectionMeter is null)) detectionMeter.gameObject.SetActive(true);
             }
             else
             {
-                detectionMeter.gameObject.SetActive(false);
+                if (!(detectionMeter is null)) detectionMeter.gameObject.SetActive(false);
             }
         }
 
 
         private void SetSliderValue()
         {
-            detectionMeter.value = lineOfSight.detectionMeter;
+            if (!(detectionMeter is null)) detectionMeter.value = lineOfSight.detectionMeter;
         }
     }
 }
