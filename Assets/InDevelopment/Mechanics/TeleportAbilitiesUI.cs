@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using InDevelopment.Mechanics.TeleportAbility;
 using UnityEngine.UI;
 
 namespace InDevelopment.Mechanics
@@ -11,15 +12,16 @@ namespace InDevelopment.Mechanics
         [Header("Teleport")]
         public Image TeleportUI;
         private float cooldown1 = 5;
-        bool isCooldown = false;
+        private bool isCooldown = false;
 
         private TeleportAbility.TeleportAbility teleportAbility;
         
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             teleportAbility = GetComponentInParent<TeleportAbility.TeleportAbility>();
             TeleportAbility.TeleportAbility.teleportTrigger += TeleportTrigger;
+            
             TeleportUI.fillAmount = teleportAbility.teleportDelay;
         }
 
