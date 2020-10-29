@@ -106,6 +106,7 @@ namespace InDevelopment.Alex.EnemyStates
             if (other.collider.CompareTag("Player"))
             {
                 //TODO end game
+                F_Music.music.setParameterByName("MusicState", 2f, false);
                 Scene scene = SceneManager.GetActiveScene(); 
                 SceneManager.LoadScene(scene.name);
             }

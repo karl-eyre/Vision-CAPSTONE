@@ -31,7 +31,7 @@ namespace InDevelopment.Alex
 
         private bool isResetting;
 
-        private static event Action playerDetected;
+        public static event Action playerDetected;
         // public bool beingDistracted;
 
         private void Start()
