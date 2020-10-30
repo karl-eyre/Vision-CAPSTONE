@@ -103,7 +103,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
             {
                 canTeleport = false;
             }
-            else if (Physics.Raycast(ray, out hitInfo, teleportRange, phaseableLayer))
+            else
             {
                 if (Physics.Raycast(ray, out hitInfo, teleportRange, teleportLayer))
                 {
@@ -116,15 +116,15 @@ namespace InDevelopment.Mechanics.TeleportAbility
                 }
             }
             
-            if (Physics.Raycast(ray, out hitInfo, teleportRange, teleportLayer))
-            {
-                targetObj = hitInfo.collider.gameObject;
-                canTeleport = true;
-            }
-            else
-            {
-                canTeleport = false;
-            }
+            // if (Physics.Raycast(ray, out hitInfo, teleportRange, teleportLayer))
+            // {
+            //     targetObj = hitInfo.collider.gameObject;
+            //     canTeleport = true;
+            // }
+            // else
+            // {
+            //     canTeleport = false;
+            // }
 
 
             return canTeleport;
