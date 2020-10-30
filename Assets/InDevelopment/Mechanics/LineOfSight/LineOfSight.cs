@@ -148,7 +148,7 @@ namespace InDevelopment.Mechanics.LineOfSight
 
         public void SoundDistraction(float noiseLoudness)
         {
-            detectionMeter += noiseLoudness;
+            // detectionMeter += noiseLoudness;
             stopDecrease = true;
         }
         

@@ -126,6 +126,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noiseLoudness: 10
+  respawnDelay: 20
+  beingHeld: 0
+  resetting: 0
+  noiseYOffset: 0
+  noiseThreshold: 0
 --- !u!114 &7411825657087232548
 MonoBehaviour:
   m_ObjectHideFlags: 0
