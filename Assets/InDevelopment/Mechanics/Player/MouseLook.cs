@@ -42,7 +42,7 @@ namespace InDevelopment.Mechanics.Player
             SetUpControls();
             if (mouseLocked)
             {
-                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.lockState = CursorLockMode.Locked;
             }
 
             if (playerBody == null)
