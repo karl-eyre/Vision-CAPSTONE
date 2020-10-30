@@ -15,14 +15,13 @@ namespace InDevelopment.Mechanics
         private bool isCooldown = false;
 
         private TeleportAbility.TeleportAbility teleportAbility;
-        
-        // Start is called before the first frame update
+
+        //TODO figure out why teleport references break on scene load
         void Awake()
         {
             teleportAbility = GetComponentInParent<TeleportAbility.TeleportAbility>();
             TeleportAbility.TeleportAbility.teleportTrigger += TeleportTrigger;
-            
-            TeleportUI.fillAmount = teleportAbility.teleportDelay;
+            if (!(TeleportUI is null)) TeleportUI.fillAmount = teleportAbility.teleportDelay;
         }
 
         // Update is called once per frame
@@ -31,13 +30,13 @@ namespace InDevelopment.Mechanics
             RefillUI();
         }
 
-        public void TeleportTrigger()
+        private void TeleportTrigger()
         {
             isCooldown = true;
             if (!(TeleportUI is null)) TeleportUI.fillAmount = 0;
         }
 
-        void RefillUI()
+        private void RefillUI()
         {
             if (isCooldown)
             {

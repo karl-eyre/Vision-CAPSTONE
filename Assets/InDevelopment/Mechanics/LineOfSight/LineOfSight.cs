@@ -51,13 +51,13 @@ namespace InDevelopment.Mechanics.LineOfSight
             //perhaps find a better way to assign player
             if (player == null)
             {
-                if (!FindObjectOfType<MouseLook>())
+                if (!FindObjectOfType<PlayerMovement>())
                 {
                     Debug.Log("No player exists in the scene");
                     return;
                 }
 
-                player = FindObjectOfType<MouseLook>().gameObject;
+                player = FindObjectOfType<PlayerMovement>().gameObject;
             }
         }
 

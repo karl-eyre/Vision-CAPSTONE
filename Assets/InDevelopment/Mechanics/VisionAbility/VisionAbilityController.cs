@@ -3,7 +3,6 @@ using Abilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 
 
 namespace InDevelopment.Mechanics.VisionAbility
@@ -27,9 +26,6 @@ namespace InDevelopment.Mechanics.VisionAbility
         [SerializeField]
         private Volume postProcessing;
 
-        private ChromaticAberration cb;
-        private Vignette v;
-        
         private GameControls controls;
 
         private static float t1;
@@ -49,10 +45,7 @@ namespace InDevelopment.Mechanics.VisionAbility
 
         private void GetReferences()
         {
-            postProcessing.profile.TryGet(out cb);
-            postProcessing.profile.TryGet(out v);
-            cb.intensity.value = 0f;
-            v.intensity.value = 0f;    
+            
         }
 
         public void FixedUpdate()

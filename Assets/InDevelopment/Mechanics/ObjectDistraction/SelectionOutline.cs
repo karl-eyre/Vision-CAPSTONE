@@ -32,7 +32,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         private void Start()
         {
             SetUpControls();
-            // levelLayer = ~pickupObjectLayer;
         }
 
         private void FixedUpdate()
@@ -57,16 +56,15 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
             ray = camera.ScreenPointToRay(mousePosition);
             
-            //TODO ALEX ITS HERE have it checked out as to why it doesn't work
-            if (Physics.Raycast(ray, out hit, PickupRange, levelLayer))
-            {
-                return;
-            }
-            
             isHit = Physics.Raycast(ray, out hit, PickupRange, pickupObjectLayer);
 
             if (isHit)
             {
+                if (!hit.collider.CompareTag("ThrowableObjects"))
+                {
+                    return;
+                }
+                
                 var selection = hit.collider.gameObject;
                 selection.GetComponent<VisionEffectActivation>().isSelected = true;
                 var selectionRenderer = hit.collider.gameObject.GetComponent<Renderer>();

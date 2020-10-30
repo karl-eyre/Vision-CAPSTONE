@@ -96,7 +96,7 @@ namespace InDevelopment.Alex.EnemyStates
             playerDetectedState = GetComponentInChildren<PlayerDetectedState>();
             startingState = GetComponentInChildren<StartingState>();
             spottingState = GetComponentInChildren<SpottingState>();
-            
+
             stateManager.ChangeState(startingState);
             // stateManager.initialState = startingState;
         }
@@ -107,7 +107,7 @@ namespace InDevelopment.Alex.EnemyStates
             {
                 //TODO end game
                 F_Music.music.setParameterByName("MusicState", 2f, false);
-                Scene scene = SceneManager.GetActiveScene(); 
+                Scene scene = SceneManager.GetActiveScene();
                 SceneManager.LoadScene(scene.name);
             }
         }
@@ -125,26 +125,6 @@ namespace InDevelopment.Alex.EnemyStates
             if (!(agent is null))
             {
                 agent.SetDestination(tgt);
-
-                if (agent.pathPending)
-                {
-                    if (agent.pathStatus == NavMeshPathStatus.PathComplete)
-                    {
-                        agent.SetDestination(tgt);
-                    }
-
-                    if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
-                    {
-                        agent.ResetPath();
-                    }
-
-                    if (agent.pathStatus == NavMeshPathStatus.PathPartial)
-                    {
-                        NavMeshHit hit;
-                        agent.FindClosestEdge(out hit);
-                        agent.SetDestination(hit.position);
-                    }
-                }
             }
         }
 

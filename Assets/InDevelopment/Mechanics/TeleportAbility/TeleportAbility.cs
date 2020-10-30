@@ -17,6 +17,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         public float teleportRange;
         public float teleportDelay;
+        public float teleportStartUpDelay;
         public LayerMask teleportLayer;
 
         private bool canTeleport;
@@ -28,8 +29,6 @@ namespace InDevelopment.Mechanics.TeleportAbility
         private RaycastHit hitInfo;
         private Ray ray;
 
-        [SerializeField]
-        // private GeneralSoundMaker generalSoundMaker;
         private ObjectSoundMaker objectSoundMaker;
 
         public float noiseLevel;
@@ -42,18 +41,14 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         private void Start()
         {
-            camera = GetComponentInChildren<Camera>();
             SetUpControls();
             SetReferences();
         }
 
         private void SetReferences()
         {
-            // generalSoundMaker = GetComponentInChildren<GeneralSoundMaker>();
-
             objectSoundMaker = GetComponent<ObjectSoundMaker>();
             teleportLayer = LayerMask.GetMask("ThrowableObjects");
-            // unphaseableLayer = LayerMask.GetMask("Unphaseable");
             phaseableLayer = LayerMask.GetMask("Phaseable");
             onCooldown = false;
         }
@@ -62,7 +57,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
         {
             controls = new GameControls();
             controls.Enable();
-            controls.InGame.TeleportToItem.performed += ReadTeleportInput;
+            if (controls.InGame.TeleportToItem != null) controls.InGame.TeleportToItem.performed += ReadTeleportInput;
         }
 
         private void ReadTeleportInput(InputAction.CallbackContext obj)
@@ -73,21 +68,10 @@ namespace InDevelopment.Mechanics.TeleportAbility
             }
         }
 
-        private void TeleportToPosition(GameObject targetObject)
-        {
-            var tgt = targetObject;
-            Vector3 origin = new Vector3(transform.position.x, transform.position.y + heightOffset,
-                transform.position.z);
-            transform.position = tgt.transform.position;
-            tgt.transform.position = origin;
-            tgt.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            targetObj = null;
-            objectSoundMaker.MakeSound(transform.position, noiseLevel);
-            // generalSoundMaker.MakeSound(noiseLevel);
-        }
-
         private IEnumerator Teleport(GameObject targetObject)
         {
+            //todo add delay to teleport
+            yield return new WaitForSeconds(teleportStartUpDelay);
             onCooldown = true;
             var tgt = targetObject;
             Vector3 origin = new Vector3(transform.position.x, transform.position.y + heightOffset,
@@ -97,40 +81,25 @@ namespace InDevelopment.Mechanics.TeleportAbility
             tgt.GetComponent<Rigidbody>().velocity = Vector3.zero;
             targetObj = null;
             objectSoundMaker.MakeSound(transform.position, noiseLevel);
-            // generalSoundMaker.MakeSound(noiseLevel);
             teleportTrigger?.Invoke();
             yield return new WaitForSeconds(teleportDelay);
-
             onCooldown = false;
         }
 
         private bool CanTeleport()
         {
-            //made second coroutine to delay the intial jump, ask if noise is needed then
             Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
 
-            if (!(camera is null))
+            ray = camera.ScreenPointToRay(mousePosition);
+
+            //todo look at sphere cast for little leeway on the area u need to aim at
+            if (Physics.Raycast(ray, out hitInfo, teleportRange, unphaseableLayer))
             {
-                ray = camera.ScreenPointToRay(mousePosition);
-
-
-                if (Physics.Raycast(ray, out hitInfo, teleportRange, unphaseableLayer))
-                {
-                    canTeleport = false;
-                }
-                else if (Physics.Raycast(ray, out hitInfo, teleportRange, phaseableLayer))
-                {
-                    if (Physics.Raycast(ray, out hitInfo, teleportRange, teleportLayer))
-                    {
-                        targetObj = hitInfo.collider.gameObject;
-                        canTeleport = true;
-                    }
-                    else
-                    {
-                        canTeleport = false;
-                    }
-                }
-                else if (Physics.Raycast(ray, out hitInfo, teleportRange, teleportLayer))
+                canTeleport = false;
+            }
+            else if (Physics.Raycast(ray, out hitInfo, teleportRange, phaseableLayer))
+            {
+                if (Physics.Raycast(ray, out hitInfo, teleportRange, teleportLayer))
                 {
                     targetObj = hitInfo.collider.gameObject;
                     canTeleport = true;
@@ -140,6 +109,17 @@ namespace InDevelopment.Mechanics.TeleportAbility
                     canTeleport = false;
                 }
             }
+            
+            if (Physics.Raycast(ray, out hitInfo, teleportRange, teleportLayer))
+            {
+                targetObj = hitInfo.collider.gameObject;
+                canTeleport = true;
+            }
+            else
+            {
+                canTeleport = false;
+            }
+
 
             return canTeleport;
         }
