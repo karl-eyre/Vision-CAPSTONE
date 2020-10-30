@@ -35,7 +35,14 @@ namespace InDevelopment.Alex.EnemyStates
 
         private void Awake()
         {
-            target = waypoints[targetIndex];
+            if (waypoints.Count >= 0)
+            {
+                target = waypoints[targetIndex];
+            }
+            else
+            {
+                Debug.LogWarning(this.name + "doesn't have waypoints assigned");
+            }
         }
 
         public override void Enter()

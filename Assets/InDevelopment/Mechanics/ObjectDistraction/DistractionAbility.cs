@@ -241,10 +241,12 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             throwableObject.transform.rotation = handPosition.rotation;
             throwableObject.SetActive(true);
             
-            rb.AddForce(CalculateThrowDirection(throwDirection) * throwForce, ForceMode.Impulse);
+            // rb.AddForce(CalculateThrowDirection(throwDirection) * throwForce, ForceMode.Impulse);
+            rb.AddForce(camera.transform.forward * throwForce, ForceMode.Impulse);
 
             //these two need to be in there
             throwableObjectPrefab.GetComponent<BoxCollider>().enabled = true;
+            throwableObjectPrefab.GetComponent<ThrowableObject>().beingHeld = false;
             throwableObjectPrefab = null;
             hasObjectToThrow = false;
         }
@@ -302,6 +304,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         {
             yield return new WaitForSeconds(pickupDelay);
             hasObjectToThrow = true;
+            throwableObjectPrefab.GetComponent<ThrowableObject>().beingHeld = true;
             pickingUp = false;
         }
     }

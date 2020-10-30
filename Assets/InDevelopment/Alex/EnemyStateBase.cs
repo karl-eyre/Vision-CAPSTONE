@@ -22,7 +22,6 @@ namespace InDevelopment.Alex
         [HideInInspector]
         public LineOfSight lineOfSight;
 
-        // public Vector3 posWhenInterrupted;
         [HideInInspector]
         public Vector3 lastKnownPlayerPosition;
 
@@ -31,8 +30,7 @@ namespace InDevelopment.Alex
 
         private bool isResetting;
 
-        public static event Action playerDetected;
-        // public bool beingDistracted;
+        // public static event Action playerDetected;
 
         private void Start()
         {
@@ -41,28 +39,33 @@ namespace InDevelopment.Alex
 
         private void Init()
         {
-            if (!stateManager)
+            if (stateManager == null)
             {
                 stateManager = GetComponent<StateManager>();
             }
-            
-            if (!lineOfSight)
+
+            if (lineOfSight == null)
             {
                 lineOfSight = GetComponentInParent<LineOfSight>();
             }
 
-            if (!enemyController)
+            if (enemyController == null)
             {
                 enemyController = GetComponentInParent<EnemyController>();
             }
 
             if (!(enemyController is null)) enemyController.beingDistracted = false;
-            EnemyStateBase.playerDetected += TriggerPlayerDetection;
+            // PlayerDetectedState.playerDetected += TriggerPlayerDetection;
         }
 
         public void OnEnable()
         {
             Init();
+        }
+
+        public void OnDestroy()
+        {
+            // PlayerDetectedState.playerDetected -= TriggerPlayerDetection;
         }
 
         public virtual void Enter()
@@ -78,7 +81,7 @@ namespace InDevelopment.Alex
 
         public virtual void Execute()
         {
-           // Debug.Log("I am executing the " + this.GetType() + " state.");
+            // Debug.Log("I am executing the " + this.GetType() + " state.");
         }
 
         public void Update()
@@ -91,7 +94,7 @@ namespace InDevelopment.Alex
         public void LOSFunc()
         {
             //only call function in each state manually it seems to be causing problems for currently
-            if (stateManager.currentEnemyState != enemyController.playerDetectedState)
+            if (!(enemyController.playerDetectedState is null) && stateManager.currentEnemyState != enemyController.playerDetectedState)
             {
                 if (CanSeePlayer() && stateManager.currentEnemyState != enemyController.investigatingEnemyState)
                 {
@@ -108,9 +111,9 @@ namespace InDevelopment.Alex
                         stateManager.ChangeState(enemyController.investigatingEnemyState);
                     }
                 }
-            
 
-                if (!CanSeePlayer() && !enemyController.beingDistracted)
+
+                if (!(enemyController is null) && !CanSeePlayer() && !enemyController.beingDistracted)
                 {
                     if (stateManager.previousEnemyState != enemyController.spottingState)
                     {
@@ -126,7 +129,7 @@ namespace InDevelopment.Alex
             {
                 AssignPlayerPos();
             }
-            
+
             IsAlerted();
             LOSFunc();
             PlayerDetected();
@@ -134,7 +137,7 @@ namespace InDevelopment.Alex
 
         public void GetDistracted(Vector3 location)
         {
-            if(enemyController.beingDistracted) return;
+            if (enemyController.beingDistracted) return;
 
             if (stateManager.currentEnemyState != enemyController.spottingState)
             {
@@ -154,13 +157,11 @@ namespace InDevelopment.Alex
             enemyController.beingDistracted = !enemyController.beingDistracted;
         }
 
-        //called when wanting to look at player
         public void LookAtPlayer()
         {
             enemyController.LookAtTarget(lineOfSight.player.transform.position);
         }
 
-        //needs to be called all the time
         private void PlayerDetected()
         {
             if (lineOfSight.detectionMeter > lineOfSight.maxDetectionValue)
@@ -168,15 +169,17 @@ namespace InDevelopment.Alex
                 if (stateManager.currentEnemyState != enemyController.playerDetectedState)
                 {
                     stateManager.ChangeState(enemyController.playerDetectedState);
-                    playerDetected?.Invoke();
-                    return;
+                    // playerDetected?.Invoke();
                 }
             }
         }
 
         private void TriggerPlayerDetection()
         {
-            stateManager.ChangeState(enemyController.playerDetectedState);
+            if (stateManager.currentEnemyState != enemyController.playerDetectedState)
+            {
+                stateManager.ChangeState(enemyController.playerDetectedState);
+            }
         }
 
         public bool AboveInvestigationThresholdCheck()

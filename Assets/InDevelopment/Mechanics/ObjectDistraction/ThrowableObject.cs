@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using InDevelopment.Mechanics.VisionAbility;
 using UnityEngine;
 
@@ -14,10 +15,19 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         public int noiseLoudness;
         private int startingNoiseLoudness;
         private ObjectSoundMaker objectSoundMaker;
-        
+        public float respawnDelay = 5f;
+
+        // [HideInInspector]
+        public bool beingHeld;
+
+        [SerializeField]
+        private bool resetting;
+
+        private Vector3 startingPos;
+
         public float noiseYOffset;
         public float noiseThreshold;
-        
+
         private void Start()
         {
             //this is just to make sure that any item that this script is
@@ -26,14 +36,16 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             gameObject.layer = LayerMask.NameToLayer("ThrowableObjects");
             objectSoundMaker = GetComponent<ObjectSoundMaker>();
             startingNoiseLoudness = noiseLoudness;
+            startingPos = transform.position;
         }
-        
+
         //TODO make objects respawn after some time has passed
-        
+
         private void OnCollisionEnter(Collision other)
         {
             if (other.collider.CompareTag("Enemy")) return;
 
+            objectSoundMaker.MakeSound(gameObject.transform.position, noiseLoudness);
 
             //TODO: test noiseLoudness 
 
@@ -64,13 +76,36 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             //         gameObject.transform.position.y + noiseYOffset, gameObject.transform.position.z);
             //     objectSoundMaker.MakeSound(transformToPass, noiseLoudness);
             // }
-            
-            objectSoundMaker.MakeSound(gameObject.transform.position, noiseLoudness);
         }
 
-        private void OnCollisionStay(Collision other)
+        private void OnCollisionExit(Collision other)
         {
-            // noiseLoudness = startingNoiseLoudness;
+            if (!resetting)
+            {
+                resetting = true;
+                StartCoroutine(ResetObjectPosition());
+            }
+        }
+
+        private void ResetPos()
+        {
+            transform.position = startingPos;
+            transform.rotation = Quaternion.identity;
+        }
+
+        public IEnumerator ResetObjectPosition()
+        {
+            yield return new WaitForSeconds(respawnDelay);
+            if (!beingHeld)
+            {
+                ResetPos();
+            }
+            else
+            {
+                StartCoroutine(ResetObjectPosition());
+            }
+
+            resetting = false;
         }
 
         private void OnDrawGizmosSelected()
@@ -78,6 +113,5 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, noiseLoudness);
         }
-        
     }
 }
