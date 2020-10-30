@@ -45,6 +45,12 @@ namespace InDevelopment.Mechanics.TeleportAbility
             SetReferences();
         }
 
+        // private void OnEnable()
+        // {
+        //     SetUpControls();
+        //     SetReferences();
+        // }
+
         private void SetReferences()
         {
             objectSoundMaker = GetComponent<ObjectSoundMaker>();
@@ -64,6 +70,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
         {
             if (CanTeleport() && !onCooldown)
             {
+                onCooldown = true;
                 StartCoroutine(Teleport(targetObj));
             }
         }
@@ -72,7 +79,6 @@ namespace InDevelopment.Mechanics.TeleportAbility
         {
             //todo add delay to teleport
             yield return new WaitForSeconds(teleportStartUpDelay);
-            onCooldown = true;
             var tgt = targetObject;
             Vector3 origin = new Vector3(transform.position.x, transform.position.y + heightOffset,
                 transform.position.z);

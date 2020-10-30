@@ -23,6 +23,7 @@ namespace InDevelopment.Mechanics
             TeleportAbility.TeleportAbility.teleportTrigger += TeleportTrigger;
             if (!(TeleportUI is null)) TeleportUI.fillAmount = teleportAbility.teleportDelay;
         }
+        
 
         // Update is called once per frame
         void Update()
@@ -60,6 +61,11 @@ namespace InDevelopment.Mechanics
         }
 
         private void OnDisable()
+        {
+            TeleportAbility.TeleportAbility.teleportTrigger -= TeleportTrigger;
+        }
+        
+        private void OnDestroy()
         {
             TeleportAbility.TeleportAbility.teleportTrigger -= TeleportTrigger;
         }
