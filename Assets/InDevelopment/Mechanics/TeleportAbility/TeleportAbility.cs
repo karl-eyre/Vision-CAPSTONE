@@ -36,6 +36,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
         public LayerMask unphaseableLayer;
         public LayerMask phaseableLayer;
         private bool onCooldown;
+        public float teleportAssistDistance = 2f;
 
         public static event Action teleportTrigger;
 
@@ -99,33 +100,19 @@ namespace InDevelopment.Mechanics.TeleportAbility
             ray = camera.ScreenPointToRay(mousePosition);
 
             //todo look at sphere cast for little leeway on the area u need to aim at
-            if (Physics.Raycast(ray, out hitInfo, teleportRange, unphaseableLayer))
+
+            // bool isHit = Physics.SphereCast(ray, teleportAssistDistance, out hitInfo, teleportRange);
+            bool isHit = Physics.Raycast(ray, out hitInfo, teleportRange);
+
+            if (!hitInfo.collider.CompareTag("ThrowableObjects"))
             {
                 canTeleport = false;
             }
             else
             {
-                if (Physics.Raycast(ray, out hitInfo, teleportRange, teleportLayer))
-                {
-                    targetObj = hitInfo.collider.gameObject;
-                    canTeleport = true;
-                }
-                else
-                {
-                    canTeleport = false;
-                }
+                targetObj = hitInfo.collider.gameObject;
+                canTeleport = true;
             }
-            
-            // if (Physics.Raycast(ray, out hitInfo, teleportRange, teleportLayer))
-            // {
-            //     targetObj = hitInfo.collider.gameObject;
-            //     canTeleport = true;
-            // }
-            // else
-            // {
-            //     canTeleport = false;
-            // }
-
 
             return canTeleport;
         }
