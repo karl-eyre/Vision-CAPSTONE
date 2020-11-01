@@ -114,7 +114,7 @@ namespace InDevelopment.Alex.EnemyStates
 
         public void MoveToTarget(Vector3 tgt)
         {
-            //TODO: use this if fix for object being thrown at wall doesn't work
+            //TODO: find how to get closest nav mesh point when moving to target
             tgt = new Vector3(tgt.x,transform.position.y,tgt.z);
 
             if (!(agent is null) && (agent.isStopped || agent.remainingDistance < 0.5f))

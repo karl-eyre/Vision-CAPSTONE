@@ -15,18 +15,20 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         public int noiseLoudness;
         private int startingNoiseLoudness;
         private ObjectSoundMaker objectSoundMaker;
+        private Rigidbody rb;
         public float respawnDelay = 5f;
 
-        // [HideInInspector]
-        public bool beingHeld;
-
         [SerializeField]
-        private bool resetting;
+        private float duration;
+
+        public float reduceRate = 0.1f;
+        public bool thrown;
 
         private Vector3 startingPos;
 
         public float noiseYOffset;
         public float noiseThreshold;
+
 
         private void Start()
         {
@@ -35,6 +37,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             //Problem may arise if layer orders are changed
             gameObject.layer = LayerMask.NameToLayer("ThrowableObjects");
             objectSoundMaker = GetComponent<ObjectSoundMaker>();
+            rb = GetComponent<Rigidbody>();
             startingNoiseLoudness = noiseLoudness;
             startingPos = transform.position;
         }
@@ -44,8 +47,13 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         private void OnCollisionEnter(Collision other)
         {
             if (other.collider.CompareTag("Enemy")) return;
+            if (other.collider.CompareTag("Player"))
+            {
+                thrown = true;
+            }
 
             objectSoundMaker.MakeSound(gameObject.transform.position, noiseLoudness);
+
 
             //TODO: test noiseLoudness 
 
@@ -78,12 +86,20 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             // }
         }
 
-        private void OnCollisionExit(Collision other)
+        private void Update()
         {
-            if (!resetting)
+            if (duration <= 0)
             {
-                resetting = true;
-                StartCoroutine(ResetObjectPosition());
+                ResetPos();
+            }
+
+            if (thrown)
+            {
+                duration -= reduceRate;
+            }
+            else
+            {
+                duration = respawnDelay;
             }
         }
 
@@ -91,21 +107,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         {
             transform.position = startingPos;
             transform.rotation = Quaternion.identity;
-        }
-
-        public IEnumerator ResetObjectPosition()
-        {
-            yield return new WaitForSeconds(respawnDelay);
-            if (!beingHeld)
-            {
-                ResetPos();
-            }
-            else
-            {
-                StartCoroutine(ResetObjectPosition());
-            }
-
-            resetting = false;
+            rb.velocity = Vector3.zero;
+            thrown = false;
         }
 
         private void OnDrawGizmosSelected()

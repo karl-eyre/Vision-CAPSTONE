@@ -88,9 +88,9 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
             if (hasObjectToThrow)
             {
+                // throwableObjectPrefab.GetComponent<Rigidbody>().isKinematic = true;
                 hitObject.transform.position = handPosition.transform.position;
                 hitObject.transform.rotation = handPosition.transform.rotation;
-                throwableObjectPrefab.GetComponent<BoxCollider>().enabled = false;
             }
         }
 
@@ -114,7 +114,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             // throwForce = defaultThrowForce / 2 + points.Count;
             //TODO test this
             throwForce = points.Count;
-
         }
 
         private void PredictPathInput(InputAction.CallbackContext obj)
@@ -173,25 +172,25 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                     Vector3 point1 = PointPosition(loopCount * 0.1f);
                     Vector3 point2 = PointPosition((loopCount + 1f) * 0.1f);
 
-                     
+
                     Ray ray = new Ray(point1, point2 - point1);
                     RaycastHit hit;
 
                     // bool isHit = Physics.BoxCast(point1, throwableObjectPrefab.GetComponent<Renderer>().bounds.extents, point2 - point1, out hit,Quaternion.identity,groundLayerMask);
 
                     // bool isHit = Physics.SphereCast(ray, throwableObjectPrefab.transform.lossyScale.x ,out hit,Vector3.Distance(point1, point2),groundLayerMask);
-                    
+
                     // if (isHit)
                     // {
                     //     hitGround = true;
                     // }
 
                     if (Physics.Raycast(ray, out hit, Vector3.Distance(point1, point2), groundLayerMask))
-                    // if (Physics.Raycast(ray, out hit, Vector3.Distance(point1, point2)))
+                        // if (Physics.Raycast(ray, out hit, Vector3.Distance(point1, point2)))
                     {
                         hitGround = true;
                     }
-                    
+
                     // Vector3 position = PointPosition(loopCount * 0.1f);
                     Vector3 position = PointPosition(loopCount * 0.1f);
                     points.Add(position);
@@ -240,17 +239,17 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             throwableObject.transform.position = handPosition.position;
             throwableObject.transform.rotation = handPosition.rotation;
             throwableObject.SetActive(true);
-            
+            // rb.isKinematic = false;
             // rb.AddForce(CalculateThrowDirection(throwDirection) * throwForce, ForceMode.Impulse);
             rb.AddForce(camera.transform.forward * throwForce, ForceMode.Impulse);
 
             //these two need to be in there
             throwableObjectPrefab.GetComponent<BoxCollider>().enabled = true;
-            throwableObjectPrefab.GetComponent<ThrowableObject>().beingHeld = false;
+            throwableObjectPrefab.GetComponent<ThrowableObject>().thrown = true;
             throwableObjectPrefab = null;
             hasObjectToThrow = false;
         }
-        
+
 
         private void TryToPickupObject()
         {
@@ -261,23 +260,23 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             {
                 //when animations need to be added just have the object destroy delayed for the duration of the animations
                 // Debug.Log("UseObject");
-                hitObject = selectionOutline.hit.collider.gameObject;
-                
+                hitObject = selectionOutline.selectedObject;
+
                 if (throwableObjectPrefab == null)
                 {
-                    throwableObjectPrefab = selectionOutline.hit.collider.gameObject;
+                    throwableObjectPrefab = selectionOutline.selectedObject;
                 }
 
                 oldThrowableObjectPrefab = throwableObjectPrefab;
 
-                oldThrowableObjectPrefab.transform.position = selectionOutline.hit.collider.transform.position;
+                oldThrowableObjectPrefab.transform.position = selectionOutline.selectedObject.transform.position;
 
                 Rigidbody rb = oldThrowableObjectPrefab.GetComponent<Rigidbody>();
                 rb.velocity = Vector3.zero;
                 oldThrowableObjectPrefab.transform.rotation = Quaternion.identity;
                 oldThrowableObjectPrefab.SetActive(true);
 
-                throwableObjectPrefab = selectionOutline.hit.collider.gameObject;
+                throwableObjectPrefab = selectionOutline.selectedObject;
 
                 // hitObject.SetActive(false);
                 // hitObject.transform.position = handPosition.position;
@@ -286,7 +285,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                     pickingUp = true;
                     StartCoroutine(PickUpObject());
                 }
-                
             }
         }
 
@@ -304,7 +302,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         {
             yield return new WaitForSeconds(pickupDelay);
             hasObjectToThrow = true;
-            throwableObjectPrefab.GetComponent<ThrowableObject>().beingHeld = true;
+            throwableObjectPrefab.GetComponent<ThrowableObject>().thrown = false;
+            throwableObjectPrefab.GetComponent<BoxCollider>().enabled = false;
             pickingUp = false;
         }
     }

@@ -16,7 +16,9 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         private Ray ray;
 
         [Header("Throw Settings")]
-        public float PickupRange;
+        [SerializeField]
+        private float PickupRange;
+        public float defaultPickupRange = 5f;
 
         public LayerMask pickupObjectLayer;
         public LayerMask levelLayer;
@@ -32,6 +34,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         private void Start()
         {
             SetUpControls();
+            PickupRange = defaultPickupRange;
         }
 
         private void FixedUpdate()
@@ -56,24 +59,28 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
             ray = camera.ScreenPointToRay(mousePosition);
             
-            isHit = Physics.Raycast(ray, out hit, PickupRange, pickupObjectLayer);
-
+            isHit = Physics.Raycast(ray, out hit, PickupRange);
+            
             if (isHit)
             {
                 if (!hit.collider.CompareTag("ThrowableObjects"))
                 {
-                    return;
+                    // return;
+                }
+                else
+                {
+                    var selection = hit.collider.gameObject;
+                    selection.GetComponent<VisionEffectActivation>().isSelected = true;
+                    var selectionRenderer = hit.collider.gameObject.GetComponent<Renderer>();
+                    if (selectionRenderer != null)
+                    {
+                        selectionRenderer.material = highlightMat;
+                    }
+
+                    selectedObject = selection;
                 }
                 
-                var selection = hit.collider.gameObject;
-                selection.GetComponent<VisionEffectActivation>().isSelected = true;
-                var selectionRenderer = hit.collider.gameObject.GetComponent<Renderer>();
-                if (selectionRenderer != null)
-                {
-                    selectionRenderer.material = highlightMat;
-                }
-
-                selectedObject = selection;
+                
             }
         }
     }
