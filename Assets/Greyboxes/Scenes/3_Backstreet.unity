@@ -13181,7 +13181,7 @@ Transform:
   - {fileID: 1179271826}
   - {fileID: 1420126933}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &573509435
 Mesh:
@@ -13888,6 +13888,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1605883517561385362, guid: 170a423499333c445a8c8894529f52ab,
         type: 3}
+      propertyPath: waypoints.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605883517561385362, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
       objectReference: {fileID: 34713612}
@@ -13916,6 +13921,11 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[5]
       value: 
       objectReference: {fileID: 790328434}
+    - target: {fileID: 1605883517561385362, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: patrolType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4172676412890344984, guid: 170a423499333c445a8c8894529f52ab,
         type: 3}
       propertyPath: waitTimer
