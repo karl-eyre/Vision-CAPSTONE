@@ -34,10 +34,10 @@ RenderSettings:
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
-  m_ReflectionBounces: 1
+  m_ReflectionBounces: 2
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 1336309541}
   m_IndirectSpecularColor: {r: 0.17535163, g: 0.21939376, b: 0.3017098, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -25468,7 +25468,7 @@ Transform:
   - {fileID: 839017317}
   - {fileID: 1392650228}
   m_Father: {fileID: 1838266926}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &520261087
 GameObject:
@@ -55655,9 +55655,8 @@ Transform:
   - {fileID: 48202180}
   - {fileID: 1627305532}
   - {fileID: 1907063354}
-  - {fileID: 1336309542}
   m_Father: {fileID: 1838266926}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1134105431
 Mesh:
@@ -65087,8 +65086,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1132882014}
-  m_RootOrder: 5
+  m_Father: {fileID: 1838266926}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 68.909004, y: -44.007004, z: -45.993004}
 --- !u!1 &1340442212
 GameObject:
@@ -90796,6 +90795,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1336309542}
   - {fileID: 1132882014}
   - {fileID: 518292707}
   m_Father: {fileID: 0}
