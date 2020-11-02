@@ -1681,17 +1681,12 @@ MonoBehaviour:
   teleportRange: 50
   teleportDelay: 5
   teleportStartUpDelay: 0
-  teleportLayer:
+  levelLayer:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 1136951
   heightOffset: 0.5
   noiseLevel: 0
-  unphaseableLayer:
-    serializedVersion: 2
-    m_Bits: 81920
-  phaseableLayer:
-    serializedVersion: 2
-    m_Bits: 32768
+  teleportAssistDistance: 2
 --- !u!114 &762795273288346771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1763,6 +1758,7 @@ MonoBehaviour:
   camera: {fileID: 4237702105607484479}
   isHit: 0
   PickupRange: 5
+  defaultPickupRange: 5
   pickupObjectLayer:
     serializedVersion: 2
     m_Bits: 2048
