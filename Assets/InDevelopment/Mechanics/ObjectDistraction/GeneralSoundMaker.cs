@@ -28,10 +28,10 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         {
             //maybe raycast to any enemy in range to see if they heard it, if hit they did else it hit a wall and they didn't 
             if (!other.gameObject.GetComponentInChildren<EnemyStateBase>()) return;
-            //noiseTODO:uncomment below and test/ get feedback from designers
+            //TODO:uncomment below and test/ get feedback from designers
             Debug.Log("Footstep heard");
-            // var enemyScript = other.gameObject.GetComponentInChildren<EnemyStateBase>();
-            // enemyScript.GetDistracted(transform.position);
+            var enemyScript = other.gameObject.GetComponentInChildren<EnemyStateBase>();
+            enemyScript.GetDistracted(transform.position);
 
         }
 
