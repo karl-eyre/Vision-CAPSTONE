@@ -57,27 +57,28 @@ public class F_Occlusion : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        float distance = Vector3.Distance(transform.position, player.position); //Distance Between player and sound source
-
-
-        if (distance <= OcclusionRadius)
+        if (!(player is null))
         {
-            Occlusion();
-            Lowpass();
-        }
-        else
-        {
-            footsteps.setParameterByName("LowPass", 0, false);
-        }
+            float distance = Vector3.Distance(transform.position, player.position); //Distance Between player and sound source
 
 
-        float musicDist = Vector3.Distance(transform.position, player.transform.position);
-        if (distance <= OcclusionRadius)
-        {
-            //F_Music.music.setParameterByName("Intencity", musicDist, false);
-        }
-           
+            if (distance <= OcclusionRadius)
+            {
+                Occlusion();
+                Lowpass();
+            }
+            else
+            {
+                footsteps.setParameterByName("LowPass", 0, false);
+            }
 
+
+            float musicDist = Vector3.Distance(transform.position, player.transform.position);
+            if (distance <= OcclusionRadius)
+            {
+                //F_Music.music.setParameterByName("Intencity", musicDist, false);
+            }
+        }
     }
 
     void MusicAndSounds(EnemyStateBase enemyState) //Fade In More Intense Music depending on how close player is. 
