@@ -15,8 +15,6 @@ public class F_Occlusion : MonoBehaviour
     public string eventPath;
     EventInstance footsteps;
     EventInstance searching;
-    EventInstance intense;
-    EventInstance intenseSnapshot;
 
     bool soundsPlayed;
 
@@ -40,8 +38,6 @@ public class F_Occlusion : MonoBehaviour
         lm = LayerMask.GetMask("Obstacle");
         enemyController = GetComponent<EnemyController>();
 
-        intense = RuntimeManager.CreateInstance("event:/Music/Intense");
-        intenseSnapshot = RuntimeManager.CreateInstance("snapshot:/EnemySearching/EnemySearching");
 
         StateManager.changeStateEvent += MusicAndSounds;
     }
@@ -90,28 +86,20 @@ public class F_Occlusion : MonoBehaviour
         if (enemyState == enemyController.investigatingEnemyState && soundsPlayed == false)
         {
             searching.start();
-            intense.start();
-            intenseSnapshot.start();
             soundsPlayed = true;
         }
         if (enemyState == enemyController.stationaryEnemyState)
         {
             searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            intense.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            intenseSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             soundsPlayed = false;
         }
         if (enemyState == enemyController.patrollingEnemyState)
         {      
             searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            intense.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            intenseSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             soundsPlayed = false;
         }
         if (enemyState == enemyController.playerDetectedState)
         {
-            intense.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            intenseSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             soundsPlayed = false;
         }
     }
@@ -144,7 +132,6 @@ public class F_Occlusion : MonoBehaviour
     {
         footsteps.release();
         searching.release();
-        intenseSnapshot.release();
         StateManager.changeStateEvent -= MusicAndSounds;
     }
 }
