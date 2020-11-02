@@ -18,6 +18,8 @@ public class F_Occlusion : MonoBehaviour
     EventInstance intense;
     EventInstance intenseSnapshot;
 
+    bool soundsPlayed;
+
     EnemyController enemyController;
 
     [SerializeField]
@@ -51,11 +53,16 @@ public class F_Occlusion : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, MusicRadius);
     }
 
+
+    private void Update()
+    {
+        RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
+        RuntimeManager.AttachInstanceToGameObject(footsteps, transform, GetComponent<Rigidbody>());
+    }
     private void FixedUpdate()
     {
         float distance = Vector3.Distance(transform.position, player.position); //Distance Between player and sound source
-        RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
-        RuntimeManager.AttachInstanceToGameObject(footsteps, transform, GetComponent<Rigidbody>());
+
 
         if (distance <= OcclusionRadius)
         {
@@ -80,22 +87,32 @@ public class F_Occlusion : MonoBehaviour
     void MusicAndSounds(EnemyStateBase enemyState) //Fade In More Intense Music depending on how close player is. 
     {      
         //Debug.Log(musicDist);
-        if (enemyState == enemyController.investigatingEnemyState)
+        if (enemyState == enemyController.investigatingEnemyState && soundsPlayed == false)
         {
             searching.start();
             intense.start();
             intenseSnapshot.start();
+            soundsPlayed = true;
         }
-        else if (enemyState == enemyController.patrollingEnemyState)
+        if (enemyState == enemyController.stationaryEnemyState)
         {
             searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             intense.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             intenseSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            soundsPlayed = false;
         }
-        else if (enemyState == enemyController.playerDetectedState)
+        if (enemyState == enemyController.patrollingEnemyState)
+        {      
+            searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            intense.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            intenseSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            soundsPlayed = false;
+        }
+        if (enemyState == enemyController.playerDetectedState)
         {
             intense.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             intenseSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            soundsPlayed = false;
         }
     }
     void Occlusion() //Raycast From sound Source to Player
@@ -128,7 +145,6 @@ public class F_Occlusion : MonoBehaviour
         footsteps.release();
         searching.release();
         intenseSnapshot.release();
-        F_Music.music.setParameterByName("Intencity", 100f, false);
         StateManager.changeStateEvent -= MusicAndSounds;
     }
 }

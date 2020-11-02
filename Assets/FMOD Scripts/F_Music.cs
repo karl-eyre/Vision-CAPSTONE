@@ -13,6 +13,5 @@ public class F_Music : MonoBehaviour
     {
         music = RuntimeManager.CreateInstance("event:/Music/AmbientMusic");
         music.start();
-        music.release();
     }
 }

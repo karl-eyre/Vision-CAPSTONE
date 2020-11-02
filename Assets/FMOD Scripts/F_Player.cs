@@ -10,6 +10,7 @@ public class F_Player : MonoBehaviour
     EventInstance amb;
     EventInstance running;
     EventInstance visionAbilitySound;
+    EventInstance footsteps;
 
     PlayerMovement playerMovement;
     PlayerController playerController;
@@ -34,11 +35,13 @@ public class F_Player : MonoBehaviour
 
         running = RuntimeManager.CreateInstance("event:/Player/Running");
         visionAbilitySound = RuntimeManager.CreateInstance("event:/Player/Abilties/Vision");
-   
+
+        footsteps = RuntimeManager.CreateInstance("event:/Player/Footsteps");
+
         InvokeRepeating("FootstepsWalk", 0, walkingSpeed);
         InvokeRepeating("FootstepsRun", 0, runningSpeed);
         InvokeRepeating("WalkingBackWards", 0, walkingBackwardSpeed);
-
+     
         VisionAbilityController.visionActivation += VisionAbilitySoundPlay;
     }
 
@@ -57,6 +60,7 @@ public class F_Player : MonoBehaviour
         if (playerMovement.isMoving == true && playerMovement.isSprinting == true && playerMovement.isGrounded == true && runningSoundPlayed == false)
         {
             running.start();
+            
             runningSoundPlayed = true;
         }
         else if (playerMovement.isSprinting == false)
@@ -86,18 +90,21 @@ public class F_Player : MonoBehaviour
         if (playerMovement.isMoving == true && playerMovement.isSprinting == false && playerMovement.isGrounded == true)
         {
             RuntimeManager.PlayOneShot("event:/Player/Footsteps", default);
+            //footsteps.setParameterByName("Run&Walk", 0, false);
+            //footsteps.start();
         }
     }
     void FootstepsRun()
     {
         if (playerMovement.isMoving == true && playerMovement.isSprinting == true && playerMovement.isGrounded == true)
         {
-            RuntimeManager.PlayOneShot("event:/Player/Footsteps", default);
+            footsteps.setParameterByName("Run&Walk", 1, false);
+            footsteps.start();
         }
     }    
     void WalkingBackWards()
     {
-        if (playerMovement.isMoving == true && playerMovement.isCrouching == true && playerMovement.isGrounded == true && playerController.moveDirection.y < 0)
+        if (playerMovement.isMoving == true && playerMovement.isGrounded == true && playerController.moveDirection.y < 0)
         {
             RuntimeManager.PlayOneShot("event:/Player/Footsteps", default);
         }
