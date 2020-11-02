@@ -55,7 +55,11 @@ namespace InDevelopment.Alex.EnemyStates
                         }
                         else if (stateManager.previousEnemyState == enemyController.spottingState)
                         {
-                            stateManager.ChangeState(enemyController.patrollingEnemyState);
+                            stateManager.ChangeState(enemyController.returningToPosEnemyState);
+                        }
+                        else
+                        {
+                            stateManager.ChangeState(enemyController.startingState);
                         }
                     }
                 }
