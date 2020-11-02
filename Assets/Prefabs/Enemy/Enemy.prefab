@@ -375,8 +375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c63c99d5b9fbe45902f5fed5454ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnRadius: 140
-  rotSpeed: 1
+  turnRadius: 90
+  rotSpeed: 0.25
   moveSpeed: 5
   rotation: {x: 0, y: 0, z: 0, w: 0}
   direction: {x: 0, y: 0, z: 0}
@@ -581,7 +581,7 @@ MonoBehaviour:
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
   waitTime: 2
-  stayStationary: 1
+  stayStationary: 0
   intialPos: {x: 0, y: 0, z: 0}
 --- !u!114 &1605883517561385362
 MonoBehaviour:
@@ -620,7 +620,7 @@ MonoBehaviour:
   lineOfSight: {fileID: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
-  waitTimer: 2
+  waitTimer: 5
 --- !u!114 &9037918217293044000
 MonoBehaviour:
   m_ObjectHideFlags: 0
