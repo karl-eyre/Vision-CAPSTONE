@@ -35,7 +35,7 @@ namespace InDevelopment.Alex.EnemyStates
 
         private void Awake()
         {
-            if (waypoints.Count >= 0)
+            if (waypoints != null && waypoints.Count >= 0)
             {
                 target = waypoints[targetIndex];
             }
@@ -48,7 +48,7 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Enter()
         {
             base.Enter();
-            gameObject.GetComponent<EnemyController>();
+            if (!(gameObject is null)) gameObject.GetComponent<EnemyController>();
         }
 
         public override void Exit()
