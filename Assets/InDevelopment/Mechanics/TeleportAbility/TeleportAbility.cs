@@ -18,7 +18,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
         public float teleportRange;
         public float teleportDelay;
         public float teleportStartUpDelay;
-        public LayerMask teleportLayer;
+        public LayerMask levelLayer;
 
         private bool canTeleport;
         private GameObject targetObj;
@@ -33,8 +33,6 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         public float noiseLevel;
 
-        public LayerMask unphaseableLayer;
-        public LayerMask phaseableLayer;
         private bool onCooldown;
         public float teleportAssistDistance = 2f;
 
@@ -55,8 +53,8 @@ namespace InDevelopment.Mechanics.TeleportAbility
         private void SetReferences()
         {
             objectSoundMaker = GetComponent<ObjectSoundMaker>();
-            teleportLayer = LayerMask.GetMask("ThrowableObjects");
-            phaseableLayer = LayerMask.GetMask("Phaseable");
+            // teleportLayer = LayerMask.GetMask("ThrowableObjects");
+            // phaseableLayer = LayerMask.GetMask("Phaseable");
             onCooldown = false;
         }
 
@@ -99,19 +97,17 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
             ray = camera.ScreenPointToRay(mousePosition);
 
-            //todo look at sphere cast for little leeway on the area u need to aim at
-
             // bool isHit = Physics.SphereCast(ray, teleportAssistDistance, out hitInfo, teleportRange);
-            bool isHit = Physics.Raycast(ray, out hitInfo, teleportRange);
+            bool isHit = Physics.Raycast(ray, out hitInfo, teleportRange, levelLayer);
 
-            if (!hitInfo.collider.CompareTag("ThrowableObjects"))
-            {
-                canTeleport = false;
-            }
-            else
+            if (hitInfo.collider.CompareTag("ThrowableObjects"))
             {
                 targetObj = hitInfo.collider.gameObject;
                 canTeleport = true;
+            }
+            else
+            {
+                canTeleport = false;
             }
 
             return canTeleport;
