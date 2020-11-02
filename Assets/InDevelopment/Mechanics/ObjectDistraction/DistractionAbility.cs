@@ -19,7 +19,10 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         public bool useThrowArc;
 
+        [SerializeField]
         private GameObject throwableObjectPrefab;
+        
+        [SerializeField]
         private GameObject oldThrowableObjectPrefab;
         public float throwForce;
         private float defaultThrowForce;
@@ -45,6 +48,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         private LayerMask groundLayerMask;
 
         private SelectionOutline selectionOutline;
+        
+        [SerializeField]
         private GameObject hitObject;
         private bool pickingUp;
         public float pickupDelay = 0.5f;
@@ -269,11 +274,12 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
                 oldThrowableObjectPrefab = throwableObjectPrefab;
 
-                oldThrowableObjectPrefab.transform.position = selectionOutline.selectedObject.transform.position;
+                oldThrowableObjectPrefab.transform.position = hitObject.transform.position;
 
                 Rigidbody rb = oldThrowableObjectPrefab.GetComponent<Rigidbody>();
                 rb.velocity = Vector3.zero;
                 oldThrowableObjectPrefab.transform.rotation = Quaternion.identity;
+                oldThrowableObjectPrefab.GetComponent<Collider>().enabled = true;
                 oldThrowableObjectPrefab.SetActive(true);
 
                 throwableObjectPrefab = selectionOutline.selectedObject;

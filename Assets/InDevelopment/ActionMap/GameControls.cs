@@ -221,7 +221,7 @@ public class @GameControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d8abcf6c-cfe9-4e9b-9eb4-a5b769ac89de"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
