@@ -136,9 +136,6 @@ namespace InDevelopment.Alex.EnemyStates
         public void LookLeftAndRight()
         {
             // transform.localRotation = Quaternion.Euler(0f, turnRadius * Mathf.Sin(Time.time * rotSpeed), 0f);
-            //TODO: Fix this so that it does the look left and right thing based on its current looking direction!
-            float maxRotation = transform.rotation.y + turnRadius;
-            
             float rY = Mathf.SmoothStep(-turnRadius,turnRadius,Mathf.PingPong(Time.time * rotSpeed,1));
             transform.Rotate(0,rY * Time.deltaTime,0,Space.Self);
         }
