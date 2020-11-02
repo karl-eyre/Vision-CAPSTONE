@@ -129,8 +129,6 @@ MonoBehaviour:
   respawnDelay: 30
   duration: 0
   reduceRate: 0.01
-  beingHeld: 0
-  resetting: 0
   thrown: 0
   noiseYOffset: 0
   noiseThreshold: 0
@@ -151,7 +149,7 @@ MonoBehaviour:
     m_Bits: 4096
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 114688
 --- !u!114 &4383535367483454252
 MonoBehaviour:
   m_ObjectHideFlags: 0

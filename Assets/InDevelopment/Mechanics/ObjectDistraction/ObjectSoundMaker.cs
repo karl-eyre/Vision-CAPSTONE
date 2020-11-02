@@ -31,11 +31,11 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             foreach (var enemy in enemiesInRange)
             {
                 //change to other bool if you don't want walls to completely block sound
-                // bool actuallyHeardSound = !Physics.Linecast(soundLocation, enemy.transform.position, obstacleLayer);
+                bool actuallyHeardSound = !Physics.Linecast(soundLocation, enemy.transform.position, obstacleLayer);
                 
                 Ray ray = new Ray(soundLocation, soundLocation - enemy.transform.position);
                 
-                bool actuallyHeardSound = Physics.Raycast(ray, loudnessOfSound);
+                // bool actuallyHeardSound = Physics.Raycast(ray, loudnessOfSound);
                 
                 if (actuallyHeardSound)
                 {
