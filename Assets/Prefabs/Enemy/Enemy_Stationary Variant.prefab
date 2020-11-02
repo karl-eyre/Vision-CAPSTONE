@@ -57,6 +57,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1252993601337556535, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c703e86bb3e7e545affb256f01033f1, type: 2}
     - target: {fileID: 1252993601337556538, guid: 170a423499333c445a8c8894529f52ab,
         type: 3}
       propertyPath: m_Name
@@ -77,11 +82,26 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5689473979151110931, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: viewAngle
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689473979151110931, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: viewDistance
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7636972994651757841, guid: 170a423499333c445a8c8894529f52ab,
         type: 3}
       propertyPath: m_Radius
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 8632692873511251824, guid: 170a423499333c445a8c8894529f52ab,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c703e86bb3e7e545affb256f01033f1, type: 2}
     - target: {fileID: 8907245879249638597, guid: 170a423499333c445a8c8894529f52ab,
         type: 3}
       propertyPath: stayStationary
