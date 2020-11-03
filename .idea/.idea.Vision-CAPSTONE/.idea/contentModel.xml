@@ -53,12 +53,15 @@
               <e p="EnemyStateMachine.cs" t="Include" />
               <e p="MovementManager.cs" t="Include" />
             </e>
-            <e p="LevelManager.cs" t="Include" />
             <e p="LineOfSight" t="Include">
               <e p="LineOfSight.cs" t="Include" />
             </e>
-            <e p="MenuCinemachine.cs" t="Include" />
-            <e p="MenuManager.cs" t="Include" />
+            <e p="Menu" t="Include">
+              <e p="LevelManager.cs" t="Include" />
+              <e p="MatchAspect.cs" t="Include" />
+              <e p="MenuCinemachine.cs" t="Include" />
+              <e p="MenuManager.cs" t="Include" />
+            </e>
             <e p="MouseCusorUnlock.cs" t="Include" />
             <e p="ObjectDistraction" t="Include">
               <e p="DistractionAbility.cs" t="Include" />

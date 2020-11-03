@@ -13,7 +13,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
     public class ThrowableObject : MonoBehaviour
     {
         public int noiseLoudness;
-        private int startingNoiseLoudness;
+        private int defaultNoiseLoudness = 10;
         private ObjectSoundMaker objectSoundMaker;
         private Rigidbody rb;
         public float respawnDelay = 5f;
@@ -38,8 +38,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             gameObject.layer = LayerMask.NameToLayer("ThrowableObjects");
             objectSoundMaker = GetComponent<ObjectSoundMaker>();
             rb = GetComponent<Rigidbody>();
-            startingNoiseLoudness = noiseLoudness;
             startingPos = transform.position;
+            StartCoroutine(ResetLoudness());
         }
 
         //TODO make objects respawn after some time has passed
@@ -109,6 +109,13 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             transform.rotation = Quaternion.identity;
             rb.velocity = Vector3.zero;
             thrown = false;
+        }
+
+        private IEnumerator ResetLoudness()
+        {
+            noiseLoudness = 0;
+            yield return new WaitForSeconds(2f);
+            noiseLoudness = defaultNoiseLoudness;
         }
 
         private void OnDrawGizmosSelected()

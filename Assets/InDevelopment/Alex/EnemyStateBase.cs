@@ -169,6 +169,7 @@ namespace InDevelopment.Alex
                 if (stateManager.currentEnemyState != enemyController.playerDetectedState)
                 {
                     stateManager.ChangeState(enemyController.playerDetectedState);
+                    enemyController.agent.autoBraking = false;
                     // playerDetected?.Invoke();
                 }
             }

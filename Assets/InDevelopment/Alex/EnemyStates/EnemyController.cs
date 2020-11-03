@@ -80,7 +80,7 @@ namespace InDevelopment.Alex.EnemyStates
         {
             agent = GetComponent<NavMeshAgent>();
             agent.ResetPath();
-            agent.isStopped = true;
+            // agent.isStopped = true;
             agent.autoBraking = true;
             agent.speed = moveSpeed;
         }
@@ -99,6 +99,11 @@ namespace InDevelopment.Alex.EnemyStates
 
             stateManager.ChangeState(startingState);
             // stateManager.initialState = startingState;
+        }
+
+        private void Update()
+        {
+            // if(agent.isStopped || agent.isPathStale)
         }
 
         private void OnCollisionEnter(Collision other)
