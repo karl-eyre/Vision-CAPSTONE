@@ -37594,7 +37594,6 @@ GameObject:
   m_Component:
   - component: {fileID: 757031175}
   - component: {fileID: 757031174}
-  - component: {fileID: 757031176}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -37629,19 +37628,6 @@ Transform:
   m_Father: {fileID: 1237998912}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &757031176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 757031173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b5377788647fc9409449a346aeaca47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyController: {fileID: 0}
 --- !u!43 &757181183
 Mesh:
   m_ObjectHideFlags: 0
@@ -40274,6 +40260,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2633103229623250295, guid: d6917f7244700894e9797cc76631ea59,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4237702105607484417, guid: d6917f7244700894e9797cc76631ea59,
         type: 3}
       propertyPath: mouseSensitivity
@@ -40307,7 +40298,7 @@ PrefabInstance:
     - target: {fileID: 5526091276280485132, guid: d6917f7244700894e9797cc76631ea59,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 86.5
+      value: 84.25
       objectReference: {fileID: 0}
     - target: {fileID: 5526091276280485132, guid: d6917f7244700894e9797cc76631ea59,
         type: 3}
@@ -40317,7 +40308,7 @@ PrefabInstance:
     - target: {fileID: 5526091276280485132, guid: d6917f7244700894e9797cc76631ea59,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6
+      value: -6.28
       objectReference: {fileID: 0}
     - target: {fileID: 5526091276280485132, guid: d6917f7244700894e9797cc76631ea59,
         type: 3}
@@ -104695,7 +104686,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-34126
+  m_Name: pb_Mesh-1666
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

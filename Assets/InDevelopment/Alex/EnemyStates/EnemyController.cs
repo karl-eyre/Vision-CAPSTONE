@@ -26,6 +26,7 @@ namespace InDevelopment.Alex.EnemyStates
 
         public Vector3 direction;
 
+        F_Occlusion searchingSound;
 
         [HideInInspector]
         public StateManager stateManager;
@@ -68,9 +69,12 @@ namespace InDevelopment.Alex.EnemyStates
 
         #endregion
 
+
+
         // Start is called before the first frame update
         private void Start()
         {
+            searchingSound = GetComponent<F_Occlusion>();
             agent = GetComponent<NavMeshAgent>();
             SetupStates();
             SetupNavmesh();
@@ -112,6 +116,7 @@ namespace InDevelopment.Alex.EnemyStates
             {
                 //TODO end game
                 F_Music.music.setParameterByName("MusicState", 2f, false);
+                searchingSound.searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 Scene scene = SceneManager.GetActiveScene();
                 SceneManager.LoadScene(scene.name);
             }

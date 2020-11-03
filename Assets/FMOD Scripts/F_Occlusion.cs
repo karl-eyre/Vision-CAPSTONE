@@ -14,9 +14,10 @@ public class F_Occlusion : MonoBehaviour
     [EventRef]
     public string eventPath;
     EventInstance footsteps;
-    EventInstance searching;
+    public EventInstance searching;
 
     bool soundsPlayed;
+    bool detected;
 
     EnemyController enemyController;
 
@@ -27,11 +28,12 @@ public class F_Occlusion : MonoBehaviour
     Transform player;
     void Start()
     {
+        searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         player = GameObject.Find("Player").GetComponent<Transform>();
         footsteps = RuntimeManager.CreateInstance("event:/Enemies/E_Footsteps");
         footsteps.start();
 
-        F_Music.music.setParameterByName("Intencity", 100f, false);
+        //F_Music.music.setParameterByName("Intencity", 100f, false);
         searching = RuntimeManager.CreateInstance("event:/Enemies/Searching");
 
 
@@ -73,35 +75,34 @@ public class F_Occlusion : MonoBehaviour
             }
 
 
-            float musicDist = Vector3.Distance(transform.position, player.transform.position);
-            if (distance <= OcclusionRadius)
-            {
+            //float musicDist = Vector3.Distance(transform.position, player.transform.position);
+            //if (distance <= OcclusionRadius)
+           // {
                 //F_Music.music.setParameterByName("Intencity", musicDist, false);
-            }
+           // }
         }
     }
 
     void MusicAndSounds(EnemyStateBase enemyState) //Fade In More Intense Music depending on how close player is. 
     {      
         //Debug.Log(musicDist);
-        if (enemyState == enemyController.investigatingEnemyState && soundsPlayed == false)
+        if (enemyState == enemyController.investigatingEnemyState) 
         {
-            searching.start();
-            soundsPlayed = true;
+                searching.start();
+                soundsPlayed = true;
         }
         if (enemyState == enemyController.stationaryEnemyState)
         {
-            searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            soundsPlayed = false;
+                searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
         if (enemyState == enemyController.patrollingEnemyState)
-        {      
-            searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            soundsPlayed = false;
+        {
+                searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
         if (enemyState == enemyController.playerDetectedState)
         {
-            soundsPlayed = false;
+            F_Music.music.setParameterByName("MusicState", 1, true);
+            detected = false;
         }
     }
     void Occlusion() //Raycast From sound Source to Player

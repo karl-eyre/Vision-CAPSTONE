@@ -9,7 +9,7 @@ using FMOD.Studio;
 
 public class F_MusicChange : MonoBehaviour
 {
-    public EnemyController enemyController;
+    EnemyController enemyController;
     EventInstance searching;
     EventInstance intense;
     EventInstance intenseSnapshot;
@@ -17,6 +17,7 @@ public class F_MusicChange : MonoBehaviour
     bool soundsPlayed;
     void Start()
     {
+
         intense = RuntimeManager.CreateInstance("event:/Music/Intense");
         intenseSnapshot = RuntimeManager.CreateInstance("snapshot:/EnemySearching/EnemySearching");
 
@@ -28,34 +29,33 @@ public class F_MusicChange : MonoBehaviour
         if (!(enemyController is null) && !(enemyState is null) && enemyState == enemyController.patrollingEnemyState)
         {
             F_Music.music.setParameterByName("MusicState", 0f, false);
-            intense.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            intenseSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            intense.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            //intenseSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
-        if (!(enemyController is null) && !(enemyState is null) && enemyState == enemyController.playerDetectedState)
+        if (!(enemyController is null) && !(enemyState is null) && enemyState == enemyState == enemyController.playerDetectedState)
         {
-            Debug.Log("detected");
+            Debug.Log("detected"); 
             F_Music.music.setParameterByName("MusicState", 1f, false);
             intense.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            intenseSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            //intenseSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
         //Intense Music
         if (!(enemyController is null) && !(enemyState is null) && enemyState == enemyController.investigatingEnemyState)
         {
-            Debug.Log("Intensestart");
-            intense.start();
-            intenseSnapshot.start();
+            Debug.Log("Intensestart"); 
+            intense.start(); 
+            //intenseSnapshot.start();
         }
         if (!(enemyController is null) && !(enemyState is null) && enemyState == enemyController.stationaryEnemyState)
         {
-            Debug.Log("Intensestop");
-            intense.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            intenseSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            Debug.Log("Intensestop"); 
+            intense.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);  
+            //intenseSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
+        
     }
     private void OnDestroy()
     {
         StateManager.changeStateEvent -= MusicSwitcher;
     }
-
-
 }

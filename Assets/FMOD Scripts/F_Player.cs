@@ -25,6 +25,7 @@ public class F_Player : MonoBehaviour
     //float crouchingSpeed = 0.7f;
     bool runningSoundPlayed;
     bool visionSoundPlayed;
+    bool finishedRunning;
 
     EventInstance musicTest;
     void Start()
@@ -52,7 +53,20 @@ public class F_Player : MonoBehaviour
 
     public void TurningSound()
     {
-        RuntimeManager.PlayOneShot("event:/Player/TurningFast", default);
+        if (playerMovement.isMoving == true)
+        {
+            EventInstance turning = RuntimeManager.CreateInstance("event:/Player/TurningFast");
+            turning.setParameterByName("StandingStill", 1, false);
+            turning.start();
+            turning.release();
+        }
+        else
+        {
+            EventInstance turning = RuntimeManager.CreateInstance("event:/Player/TurningFast");
+            turning.setParameterByName("StandingStill", 0, false);
+            turning.start();
+            turning.release();
+        }
     }
 
     void RunningSound()
@@ -67,6 +81,12 @@ public class F_Player : MonoBehaviour
         {
             running.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             runningSoundPlayed = false;
+
+            if (finishedRunning == true)
+            {
+                RuntimeManager.PlayOneShot("event:/Player/Skids", default);
+                finishedRunning = false;
+            }
         }
     }
 
