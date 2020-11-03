@@ -29,12 +29,14 @@ namespace InDevelopment.Alex
         public bool isAlerted;
 
         private bool isResetting;
+        public bool playerDetected;
 
         // public static event Action playerDetected;
 
         private void Start()
         {
             Init();
+            playerDetected = false;
         }
 
         private void Init()
@@ -94,7 +96,7 @@ namespace InDevelopment.Alex
         public void LOSFunc()
         {
             //only call function in each state manually it seems to be causing problems for currently
-            if (!(enemyController.playerDetectedState is null) && stateManager.currentEnemyState != enemyController.playerDetectedState)
+            if (!(enemyController.playerDetectedState is null) && stateManager.currentEnemyState != enemyController.playerDetectedState && !playerDetected)
             {
                 if (CanSeePlayer() && stateManager.currentEnemyState != enemyController.investigatingEnemyState)
                 {
@@ -168,6 +170,7 @@ namespace InDevelopment.Alex
             {
                 if (stateManager.currentEnemyState != enemyController.playerDetectedState)
                 {
+                    playerDetected = true;
                     stateManager.ChangeState(enemyController.playerDetectedState);
                     enemyController.agent.autoBraking = false;
                     // playerDetected?.Invoke();
