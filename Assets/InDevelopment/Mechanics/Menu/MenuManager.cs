@@ -57,7 +57,7 @@ namespace InDevelopment.Mechanics
 
         public void StartGame()
         {
-            SceneManager.LoadScene("1_TutorialRooms");
+            SceneManager.LoadScene("2_BuildingLevel");
         }
     }
 }
