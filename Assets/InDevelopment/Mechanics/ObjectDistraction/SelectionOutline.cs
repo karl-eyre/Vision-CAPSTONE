@@ -11,35 +11,46 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         [SerializeField]
         private Camera camera;
 
-        public bool isHit;
+        public bool pickupIsHit;
         public RaycastHit hit;
         private Ray ray;
+        private TeleportAbility.TeleportAbility teleportAbility;
 
         [Header("Throw Settings")]
         [SerializeField]
         private float PickupRange;
-        public float defaultPickupRange = 5f;
 
-        public LayerMask pickupObjectLayer;
-        public LayerMask levelLayer;
+        private float teleportRange;
+
+        private bool pickupSelected;
 
         [SerializeField]
-        private Material highlightMat;
+        private Material pickupHighlightMat;
+
+        [SerializeField]
+        private Material teleportHighlightMat;
 
         [SerializeField]
         private Material defaultMat;
 
         public GameObject selectedObject;
+        private bool teleportIsHit;
+        private GameObject teleportObject;
 
         private void Start()
         {
             SetUpControls();
-            PickupRange = defaultPickupRange;
+            teleportAbility = GetComponent<TeleportAbility.TeleportAbility>();
+            teleportRange = teleportAbility.teleportRange;
         }
 
         private void FixedUpdate()
         {
-            HighlightObject();
+            HighlightPickupObject();
+            if (!pickupSelected)
+            {
+                HighlightTeleportObjects();
+            }
         }
 
         private void SetUpControls()
@@ -48,23 +59,24 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             controls.Enable();
         }
 
-        private void HighlightObject()
+        private void HighlightTeleportObjects()
         {
-            if (selectedObject != null)
+            if (teleportObject != null)
             {
-                selectedObject.GetComponent<VisionEffectActivation>().isSelected = false;
-                selectedObject = null;
+                teleportObject.GetComponent<VisionEffectActivation>().isSelected = false;
+                teleportObject = null;
             }
 
             Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
             ray = camera.ScreenPointToRay(mousePosition);
-            
-            isHit = Physics.Raycast(ray, out hit, PickupRange);
-            
-            if (isHit)
+
+            teleportIsHit = Physics.Raycast(ray, out hit, teleportRange);
+
+            if (teleportIsHit)
             {
                 if (!hit.collider.CompareTag("ThrowableObjects"))
                 {
+                    
                     // return;
                 }
                 else
@@ -74,13 +86,51 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                     var selectionRenderer = hit.collider.gameObject.GetComponent<Renderer>();
                     if (selectionRenderer != null)
                     {
-                        selectionRenderer.material = highlightMat;
+                        selectionRenderer.material = teleportHighlightMat;
+                        pickupSelected = false;
+                    }
+                    teleportObject = selection;
+                }
+            }
+        }
+
+        private void HighlightPickupObject()
+        {
+            if (selectedObject != null)
+            {
+                selectedObject.GetComponent<VisionEffectActivation>().isSelected = false;
+                selectedObject = null;
+            }
+
+            Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
+            ray = camera.ScreenPointToRay(mousePosition);
+
+            pickupIsHit = Physics.Raycast(ray, out hit, PickupRange);
+
+            if (pickupIsHit)
+            {
+                if (!hit.collider.CompareTag("ThrowableObjects"))
+                {
+                    pickupSelected = false;
+                    // return;
+                }
+                else
+                {
+                    var selection = hit.collider.gameObject;
+                    selection.GetComponent<VisionEffectActivation>().isSelected = true;
+                    var selectionRenderer = hit.collider.gameObject.GetComponent<Renderer>();
+                    if (selectionRenderer != null)
+                    {
+                        selectionRenderer.material = pickupHighlightMat;
+                        pickupSelected = true;
                     }
 
                     selectedObject = selection;
                 }
-                
-                
+            }
+            else
+            {
+                pickupSelected = false;
             }
         }
     }

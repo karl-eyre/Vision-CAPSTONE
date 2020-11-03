@@ -261,7 +261,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             //this is just the part the "picks up" the objects in the level
             //to save on performance, the object that is raycast to if it is a throwable object then turn it off and "add" it
             //to the players hand, however instead it simply turns it off 
-            if (!(selectionOutline is null) && selectionOutline.isHit)
+            if (!(selectionOutline is null) && selectionOutline.pickupIsHit)
             {
                 //when animations need to be added just have the object destroy delayed for the duration of the animations
                 // Debug.Log("UseObject");
