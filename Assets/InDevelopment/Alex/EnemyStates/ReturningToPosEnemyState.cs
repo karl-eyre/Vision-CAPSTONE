@@ -42,7 +42,7 @@ namespace InDevelopment.Alex.EnemyStates
             enemyController.MoveToTarget(target);
             if (Vector3.Distance(transform.position, target) < 0.5f)
             {
-                stateManager.ChangeState(stateManager.initialState);
+                stateManager.ChangeState(enemyController.startingState);
                 // stateManager.ChangeState(stateManager.interruptedState);
             }
         }

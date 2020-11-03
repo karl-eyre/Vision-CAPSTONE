@@ -115,7 +115,7 @@ namespace InDevelopment.Alex
                 }
 
 
-                if (!(enemyController is null) && !CanSeePlayer() && !enemyController.beingDistracted)
+                if (!(enemyController is null) && !CanSeePlayer() && !enemyController.beingDistracted && !lineOfSight.detected)
                 {
                     if (stateManager.previousEnemyState != enemyController.spottingState)
                     {
@@ -170,7 +170,7 @@ namespace InDevelopment.Alex
             {
                 if (stateManager.currentEnemyState != enemyController.playerDetectedState)
                 {
-                    playerDetected = true;
+                    lineOfSight.detected = true;
                     stateManager.ChangeState(enemyController.playerDetectedState);
                     enemyController.agent.autoBraking = false;
                     // playerDetected?.Invoke();

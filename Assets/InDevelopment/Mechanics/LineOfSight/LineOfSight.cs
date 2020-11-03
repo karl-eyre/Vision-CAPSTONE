@@ -44,6 +44,7 @@ namespace InDevelopment.Mechanics.LineOfSight
 
         public float resetDelay = 2f;
         private bool isResetting = false;
+        public bool detected;
 
         private void Start()
         {
@@ -63,7 +64,7 @@ namespace InDevelopment.Mechanics.LineOfSight
 
         private void Update()
         {
-            if (!canSeePlayer && !stopDecrease)
+            if (!canSeePlayer && !stopDecrease && !detected)
             {
                 if (detectionMeter > 0)
                 {
