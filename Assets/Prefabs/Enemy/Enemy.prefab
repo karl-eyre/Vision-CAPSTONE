@@ -436,6 +436,7 @@ MonoBehaviour:
   maxDetectionValue: 100
   stopDecrease: 0
   resetDelay: 2
+  detected: 0
 --- !u!195 &7636972994651757841
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -475,7 +476,7 @@ MonoBehaviour:
   eventPath: event:/Enemies/E_Footsteps
   lm:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 16384
 --- !u!114 &3032246921249151827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,6 +564,7 @@ MonoBehaviour:
   lineOfSight: {fileID: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
+  playerDetected: 0
 --- !u!114 &8907245879249638597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,6 +582,7 @@ MonoBehaviour:
   lineOfSight: {fileID: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
+  playerDetected: 0
   waitTime: 2
   stayStationary: 0
   intialPos: {x: 0, y: 0, z: 0}
@@ -600,6 +603,7 @@ MonoBehaviour:
   lineOfSight: {fileID: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
+  playerDetected: 0
   minDistancedForIsReached: 0.6
   patrolType: 0
   waypoints: []
@@ -620,6 +624,7 @@ MonoBehaviour:
   lineOfSight: {fileID: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
+  playerDetected: 0
   waitTimer: 5
 --- !u!114 &9037918217293044000
 MonoBehaviour:
@@ -638,6 +643,7 @@ MonoBehaviour:
   lineOfSight: {fileID: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
+  playerDetected: 0
 --- !u!114 &948685719704122036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,6 +661,7 @@ MonoBehaviour:
   lineOfSight: {fileID: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
+  playerDetected: 0
   target: {x: 0, y: 0, z: 0}
 --- !u!114 &3071357345889532625
 MonoBehaviour:
@@ -673,6 +680,7 @@ MonoBehaviour:
   lineOfSight: {fileID: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
+  playerDetected: 0
   target: {x: 0, y: 0, z: 0}
 --- !u!114 &7113781451953816315
 MonoBehaviour:
@@ -691,6 +699,7 @@ MonoBehaviour:
   lineOfSight: {fileID: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
+  playerDetected: 0
   target: {x: 0, y: 0, z: 0}
 --- !u!114 &8337493973409675680
 MonoBehaviour:
@@ -709,6 +718,7 @@ MonoBehaviour:
   lineOfSight: {fileID: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   isAlerted: 0
+  playerDetected: 0
 --- !u!1 &5219686029784979695
 GameObject:
   m_ObjectHideFlags: 0

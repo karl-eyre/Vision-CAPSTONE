@@ -10,7 +10,7 @@ public class F_Player : MonoBehaviour
     EventInstance amb;
     EventInstance running;
     EventInstance visionAbilitySound;
-    EventInstance footsteps;
+    //EventInstance footsteps;
 
     PlayerMovement playerMovement;
     PlayerController playerController;
@@ -21,11 +21,14 @@ public class F_Player : MonoBehaviour
     float runningSpeed = 0.3f;
     [SerializeField]
     float walkingBackwardSpeed = 0.6f;
+    [SerializeField]
+    float crouchingSpeed = 0.6f;
 
     //float crouchingSpeed = 0.7f;
     bool runningSoundPlayed;
     bool visionSoundPlayed;
     bool finishedRunning;
+    bool crouched;
 
     EventInstance musicTest;
     void Start()
@@ -35,13 +38,12 @@ public class F_Player : MonoBehaviour
         amb.start();
 
         running = RuntimeManager.CreateInstance("event:/Player/Running");
-        visionAbilitySound = RuntimeManager.CreateInstance("event:/Player/Abilties/Vision");
-
-        footsteps = RuntimeManager.CreateInstance("event:/Player/Footsteps");
+        visionAbilitySound = RuntimeManager.CreateInstance("event:/Player/Abilties/Vision");      
 
         InvokeRepeating("FootstepsWalk", 0, walkingSpeed);
         InvokeRepeating("FootstepsRun", 0, runningSpeed);
         InvokeRepeating("WalkingBackWards", 0, walkingBackwardSpeed);
+        InvokeRepeating("CrouchingWalk", 0, crouchingSpeed);
      
         VisionAbilityController.visionActivation += VisionAbilitySoundPlay;
     }
@@ -49,6 +51,8 @@ public class F_Player : MonoBehaviour
     private void Update()
     {
         RunningSound();
+
+        Debug.Log(playerMovement.isCrouching);
     }
 
     public void TurningSound()
@@ -107,26 +111,41 @@ public class F_Player : MonoBehaviour
 
     void FootstepsWalk()
     {
-        if (playerMovement.isMoving == true && playerMovement.isSprinting == false && playerMovement.isGrounded == true)
+        if (playerMovement.isMoving == true && playerMovement.isCrouching == false && playerMovement.isSprinting == false && playerMovement.isGrounded == true)
         {
-            RuntimeManager.PlayOneShot("event:/Player/Footsteps", default);
-            //footsteps.setParameterByName("Run&Walk", 0, false);
-            //footsteps.start();
+            EventInstance footsteps = RuntimeManager.CreateInstance("event:/Player/Footsteps");
+            footsteps.start();
+            footsteps.release();
         }
     }
     void FootstepsRun()
     {
         if (playerMovement.isMoving == true && playerMovement.isSprinting == true && playerMovement.isGrounded == true)
-        {
+        {           
+            EventInstance footsteps = RuntimeManager.CreateInstance("event:/Player/Footsteps");
             footsteps.setParameterByName("Run&Walk", 1, false);
             footsteps.start();
+            footsteps.release();
         }
     }    
     void WalkingBackWards()
     {
         if (playerMovement.isMoving == true && playerMovement.isGrounded == true && playerController.moveDirection.y < 0)
         {
-            RuntimeManager.PlayOneShot("event:/Player/Footsteps", default);
+            EventInstance footsteps = RuntimeManager.CreateInstance("event:/Player/Footsteps");
+            footsteps.start();
+            footsteps.release();
+        }
+    }
+    void CrouchingWalk()
+    {
+        if (playerMovement.isMoving == true && playerMovement.isGrounded == true && playerMovement.isCrouching == true)
+        {
+            EventInstance footsteps = RuntimeManager.CreateInstance("event:/Player/Footsteps");
+            footsteps.setParameterByName("Crouching", 1, false);
+            footsteps.setParameterByName("Run&Walk", 3, false);
+            footsteps.start();
+            footsteps.release();
         }
     }
 

@@ -117,17 +117,20 @@ public class F_Occlusion : MonoBehaviour
     {
         if (hit.collider)
         {
-            if (hit.collider.gameObject.tag == "Wall")
+            if (hit.collider.gameObject.tag == "Obstacles")
             {
-                //Debug.Log("wall");
-                footsteps.setParameterByName("LowPass", 1, false);
-            }             
+                Debug.Log("wall");
+                footsteps.setParameterByName("LowPass", 1, true);
+                searching.setParameterByName("LowPass", 1, true);
+            }
         }
-        if (hit.collider == null)
+        else
         {
-            //Debug.Log("No wall");
-            footsteps.setParameterByName("LowPass", 0, false);
+            Debug.Log("No wall");
+            footsteps.setParameterByName("LowPass", 0, true);
+            searching.setParameterByName("LowPass", 0, true);
         }
+
     }
 
     private void OnDestroy()

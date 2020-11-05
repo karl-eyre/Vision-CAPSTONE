@@ -151,7 +151,7 @@ namespace InDevelopment.Mechanics.Player
         {
             if (Keyboard.current.cKey.isPressed ||Keyboard.current.ctrlKey.isPressed)
             {
-                Crouch();
+                Crouch();           
             }
             else
             {
@@ -163,8 +163,9 @@ namespace InDevelopment.Mechanics.Player
         {
             if (!isCrouching)
             {
+               
                 if (isGrounded)
-                {
+                {               
                     isCrouching = true;
                     moveSpeed = crouchMoveSpeed;
                     currentNoiseLevel = crouchNoiseLevel;

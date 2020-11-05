@@ -9,6 +9,7 @@ namespace InDevelopment.Mechanics.Player
         private float bobbingSpeed;
         public float walkingBobbingSpeed = 14f;
         public float sprintingBobbingSpeed = 20f;
+        public float crouchingBobbingSpeed = 10f;
         public float bobbingAmount = 0.1f;
         private float defaultPosY;
 
@@ -34,6 +35,10 @@ namespace InDevelopment.Mechanics.Player
                 if (playerMovement.isSprinting)
                 {
                     bobbingSpeed = sprintingBobbingSpeed;
+                }
+                else if (playerMovement.isCrouching)
+                {
+                    bobbingSpeed = crouchingBobbingSpeed;
                 }
                 else
                 {
