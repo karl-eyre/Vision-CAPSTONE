@@ -70,7 +70,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
             ray = camera.ScreenPointToRay(mousePosition);
 
-            teleportIsHit = Physics.Raycast(ray, out hit, teleportRange);
+            teleportIsHit = Physics.Raycast(ray, out hit, teleportRange, teleportAbility.levelLayer);
 
             if (teleportIsHit)
             {

@@ -1637,12 +1637,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
-  visionAbilityDuration: 0
   visionEnergy: 100
   abilityUseCost: 35
   visionEnergyFillRate: 5
   maxEnergyFill: 100
   maxVisionAbilityDuration: 3
+  abiltiyUseMultiplier: 15
+  toggleAbility: 0
   postProcessing: {fileID: 3614381987694599896}
 --- !u!114 &5526091276280485148
 MonoBehaviour:
@@ -1658,12 +1659,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 4237702105607484479}
   useThrowArc: 1
+  throwableObjectPrefab: {fileID: 0}
+  oldThrowableObjectPrefab: {fileID: 0}
   throwForce: 20
   handPosition: {fileID: 8267051770364796075}
   numberOfPoints: 20
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  hitObject: {fileID: 0}
   pickupDelay: 0.1
 --- !u!114 &8050541413748360274
 MonoBehaviour:
@@ -1756,16 +1760,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 4237702105607484479}
-  isHit: 0
+  pickupIsHit: 0
   PickupRange: 5
-  defaultPickupRange: 5
-  pickupObjectLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  levelLayer:
-    serializedVersion: 2
-    m_Bits: 49152
-  highlightMat: {fileID: 2100000, guid: 379806bee2e230a4ebd07da5d7ac384b, type: 2}
+  pickupHighlightMat: {fileID: 2100000, guid: 379806bee2e230a4ebd07da5d7ac384b, type: 2}
+  teleportHighlightMat: {fileID: 2100000, guid: 7b5f287396ae5a94fa33f50243776d16,
+    type: 2}
   defaultMat: {fileID: 0}
   selectedObject: {fileID: 0}
 --- !u!114 &2633103229623250295
