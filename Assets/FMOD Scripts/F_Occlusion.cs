@@ -10,52 +10,40 @@ public class F_Occlusion : MonoBehaviour
     private float OcclusionRadius = 30f;
     [SerializeField]
     private float MusicRadius = 20f;
-
     [EventRef]
     public string eventPath;
     EventInstance footsteps;
     public EventInstance searching;
-
-    bool soundsPlayed;
-    bool detected;
-
-    EnemyController enemyController;
-
+    private Vector3 objPosition;
     [SerializeField]
     private LayerMask lm;
-
+    EnemyController enemyController;
     private RaycastHit hit;
     Transform player;
     void Start()
     {
-        searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        FmodEventInstances();
         player = GameObject.Find("Player").GetComponent<Transform>();
-        footsteps = RuntimeManager.CreateInstance("event:/Enemies/E_Footsteps");
-        footsteps.start();
-
-        //F_Music.music.setParameterByName("Intencity", 100f, false);
-        searching = RuntimeManager.CreateInstance("event:/Enemies/Searching");
-
-
-        lm = LayerMask.GetMask("Obstacle");
         enemyController = GetComponent<EnemyController>();
-
-
+        lm = LayerMask.GetMask("Obstacle");
+        objPosition = transform.position;
+        searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         StateManager.changeStateEvent += MusicAndSounds;
     }
-
+    void FmodEventInstances()
+    {
+        footsteps = RuntimeManager.CreateInstance("event:/Enemies/E_Footsteps");
+        RuntimeManager.AttachInstanceToGameObject(footsteps, transform, GetComponent<Rigidbody>());
+        footsteps.start();
+        
+        searching = RuntimeManager.CreateInstance("event:/Enemies/Searching");
+        RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
+    }
     private void OnDrawGizmosSelected() //Visual Radius For Occlusion & Music.
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, OcclusionRadius);
-        Gizmos.DrawWireSphere(transform.position, MusicRadius);
-    }
-
-
-    private void Update()
-    {
-        RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
-        RuntimeManager.AttachInstanceToGameObject(footsteps, transform, GetComponent<Rigidbody>());
+        Gizmos.DrawWireSphere(objPosition, OcclusionRadius);
+        Gizmos.DrawWireSphere(objPosition, MusicRadius);
     }
     private void FixedUpdate()
     {
@@ -73,23 +61,14 @@ public class F_Occlusion : MonoBehaviour
             {
                 footsteps.setParameterByName("LowPass", 0, false);
             }
-
-
-            //float musicDist = Vector3.Distance(transform.position, player.transform.position);
-            //if (distance <= OcclusionRadius)
-           // {
-                //F_Music.music.setParameterByName("Intencity", musicDist, false);
-           // }
         }
     }
-
     void MusicAndSounds(EnemyStateBase enemyState) //Fade In More Intense Music depending on how close player is. 
     {      
         //Debug.Log(musicDist);
         if (enemyState == enemyController.investigatingEnemyState) 
         {
                 searching.start();
-                soundsPlayed = true;
         }
         if (enemyState == enemyController.stationaryEnemyState)
         {
@@ -102,37 +81,34 @@ public class F_Occlusion : MonoBehaviour
         if (enemyState == enemyController.playerDetectedState)
         {
             F_Music.music.setParameterByName("MusicState", 1, true);
-            detected = false;
         }
     }
     void Occlusion() //Raycast From sound Source to Player
     {
-        float dist = Vector3.Distance(transform.position, player.position);
-        Vector3 directionToFace = player.position - transform.position;
-        Physics.Raycast(transform.position, directionToFace, out hit, dist, lm);
-        Debug.DrawRay(transform.position, directionToFace, Color.red);
+        Vector3 playerPos = player.position;
+        float dist = Vector3.Distance(objPosition, playerPos);
+        Vector3 directionToFace = playerPos - objPosition;
+        Physics.Raycast(objPosition, directionToFace, out hit, dist, lm);
+        Debug.DrawRay(objPosition, directionToFace, Color.red);
     }
-
     void Lowpass() //Occludes Sound Source
     {
         if (hit.collider)
         {
             if (hit.collider.gameObject.tag == "Obstacles")
             {
-                Debug.Log("wall");
+                //Debug.Log("wall");
                 footsteps.setParameterByName("LowPass", 1, true);
                 searching.setParameterByName("LowPass", 1, true);
             }
         }
         else
         {
-            Debug.Log("No wall");
+            //Debug.Log("No wall");
             footsteps.setParameterByName("LowPass", 0, true);
             searching.setParameterByName("LowPass", 0, true);
         }
-
     }
-
     private void OnDestroy()
     {
         footsteps.release();

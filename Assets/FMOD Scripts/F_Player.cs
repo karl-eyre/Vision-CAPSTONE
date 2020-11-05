@@ -10,11 +10,10 @@ public class F_Player : MonoBehaviour
     EventInstance amb;
     EventInstance running;
     EventInstance visionAbilitySound;
+    EventInstance musicTest;
     //EventInstance footsteps;
-
     PlayerMovement playerMovement;
-    PlayerController playerController;
-
+    private PlayerController playerController;
     [SerializeField]
     float walkingSpeed = 0.5f;
     [SerializeField]
@@ -23,38 +22,35 @@ public class F_Player : MonoBehaviour
     float walkingBackwardSpeed = 0.6f;
     [SerializeField]
     float crouchingSpeed = 0.6f;
-
-    //float crouchingSpeed = 0.7f;
     bool runningSoundPlayed;
     bool visionSoundPlayed;
     bool finishedRunning;
     bool crouched;
 
-    EventInstance musicTest;
     void Start()
     {
-        playerMovement = GetComponent<PlayerMovement>();
-        amb = RuntimeManager.CreateInstance("event:/Ambience/AmbInterior");
-        amb.start();
-
-        running = RuntimeManager.CreateInstance("event:/Player/Running");
-        visionAbilitySound = RuntimeManager.CreateInstance("event:/Player/Abilties/Vision");      
-
+        FmodEventInstances();
         InvokeRepeating("FootstepsWalk", 0, walkingSpeed);
         InvokeRepeating("FootstepsRun", 0, runningSpeed);
         InvokeRepeating("WalkingBackWards", 0, walkingBackwardSpeed);
         InvokeRepeating("CrouchingWalk", 0, crouchingSpeed);
-     
+        playerMovement = GetComponent<PlayerMovement>();
+        playerController = GetComponent<PlayerController>();
         VisionAbilityController.visionActivation += VisionAbilitySoundPlay;
     }
-
+    void FmodEventInstances()
+    {
+        amb = RuntimeManager.CreateInstance("event:/Ambience/AmbInterior");
+        amb.start();
+        amb.release();
+        running = RuntimeManager.CreateInstance("event:/Player/Running");
+        visionAbilitySound = RuntimeManager.CreateInstance("event:/Player/Abilties/Vision");
+    }
     private void Update()
     {
         RunningSound();
-
-        Debug.Log(playerMovement.isCrouching);
+        //Debug.Log(playerMovement.isCrouching);
     }
-
     public void TurningSound()
     {
         if (playerMovement.isMoving == true)
@@ -72,20 +68,18 @@ public class F_Player : MonoBehaviour
             turning.release();
         }
     }
-
     void RunningSound()
     {
         if (playerMovement.isMoving == true && playerMovement.isSprinting == true && playerMovement.isGrounded == true && runningSoundPlayed == false)
         {
             running.start();
-            
+            running.release();
             runningSoundPlayed = true;
         }
         else if (playerMovement.isSprinting == false)
         {
             running.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             runningSoundPlayed = false;
-
             if (finishedRunning == true)
             {
                 RuntimeManager.PlayOneShot("event:/Player/Skids", default);
@@ -93,7 +87,6 @@ public class F_Player : MonoBehaviour
             }
         }
     }
-
     void VisionAbilitySoundPlay()
     {
         if (visionSoundPlayed == false)
@@ -148,7 +141,6 @@ public class F_Player : MonoBehaviour
             footsteps.release();
         }
     }
-
     private void OnDestroy()
     {
         running.release();
