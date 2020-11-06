@@ -27,6 +27,7 @@ namespace InDevelopment.Alex.EnemyStates
         {
             base.Execute();
 
+            //add in timer to reset to starting state
             if (!settingTarget)
             {
                 settingTarget = true;

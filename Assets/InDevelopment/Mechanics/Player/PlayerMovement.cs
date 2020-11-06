@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using InDevelopment.Mechanics.ObjectDistraction;
 using InDevelopment.Mechanics.VisionAbility;
 using UnityEngine;
@@ -64,6 +65,7 @@ namespace InDevelopment.Mechanics.Player
         [SerializeField]
         private Collider fricStubCol;
 
+        [HideInInspector]
         public bool visionActivated;
 
         [HideInInspector]
@@ -90,10 +92,13 @@ namespace InDevelopment.Mechanics.Player
 
         [Header("Noise Settings")]
         public float walkNoiseLevel;
+
         public float crouchNoiseLevel;
         public float sprintNoiseLevel;
 
         private float currentNoiseLevel;
+
+        public float airSpeedLimit;
 
         private void Start()
         {
@@ -110,7 +115,7 @@ namespace InDevelopment.Mechanics.Player
             // playerMask = 1 << 13;
             playerMask = ~playerMask;
         }
-        
+
         private void GetReferences()
         {
             controller = GetComponent<PlayerController>();
@@ -149,9 +154,9 @@ namespace InDevelopment.Mechanics.Player
         //works but hacky because it isn't using events
         private void CrouchCheck()
         {
-            if (Keyboard.current.cKey.isPressed ||Keyboard.current.ctrlKey.isPressed)
+            if (Keyboard.current.cKey.isPressed || Keyboard.current.ctrlKey.isPressed)
             {
-                Crouch();           
+                Crouch();
             }
             else
             {
@@ -163,9 +168,8 @@ namespace InDevelopment.Mechanics.Player
         {
             if (!isCrouching)
             {
-               
                 if (isGrounded)
-                {               
+                {
                     isCrouching = true;
                     moveSpeed = crouchMoveSpeed;
                     currentNoiseLevel = crouchNoiseLevel;
@@ -177,9 +181,9 @@ namespace InDevelopment.Mechanics.Player
                     moveSpeed = crouchMoveSpeed;
                     currentNoiseLevel = crouchNoiseLevel;
                     transform.localScale = new Vector3(1, transform.localScale.y / 2f, 1);
-                    transform.position = new Vector3(transform.position.x,transform.position.y + 1.6f,transform.position.z);
+                    transform.position = new Vector3(transform.position.x, transform.position.y + 1.6f,
+                        transform.position.z);
                 }
-                
             }
         }
 
@@ -204,9 +208,9 @@ namespace InDevelopment.Mechanics.Player
                         moveSpeed = walkMoveSpeed;
                         currentNoiseLevel = walkNoiseLevel;
                         transform.localScale = new Vector3(1, transform.localScale.y * 2f, 1);
-                        transform.position = new Vector3(transform.position.x,transform.position.y - 1.6f,transform.position.z);
+                        transform.position = new Vector3(transform.position.x, transform.position.y - 1.6f,
+                            transform.position.z);
                     }
-                   
                 }
             }
         }
@@ -218,11 +222,11 @@ namespace InDevelopment.Mechanics.Player
 
         private bool IsGrounded()
         {
-            Vector3 boxColliderTransform = new Vector3(fricStub.transform.localScale.x / 4,
-                fricStub.transform.localScale.y / 4, fricStub.transform.localScale.z / 4);
+            Vector3 boxColliderTransform = new Vector3(fricStub.transform.localScale.x / 3,
+                fricStub.transform.localScale.y / 4, fricStub.transform.localScale.z / 3);
             Collider[] cols = Physics.OverlapBox(fricStub.transform.position, boxColliderTransform, Quaternion.identity,
                 playerMask);
-            
+
             if (cols.Length == 0)
             {
                 isGrounded = false;
@@ -239,6 +243,8 @@ namespace InDevelopment.Mechanics.Player
         {
             if (IsGrounded() && !isCrouching)
             {
+                float airSpeed = moveSpeed;
+                airSpeedLimit = movement.normalized.magnitude * (airSpeed * Time.deltaTime);
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
         }
@@ -261,7 +267,17 @@ namespace InDevelopment.Mechanics.Player
             {
                 //AirSpeed
                 // rb.AddForce((movement.normalized * (moveSpeed * Time.deltaTime)) / 2, ForceMode.Acceleration);
-                rb.AddForce((movement.normalized * (moveSpeed * Time.deltaTime)), ForceMode.Acceleration);
+                if (rb.velocity.magnitude > airSpeedLimit)
+                {
+                    float x = Mathf.Clamp(rb.velocity.x, rb.velocity.x, airSpeedLimit);
+                    float y = rb.velocity.y;
+                    float z = Mathf.Clamp(rb.velocity.z, rb.velocity.z, airSpeedLimit);
+                    rb.velocity = new Vector3(x, y, z);
+                }
+                else
+                {
+                    rb.AddForce(movement.normalized * (moveSpeed * Time.deltaTime));
+                }
             }
         }
 
