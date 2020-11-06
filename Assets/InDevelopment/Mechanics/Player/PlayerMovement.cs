@@ -272,6 +272,9 @@ namespace InDevelopment.Mechanics.Player
                     float x = Mathf.Clamp(rb.velocity.x, rb.velocity.x, airSpeedLimit);
                     float y = rb.velocity.y;
                     float z = Mathf.Clamp(rb.velocity.z, rb.velocity.z, airSpeedLimit);
+                    
+                    Vector2.ClampMagnitude(new Vector2(x, z), airSpeedLimit);
+                    
                     rb.velocity = new Vector3(x, y, z);
                 }
                 else
