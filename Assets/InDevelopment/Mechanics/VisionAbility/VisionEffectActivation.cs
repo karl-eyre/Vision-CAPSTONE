@@ -18,10 +18,6 @@ namespace InDevelopment.Mechanics.VisionAbility
         {
             VisionAbilityController.visionActivation += UpdateVision;
             GetReferences();
-            // if (useCustomRenderer)
-            // {
-            //     VisionAbilityController.visionActivation += ChangeLayer;
-            // }
         }
 
         private void GetReferences()
@@ -34,10 +30,9 @@ namespace InDevelopment.Mechanics.VisionAbility
 
         private void Update()
         {
-            // && !useCustomRenderer
             if (!isSelected)
             {
-                if (visionActivated )
+                if (visionActivated)
                 {
                     GetComponent<Renderer>().material = visionMat;
                 }
@@ -51,22 +46,6 @@ namespace InDevelopment.Mechanics.VisionAbility
         public void UpdateVision()
         {
             visionActivated = !visionActivated;
-        }
-
-        public void ChangeLayer()
-        {
-            //have to use layer numbers 
-            //for some reason it errors out when trying to use a public layer mask,
-            //even if you want to pass it the int value the thing wants
-            if (visionActivated)
-            {
-                gameObject.layer = 10;
-            }
-            else
-            {
-                gameObject.layer = 9;
-                // LayerMask.NameToLayer(enemyFrontLayer.ToString());
-            }
         }
     }
 }

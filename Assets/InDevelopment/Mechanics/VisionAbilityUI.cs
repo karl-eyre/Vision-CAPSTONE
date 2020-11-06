@@ -17,6 +17,7 @@ namespace InDevelopment.Mechanics
         {
             visionAbilityController = GetComponentInParent<VisionAbilityController>();
             if (!(visionEnergy is null)) visionEnergy.value = visionAbilityController.maxEnergyFill;
+            if (!(visionEnergy is null)) visionEnergy.maxValue = visionAbilityController.maxEnergyFill;
         }
 
         private void Update()

@@ -9,10 +9,11 @@ namespace InDevelopment.Mechanics.VisionAbility
 {
     public class VisionAbilityController : AbilityBase
     {
-        
+        private GameControls controls;
+
+        [HideInInspector]
         public bool isActive;
 
-        [SerializeField]
         private float visionAbilityDuration;
 
         public float visionEnergy = 100f;
@@ -20,44 +21,82 @@ namespace InDevelopment.Mechanics.VisionAbility
         public float visionEnergyFillRate = 5f;
         public float maxEnergyFill = 100f;
         public float maxVisionAbilityDuration = 3f;
+        public float abiltiyUseMultiplier = 10f;
+
         public static event Action visionActivation;
         public static event Action visionEnded;
 
+        public bool toggleAbility;
+
         [SerializeField]
         private Volume postProcessing;
-
-        private GameControls controls;
 
         private static float t1;
         private static float t2;
 
         private void Awake()
         {
-            GetReferences();
+            SetupControls();
         }
 
-        private void Start()
+        private void SetupControls()
         {
             controls = new GameControls();
             controls.Enable();
-            controls.InGame.VisionAbilityActivation.performed += UseVisionAbilityInput;
-        }
-
-        private void GetReferences()
-        {
-            
+            if (toggleAbility)
+            {
+                controls.InGame.VisionAbilityActivation.performed += UseVisionAbilityToggleInput;
+            }
+            else
+            {
+                controls.InGame.VisionAbilityActivation.started += StartAbility;
+                controls.InGame.VisionAbilityActivation.canceled += EndAbility;
+            }
         }
 
         public void FixedUpdate()
         {
-            ReduceTime();
-            if (!isActive)
+            if (toggleAbility)
             {
-                RefillEnergy();
+                ReduceTime();
+                if (!isActive)
+                {
+                    RefillEnergy();
+                }
             }
-            
+            else
+            {
+                if (isActive)
+                {
+                    ReduceEnergy();
+                }
+                else
+                {
+                    RefillEnergy();
+                }
+            }
+
+
             // t1 = Mathf.Lerp(1, 0, 0.1f);
             // t2 = Mathf.Lerp(0, 1, 0.1f);
+        }
+
+        private void ReduceEnergy()
+        {
+            if (visionEnergy > 0)
+            {
+                visionEnergy -= Time.deltaTime * abiltiyUseMultiplier;
+            }
+            if(visionEnergy <= 0)
+            {
+                visionEnergy = 0;
+                isActive = false;
+                CallActivationEvent();
+            }
+            // else
+            // {
+            //     CallActivationEvent();
+            // }
         }
 
         private void ReduceTime()
@@ -71,9 +110,9 @@ namespace InDevelopment.Mechanics.VisionAbility
             {
                 visionAbilityDuration = 0f;
                 CallActivationEvent();
-                CallEndEvent();
-                Debug.Log("end event");
+                // CallEndEvent();
                 isActive = false;
+
                 //turning off post processing
                 // cb.intensity.value = t2;
                 // v.intensity.value = t2;
@@ -92,14 +131,32 @@ namespace InDevelopment.Mechanics.VisionAbility
             }
         }
 
-        private void UseVisionAbilityInput(InputAction.CallbackContext context)
+        private void UseVisionAbilityToggleInput(InputAction.CallbackContext context)
         {
             UseVisionAbility();
         }
 
+        private void StartAbility(InputAction.CallbackContext context)
+        {
+            if (!isActive)
+            {
+                isActive = true;
+                CallActivationEvent();
+            }
+        }
+
+        private void EndAbility(InputAction.CallbackContext context)
+        {
+            if (isActive)
+            {
+                CallActivationEvent();
+                isActive = false;
+            }
+        }
+
         private void UseVisionAbility()
         {
-            if (visionEnergy > abilityUseCost)
+            if (visionEnergy >= abilityUseCost)
             {
                 visionAbilityDuration = 0f;
                 if (!isActive)
