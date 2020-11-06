@@ -244,7 +244,7 @@ namespace InDevelopment.Mechanics.Player
             if (IsGrounded() && !isCrouching)
             {
                 float airSpeed = moveSpeed;
-                airSpeedLimit = movement.normalized.magnitude * (airSpeed * Time.deltaTime);
+                airSpeedLimit = movement.normalized.magnitude * (airSpeed * Time.fixedDeltaTime);
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
         }
@@ -261,7 +261,7 @@ namespace InDevelopment.Mechanics.Player
             if (IsGrounded() && hasForward)
             {
                 //GroundSpeed
-                rb.velocity = movement.normalized * (moveSpeed * Time.deltaTime);
+                rb.velocity = movement.normalized * (moveSpeed * Time.fixedDeltaTime);
             }
             else
             {
@@ -279,7 +279,7 @@ namespace InDevelopment.Mechanics.Player
                 }
                 else
                 {
-                    rb.AddForce(movement.normalized * (moveSpeed * Time.deltaTime));
+                    rb.AddForce(movement.normalized * (moveSpeed * Time.fixedDeltaTime));
                 }
             }
         }
