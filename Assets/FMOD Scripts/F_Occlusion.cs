@@ -1,4 +1,5 @@
-﻿using FMOD.Studio;
+﻿using System;
+using FMOD.Studio;
 using FMODUnity;
 using InDevelopment.Alex;
 using InDevelopment.Alex.EnemyStates;
@@ -33,12 +34,16 @@ public class F_Occlusion : MonoBehaviour
     void FmodEventInstances()
     {
         footsteps = RuntimeManager.CreateInstance("event:/Enemies/E_Footsteps");
-        RuntimeManager.AttachInstanceToGameObject(footsteps, transform, GetComponent<Rigidbody>());
         footsteps.start();
-        
         searching = RuntimeManager.CreateInstance("event:/Enemies/Searching");
-        RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
     }
+
+    private void Update()
+    {
+        RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
+        RuntimeManager.AttachInstanceToGameObject(footsteps, transform, GetComponent<Rigidbody>());
+    }
+
     private void OnDrawGizmosSelected() //Visual Radius For Occlusion & Music.
     {
         Gizmos.color = Color.red;
