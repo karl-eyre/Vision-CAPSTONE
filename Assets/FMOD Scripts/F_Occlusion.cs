@@ -37,18 +37,17 @@ public class F_Occlusion : MonoBehaviour
         footsteps.start();
         searching = RuntimeManager.CreateInstance("event:/Enemies/Searching");
     }
-
     private void Update()
     {
         RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
         RuntimeManager.AttachInstanceToGameObject(footsteps, transform, GetComponent<Rigidbody>());
     }
-
     private void OnDrawGizmosSelected() //Visual Radius For Occlusion & Music.
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(objPosition, OcclusionRadius);
         Gizmos.DrawWireSphere(objPosition, MusicRadius);
+
     }
     private void FixedUpdate()
     {
