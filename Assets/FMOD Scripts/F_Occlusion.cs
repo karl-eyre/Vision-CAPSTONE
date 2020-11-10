@@ -85,6 +85,7 @@ public class F_Occlusion : MonoBehaviour
         if (enemyState == enemyController.playerDetectedState)
         {
             F_Music.music.setParameterByName("MusicState", 1, true);
+            F_AnnouncerIndoors.announcer.setParameterByName("PlayerDetected", 1, false);
         }
     }
     void Occlusion() //Raycast From sound Source to Player
