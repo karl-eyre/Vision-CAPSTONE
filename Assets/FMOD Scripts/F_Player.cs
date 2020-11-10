@@ -40,9 +40,6 @@ public class F_Player : MonoBehaviour
     }
     void FmodEventInstances()
     {
-        amb = RuntimeManager.CreateInstance("event:/Ambience/AmbInterior");
-        amb.start();
-        amb.release();
         running = RuntimeManager.CreateInstance("event:/Player/Running");
         visionAbilitySound = RuntimeManager.CreateInstance("event:/Player/Abilties/Vision");
     }
