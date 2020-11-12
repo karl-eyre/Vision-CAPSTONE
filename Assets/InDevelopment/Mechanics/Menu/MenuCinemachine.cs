@@ -31,6 +31,11 @@ public class MenuCinemachine : MonoBehaviour
         controls.Menu.OpenPauseMenu.performed += Escape;
     }
 
+    public void LoadAnimaticIntro()
+    {
+        SceneManager.LoadScene("Animatic_start");
+    }
+
 
     //return to mainMenu
     public void Escape(InputAction.CallbackContext obj)
