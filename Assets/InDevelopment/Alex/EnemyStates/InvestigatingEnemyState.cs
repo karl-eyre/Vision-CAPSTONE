@@ -36,6 +36,7 @@ namespace InDevelopment.Alex.EnemyStates
             {
                 target = lastKnownPlayerPosition;
                 enemyController.MoveToTarget(target);
+                LookAtPlayer();
             }
             else
             {

@@ -1,4 +1,5 @@
 ﻿using System;
+using InDevelopment.Mechanics.LineOfSight;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -9,7 +10,7 @@ namespace InDevelopment.Alex.EnemyStates
     {
         /// <summary>
         /// What do i want this enemy to do?
-        /// Patrol, Investigate, Stationary,, WaitingAtPoint, ReturnToPos, DetectPlayer
+        /// Patrol, Investigate, Stationary, WaitingAtPoint, ReturnToPos, DetectPlayer
         ///
         /// Detect and handle sound.
         /// </summary>
@@ -67,6 +68,8 @@ namespace InDevelopment.Alex.EnemyStates
         [HideInInspector]
         public SpottingState spottingState;
 
+        private LineOfSight lineOfSight;
+        
         #endregion
 
 
@@ -76,6 +79,7 @@ namespace InDevelopment.Alex.EnemyStates
         {
             searchingSound = GetComponent<F_Occlusion>();
             agent = GetComponent<NavMeshAgent>();
+            lineOfSight = GetComponent<LineOfSight>();
             SetupStates();
             SetupNavmesh();
         }
@@ -140,14 +144,14 @@ namespace InDevelopment.Alex.EnemyStates
 
         public void LookAtTarget(Vector3 tgt)
         {
-            transform.LookAt(tgt);
+            lineOfSight.headPos.transform.LookAt(tgt);
         }
 
         public void LookLeftAndRight()
         {
             // transform.localRotation = Quaternion.Euler(0f, turnRadius * Mathf.Sin(Time.time * rotSpeed), 0f);
             float rY = Mathf.SmoothStep(-turnRadius,turnRadius,Mathf.PingPong(Time.time * rotSpeed,1));
-            transform.Rotate(0,rY * Time.deltaTime,0,Space.Self);
+            lineOfSight.headPos. transform.Rotate(0,rY * Time.deltaTime,0,Space.Self);
         }
     }
 }

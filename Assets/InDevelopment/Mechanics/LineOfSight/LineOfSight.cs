@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using InDevelopment.Mechanics.Enemy;
 using InDevelopment.Mechanics.Player;
 using UnityEngine;
 
@@ -38,6 +39,8 @@ namespace InDevelopment.Mechanics.LineOfSight
         private bool inRange;
         private float deltaTime;
 
+        public Transform headPos;
+
 
         [HideInInspector]
         public bool stopDecrease;
@@ -52,13 +55,13 @@ namespace InDevelopment.Mechanics.LineOfSight
             //perhaps find a better way to assign player
             if (player == null)
             {
-                if (!FindObjectOfType<PlayerMovement>())
+                if (!FindObjectOfType<EnemyTarget>())
                 {
                     Debug.Log("No player exists in the scene");
                     return;
                 }
 
-                player = FindObjectOfType<PlayerMovement>().gameObject;
+                player = FindObjectOfType<EnemyTarget>().gameObject;
             }
         }
 
@@ -107,27 +110,24 @@ namespace InDevelopment.Mechanics.LineOfSight
         {
             if (player == null) return;
 
-            Vector3 dirToTarget = (player.transform.position - transform.position);
+            Vector3 dirToTarget = (player.transform.position - headPos.transform.position);
             deltaTime = Time.timeSinceLevelLoad - timeSinceLastSeen;
 
-            if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
+            if (Vector3.Angle(headPos.transform.forward, dirToTarget) < viewAngle / 2)
             {
-                Ray ray = new Ray(transform.position, dirToTarget);
+                Ray ray = new Ray(headPos.transform.position, dirToTarget);
 
-                //This is for obstacles getting in the way.
-                if (Physics.Raycast(ray, out hitInfo, viewDistance, obstacleMask) ||
-                    Vector3.Distance(player.transform.position, transform.position) > viewDistance)
+                if (Physics.Raycast(ray, out hitInfo, viewDistance))
                 {
-                    // Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1);
-                    canSeePlayer = false;
-                    return;
-                }
+                    if (hitInfo.collider.CompareTag("Obstacles"))
+                    {
+                        canSeePlayer = false;
+                    }
 
-                //This is where the actual player detection happens
-                if (Physics.Raycast(ray, out hitInfo, viewDistance, playerMask))
-                {
-                    // Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1);
-                    canSeePlayer = true;
+                    if (hitInfo.collider.CompareTag("Player"))
+                    {
+                        canSeePlayer = true;
+                    }
                 }
             }
             else
@@ -141,7 +141,7 @@ namespace InDevelopment.Mechanics.LineOfSight
         {
             if (!angleIsGlobal)
             {
-                angleInDegrees += transform.eulerAngles.y;
+                angleInDegrees += headPos.transform.eulerAngles.y;
             }
 
             return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
@@ -152,7 +152,7 @@ namespace InDevelopment.Mechanics.LineOfSight
             // detectionMeter += noiseLoudness;
             stopDecrease = true;
         }
-        
+
         public void SoftResetLos()
         {
             if (!isResetting)
@@ -184,7 +184,7 @@ namespace InDevelopment.Mechanics.LineOfSight
                 {
                     detectionMeter = detectionMeter;
                 }
-                
+
                 stopDecrease = false;
             }
 

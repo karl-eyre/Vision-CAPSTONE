@@ -76,7 +76,6 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         private IEnumerator Teleport(GameObject targetObject)
         {
-            //todo add delay to teleport
             yield return new WaitForSeconds(teleportStartUpDelay);
             var tgt = targetObject;
             Vector3 origin = new Vector3(transform.position.x, transform.position.y + heightOffset,
@@ -97,6 +96,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
             ray = camera.ScreenPointToRay(mousePosition);
 
+            //TODO make raycast bigger to allow for leway on teleport
             // bool isHit = Physics.SphereCast(ray, teleportAssistDistance, out hitInfo, teleportRange);
             bool isHit = Physics.Raycast(ray, out hitInfo, teleportRange, levelLayer);
 

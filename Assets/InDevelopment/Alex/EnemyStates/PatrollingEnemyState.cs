@@ -35,7 +35,7 @@ namespace InDevelopment.Alex.EnemyStates
 
         private void Awake()
         {
-            if (waypoints != null && waypoints.Count >= 0)
+            if (waypoints != null && waypoints.Count > -1)
             {
                 target = waypoints[targetIndex];
             }

@@ -96,7 +96,8 @@ namespace InDevelopment.Alex
         public void LOSFunc()
         {
             //only call function in each state manually it seems to be causing problems for currently
-            if (!(enemyController.playerDetectedState is null) && stateManager.currentEnemyState != enemyController.playerDetectedState && !playerDetected)
+            if (!(enemyController.playerDetectedState is null) &&
+                stateManager.currentEnemyState != enemyController.playerDetectedState && !playerDetected)
             {
                 if (CanSeePlayer() && stateManager.currentEnemyState != enemyController.investigatingEnemyState)
                 {
@@ -115,7 +116,8 @@ namespace InDevelopment.Alex
                 }
 
 
-                if (!(enemyController is null) && !CanSeePlayer() && !enemyController.beingDistracted && !lineOfSight.detected)
+                if (!(enemyController is null) && !CanSeePlayer() && !enemyController.beingDistracted &&
+                    !lineOfSight.detected)
                 {
                     if (stateManager.previousEnemyState != enemyController.spottingState)
                     {
@@ -161,6 +163,11 @@ namespace InDevelopment.Alex
 
         public void LookAtPlayer()
         {
+            if (lineOfSight.headPos.eulerAngles.y > 0)
+            {
+                lineOfSight.headPos.rotation = Quaternion.Euler(0, 0, 0);
+            }
+
             enemyController.LookAtTarget(lineOfSight.player.transform.position);
         }
 
@@ -178,11 +185,22 @@ namespace InDevelopment.Alex
             }
         }
 
+        public void ResetAIState()
+        {
+            lineOfSight.detected = false;
+            enemyController.agent.autoBraking = true;
+            lineOfSight.detectionMeter = 0f;
+            if (stateManager.currentEnemyState != enemyController.startingState)
+            {
+                stateManager.ChangeState(enemyController.startingState);
+            }
+        }
+
         private void TriggerPlayerDetection()
         {
             if (stateManager.currentEnemyState != enemyController.playerDetectedState)
             {
-                stateManager.ChangeState(enemyController.playerDetectedState);
+                // stateManager.ChangeState(enemyController.playerDetectedState);
             }
         }
 

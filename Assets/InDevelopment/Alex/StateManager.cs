@@ -14,6 +14,7 @@ namespace InDevelopment.Alex
 
         public static event Action<EnemyStateBase> changeStateEvent;
 
+
         public void ChangeState(EnemyStateBase newEnemyState)
         {
             //Check if the newState is different

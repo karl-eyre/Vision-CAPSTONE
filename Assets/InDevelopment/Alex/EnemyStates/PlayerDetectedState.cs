@@ -11,11 +11,14 @@ namespace InDevelopment.Alex.EnemyStates
         private GameObject player;
         public Vector3 target;
         private bool settingTarget;
-        
+        public float resetDelay = 15f;
+        private float timer;
+
         public override void Enter()
         {
             base.Enter();
             player = FindObjectOfType<PlayerMovement>().gameObject;
+            timer = resetDelay;
         }
 
         public override void Exit()
@@ -27,16 +30,27 @@ namespace InDevelopment.Alex.EnemyStates
         {
             base.Execute();
 
-            //add in timer to reset to starting state
-            if (!settingTarget)
+            if (timer > 0)
             {
-                settingTarget = true;
-                StartCoroutine(SetTargetPos());
-            }
+                timer -= Time.deltaTime;
+                if (!settingTarget)
+                {
+                    settingTarget = true;
+                    StartCoroutine(SetTargetPos());
+                }
 
-            enemyController.MoveToTarget(target);
-            // Debug.Log("player loses");
+                enemyController.MoveToTarget(target);
+                LookAtPlayer();
+            }
+            else
+            {
+                if (stateManager.currentEnemyState != enemyController.startingState)
+                {
+                    ResetAIState();
+                }
+            }
         }
+
 
         private IEnumerator SetTargetPos()
         {

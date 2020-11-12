@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using InDevelopment.Mechanics.Player;
+using UnityEngine;
 
 namespace InDevelopment.Mechanics.VisionAbility
 {
@@ -8,14 +9,19 @@ namespace InDevelopment.Mechanics.VisionAbility
 
         [Header("Vision Effector Settings")]
         public Material visionMat;
-
         public Material defaultMat;
         public bool isSelected;
+
+        private GameObject player;
+        private Renderer rendererMat;
+        public float fadeDistance;
 
         // public bool useCustomRenderer;
 
         public void Start()
         {
+            rendererMat = GetComponent<Renderer>();
+            fadeDistance = 30f;
             VisionAbilityController.visionActivation += UpdateVision;
             GetReferences();
         }
@@ -26,6 +32,11 @@ namespace InDevelopment.Mechanics.VisionAbility
             {
                 defaultMat = GetComponent<Renderer>().material;
             }
+
+            if (player == null)
+            {
+                player = FindObjectOfType<PlayerController>().gameObject;
+            }
         }
 
         private void Update()
@@ -34,18 +45,32 @@ namespace InDevelopment.Mechanics.VisionAbility
             {
                 if (visionActivated)
                 {
-                    GetComponent<Renderer>().material = visionMat;
+                    // rendererMat.material = visionMat;
+                    UpdateAlpha();
                 }
                 else
                 {
-                    GetComponent<Renderer>().material = defaultMat;
+                    rendererMat.material = defaultMat;
                 }
             }
         }
 
-        public void UpdateVision()
+        private void UpdateVision()
         {
             visionActivated = !visionActivated;
+        }
+
+        private void UpdateAlpha()
+        {
+            //TODO add in extra ifs for different levels
+            if (Vector3.Distance(transform.position, player.transform.position) > fadeDistance)
+            {
+                rendererMat.material.color = new Color(defaultMat.color.r,defaultMat.color.g,defaultMat.color.b,0);
+            }
+            else
+            {
+                rendererMat.material = visionMat;
+            }
         }
     }
 }
