@@ -62,5 +62,11 @@ namespace InDevelopment.Mechanics.Menu
 
             activeCam.Priority++;
         }
+
+        public void ExitGame()
+        {
+            Application.Quit();
+            Debug.Log("We Finished");
+        }
     }
 }

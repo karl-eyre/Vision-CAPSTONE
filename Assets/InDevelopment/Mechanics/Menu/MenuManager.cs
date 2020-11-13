@@ -51,7 +51,7 @@ namespace InDevelopment.Mechanics.Menu
                 pauseMenu.SetActive(true);
                 Cursor.lockState = CursorLockMode.Confined;
                 pauseGame?.Invoke();
-                //pause time here
+                Time.timeScale = 0;
             }
         }
 
@@ -61,7 +61,7 @@ namespace InDevelopment.Mechanics.Menu
             Cursor.lockState = CursorLockMode.Locked;
             pauseGame?.Invoke();
             paused = false;
-            //unpause time here
+            Time.timeScale = 1;
         }
 
         public void ExitGame()
@@ -72,7 +72,7 @@ namespace InDevelopment.Mechanics.Menu
 
         public void MainMenu()
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("MainMenu2");
         }
 
         public void OpenOptionsMenu()
