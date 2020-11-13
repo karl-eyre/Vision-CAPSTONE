@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Kyan\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Kyan\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Vision-CAPSTONE.-1611353989.00" t="ExcludeRecursive" />
-    <e p="I:\Applications (x86)\Unity Projects\Collab Projects\Vision-CAPSTONE" t="IncludeRecursive">
+    <e p="C:\Users\Dylan\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Dylan\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Vision-CAPSTONE.1004608169.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Dylan\Desktop\Capstone Project\Vision-CAPSTONE" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -14,7 +14,10 @@
         </e>
         <e p="FMOD Scripts" t="Include">
           <e p="DistanceReverb.cs" t="Include" />
+          <e p="F_Ambience.cs" t="Include" />
+          <e p="F_AmbienceSwitcher.cs" t="Include" />
           <e p="F_AmbientSound.cs" t="Include" />
+          <e p="F_AnnouncerIndoors.cs" t="Include" />
           <e p="F_EnemyPatrol.cs" t="Include" />
           <e p="F_Music.cs" t="Include" />
           <e p="F_MusicChange.cs" t="Include" />
@@ -51,6 +54,7 @@
             <e p="DetectionUI.cs" t="Include" />
             <e p="Enemy" t="Include">
               <e p="EnemyStateMachine.cs" t="Include" />
+              <e p="EnemyTarget.cs" t="Include" />
               <e p="MovementManager.cs" t="Include" />
             </e>
             <e p="LineOfSight" t="Include">
@@ -166,6 +170,34 @@
                 </e>
               </e>
             </e>
+          </e>
+        </e>
+        <e p="TextMesh Pro" t="Include">
+          <e p="Fonts" t="Include">
+            <e p="LiberationSans - OFL.txt" t="Include" />
+          </e>
+          <e p="Resources" t="Include">
+            <e p="LineBreaking Following Characters.txt" t="Include" />
+            <e p="LineBreaking Leading Characters.txt" t="Include" />
+            <e p="Shaders" t="Include">
+              <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+              <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+              <e p="TMP_Bitmap.shader" t="Include" />
+              <e p="TMP_SDF Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface.shader" t="Include" />
+              <e p="TMP_SDF.shader" t="Include" />
+              <e p="TMP_Sprite.shader" t="Include" />
+              <e p="TMPro.cginc" t="Include" />
+              <e p="TMPro_Properties.cginc" t="Include" />
+              <e p="TMPro_Surface.cginc" t="Include" />
+            </e>
+          </e>
+          <e p="Sprites" t="Include">
+            <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
       </e>
