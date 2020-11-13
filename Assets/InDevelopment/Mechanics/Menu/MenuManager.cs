@@ -1,22 +1,22 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
-namespace InDevelopment.Mechanics
+namespace InDevelopment.Mechanics.Menu
 {
     public class MenuManager : MonoBehaviour
     {
         public static MenuManager instance = null;
 
         public event Action pauseGame;
-        
+
         public GameControls controls;
 
         public GameObject pauseMenu;
         private bool paused;
         public GameObject optionsMenu;
+
         private void Awake()
         {
             if (instance == null)
@@ -42,7 +42,7 @@ namespace InDevelopment.Mechanics
             controls.Enable();
             controls.Menu.OpenPauseMenu.performed += PauseGame;
         }
-        
+
         private void PauseGame(InputAction.CallbackContext obj)
         {
             if (!paused)
@@ -53,7 +53,6 @@ namespace InDevelopment.Mechanics
                 pauseGame?.Invoke();
                 //pause time here
             }
-            
         }
 
         public void UnPauseGame()
@@ -66,7 +65,7 @@ namespace InDevelopment.Mechanics
         }
 
         public void ExitGame()
-        {        
+        {
             Application.Quit();
             Debug.Log("We Finished");
         }
@@ -75,16 +74,15 @@ namespace InDevelopment.Mechanics
         {
             SceneManager.LoadScene("MainMenu");
         }
-       
+
         public void OpenOptionsMenu()
         {
             optionsMenu.SetActive(true);
         }
-        
+
         public void CloseOptionsMenu()
         {
-            optionsMenu.SetActive(false);            
+            optionsMenu.SetActive(false);
         }
-
     }
 }
