@@ -8,7 +8,28 @@ namespace InDevelopment.Mechanics
 {
     public class MenuManager : MonoBehaviour
     {
+        public static MenuManager instance = null;
+
+        public event Action pauseGame;
+        
         public GameControls controls;
+
+        public GameObject pauseMenu;
+        private bool paused;
+        public GameObject optionsMenu;
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else if (instance != this)
+            {
+                Destroy(gameObject);
+            }
+
+            pauseMenu.SetActive(false);
+        }
 
         private void Start()
         {
@@ -19,19 +40,29 @@ namespace InDevelopment.Mechanics
         {
             controls = new GameControls();
             controls.Enable();
-            controls.Menu.OpenPauseMenu.performed += Escape;
+            controls.Menu.OpenPauseMenu.performed += PauseGame;
         }
         
-        public void Escape(InputAction.CallbackContext obj)
+        private void PauseGame(InputAction.CallbackContext obj)
         {
-            if(SceneManager.GetActiveScene().name == "MainMenu")
+            if (!paused)
             {
-                ExitGame();
+                paused = true;
+                pauseMenu.SetActive(true);
+                Cursor.lockState = CursorLockMode.Confined;
+                pauseGame?.Invoke();
+                //pause time here
             }
-            else
-            {
-                MainMenu();
-            }
+            
+        }
+
+        public void UnPauseGame()
+        {
+            pauseMenu.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            pauseGame?.Invoke();
+            paused = false;
+            //unpause time here
         }
 
         public void ExitGame()
@@ -44,20 +75,16 @@ namespace InDevelopment.Mechanics
         {
             SceneManager.LoadScene("MainMenu");
         }
-
-        public void Credits()
+       
+        public void OpenOptionsMenu()
         {
-            SceneManager.LoadScene("Credits");
+            optionsMenu.SetActive(true);
+        }
+        
+        public void CloseOptionsMenu()
+        {
+            optionsMenu.SetActive(false);            
         }
 
-        public void Settings()
-        {
-            SceneManager.LoadScene("Settings");
-        }
-
-        public void StartGame()
-        {
-            SceneManager.LoadScene("2_BuildingLevel");
-        }
     }
 }

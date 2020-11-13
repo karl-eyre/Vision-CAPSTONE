@@ -15,20 +15,31 @@ namespace InDevelopment.Mechanics
         private bool isCooldown = false;
 
         private TeleportAbility.TeleportAbility teleportAbility;
+        
+        private bool paused;
 
-        //TODO figure out why teleport references break on scene load
         void Awake()
         {
             teleportAbility = GetComponentInParent<TeleportAbility.TeleportAbility>();
             TeleportAbility.TeleportAbility.teleportTrigger += TeleportTrigger;
             if (!(TeleportUI is null)) TeleportUI.fillAmount = teleportAbility.teleportDelay;
+            paused = false;
+            MenuManager.instance.pauseGame += () =>  paused = !paused;
         }
         
 
         // Update is called once per frame
         void Update()
         {
-            RefillUI();
+            if (!paused)
+            {
+                RefillUI();
+                TeleportUI.gameObject.SetActive(true);
+            }
+            else
+            {
+                TeleportUI.gameObject.SetActive(false);
+            }
         }
 
         private void TeleportTrigger()
