@@ -28,11 +28,18 @@ namespace InDevelopment.Mechanics.Menu
             }
         }
 
-        public void LoadAnimaticIntro()
-        {
             SceneManager.LoadScene("Animatic_start");
-        }
 
+    public void LoadScene(string targetScene)
+    {
+        StartCoroutine(startgame(2,targetScene));
+    }
+
+    IEnumerator startgame(float seconds, string targetScene)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(targetScene);
+    }
 
         //return to mainMenu
         public void Escape(InputAction.CallbackContext obj)
@@ -51,8 +58,6 @@ namespace InDevelopment.Mechanics.Menu
 
             activeCam = target;
 
-            activeCam.Priority++;
-        }
-
+        activeCam.Priority++;
     }
 }
