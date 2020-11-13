@@ -8,20 +8,25 @@ namespace InDevelopment.Mechanics.VisionAbility
         private bool visionActivated;
 
         [Header("Vision Effector Settings")]
-        public Material visionMat;
+        public Material closeVisionMat;
+
+        public Material middleVisionMat;
+        public Material farVisionMat;
         public Material defaultMat;
         public bool isSelected;
 
         private GameObject player;
         private Renderer rendererMat;
-        public float fadeDistance;
+        public float maxFadeDistance;
+        public float minFadeDistance;
 
         // public bool useCustomRenderer;
 
         public void Start()
         {
             rendererMat = GetComponent<Renderer>();
-            fadeDistance = 30f;
+            // maxFadeDistance = 50f;
+            // minFadeDistance = 25f;
             VisionAbilityController.visionActivation += UpdateVision;
             GetReferences();
         }
@@ -45,7 +50,6 @@ namespace InDevelopment.Mechanics.VisionAbility
             {
                 if (visionActivated)
                 {
-                    // rendererMat.material = visionMat;
                     UpdateAlpha();
                 }
                 else
@@ -62,14 +66,17 @@ namespace InDevelopment.Mechanics.VisionAbility
 
         private void UpdateAlpha()
         {
-            //TODO add in extra ifs for different levels
-            if (Vector3.Distance(transform.position, player.transform.position) > fadeDistance)
+            if (Vector3.Distance(transform.position, player.transform.position) > maxFadeDistance)
             {
-                rendererMat.material.color = new Color(defaultMat.color.r,defaultMat.color.g,defaultMat.color.b,0);
+                rendererMat.material = farVisionMat;
+            }
+            else if (Vector3.Distance(transform.position, player.transform.position) > minFadeDistance && Vector3.Distance(transform.position, player.transform.position) < maxFadeDistance)
+            {
+                rendererMat.material = middleVisionMat;
             }
             else
             {
-                rendererMat.material = visionMat;
+                rendererMat.material = closeVisionMat;
             }
         }
     }

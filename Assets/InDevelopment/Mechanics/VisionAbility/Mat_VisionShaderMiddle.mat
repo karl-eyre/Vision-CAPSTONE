@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_VisionShader
+  m_Name: Mat_VisionShaderMiddle
   m_Shader: {fileID: -6465566751694194690, guid: 3d186cc1939d4964887751e0fb7f16f4,
     type: 3}
   m_ShaderKeywords: _BLENDMODE_ALPHA _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
@@ -30,7 +30,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_100E230: 0
-    - Vector1_73BC79AD: 1.085
+    - Vector1_73BC79AD: 1.185
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 10
     - _AlphaSrcBlend: 1
@@ -67,7 +67,7 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - Color_4E525C56: {r: 0, g: 0, b: 0, a: 1}
-    - Color_7CF829D: {r: 1, g: 0.42352945, b: 0, a: 1}
+    - Color_7CF829D: {r: 0.6603774, g: 0.3500796, b: 0, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &4584794262739877675
