@@ -1,7 +1,5 @@
 ﻿using FMOD.Studio;
 using FMODUnity;
-using InDevelopment.Alex;
-using InDevelopment.Alex.EnemyStates;
 using UnityEngine;
 
 public class F_Music : MonoBehaviour

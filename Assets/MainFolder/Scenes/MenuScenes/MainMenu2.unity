@@ -3047,6 +3047,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 379486132}
+        m_MethodName: UiPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &224337385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4006,7 +4017,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321351742}
-  m_LocalRotation: {x: 0.11785102, y: -0.59318984, z: 0.088326044, w: 0.7914768}
+  m_LocalRotation: {x: 0.11715214, y: -0.5969678, z: 0.08867299, w: 0.78869635}
   m_LocalPosition: {x: 9.193, y: 2.979, z: 8.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4819,6 +4830,63 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &379486129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 379486131}
+  - component: {fileID: 379486130}
+  - component: {fileID: 379486132}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &379486130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379486129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db232074c25ca04bac1423768ea1031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventpath: event:/Music/MainMenu
+--- !u!4 &379486131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379486129}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 53.075653, y: -21.15168, z: -9.77227}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &379486132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379486129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e32f133ec384374aa4a9eebf3692e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &384329805
 GameObject:
   m_ObjectHideFlags: 0
@@ -8123,6 +8191,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 379486132}
+        m_MethodName: UiPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &538039889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8707,6 +8786,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 553512004}
           m_ObjectArgumentAssemblyTypeName: Cinemachine.CinemachineVirtualCamera,
             Cinemachine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 379486132}
+        m_MethodName: UiPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10054,6 +10144,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 553512004}
           m_ObjectArgumentAssemblyTypeName: Cinemachine.CinemachineVirtualCamera,
             Cinemachine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 379486132}
+        m_MethodName: UiPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12622,6 +12723,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 379486132}
+        m_MethodName: UiPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1043157811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13315,6 +13427,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 321351744}
           m_ObjectArgumentAssemblyTypeName: Cinemachine.CinemachineVirtualCamera,
             Cinemachine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 379486132}
+        m_MethodName: UiPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -14632,6 +14755,7 @@ GameObject:
   - component: {fileID: 1141181680}
   - component: {fileID: 1141181685}
   - component: {fileID: 1141181681}
+  - component: {fileID: 1141181686}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -14854,6 +14978,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54547d3a547ff448ae0c0bec33d9370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1141181686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141181679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: -1
 --- !u!1 &1157410633
 GameObject:
   m_ObjectHideFlags: 0
@@ -15494,6 +15631,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 569518377}
           m_ObjectArgumentAssemblyTypeName: Cinemachine.CinemachineVirtualCamera,
             Cinemachine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 379486132}
+        m_MethodName: UiPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -20966,6 +21114,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 379486132}
+        m_MethodName: UiPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1626523886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23441,6 +23600,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 553512004}
           m_ObjectArgumentAssemblyTypeName: Cinemachine.CinemachineVirtualCamera,
             Cinemachine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 379486132}
+        m_MethodName: UiPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
