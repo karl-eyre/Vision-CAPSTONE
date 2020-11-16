@@ -220,17 +220,6 @@ public class @GameControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d8abcf6c-cfe9-4e9b-9eb4-a5b769ac89de"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PickUpObject"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""3b26235a-829f-4a72-956e-a31bbc04f45a"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
@@ -242,8 +231,8 @@ public class @GameControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""229d70e7-f3d7-4407-ad89-42d46cb69ed0"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""d8abcf6c-cfe9-4e9b-9eb4-a5b769ac89de"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -281,6 +270,17 @@ public class @GameControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""398ba5f0-6921-4b05-a56b-3c47f62eabc8"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PickUpObject"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
