@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using InDevelopment.Mechanics.Enemy;
+using InDevelopment.Mechanics.Menu;
 using InDevelopment.Mechanics.Player;
 using UnityEngine;
 
@@ -49,6 +50,8 @@ namespace InDevelopment.Mechanics.LineOfSight
         private bool isResetting = false;
         public bool detected;
 
+        private bool paused;
+
         private void Start()
         {
             StartCoroutine(RaycastToPlayer(.25f));
@@ -63,25 +66,30 @@ namespace InDevelopment.Mechanics.LineOfSight
 
                 player = FindObjectOfType<EnemyTarget>().gameObject;
             }
+            MenuManager.instance.pauseGame += () =>  paused = !paused;
+            
         }
 
         private void Update()
         {
-            if (!canSeePlayer && !stopDecrease && !detected)
+            if (!paused)
             {
-                if (detectionMeter > 0)
+                if (!canSeePlayer && !stopDecrease && !detected)
                 {
-                    detectionMeter -= reduceSpeed * deltaTime;
+                    if (detectionMeter > 0)
+                    {
+                        detectionMeter -= reduceSpeed * deltaTime;
+                    }
+                    else
+                    {
+                        detectionMeter = 0;
+                    }
                 }
-                else
-                {
-                    detectionMeter = 0;
-                }
-            }
 
-            if (canSeePlayer)
-            {
-                detectionMeter += fillSpeed * deltaTime;
+                if (canSeePlayer)
+                {
+                    detectionMeter += fillSpeed * deltaTime;
+                }
             }
         }
 
@@ -110,26 +118,30 @@ namespace InDevelopment.Mechanics.LineOfSight
         {
             if (player == null) return;
 
-            Vector3 dirToTarget = (player.transform.position - headPos.transform.position);
-            deltaTime = Time.timeSinceLevelLoad - timeSinceLastSeen;
+            Vector3 dirToTarget = (player.transform.position - transform.position); 
+            deltaTime = Time.timeSinceLevelLoad - timeSinceLastSeen; 
+ 
+            if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2) 
+            { 
+                Ray ray = new Ray(transform.position, dirToTarget); 
+ 
+                //This is for obstacles getting in the way. 
+                if (Physics.Raycast(ray, out hitInfo, viewDistance, obstacleMask) || 
+                    Vector3.Distance(player.transform.position, transform.position) > viewDistance) 
+                { 
+                    // Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1); 
+                    canSeePlayer = false; 
+                    return; 
+                } 
+ 
+                //This is where the actual player detection happens 
+                if (Physics.Raycast(ray, out hitInfo, viewDistance, playerMask)) 
+                { 
+                    // Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1); 
+                    canSeePlayer = true; 
+                } 
+            } 
 
-            if (Vector3.Angle(headPos.transform.forward, dirToTarget) < viewAngle / 2)
-            {
-                Ray ray = new Ray(headPos.transform.position, dirToTarget);
-
-                if (Physics.Raycast(ray, out hitInfo, viewDistance))
-                {
-                    if (hitInfo.collider.CompareTag("Obstacles"))
-                    {
-                        canSeePlayer = false;
-                    }
-
-                    if (hitInfo.collider.CompareTag("Player"))
-                    {
-                        canSeePlayer = true;
-                    }
-                }
-            }
             else
             {
                 canSeePlayer = false;
