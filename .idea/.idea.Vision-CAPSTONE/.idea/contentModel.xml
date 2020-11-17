@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Dylan\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Dylan\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Vision-CAPSTONE.1004608169.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Dylan\Desktop\Capstone Project\Vision-CAPSTONE" t="IncludeRecursive">
+    <e p="C:\Users\Kyan\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Kyan\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Vision-CAPSTONE.-1611353989.00" t="ExcludeRecursive" />
+    <e p="I:\Applications (x86)\Unity Projects\Collab Projects\Vision-CAPSTONE" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="AllSkyFree" t="Include">
+          <e p="AllSkyFree_Menu.cs" t="Include" />
+          <e p="AllSkyFree_Readme.txt" t="Include" />
+        </e>
         <e p="Editor" t="Include">
           <e p="LineOfSightEditor.cs" t="Include" />
         </e>
@@ -25,6 +29,7 @@
           <e p="F_Occlusion.cs" t="Include" />
           <e p="F_Player.cs" t="Include" />
           <e p="F_Test.cs" t="Include" />
+          <e p="F_Ui.cs" t="Include" />
           <e p="F_Utilities.cs" t="Include" />
           <e p="SnapShotTrigger.cs" t="Include" />
           <e p="TriggerMovingSound.cs" t="Include" />
@@ -101,6 +106,11 @@
               <e p="VisionEffectActivation.cs" t="Include" />
             </e>
             <e p="VisionAbilityUI.cs" t="Include" />
+          </e>
+        </e>
+        <e p="MainFolder" t="Include">
+          <e p="MenusResources" t="Include">
+            <e p="videoControl.cs" t="Include" />
           </e>
         </e>
         <e p="Plugins" t="Include">
