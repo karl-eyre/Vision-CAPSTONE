@@ -5,6 +5,7 @@ using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 namespace InDevelopment.Mechanics.Menu
 {
@@ -66,6 +67,7 @@ namespace InDevelopment.Mechanics.Menu
         public void ExitGame()
         {
             Application.Quit();
+            EditorApplication.isPlaying = false;
             Debug.Log("We Finished");
         }
     }

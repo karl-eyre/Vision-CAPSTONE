@@ -16,6 +16,7 @@ namespace InDevelopment.Mechanics.Menu
         public GameObject pauseMenu;
         private bool paused;
         public GameObject optionsMenu;
+        public GameObject pauseBackground;
 
         private void Awake()
         {
@@ -29,6 +30,7 @@ namespace InDevelopment.Mechanics.Menu
             }
 
             pauseMenu.SetActive(false);
+            pauseBackground.SetActive(false);
         }
 
         private void Start()
@@ -49,6 +51,7 @@ namespace InDevelopment.Mechanics.Menu
             {
                 paused = true;
                 pauseMenu.SetActive(true);
+                pauseBackground.SetActive(true);
                 Cursor.lockState = CursorLockMode.Confined;
                 pauseGame?.Invoke();
                 Time.timeScale = 0;
@@ -58,6 +61,7 @@ namespace InDevelopment.Mechanics.Menu
         public void UnPauseGame()
         {
             pauseMenu.SetActive(false);
+            pauseBackground.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             pauseGame?.Invoke();
             paused = false;
@@ -72,7 +76,8 @@ namespace InDevelopment.Mechanics.Menu
 
         public void MainMenu()
         {
-            SceneManager.LoadScene("MainMenu2");
+            Time.timeScale = 1;
+            SceneManager.LoadScene("MainMenu2");            
         }
 
         public void OpenOptionsMenu()
