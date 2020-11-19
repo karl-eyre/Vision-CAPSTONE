@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PauseSmoke : MonoBehaviour
 {
-    private Material smoke;
+    public Material smoke;
 
     // Start is called before the first frame update
     void Start()
     {
-        smoke = this.GetComponent<SpriteRenderer>().material;
+       // smoke = GetComponent<>();
     }
 
     // Update is called once per frame
