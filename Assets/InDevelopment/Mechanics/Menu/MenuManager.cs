@@ -17,6 +17,7 @@ namespace InDevelopment.Mechanics.Menu
         private bool paused;
         public GameObject optionsMenu;
         public GameObject pauseBackground;
+        public PauseSmoke smokeScript;
 
         private void Awake()
         {
@@ -30,7 +31,8 @@ namespace InDevelopment.Mechanics.Menu
             }
 
             pauseMenu.SetActive(false);
-            pauseBackground.SetActive(false);
+            //pauseBackground.SetActive(false);
+            smokeScript = pauseBackground.GetComponent<PauseSmoke>();
         }
 
         private void Start()
@@ -51,21 +53,23 @@ namespace InDevelopment.Mechanics.Menu
             {
                 paused = true;
                 pauseMenu.SetActive(true);
-                pauseBackground.SetActive(true);
+                //pauseBackground.SetActive(false);
                 Cursor.lockState = CursorLockMode.Confined;
                 pauseGame?.Invoke();
                 Time.timeScale = 0;
+                smokeScript.fadeSmoke();
             }
         }
 
         public void UnPauseGame()
         {
             pauseMenu.SetActive(false);
-            pauseBackground.SetActive(false);
+            //pauseBackground.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             pauseGame?.Invoke();
             paused = false;
             Time.timeScale = 1;
+            smokeScript.fadeSmoke();
         }
 
         public void ExitGame()
