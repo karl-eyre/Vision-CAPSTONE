@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
-
 namespace InDevelopment.Mechanics.VisionAbility
 {
     public class VisionAbilityController : AbilityBase
