@@ -11,7 +11,7 @@ namespace InDevelopment.Mechanics
     {
 
         [Header("Teleport")]
-        public Image TeleportUI;
+        // public Image TeleportUI;
         private float cooldown1 = 5;
         private bool isCooldown = false;
 
@@ -19,11 +19,16 @@ namespace InDevelopment.Mechanics
         
         private bool paused;
 
-        void Awake()
+        public Animator animator;
+        public SpriteRenderer spriteRenderer;
+        public Slider teleportSlider;
+
+        void Start()
         {
             teleportAbility = GetComponentInParent<TeleportAbility.TeleportAbility>();
-            TeleportAbility.TeleportAbility.teleportTrigger += TeleportTrigger;
-            if (!(TeleportUI is null)) TeleportUI.fillAmount = teleportAbility.teleportDelay;
+            teleportSlider.maxValue = teleportAbility.teleportStartUpDelay;
+            // TeleportAbility.TeleportAbility.teleportTrigger += TeleportTrigger;
+            // if (!(TeleportUI is null)) TeleportUI.fillAmount = teleportAbility.teleportDelay;
             paused = false;
             MenuManager.instance.pauseGame += () =>  paused = !paused;
         }
@@ -34,52 +39,46 @@ namespace InDevelopment.Mechanics
         {
             if (!paused)
             {
-                RefillUI();
-                TeleportUI.gameObject.SetActive(true);
+                // TeleportUI.gameObject.SetActive(true);
+                SetSliderValue();
+                spriteRenderer.gameObject.SetActive(true);
             }
             else
             {
-                TeleportUI.gameObject.SetActive(false);
+                // TeleportUI.gameObject.SetActive(false);
+                spriteRenderer.gameObject.SetActive(false);
             }
-        }
-
-        private void TeleportTrigger()
-        {
-            isCooldown = true;
-            if (!(TeleportUI is null)) TeleportUI.fillAmount = 0;
-        }
-
-        private void RefillUI()
-        {
-            if (isCooldown)
-            {
-                if (!(TeleportUI is null))
-                {
-                    TeleportUI.fillAmount += 1 / cooldown1 * Time.deltaTime;
-
-                    if (TeleportUI.fillAmount <= 0)
-                    {
-                        TeleportUI.fillAmount = 0;
-                        isCooldown = false;
-                    }
-                }
-            }
-
-        }
-                
-        private void OnEnable()
-        {
-            TeleportAbility.TeleportAbility.teleportTrigger += TeleportTrigger;
-        }
-
-        private void OnDisable()
-        {
-            TeleportAbility.TeleportAbility.teleportTrigger -= TeleportTrigger;
         }
         
-        private void OnDestroy()
+        private void SetSliderValue()
         {
-            TeleportAbility.TeleportAbility.teleportTrigger -= TeleportTrigger;
+            if (!(teleportSlider is null)) teleportSlider.value = teleportAbility.cooldownTimer;
         }
+        
+        public void OnValueChange(float changedValue)
+        {
+            animator.Play("TeleportUIAnim",0,teleportSlider.normalizedValue);
+        }
+
+        // private void TeleportTrigger()
+        // {
+        //     // animator.Play("VisionUIAnim",0,teleportAbility.cooldownTimer);
+        // }
+        //
+        //         
+        // private void OnEnable()
+        // {
+        //     TeleportAbility.TeleportAbility.teleportTrigger += TeleportTrigger;
+        // }
+        //
+        // private void OnDisable()
+        // {
+        //     TeleportAbility.TeleportAbility.teleportTrigger -= TeleportTrigger;
+        // }
+        //
+        // private void OnDestroy()
+        // {
+        //     TeleportAbility.TeleportAbility.teleportTrigger -= TeleportTrigger;
+        // }
     }
 }

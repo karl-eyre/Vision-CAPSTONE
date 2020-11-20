@@ -15,6 +15,13 @@ namespace InDevelopment.Mechanics
         private VisionAbilityController visionAbilityController;
 
         private bool paused;
+        
+        public Animator animator;
+       
+        public void OnValueChange(float changedValue)
+        {
+            animator.Play("VisionUIAnim",0,visionEnergy.normalizedValue);
+        }
         private void Start()
         {
             visionAbilityController = GetComponentInParent<VisionAbilityController>();

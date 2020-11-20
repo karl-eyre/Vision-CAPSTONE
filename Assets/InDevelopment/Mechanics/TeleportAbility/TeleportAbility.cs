@@ -17,7 +17,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         public float teleportRange;
         public float teleportDelay;
-        public float teleportStartUpDelay;
+        public float teleportStartUpDelay = 1f;
         public LayerMask levelLayer;
 
         private bool canTeleport;
@@ -35,6 +35,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         private bool onCooldown;
         public float teleportAssistDistance = 2f;
+        public float cooldownTimer;
 
         public static event Action teleportTrigger;
 
@@ -74,6 +75,14 @@ namespace InDevelopment.Mechanics.TeleportAbility
             }
         }
 
+        private void Update()
+        {
+            if (onCooldown && cooldownTimer <= teleportStartUpDelay)
+            {
+                cooldownTimer = cooldownTimer + Time.deltaTime;
+            }
+        }
+
         private IEnumerator Teleport(GameObject targetObject)
         {
             yield return new WaitForSeconds(teleportStartUpDelay);
@@ -88,6 +97,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
             teleportTrigger?.Invoke();
             yield return new WaitForSeconds(teleportDelay);
             onCooldown = false;
+            cooldownTimer = 0;
         }
 
         private bool CanTeleport()
