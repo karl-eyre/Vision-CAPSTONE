@@ -11,7 +11,7 @@ public class videoControl : MonoBehaviour
     public Animator fader;
     public AnimationClip clip;
     public VideoPlayer videoPlayer;
-
+    public string scene;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +47,6 @@ public class videoControl : MonoBehaviour
     public void EndScene()
     {
         fader.SetBool("ClearFade", true);
-        StartCoroutine(startgame(clip.length, "2_BuildingLevel"));
+        StartCoroutine(startgame(clip.length, scene));
     }
 }
