@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using UnityEngine;
 
 namespace InDevelopment.Mechanics.Player
@@ -14,7 +15,7 @@ namespace InDevelopment.Mechanics.Player
         private float defaultPosY;
 
         private PlayerMovement playerMovement;
-        
+
         private void Start()
         {
             playerMovement = GetComponentInParent<PlayerMovement>();
@@ -26,6 +27,26 @@ namespace InDevelopment.Mechanics.Player
         {
             UpdateBobbingSpeed();
             HeadBob();
+            UpdateCrouchHeight();
+        }
+
+        private void UpdateCrouchHeight()
+        {
+            if (playerMovement.isCrouching)
+            {
+                if (playerMovement.isGrounded)
+                {
+                    defaultPosY = 1.5f;
+                }
+                else
+                {
+                    defaultPosY = 3.1f;
+                }
+            }
+            else
+            {
+                defaultPosY = 3.1f;
+            }
         }
 
         private void UpdateBobbingSpeed()
@@ -49,17 +70,20 @@ namespace InDevelopment.Mechanics.Player
 
         private void HeadBob()
         {
-            if(playerMovement.isMoving && playerMovement.isGrounded && !playerMovement.visionActivated)
+            if (playerMovement.isMoving && playerMovement.isGrounded && !playerMovement.visionActivated)
             {
                 //Player is moving
                 timer += Time.deltaTime * bobbingSpeed;
-                transform.localPosition = new Vector3(transform.localPosition.x, defaultPosY + Mathf.Sin(timer) * bobbingAmount, transform.localPosition.z);
+                transform.localPosition = new Vector3(transform.localPosition.x,
+                    defaultPosY + Mathf.Sin(timer) * bobbingAmount, transform.localPosition.z);
             }
             else
             {
                 //Idle
                 timer = 0;
-                transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Lerp(transform.localPosition.y, defaultPosY, Time.deltaTime * bobbingSpeed), transform.localPosition.z);
+                transform.localPosition = new Vector3(transform.localPosition.x,
+                    Mathf.Lerp(transform.localPosition.y, defaultPosY, Time.deltaTime * bobbingSpeed),
+                    transform.localPosition.z);
             }
         }
     }

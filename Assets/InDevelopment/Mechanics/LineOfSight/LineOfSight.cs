@@ -28,6 +28,8 @@ namespace InDevelopment.Mechanics.LineOfSight
 
         [Header("Referenced Variables")]
         public GameObject player;
+        
+        public PlayerDetectionUI PlayerDetectionUI;
 
         public bool canSeePlayer;
         public float detectionMeter;
@@ -49,13 +51,13 @@ namespace InDevelopment.Mechanics.LineOfSight
         public float resetDelay = 2f;
         private bool isResetting = false;
         public bool detected;
+        public bool alerted;
 
         private bool paused;
 
         private void Start()
         {
             StartCoroutine(RaycastToPlayer(.25f));
-            //perhaps find a better way to assign player
             if (player == null)
             {
                 if (!FindObjectOfType<EnemyTarget>())
@@ -65,9 +67,11 @@ namespace InDevelopment.Mechanics.LineOfSight
                 }
 
                 player = FindObjectOfType<EnemyTarget>().gameObject;
+                PlayerDetectionUI = FindObjectOfType<PlayerDetectionUI>();
             }
-            MenuManager.instance.pauseGame += () =>  paused = !paused;
             
+            if (!(MenuManager.instance is null)) MenuManager.pauseGame += () => paused = !paused;
+            PlayerDetectionUI = FindObjectOfType<PlayerDetectionUI>();
         }
 
         private void Update()
@@ -90,6 +94,15 @@ namespace InDevelopment.Mechanics.LineOfSight
                 {
                     detectionMeter += fillSpeed * deltaTime;
                 }
+            }
+
+            if (canSeePlayer && !PlayerDetectionUI.enemies.Contains(this))
+            {
+                PlayerDetectionUI.enemies.Add(this);
+            }
+            else if(!canSeePlayer && PlayerDetectionUI.enemies.Contains(this))
+            {
+                PlayerDetectionUI.enemies.Remove(this);
             }
         }
 

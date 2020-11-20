@@ -1,6 +1,7 @@
 ﻿using System;
 using InDevelopment.Mechanics.Menu;
 using UnityEngine;
+using InDevelopment.Mechanics.TeleportAbility;
 using UnityEngine.InputSystem;
 using InDevelopment.Mechanics.TeleportAbility;
 using UnityEngine.UI;
@@ -9,55 +10,51 @@ namespace InDevelopment.Mechanics
 {
     public class TeleportAbilitiesUI : MonoBehaviour
     {
-
         [Header("Teleport")]
         // public Image TeleportUI;
         private float cooldown1 = 5;
+
         private bool isCooldown = false;
 
-        private TeleportAbility.TeleportAbility teleportAbility;
-        
+        public TeleportAbility.TeleportAbility teleportAbility;
+
         private bool paused;
+        public GameObject teleportUI;
 
         public Animator animator;
-        public SpriteRenderer spriteRenderer;
         public Slider teleportSlider;
 
         void Start()
         {
-            teleportAbility = GetComponentInParent<TeleportAbility.TeleportAbility>();
-            teleportSlider.maxValue = teleportAbility.teleportStartUpDelay;
+            teleportAbility = FindObjectOfType<TeleportAbility.TeleportAbility>();
+            if (!(teleportAbility is null)) teleportSlider.maxValue = teleportAbility.teleportStartUpDelay;
             // TeleportAbility.TeleportAbility.teleportTrigger += TeleportTrigger;
             // if (!(TeleportUI is null)) TeleportUI.fillAmount = teleportAbility.teleportDelay;
             paused = false;
-            MenuManager.instance.pauseGame += () =>  paused = !paused;
+            if (!(MenuManager.instance is null)) MenuManager.pauseGame += () => paused = !paused;
         }
-        
 
-        // Update is called once per frame
-        void Update()
+        private void Pause()
+        {
+            paused = !paused;
+        }
+
+        void FixedUpdate()
         {
             if (!paused)
             {
-                // TeleportUI.gameObject.SetActive(true);
                 SetSliderValue();
-                spriteRenderer.gameObject.SetActive(true);
-            }
-            else
-            {
-                // TeleportUI.gameObject.SetActive(false);
-                spriteRenderer.gameObject.SetActive(false);
             }
         }
-        
+
         private void SetSliderValue()
         {
             if (!(teleportSlider is null)) teleportSlider.value = teleportAbility.cooldownTimer;
         }
-        
+
         public void OnValueChange(float changedValue)
         {
-            animator.Play("TeleportUIAnim",0,teleportSlider.normalizedValue);
+            animator.Play("TeleportUIAnim", 0, teleportSlider.normalizedValue);
         }
 
         // private void TeleportTrigger()

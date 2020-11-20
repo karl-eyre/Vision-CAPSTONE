@@ -215,11 +215,13 @@ namespace InDevelopment.Alex
             if (lineOfSight.detectionMeter > 0)
             {
                 isAlerted = true;
+                lineOfSight.alerted = true;
                 lineOfSight.stopDecrease = true;
             }
             else
             {
                 isAlerted = false;
+                lineOfSight.alerted = false;
             }
         }
 
