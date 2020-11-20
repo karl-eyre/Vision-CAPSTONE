@@ -9,16 +9,19 @@ public class PauseSmoke : MonoBehaviour
     public bool fadeIn = false;
     //float fadeSpeed = 0.015f;
 
+    public GameObject fadePanel;
+    public Animator fadePanelController;
     
     float fadeDuration = 2;
     float startTrans = 0f;
     float endTrans = 4.7f;
     public float ValueOfLerp;
 
-
     // Start is called before the first frame update
     void Start()
     {
+        fadePanelController = fadePanel.GetComponent<Animator>();
+        smoke.SetFloat("_TransparencyScale", 0);
     }
 
     // Update is called once per frame
@@ -52,9 +55,41 @@ public class PauseSmoke : MonoBehaviour
 
     public void fadeSmoke()
     {
+        StartCoroutine(fadeInSmoke());
+    }
+
+    IEnumerator fadeInSmoke()
+    {
         fadeIn = !fadeIn;
 
-        if(fadeIn == true)
+        float currentTime = 0;
+        float s;
+        float e;
+
+        fadePanelController.SetBool("Fade?", fadeIn);
+
+        if (fadeIn == true)
+        {
+            s = startTrans;
+            e = endTrans;
+        }
+        else
+        {
+            e = startTrans;
+            s = endTrans;
+        }
+
+        while (currentTime < fadeDuration)
+        {
+            ValueOfLerp = Mathf.Lerp(s,e, currentTime / fadeDuration);
+            smoke.SetFloat("_TransparencyScale", ValueOfLerp);
+            currentTime += Time.unscaledDeltaTime;
+            yield return null;           
+        }
+        ValueOfLerp = e;
+        smoke.SetFloat("_TransparencyScale", ValueOfLerp);
+
+        /*if (fadeIn == true)
         {
             startTrans = endTrans;
             endTrans = 0;
@@ -63,23 +98,6 @@ public class PauseSmoke : MonoBehaviour
         {
             endTrans = startTrans;
             startTrans = 0;
-        }
-
-        StartCoroutine(fadeInSmoke());
-    }
-
-    IEnumerator fadeInSmoke()
-    {
-        float currentTime = 0;
-
-        while (currentTime < fadeDuration)
-        {
-            ValueOfLerp = Mathf.Lerp(startTrans, endTrans, currentTime / fadeDuration);
-            smoke.SetFloat("_TransparencyScale", ValueOfLerp);
-            currentTime += Time.unscaledDeltaTime;
-            yield return null;           
-        }
-        ValueOfLerp = endTrans;
-        smoke.SetFloat("_TransparencyScale", ValueOfLerp);
+        }*/
     }
 }
