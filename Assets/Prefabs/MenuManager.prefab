@@ -693,7 +693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionMeter: 0
-  detectionMeterUI: {fileID: 0}
+  detectionMeterUI: {fileID: 2044992065725258674}
   detectionSlider: {fileID: 4981827900424727576}
   animator: {fileID: 3808917818541292973}
   lastEnemy: {fileID: 0}
@@ -811,6 +811,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2094410476720926463}
   - component: {fileID: 2094410476720926456}
+  - component: {fileID: 1370991796565640319}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -850,7 +851,22 @@ MonoBehaviour:
   optionsMenu: {fileID: 7505766020511529545}
   pauseBackground: {fileID: 63056359}
   smokeScript: {fileID: 0}
-  playerUI: {fileID: 0}
+  playerUI: {fileID: 6677575045133624938}
+--- !u!114 &1370991796565640319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094410476720926457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 049cfd4cf50a9144aaa73fe8b3d1badd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuUI: {fileID: 2094410476161407619}
+  playerUI: {fileID: 6677575045133624934}
+  cam: {fileID: 0}
 --- !u!1 &2094410476784760829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,7 +1341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportAbility: {fileID: 0}
-  teleportUI: {fileID: 0}
+  teleportUI: {fileID: 2301830820157027373}
   animator: {fileID: 2301830820157027374}
   teleportSlider: {fileID: 2301830820157027376}
 --- !u!1 &2567632647058463658
@@ -1947,10 +1963,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e7655374886e0479d5a6fda8fec6e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionUI: {fileID: 0}
+  visionUI: {fileID: 4175736623981879709}
   visionEnergy: {fileID: 2692637150378343203}
   visionAbilityController: {fileID: 0}
   animator: {fileID: 2301830819010101613}
+  SpriteRenderer: {fileID: 0}
+  sprite: {fileID: 0}
 --- !u!212 &2301830819010101615
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2037,6 +2055,8 @@ MonoBehaviour:
   visionEnergy: {fileID: 2692637150378343203}
   visionAbilityController: {fileID: 0}
   animator: {fileID: 2301830819010101613}
+  SpriteRenderer: {fileID: 0}
+  sprite: {fileID: 0}
 --- !u!1 &4744753152422214398
 GameObject:
   m_ObjectHideFlags: 0
