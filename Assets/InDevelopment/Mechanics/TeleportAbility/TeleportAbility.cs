@@ -34,7 +34,6 @@ namespace InDevelopment.Mechanics.TeleportAbility
         public float noiseLevel;
 
         private bool onCooldown;
-        public float teleportAssistDistance = 2f;
         public float cooldownTimer;
 
         public static event Action teleportTrigger;
@@ -113,7 +112,14 @@ namespace InDevelopment.Mechanics.TeleportAbility
             if (hitInfo.collider.CompareTag("ThrowableObjects"))
             {
                 targetObj = hitInfo.collider.gameObject;
-                canTeleport = true;
+                // if (RoomForTeleport())
+                // {
+                    canTeleport = true;  
+                // }
+                // else
+                // {
+                //     canTeleport = false;
+                // }
             }
             else
             {
@@ -121,6 +127,21 @@ namespace InDevelopment.Mechanics.TeleportAbility
             }
 
             return canTeleport;
+        }
+
+        private bool RoomForTeleport()
+        {
+            
+            Collider[] colliders = Physics.OverlapBox(targetObj.transform.position, targetObj.transform.localScale / 2,
+                Quaternion.identity);
+            if (colliders.Length == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

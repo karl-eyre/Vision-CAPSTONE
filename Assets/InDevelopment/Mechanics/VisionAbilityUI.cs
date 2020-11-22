@@ -8,46 +8,68 @@ namespace InDevelopment.Mechanics
 {
     public class VisionAbilityUI : MonoBehaviour
     {
+        public GameObject visionUI;
         public Slider visionEnergy;
         private float cooldown;
         private bool isCooldown;
 
-        private VisionAbilityController visionAbilityController;
+        public VisionAbilityController visionAbilityController;
 
         private bool paused;
-        
+
         public Animator animator;
-       
+        public SpriteRenderer SpriteRenderer;
+        public Sprite sprite;
+
         public void OnValueChange(float changedValue)
         {
-            animator.Play("VisionUIAnim",0,visionEnergy.normalizedValue);
-        }
-        private void Start()
-        {
-            visionAbilityController = GetComponentInParent<VisionAbilityController>();
-            if (!(visionEnergy is null)) visionEnergy.value = visionAbilityController.maxEnergyFill;
-            if (!(visionEnergy is null)) visionEnergy.maxValue = visionAbilityController.maxEnergyFill;
-            paused = false;
-            MenuManager.instance.pauseGame += () =>  paused = !paused;
+            animator.Play("VisionUIAnim", 0, visionEnergy.normalizedValue);
         }
 
-        private void Update()
+        private void Start()
+        {
+            visionAbilityController = FindObjectOfType<VisionAbilityController>();
+            if (!(visionEnergy is null))
+                if (!(visionAbilityController is null))
+                    visionEnergy.value = visionAbilityController.maxEnergyFill;
+            if (!(visionEnergy is null))
+                if (!(visionAbilityController is null))
+                    visionEnergy.maxValue = visionAbilityController.maxEnergyFill;
+            paused = false;
+            if (!(MenuManager.instance is null)) MenuManager.pauseGame += Pause;
+            if (!(MenuManager.instance is null)) MenuManager.unpauseGame += SetEnergy;
+        }
+
+        private void SetEnergy()
+        {
+            if (visionAbilityController.visionEnergy >= visionAbilityController.maxEnergyFill)
+            {
+                visionAbilityController.visionEnergy = 99f;
+            }
+        }
+
+        private void Pause()
+        {
+            paused = !paused;
+        }
+
+        private void FixedUpdate()
         {
             if (!paused)
             {
                 SetSliderValue();
-                visionEnergy.gameObject.SetActive(true);
             }
-            else
-            {
-                visionEnergy.gameObject.SetActive(false);
-            }
-            
         }
 
         private void SetSliderValue()
         {
-            if (!(visionEnergy is null)) visionEnergy.value = visionAbilityController.visionEnergy;
+            if (!(visionEnergy is null))
+            {
+                if (!(visionAbilityController is null))
+                {
+                    visionEnergy.value = visionAbilityController.visionEnergy;
+                }
+            }
         }
     }
 }

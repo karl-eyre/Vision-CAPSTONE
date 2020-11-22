@@ -33,6 +33,7 @@ namespace InDevelopment.Mechanics.Player
 
         [Header("Movement Settings")]
         public float walkMoveSpeed;
+
         public float crouchMoveSpeed;
         public float sprintMoveSpeed;
 
@@ -50,7 +51,6 @@ namespace InDevelopment.Mechanics.Player
         [Header("Jump Settings")]
         public float jumpForce;
 
-        [HideInInspector]
         public bool isGrounded;
 
         [SerializeField]
@@ -100,6 +100,11 @@ namespace InDevelopment.Mechanics.Player
 
         public float airSpeedLimit;
 
+        public GameObject visual;
+
+        public BoxCollider boxCollider;
+
+
         private void Start()
         {
             SetupVariables();
@@ -121,7 +126,7 @@ namespace InDevelopment.Mechanics.Player
             controller = GetComponent<PlayerController>();
             VisionAbilityController.visionActivation += () => visionActivated = !visionActivated;
             rb = GetComponent<Rigidbody>();
-            disToGround = GetComponent<BoxCollider>().bounds.extents.y;
+            disToGround = GetComponentInChildren<BoxCollider>().bounds.extents.y;
             generalSoundMaker = GetComponentInChildren<GeneralSoundMaker>();
         }
 
@@ -174,6 +179,7 @@ namespace InDevelopment.Mechanics.Player
                     moveSpeed = crouchMoveSpeed;
                     currentNoiseLevel = crouchNoiseLevel;
                     transform.localScale = new Vector3(1, transform.localScale.y / 2f, 1);
+                    // visual.transform.localScale = new Vector3(1, transform.localScale.y / 2f, 1);
                 }
                 else
                 {
@@ -181,8 +187,10 @@ namespace InDevelopment.Mechanics.Player
                     moveSpeed = crouchMoveSpeed;
                     currentNoiseLevel = crouchNoiseLevel;
                     transform.localScale = new Vector3(1, transform.localScale.y / 2f, 1);
-                    transform.position = new Vector3(transform.position.x, transform.position.y + 1.6f,
-                        transform.position.z);
+                    transform.position = new Vector3(transform.position.x, transform.position.y + 1.6f, transform.position.z);
+                    // visual.transform.localScale = new Vector3(1, transform.localScale.y / 2f, 1);
+                    // visual.transform.position = new Vector3(transform.position.x, transform.position.y + 1.6f,
+                    //     transform.position.z);
                 }
             }
         }
@@ -191,25 +199,30 @@ namespace InDevelopment.Mechanics.Player
         {
             if (isCrouching)
             {
-                bool canStand =
+                bool canStand1 =
                     !Physics.Raycast(transform.position, Vector3.up, playerHeight + 0.3f, obstacleLayerMask);
-                if (canStand)
+                // bool canStand2 =
+                //     !Physics.Raycast(transform.position, -Vector3.up,  0.5f, obstacleLayerMask);
+                if (canStand1)
                 {
                     if (isGrounded)
                     {
                         isCrouching = false;
                         moveSpeed = walkMoveSpeed;
                         currentNoiseLevel = walkNoiseLevel;
-                        transform.localScale = new Vector3(1, transform.localScale.y * 2f, 1);
+                        transform.localScale = new Vector3(1, 1, 1);
+                        // visual.transform.localScale = new Vector3(1, 1, 1);
                     }
                     else
                     {
                         isCrouching = false;
                         moveSpeed = walkMoveSpeed;
                         currentNoiseLevel = walkNoiseLevel;
-                        transform.localScale = new Vector3(1, transform.localScale.y * 2f, 1);
-                        transform.position = new Vector3(transform.position.x, transform.position.y - 1.6f,
-                            transform.position.z);
+                        transform.localScale = new Vector3(1, 1, 1);
+                        transform.position = new Vector3(transform.position.x, transform.position.y - 1.6f, transform.position.z);
+                        // visual.transform.localScale = new Vector3(1, 1, 1);
+                        // visual.transform.position = new Vector3(transform.position.x, transform.position.y - 1.6f,
+                        //     transform.position.z);
                     }
                 }
             }
@@ -272,9 +285,9 @@ namespace InDevelopment.Mechanics.Player
                     float x = Mathf.Clamp(rb.velocity.x, rb.velocity.x, airSpeedLimit);
                     float y = rb.velocity.y;
                     float z = Mathf.Clamp(rb.velocity.z, rb.velocity.z, airSpeedLimit);
-                    
+
                     Vector2.ClampMagnitude(new Vector2(x, z), airSpeedLimit);
-                    
+
                     rb.velocity = new Vector3(x, y, z);
                 }
                 else

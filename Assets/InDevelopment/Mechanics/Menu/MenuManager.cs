@@ -9,7 +9,8 @@ namespace InDevelopment.Mechanics.Menu
     {
         public static MenuManager instance = null;
 
-        public event Action pauseGame;
+        public static event Action pauseGame;
+        public static event Action unpauseGame;
 
         public GameControls controls;
 
@@ -18,6 +19,9 @@ namespace InDevelopment.Mechanics.Menu
         public GameObject optionsMenu;
         public GameObject pauseBackground;
         public PauseSmoke smokeScript;
+
+
+        public GameObject playerUI;
 
         private void Awake()
         {
@@ -51,8 +55,10 @@ namespace InDevelopment.Mechanics.Menu
         {
             if (!paused)
             {
+                Debug.Log("paused");
                 paused = true;
                 pauseMenu.SetActive(true);
+                playerUI.SetActive(false);
                 //pauseBackground.SetActive(false);
                 Cursor.lockState = CursorLockMode.Confined;
                 pauseGame?.Invoke();
@@ -64,9 +70,12 @@ namespace InDevelopment.Mechanics.Menu
         public void UnPauseGame()
         {
             pauseMenu.SetActive(false);
+            playerUI.SetActive(true);
+            Debug.Log("unpaused");
             //pauseBackground.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             pauseGame?.Invoke();
+            unpauseGame?.Invoke();
             paused = false;
             Time.timeScale = 1;
             smokeScript.fadeSmoke();
