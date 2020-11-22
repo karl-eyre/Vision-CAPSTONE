@@ -1,6 +1,10 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< Updated upstream
 --- !u!114 &-8927606647056237286
+=======
+--- !u!114 &-9181489169567447308
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,6 +13,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/AmbientMusic/MusicState
   m_EditorClassIdentifier: 
@@ -69,6 +74,23 @@ MonoBehaviour:
   Default: 0
   Exists: 1
 --- !u!114 &-8122429966001961324
+=======
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/Tutorial01/Room02
+  m_EditorClassIdentifier: 
+  Path: snapshot:/Tutorial01/Room02
+  guid: 5091273128cb6e458e5bf51a6afbb941
+  Banks:
+  - {fileID: -3938172568744100048}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &-8818321963797404816
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,6 +100,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+<<<<<<< Updated upstream
   m_Name: snapshot:/EnemySearching/EnemySearching
   m_EditorClassIdentifier: 
   Path: snapshot:/EnemySearching/EnemySearching
@@ -86,11 +109,21 @@ MonoBehaviour:
   - {fileID: -4537099841675538835}
   - {fileID: -3432059400236831775}
   IsStream: 0
+=======
+  m_Name: event:/Music/MainMenu
+  m_EditorClassIdentifier: 
+  Path: event:/Music/MainMenu
+  guid: 51daf62088229c47b6bd80e5c986a0cf
+  Banks:
+  - {fileID: 7658716063503022685}
+  IsStream: 1
+>>>>>>> Stashed changes
   Is3D: 0
   IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
+<<<<<<< Updated upstream
   Length: 0
 --- !u!114 &-7844525523476782391
 MonoBehaviour:
@@ -151,6 +184,10 @@ MonoBehaviour:
   Default: 0
   Exists: 1
 --- !u!114 &-6760653547257135940
+=======
+  Length: 109714
+--- !u!114 &-8510743604937640801
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,6 +196,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/Footsteps/Crouching
   m_EditorClassIdentifier: 
@@ -168,6 +206,23 @@ MonoBehaviour:
   Default: 0
   Exists: 1
 --- !u!114 &-6604899397032861212
+=======
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/ShipFlyOver
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/ShipFlyOver
+  guid: a893994ec90233408027d7f88a3c2a0c
+  Banks:
+  - {fileID: -6410622227650856371}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 9
+  MaxDistance: 300
+  Length: 28397
+--- !u!114 &-7446495178130731997
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,6 +231,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/E_Footsteps/LowPass
   m_EditorClassIdentifier: 
@@ -185,6 +241,24 @@ MonoBehaviour:
   Default: 0
   Exists: 1
 --- !u!114 &-6360629868686364485
+=======
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Enemies/Searching
+  m_EditorClassIdentifier: 
+  Path: event:/Enemies/Searching
+  guid: 5e1eeab7efb77344af16dc353cd39841
+  Banks:
+  - {fileID: 4756833587027034176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 5551751459006783612}
+  MinDistance: 1.8000001
+  MaxDistance: 250
+  Length: 7000
+--- !u!114 &-7241274540931078838
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,17 +273,29 @@ MonoBehaviour:
   Path: event:/Player/TurningFast
   guid: 99f6e045ad5a134c86ecd0141be3ef33
   Banks:
+<<<<<<< Updated upstream
   - {fileID: 6375389302008084110}
   - {fileID: 1855940485796276121}
+=======
+  - {fileID: 4418759554306094134}
+>>>>>>> Stashed changes
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters:
+<<<<<<< Updated upstream
   - {fileID: -4428942976326958267}
   MinDistance: 0
   MaxDistance: 0
   Length: 0
 --- !u!114 &-6354019772677976874
+=======
+  - {fileID: -6887818970001558738}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &-6887818970001558738
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,6 +304,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: event:/Music/AmbientMusic
   m_EditorClassIdentifier: 
@@ -238,6 +325,17 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 126722
 --- !u!114 &-6202159984522384725
+=======
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/TurningFast/StandingStill
+  m_EditorClassIdentifier: 
+  Name: StandingStill
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
+--- !u!114 &-6410622227650856371
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD Banks/Desktop/Ui.bank
   SubDir: 
+<<<<<<< Updated upstream
   lastModified: 637412042124693971
   LoadResult: 0
   FileSizes: []
@@ -281,6 +380,13 @@ MonoBehaviour:
   MaxDistance: 20
   Length: 6439
 --- !u!114 &-5435412657389531024
+=======
+  lastModified: 637411464679592828
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-6343282512264850330
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,6 +395,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/AmbInterior/RoomTone_Hallway
   m_EditorClassIdentifier: 
@@ -298,6 +405,20 @@ MonoBehaviour:
   Default: 0
   Exists: 1
 --- !u!114 &-5312460725790643817
+=======
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD Banks/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637411464679862098
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 3582
+  Exists: 1
+--- !u!114 &-6256153704334831956
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -306,6 +427,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/AmbientMusic/GameplayMusic
   m_EditorClassIdentifier: 
@@ -527,12 +649,22 @@ MonoBehaviour:
   Banks:
   - {fileID: 6375389302008084110}
   - {fileID: 1855940485796276121}
+=======
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Crouching
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Crouching
+  guid: 2b0189f886f3bb48a9bb0a8b96bd54b0
+  Banks:
+  - {fileID: 4418759554306094134}
+>>>>>>> Stashed changes
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
+<<<<<<< Updated upstream
   Length: 343
 --- !u!114 &-3639323035044202295
 MonoBehaviour:
@@ -983,6 +1115,10 @@ MonoBehaviour:
   Default: 0
   Exists: 0
 --- !u!114 &515960084359273283
+=======
+  Length: 1000
+--- !u!114 &-5908822090334217415
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -992,6 +1128,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+<<<<<<< Updated upstream
   m_Name: event:/Ui/ButtonPress
   m_EditorClassIdentifier: 
   Path: event:/Ui/ButtonPress
@@ -1007,6 +1144,26 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 1906
 --- !u!114 &852746111714734732
+=======
+  m_Name: event:/Ambience/AmbInterior
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/AmbInterior
+  guid: 5f69b1748b40b948bb3a3e87be1da32c
+  Banks:
+  - {fileID: -6410622227650856371}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 6270633511388278151}
+  - {fileID: -4356034125500015667}
+  - {fileID: 8902794808785883077}
+  - {fileID: 4879472477488063033}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 48000
+--- !u!114 &-5373865409802690113
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1016,6 +1173,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+<<<<<<< Updated upstream
   m_Name: event:/Player/Footsteps
   m_EditorClassIdentifier: 
   Path: event:/Player/Footsteps
@@ -1033,6 +1191,23 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 0
 --- !u!114 &1172699160431288689
+=======
+  m_Name: event:/Enemies/E_Footsteps
+  m_EditorClassIdentifier: 
+  Path: event:/Enemies/E_Footsteps
+  guid: 0924cce58bb6dd479c3eaf9f3dfde2b9
+  Banks:
+  - {fileID: 4756833587027034176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -1273977714477591833}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1232
+--- !u!114 &-4367794274965814087
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1041,9 +1216,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Enemies.bank
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/Tutorial01/Room01
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   Path: Assets/FMOD Banks/Desktop/Enemies.bank
   SubDir: 
   lastModified: 637402537145245472
@@ -1068,14 +1244,26 @@ MonoBehaviour:
   - {fileID: 6375389302008084110}
   - {fileID: 1855940485796276121}
   IsStream: 1
+=======
+  Path: snapshot:/Tutorial01/Room01
+  guid: 45bff8ef4f826d47bd24a3299919b34a
+  Banks:
+  - {fileID: -3938172568744100048}
+  IsStream: 0
+>>>>>>> Stashed changes
   Is3D: 0
   IsOneShot: 0
   Parameters:
   - {fileID: -2903293353439516929}
   MinDistance: 0
   MaxDistance: 0
+<<<<<<< Updated upstream
   Length: 15642
 --- !u!114 &1855940485796276121
+=======
+  Length: 0
+--- !u!114 &-4356034125500015667
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1084,6 +1272,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Player.bank
   m_EditorClassIdentifier: 
@@ -1094,6 +1283,17 @@ MonoBehaviour:
   FileSizes: []
   Exists: 1
 --- !u!114 &1970927209365187534
+=======
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/AmbInterior/RoomTone_Hallway
+  m_EditorClassIdentifier: 
+  Name: RoomTone_Hallway
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &-4151498234188410932
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1103,6 +1303,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+<<<<<<< Updated upstream
   m_Name: parameter:/AmbInterior/CityOutside
   m_EditorClassIdentifier: 
   Name: CityOutside
@@ -1111,6 +1312,16 @@ MonoBehaviour:
   Default: 0
   Exists: 0
 --- !u!114 &1977938664319757019
+=======
+  m_Name: parameter:/AmbientMusic/Intencity
+  m_EditorClassIdentifier: 
+  Name: Intencity
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
+--- !u!114 &-4055664564659386825
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1119,6 +1330,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/AmbInterior/RattlingFan
   m_EditorClassIdentifier: 
@@ -1128,6 +1340,23 @@ MonoBehaviour:
   Default: 0
   Exists: 1
 --- !u!114 &2058521153191271956
+=======
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/Tutorial01/Room03
+  m_EditorClassIdentifier: 
+  Path: snapshot:/Tutorial01/Room03
+  guid: ea3147dbcdb3a34d9e42eeea2da50d3b
+  Banks:
+  - {fileID: -3938172568744100048}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &-4042289871427918335
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1136,15 +1365,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/AmbInterior/RattlingFan
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/Outside/Backstreet
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   Name: RattlingFan
   Min: 0
   Max: 1
   Default: 0
   Exists: 1
 --- !u!114 &2059639702388264305
+=======
+  Path: snapshot:/Outside/Backstreet
+  guid: 5aaa4201a0d7f340b924ea0b8d9acb20
+  Banks:
+  - {fileID: -3938172568744100048}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &-3938172568744100048
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1153,6 +1397,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/AmbientMusic/GameplayMusic
   m_EditorClassIdentifier: 
@@ -1162,6 +1407,18 @@ MonoBehaviour:
   Default: 0
   Exists: 1
 --- !u!114 &2429473251695580424
+=======
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD Banks/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637411464679792283
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-3087584526306972396
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1171,14 +1428,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+<<<<<<< Updated upstream
   m_Name: parameter:/TurningFast/StandingStill
   m_EditorClassIdentifier: 
   Name: StandingStill
+=======
+  m_Name: parameter:/V0_NCD_Announcer/PlayerDetected
+  m_EditorClassIdentifier: 
+  Name: PlayerDetected
+>>>>>>> Stashed changes
   Min: 0
-  Max: 2
+  Max: 1
   Default: 0
   Exists: 1
+<<<<<<< Updated upstream
 --- !u!114 &2446255196073570212
+=======
+--- !u!114 &-2942768372691328031
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1188,6 +1455,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+<<<<<<< Updated upstream
   m_Name: parameter:/AmbInterior/Drone
   m_EditorClassIdentifier: 
   Name: Drone
@@ -1196,6 +1464,16 @@ MonoBehaviour:
   Default: 0
   Exists: 1
 --- !u!114 &2544421659251964027
+=======
+  m_Name: parameter:/AmbientMusic/MusicState
+  m_EditorClassIdentifier: 
+  Name: MusicState
+  Min: 0
+  Max: 3
+  Default: 0
+  Exists: 1
+--- !u!114 &-2083889192796746943
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1204,6 +1482,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Environment.bank
   m_EditorClassIdentifier: 
@@ -1214,6 +1493,23 @@ MonoBehaviour:
   FileSizes: []
   Exists: 1
 --- !u!114 &2805078493372658548
+=======
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/MainRoom/WholeRoom
+  m_EditorClassIdentifier: 
+  Path: snapshot:/MainRoom/WholeRoom
+  guid: 4b0df3d21900b44099c7dceccb1806f9
+  Banks:
+  - {fileID: -3938172568744100048}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &-2074168938675398119
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1223,14 +1519,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+<<<<<<< Updated upstream
   m_Name: parameter:/Vision/VisionAbilityOff
   m_EditorClassIdentifier: 
   Name: VisionAbilityOff
+=======
+  m_Name: parameter:/AmbientMusic/LowPass
+  m_EditorClassIdentifier: 
+  Name: LowPass
+>>>>>>> Stashed changes
   Min: 0
   Max: 2
   Default: 0
   Exists: 1
+<<<<<<< Updated upstream
 --- !u!114 &3093283117454444300
+=======
+--- !u!114 &-1860761718460923638
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1239,6 +1545,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Player.bank
   m_EditorClassIdentifier: 
@@ -1249,6 +1556,23 @@ MonoBehaviour:
   FileSizes: []
   Exists: 1
 --- !u!114 &3101875382747731519
+=======
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Credits
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Credits
+  guid: 50379667dc9e1b4cab88043ed5c8ee95
+  Banks:
+  - {fileID: 7658716063503022685}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 54857
+--- !u!114 &-1273977714477591833
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1257,6 +1581,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
@@ -1269,6 +1594,17 @@ MonoBehaviour:
     Value: 3582
   Exists: 1
 --- !u!114 &3230024547287811580
+=======
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/E_Footsteps/LowPass
+  m_EditorClassIdentifier: 
+  Name: LowPass
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
+--- !u!114 &-1101115657833753080
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1277,6 +1613,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Environment.bank
   m_EditorClassIdentifier: 
@@ -1304,6 +1641,17 @@ MonoBehaviour:
   Default: 0
   Exists: 0
 --- !u!114 &4246091350868101318
+=======
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Vision/VisionAbilityOff
+  m_EditorClassIdentifier: 
+  Name: VisionAbilityOff
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
+--- !u!114 &-932395977103256920
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1312,6 +1660,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/AmbientMusic/Intencity
   m_EditorClassIdentifier: 
@@ -1321,6 +1670,25 @@ MonoBehaviour:
   Default: 100
   Exists: 1
 --- !u!114 &4319748077306377454
+=======
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Footsteps
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Footsteps
+  guid: 20897f2a0b362344baece0e69f9132de
+  Banks:
+  - {fileID: 4418759554306094134}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 2881226776831329801}
+  - {fileID: 6074751545879340594}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &-64111555521736865
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1329,6 +1697,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/Footsteps/Crouching
   m_EditorClassIdentifier: 
@@ -1354,12 +1723,22 @@ MonoBehaviour:
   Banks:
   - {fileID: 6375389302008084110}
   - {fileID: 1855940485796276121}
+=======
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ui/ButtonPress
+  m_EditorClassIdentifier: 
+  Path: event:/Ui/ButtonPress
+  guid: 6e16c7894077da4ab1b0837820e601a3
+  Banks:
+  - {fileID: 4452166309403371666}
+>>>>>>> Stashed changes
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
+<<<<<<< Updated upstream
   Length: 1000
 --- !u!114 &4633702263964179215
 MonoBehaviour:
@@ -1379,6 +1758,10 @@ MonoBehaviour:
   Default: 0
   Exists: 1
 --- !u!114 &4744932531136330094
+=======
+  Length: 1906
+--- !u!114 &11400000
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1387,6 +1770,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: snapshot:/MainRoom/WholeRoom
   m_EditorClassIdentifier: 
@@ -1403,6 +1787,50 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 0
 --- !u!114 &5017309946761122651
+=======
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: -6343282512264850330}
+  - {fileID: 4756833587027034176}
+  - {fileID: -6410622227650856371}
+  - {fileID: -3938172568744100048}
+  - {fileID: 7658716063503022685}
+  - {fileID: 4418759554306094134}
+  - {fileID: 4452166309403371666}
+  EditorEvents:
+  - {fileID: -5373865409802690113}
+  - {fileID: -7446495178130731997}
+  - {fileID: 5306672718119120469}
+  - {fileID: -5908822090334217415}
+  - {fileID: -8510743604937640801}
+  - {fileID: -4367794274965814087}
+  - {fileID: -2083889192796746943}
+  - {fileID: -9181489169567447308}
+  - {fileID: -4042289871427918335}
+  - {fileID: 3293957368379255010}
+  - {fileID: -4055664564659386825}
+  - {fileID: -1860761718460923638}
+  - {fileID: -8818321963797404816}
+  - {fileID: 782387004684092258}
+  - {fileID: 4865753731397817081}
+  - {fileID: -932395977103256920}
+  - {fileID: 6739531690210261833}
+  - {fileID: -6256153704334831956}
+  - {fileID: -7241274540931078838}
+  - {fileID: 1576104350332679274}
+  - {fileID: 6694480659976481081}
+  - {fileID: -64111555521736865}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -3938172568744100048}
+  StringsBanks:
+  - {fileID: -6343282512264850330}
+  stringsBankWriteTime: 637411464679862098
+  cacheVersion: 3
+--- !u!114 &782387004684092258
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1411,6 +1839,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Music.bank
   m_EditorClassIdentifier: 
@@ -1421,6 +1850,23 @@ MonoBehaviour:
   FileSizes: []
   Exists: 1
 --- !u!114 &5179262421189994359
+=======
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Intense
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Intense
+  guid: cfee2c974b040040a7d1f331d6c36669
+  Banks:
+  - {fileID: 7658716063503022685}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 11642
+--- !u!114 &900895961701055157
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1430,14 +1876,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+<<<<<<< Updated upstream
   m_Name: parameter:/AmbientMusic/MusicState
   m_EditorClassIdentifier: 
   Name: MusicState
+=======
+  m_Name: parameter:/Running/Run&Walk
+  m_EditorClassIdentifier: 
+  Name: Run&Walk
+>>>>>>> Stashed changes
   Min: 0
   Max: 3
   Default: 0
   Exists: 1
+<<<<<<< Updated upstream
 --- !u!114 &5180687544302418483
+=======
+--- !u!114 &1576104350332679274
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1446,6 +1902,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/AmbientMusic/LowPass
   m_EditorClassIdentifier: 
@@ -1455,6 +1912,24 @@ MonoBehaviour:
   Default: 0
   Exists: 0
 --- !u!114 &5785529487443850350
+=======
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Abilties/Vision
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Abilties/Vision
+  guid: ae4039b9e7d7e24a9dde3df3b2437270
+  Banks:
+  - {fileID: 4418759554306094134}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -1101115657833753080}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 15642
+--- !u!114 &2881226776831329801
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1464,14 +1939,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+<<<<<<< Updated upstream
   m_Name: parameter:/AmbInterior/Drone
   m_EditorClassIdentifier: 
   Name: Drone
+=======
+  m_Name: parameter:/Footsteps/Crouching
+  m_EditorClassIdentifier: 
+  Name: Crouching
+>>>>>>> Stashed changes
   Min: 0
-  Max: 1
+  Max: 2
   Default: 0
   Exists: 1
+<<<<<<< Updated upstream
 --- !u!114 &6254842887528084633
+=======
+--- !u!114 &3293957368379255010
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1481,6 +1966,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+<<<<<<< Updated upstream
   m_Name: snapshot:/Tutorial01/Room02
   m_EditorClassIdentifier: 
   Path: snapshot:/Tutorial01/Room02
@@ -1488,6 +1974,14 @@ MonoBehaviour:
   Banks:
   - {fileID: -4537099841675538835}
   - {fileID: -3432059400236831775}
+=======
+  m_Name: snapshot:/EnemySearching/EnemySearching
+  m_EditorClassIdentifier: 
+  Path: snapshot:/EnemySearching/EnemySearching
+  guid: a878a0f8fced11498647533903607d30
+  Banks:
+  - {fileID: -3938172568744100048}
+>>>>>>> Stashed changes
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -1495,7 +1989,11 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+<<<<<<< Updated upstream
 --- !u!114 &6375389302008084110
+=======
+--- !u!114 &4418759554306094134
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1509,11 +2007,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD Banks/Desktop/Player.bank
   SubDir: 
+<<<<<<< Updated upstream
   lastModified: 637412085184707025
   LoadResult: 0
   FileSizes: []
   Exists: 1
 --- !u!114 &6812280139129922491
+=======
+  lastModified: 637411464681058887
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &4452166309403371666
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1527,11 +2033,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD Banks/Desktop/Ui.bank
   SubDir: 
+<<<<<<< Updated upstream
   lastModified: 637412085184697033
   LoadResult: 0
   FileSizes: []
   Exists: 1
 --- !u!114 &7395950379760255456
+=======
+  lastModified: 637411464681378035
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &4756833587027034176
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1540,6 +2054,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/AmbientMusic/LowPass
   m_EditorClassIdentifier: 
@@ -1549,6 +2064,18 @@ MonoBehaviour:
   Default: 0
   Exists: 1
 --- !u!114 &7505890849788602963
+=======
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Enemies.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD Banks/Desktop/Enemies.bank
+  SubDir: 
+  lastModified: 637411464679114140
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &4831941942879435174
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1558,13 +2085,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+<<<<<<< Updated upstream
   m_Name: parameter:/Searching/LowPass
+=======
+  m_Name: parameter:/AmbientMusic/GameplayMusic
+>>>>>>> Stashed changes
   m_EditorClassIdentifier: 
-  Name: LowPass
+  Name: GameplayMusic
   Min: 0
-  Max: 2
+  Max: 1
   Default: 0
   Exists: 1
+<<<<<<< Updated upstream
 --- !u!114 &7526117264356992463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1583,6 +2115,9 @@ MonoBehaviour:
   Default: 0
   Exists: 0
 --- !u!114 &7611476446758558467
+=======
+--- !u!114 &4865753731397817081
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1591,6 +2126,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/Footsteps/Run&Walk
   m_EditorClassIdentifier: 
@@ -1600,6 +2136,27 @@ MonoBehaviour:
   Default: 0
   Exists: 0
 --- !u!114 &7666629911346341355
+=======
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/AmbientMusic
+  m_EditorClassIdentifier: 
+  Path: event:/Music/AmbientMusic
+  guid: d843c6996503344693f86658a4c14b2c
+  Banks:
+  - {fileID: 7658716063503022685}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -2942768372691328031}
+  - {fileID: -4151498234188410932}
+  - {fileID: 4831941942879435174}
+  - {fileID: -2074168938675398119}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 126722
+--- !u!114 &4879472477488063033
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1609,6 +2166,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+<<<<<<< Updated upstream
   m_Name: parameter:/E_Footsteps/LowPass
   m_EditorClassIdentifier: 
   Name: LowPass
@@ -1617,6 +2175,16 @@ MonoBehaviour:
   Default: 0
   Exists: 0
 --- !u!114 &7996841464822818849
+=======
+  m_Name: parameter:/AmbInterior/CityOutside
+  m_EditorClassIdentifier: 
+  Name: CityOutside
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &5306672718119120469
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1625,6 +2193,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/Running/Run&Walk
   m_EditorClassIdentifier: 
@@ -1634,6 +2203,24 @@ MonoBehaviour:
   Default: 0
   Exists: 1
 --- !u!114 &8041682616928516769
+=======
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/V0_NCD_Announcer
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/V0_NCD_Announcer
+  guid: 050ff48493265244aec87f783516421f
+  Banks:
+  - {fileID: -6410622227650856371}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -3087584526306972396}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6439
+--- !u!114 &5551751459006783612
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1642,6 +2229,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Music.bank
   m_EditorClassIdentifier: 
@@ -1652,6 +2240,17 @@ MonoBehaviour:
   FileSizes: []
   Exists: 1
 --- !u!114 &8218795554445951819
+=======
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Searching/LowPass
+  m_EditorClassIdentifier: 
+  Name: LowPass
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
+--- !u!114 &6074751545879340594
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1661,14 +2260,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+<<<<<<< Updated upstream
   m_Name: parameter:/Running/Run&Walk
+=======
+  m_Name: parameter:/Footsteps/Run&Walk
+>>>>>>> Stashed changes
   m_EditorClassIdentifier: 
   Name: Run&Walk
   Min: 0
   Max: 3
   Default: 0
+<<<<<<< Updated upstream
   Exists: 0
 --- !u!114 &8233845423795712030
+=======
+  Exists: 1
+--- !u!114 &6270633511388278151
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1678,6 +2286,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+<<<<<<< Updated upstream
   m_Name: parameter:/AmbientMusic/Intencity
   m_EditorClassIdentifier: 
   Name: Intencity
@@ -1686,6 +2295,16 @@ MonoBehaviour:
   Default: 100
   Exists: 1
 --- !u!114 &8531490931282170070
+=======
+  m_Name: parameter:/AmbInterior/Drone
+  m_EditorClassIdentifier: 
+  Name: Drone
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &6694480659976481081
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1694,6 +2313,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Enemies.bank
   m_EditorClassIdentifier: 
@@ -1704,6 +2324,23 @@ MonoBehaviour:
   FileSizes: []
   Exists: 1
 --- !u!114 &8630592791343041642
+=======
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Skids
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Skids
+  guid: e1299249ada7014d9ca9967d1ea6a442
+  Banks:
+  - {fileID: 4418759554306094134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 343
+--- !u!114 &6739531690210261833
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1712,6 +2349,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/Searching/LowPass
   m_EditorClassIdentifier: 
@@ -1721,6 +2359,24 @@ MonoBehaviour:
   Default: 0
   Exists: 0
 --- !u!114 &8992938225985948251
+=======
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Running
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Running
+  guid: 2a252642717c2742bc1e3816ca985cee
+  Banks:
+  - {fileID: 4418759554306094134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 900895961701055157}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 10500
+--- !u!114 &7658716063503022685
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1729,6 +2385,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/AmbientMusic/LowPass
   m_EditorClassIdentifier: 
@@ -1738,6 +2395,18 @@ MonoBehaviour:
   Default: 0
   Exists: 1
 --- !u!114 &9204524811893144431
+=======
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD Banks/Desktop/Music.bank
+  SubDir: 
+  lastModified: 637411464680330841
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &8902794808785883077
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1747,10 +2416,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+<<<<<<< Updated upstream
   m_Name: parameter:/Footsteps/Run&Walk
   m_EditorClassIdentifier: 
   Name: Run&Walk
+=======
+  m_Name: parameter:/AmbInterior/RattlingFan
+  m_EditorClassIdentifier: 
+  Name: RattlingFan
+>>>>>>> Stashed changes
   Min: 0
-  Max: 3
+  Max: 1
   Default: 0
   Exists: 1
