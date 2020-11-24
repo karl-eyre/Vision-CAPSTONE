@@ -1386,7 +1386,6 @@ MonoBehaviour:
     m_Bits: 1136951
   heightOffset: 0.5
   noiseLevel: 0
-  teleportAssistDistance: 2
   cooldownTimer: 0
 --- !u!114 &2656615058870319611
 MonoBehaviour:
@@ -1431,9 +1430,8 @@ MonoBehaviour:
   walkNoiseLevel: 0
   crouchNoiseLevel: 0
   sprintNoiseLevel: 5
-  airSpeedLimit: 0
-  visual: {fileID: 638306179654511244}
-  boxCollider: {fileID: 1472921832892145828}
+  airSpeedLimit: 8
+  rbVelocity: {x: 0, y: 0, z: 0}
 --- !u!114 &7493532745831029287
 MonoBehaviour:
   m_ObjectHideFlags: 0
