@@ -100,11 +100,8 @@ namespace InDevelopment.Mechanics.Player
 
         public float airSpeedLimit;
 
-        public GameObject visual;
-
-        public BoxCollider boxCollider;
-
-
+        public Vector3 rbVelocity;
+        
         private void Start()
         {
             SetupVariables();
@@ -257,7 +254,7 @@ namespace InDevelopment.Mechanics.Player
             if (IsGrounded() && !isCrouching)
             {
                 float airSpeed = moveSpeed;
-                airSpeedLimit = movement.normalized.magnitude * (airSpeed * Time.fixedDeltaTime);
+                // airSpeedLimit = movement.normalized.magnitude * (airSpeed * Time.fixedDeltaTime);
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
         }
@@ -285,9 +282,9 @@ namespace InDevelopment.Mechanics.Player
                     float x = Mathf.Clamp(rb.velocity.x, rb.velocity.x, airSpeedLimit);
                     float y = rb.velocity.y;
                     float z = Mathf.Clamp(rb.velocity.z, rb.velocity.z, airSpeedLimit);
-
+                
                     Vector2.ClampMagnitude(new Vector2(x, z), airSpeedLimit);
-
+                
                     rb.velocity = new Vector3(x, y, z);
                 }
                 else
@@ -416,6 +413,7 @@ namespace InDevelopment.Mechanics.Player
             VisionActivated();
             SwapPhysicsMats();
             CheckSprint();
+            rbVelocity = rb.velocity;
         }
     }
 }
