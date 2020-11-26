@@ -25,7 +25,7 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Execute()
         {
             base.Execute();
-
+            LookAtPlayer();
             if (AboveInvestigationThresholdCheck())
             {
                 if (stateManager.currentEnemyState != enemyController.investigatingEnemyState)
@@ -40,8 +40,6 @@ namespace InDevelopment.Alex.EnemyStates
                     stateManager.ChangeState(stateManager.interruptedState);
                 }
             }
-
-            LookAtPlayer();
         }
     }
 }

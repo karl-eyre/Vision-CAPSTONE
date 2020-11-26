@@ -28,7 +28,7 @@ namespace InDevelopment.Mechanics.LineOfSight
 
         [Header("Referenced Variables")]
         public GameObject player;
-        
+
         public PlayerDetectionUI PlayerDetectionUI;
 
         public bool canSeePlayer;
@@ -57,24 +57,24 @@ namespace InDevelopment.Mechanics.LineOfSight
 
         private void Start()
         {
-            StartCoroutine(RaycastToPlayer(.25f));
+            StartCoroutine(RaycastToPlayer(.20f));
             if (player == null)
             {
-                if (!FindObjectOfType<EnemyTarget>())
+                if (!FindObjectOfType<PlayerMovement>())
                 {
                     Debug.Log("No player exists in the scene");
                     return;
                 }
 
-                player = FindObjectOfType<EnemyTarget>().gameObject;
+                player = FindObjectOfType<PlayerMovement>().gameObject;
                 PlayerDetectionUI = FindObjectOfType<PlayerDetectionUI>();
             }
-            
+
             if (!(MenuManager.instance is null)) MenuManager.pauseGame += () => paused = !paused;
             PlayerDetectionUI = FindObjectOfType<PlayerDetectionUI>();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (!paused)
             {
@@ -100,7 +100,7 @@ namespace InDevelopment.Mechanics.LineOfSight
             {
                 PlayerDetectionUI.enemies.Add(this);
             }
-            else if(!canSeePlayer && PlayerDetectionUI.enemies.Contains(this))
+            else if (!canSeePlayer && PlayerDetectionUI.enemies.Contains(this))
             {
                 PlayerDetectionUI.enemies.Remove(this);
             }
@@ -108,7 +108,7 @@ namespace InDevelopment.Mechanics.LineOfSight
 
         public float DistToTarget()
         {
-            return Vector3.Distance(player.transform.position, transform.position);
+            return Vector3.Distance(player.transform.position, headPos.transform.position);
         }
 
         public float ViewDistance()
@@ -131,30 +131,43 @@ namespace InDevelopment.Mechanics.LineOfSight
         {
             if (player == null) return;
 
-            Vector3 dirToTarget = (player.transform.position - transform.position); 
-            deltaTime = Time.timeSinceLevelLoad - timeSinceLastSeen; 
- 
-            if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2) 
-            { 
-                Ray ray = new Ray(transform.position, dirToTarget); 
- 
-                //This is for obstacles getting in the way. 
-                if (Physics.Raycast(ray, out hitInfo, viewDistance, obstacleMask) || 
-                    Vector3.Distance(player.transform.position, transform.position) > viewDistance) 
-                { 
-                    // Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1); 
-                    canSeePlayer = false; 
-                    return; 
-                } 
- 
-                //This is where the actual player detection happens 
-                if (Physics.Raycast(ray, out hitInfo, viewDistance, playerMask)) 
-                { 
-                    // Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1); 
-                    canSeePlayer = true; 
-                } 
-            } 
+            Vector3 dirToTarget = (player.transform.position - transform.position);
+            deltaTime = Time.timeSinceLevelLoad - timeSinceLastSeen;
 
+            if (Vector3.Angle(headPos.transform.forward, dirToTarget) < viewAngle / 2)
+            {
+                Ray ray = new Ray(headPos.transform.position, dirToTarget);
+
+                if (Physics.Raycast(ray, out hitInfo, viewDistance))
+                {
+                    if (hitInfo.collider.CompareTag("Player"))
+                    {
+                        canSeePlayer = true;
+                    }
+
+                    if (hitInfo.collider.CompareTag("Obstacles"))
+                    {
+                        canSeePlayer = false;
+                    }
+                }
+
+
+                //This is for obstacles getting in the way. 
+                // if (Physics.Raycast(ray, out hitInfo, viewDistance, obstacleMask) || 
+                //     Vector3.Distance(player.transform.position, transform.position) > viewDistance) 
+                // { 
+                //     // Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1); 
+                //     canSeePlayer = false; 
+                //     return; 
+                // } 
+                //
+                // //This is where the actual player detection happens 
+                // if (Physics.Raycast(ray, out hitInfo, viewDistance, playerMask)) 
+                // { 
+                //     // Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1); 
+                //     canSeePlayer = true; 
+                // } 
+            }
             else
             {
                 canSeePlayer = false;

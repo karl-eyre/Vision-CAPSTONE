@@ -163,11 +163,6 @@ namespace InDevelopment.Alex
 
         public void LookAtPlayer()
         {
-            if (lineOfSight.headPos.eulerAngles.y > 0)
-            {
-                lineOfSight.headPos.rotation = Quaternion.Euler(0, 0, 0);
-            }
-
             enemyController.LookAtTarget(lineOfSight.player.transform.position);
         }
 
