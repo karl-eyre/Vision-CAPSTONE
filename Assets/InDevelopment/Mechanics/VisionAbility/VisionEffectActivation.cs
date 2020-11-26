@@ -16,7 +16,8 @@ namespace InDevelopment.Mechanics.VisionAbility
         public bool isSelected;
 
         private GameObject player;
-        private Renderer rendererMat;
+        public Renderer headRenderer;
+        public Renderer bodyRenderer;
         public float maxFadeDistance;
         public float minFadeDistance;
 
@@ -24,7 +25,7 @@ namespace InDevelopment.Mechanics.VisionAbility
 
         public void Start()
         {
-            rendererMat = GetComponent<Renderer>();
+            // headRenderer = GetComponentInChildren<Renderer>();
             // maxFadeDistance = 50f;
             // minFadeDistance = 25f;
             VisionAbilityController.visionActivation += UpdateVision;
@@ -54,7 +55,8 @@ namespace InDevelopment.Mechanics.VisionAbility
                 }
                 else
                 {
-                    rendererMat.material = defaultMat;
+                    headRenderer.material = defaultMat;
+                    bodyRenderer.material = defaultMat;
                 }
             }
         }
@@ -68,15 +70,19 @@ namespace InDevelopment.Mechanics.VisionAbility
         {
             if (Vector3.Distance(transform.position, player.transform.position) > maxFadeDistance)
             {
-                rendererMat.material = farVisionMat;
+                headRenderer.material = farVisionMat;
+                bodyRenderer.material = farVisionMat;
             }
-            else if (Vector3.Distance(transform.position, player.transform.position) > minFadeDistance && Vector3.Distance(transform.position, player.transform.position) < maxFadeDistance)
+            else if (Vector3.Distance(transform.position, player.transform.position) > minFadeDistance &&
+                     Vector3.Distance(transform.position, player.transform.position) < maxFadeDistance)
             {
-                rendererMat.material = middleVisionMat;
+                headRenderer.material = middleVisionMat;
+                bodyRenderer.material = middleVisionMat;
             }
             else
             {
-                rendererMat.material = closeVisionMat;
+                headRenderer.material = closeVisionMat;
+                bodyRenderer.material = closeVisionMat;
             }
         }
     }
