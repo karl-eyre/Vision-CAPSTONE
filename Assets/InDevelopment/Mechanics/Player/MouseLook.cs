@@ -11,8 +11,7 @@ namespace InDevelopment.Mechanics.Player
         public UnityEngine.Events.UnityEvent playerTurnFast;
 
         [Header("Mouse Settings")]
-        [SerializeField]
-        private float mouseSensitivity = 100f;
+        public float mouseSensitivity = 100f;
 
         [SerializeField]
         [Tooltip("The lower this is the higher you can look")]
