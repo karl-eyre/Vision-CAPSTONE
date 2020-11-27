@@ -20,6 +20,7 @@ namespace InDevelopment.Mechanics.VisionAbility
         public Renderer bodyRenderer;
         public float maxFadeDistance;
         public float minFadeDistance;
+        public bool throwableObject;
 
         // public bool useCustomRenderer;
 
@@ -68,22 +69,42 @@ namespace InDevelopment.Mechanics.VisionAbility
 
         private void UpdateAlpha()
         {
-            if (Vector3.Distance(transform.position, player.transform.position) > maxFadeDistance)
+            if (!throwableObject)
             {
-                headRenderer.material = farVisionMat;
-                bodyRenderer.material = farVisionMat;
-            }
-            else if (Vector3.Distance(transform.position, player.transform.position) > minFadeDistance &&
-                     Vector3.Distance(transform.position, player.transform.position) < maxFadeDistance)
-            {
-                headRenderer.material = middleVisionMat;
-                bodyRenderer.material = middleVisionMat;
+                if (Vector3.Distance(transform.position, player.transform.position) > maxFadeDistance)
+                {
+                    headRenderer.material = farVisionMat;
+                    bodyRenderer.material = farVisionMat;
+                }
+                else if (Vector3.Distance(transform.position, player.transform.position) > minFadeDistance &&
+                         Vector3.Distance(transform.position, player.transform.position) < maxFadeDistance)
+                {
+                    headRenderer.material = middleVisionMat;
+                    bodyRenderer.material = middleVisionMat;
+                }
+                else
+                {
+                    headRenderer.material = closeVisionMat;
+                    bodyRenderer.material = closeVisionMat;
+                }
             }
             else
             {
-                headRenderer.material = closeVisionMat;
-                bodyRenderer.material = closeVisionMat;
+                if (Vector3.Distance(transform.position, player.transform.position) > maxFadeDistance)
+                {
+                    headRenderer.material = farVisionMat;
+                }
+                else if (Vector3.Distance(transform.position, player.transform.position) > minFadeDistance &&
+                         Vector3.Distance(transform.position, player.transform.position) < maxFadeDistance)
+                {
+                    headRenderer.material = middleVisionMat;
+                }
+                else
+                {
+                    headRenderer.material = closeVisionMat;
+                }
             }
+            
         }
     }
 }
