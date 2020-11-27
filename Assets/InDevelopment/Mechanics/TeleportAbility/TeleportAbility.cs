@@ -36,7 +36,8 @@ namespace InDevelopment.Mechanics.TeleportAbility
         private bool onCooldown;
         public float cooldownTimer;
 
-        public static event Action teleportTrigger;
+        public static event Action teleportStarted;
+        public static event Action teleportTriggered;
 
         private void Start()
         {
@@ -84,6 +85,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         private IEnumerator Teleport(GameObject targetObject)
         {
+            teleportStarted?.Invoke();
             yield return new WaitForSeconds(teleportStartUpDelay);
             var tgt = targetObject;
             Vector3 origin = new Vector3(transform.position.x, transform.position.y + heightOffset,
@@ -93,7 +95,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
             tgt.GetComponent<Rigidbody>().velocity = Vector3.zero;
             targetObj = null;
             objectSoundMaker.MakeSound(transform.position, noiseLevel);
-            teleportTrigger?.Invoke();
+            teleportTriggered?.Invoke();
             yield return new WaitForSeconds(teleportDelay);
             onCooldown = false;
             cooldownTimer = 0;
