@@ -38,8 +38,8 @@ public class F_Player : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerController = GetComponent<PlayerController>();
         VisionAbilityController.visionActivation += VisionAbilitySoundPlay;
-        TeleportAbility.teleportTrigger += TeleportAbilitySoundPlay;
-  
+        //TeleportAbility.teleportTrigger += TeleportAbilitySoundPlay;
+    // wouldn't let me play the game because it was missing
     }
     void FmodEventInstances()
     {
