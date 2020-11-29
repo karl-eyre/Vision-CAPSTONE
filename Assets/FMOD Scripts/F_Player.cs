@@ -3,6 +3,7 @@ using FMODUnity;
 using InDevelopment.Mechanics.Player;
 using InDevelopment.Mechanics.VisionAbility;
 using System.Collections;
+using InDevelopment.Mechanics.TeleportAbility;
 using UnityEngine;
 
 public class F_Player : MonoBehaviour
@@ -37,6 +38,8 @@ public class F_Player : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerController = GetComponent<PlayerController>();
         VisionAbilityController.visionActivation += VisionAbilitySoundPlay;
+        TeleportAbility.teleportTrigger += TeleportAbilitySoundPlay;
+  
     }
     void FmodEventInstances()
     {
@@ -83,6 +86,11 @@ public class F_Player : MonoBehaviour
                 finishedRunning = false;
             }
         }
+    }
+
+    void TeleportAbilitySoundPlay()
+    {
+        RuntimeManager.PlayOneShot("event:/Player/Abilties/Teleport", default);
     }
     void VisionAbilitySoundPlay()
     {

@@ -24,7 +24,7 @@ public class F_Occlusion : MonoBehaviour
     void Start()
     {
         FmodEventInstances();
-        player = GameObject.Find("Player").GetComponent<Transform>();
+        player = GameObject.Find("Player 1").GetComponent<Transform>();
         enemyController = GetComponent<EnemyController>();
         lm = LayerMask.GetMask("Obstacle");
         objPosition = transform.position;
