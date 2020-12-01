@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambience/Amb_Ext_City_Night
+  m_Name: event:/Player/TurningFast
   m_EditorClassIdentifier: 
   Path: event:/Ambience/Amb_Ext_City_Night
   guid: 5d0cb1585bf26f4b99cf7909f0315fd1
@@ -65,7 +65,7 @@ MonoBehaviour:
   - {fileID: -4387940402716194465}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
@@ -160,7 +160,11 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: 3344087256862384790}
+  - {fileID: -6086470842053441525}
+  - {fileID: -3802974132491245264}
+  - {fileID: -357946987155808075}
   MinDistance: 0
   MaxDistance: 0
   Length: 0
@@ -395,10 +399,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Enemies/E_Footsteps
+  m_Name: event:/Ambience/V0_NCD_Announcer
   m_EditorClassIdentifier: 
-  Path: event:/Enemies/E_Footsteps
-  guid: 0924cce58bb6dd479c3eaf9f3dfde2b9
+  Path: event:/Ambience/V0_NCD_Announcer
+  guid: 050ff48493265244aec87f783516421f
   Banks:
   - {fileID: 1104613808842596464}
   IsStream: 0
@@ -1130,7 +1134,8 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: 8044349608641542355}
   MinDistance: 0
   MaxDistance: 0
   Length: 0
