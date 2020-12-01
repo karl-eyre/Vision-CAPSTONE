@@ -8,7 +8,7 @@ public class F_Ui : MonoBehaviour
 {
     public void UiPress()
     {
-        RuntimeManager.PlayOneShot("event:/Ui/ButtonPress", default);
+        RuntimeManager.PlayOneShot("event:/Ui/UiPress", default);
     }
 
     public void UiHover()
