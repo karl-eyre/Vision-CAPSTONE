@@ -9,11 +9,8 @@ public class F_Occlusion : MonoBehaviour
 {
     [SerializeField]
     private float OcclusionRadius = 30f;
-    [SerializeField]
-    private float MusicRadius = 20f;
-    [EventRef]
-    public string eventPath;
-    EventInstance footsteps;
+
+    private EventInstance footsteps;
     public EventInstance searching;
     private Vector3 objPosition;
     [SerializeField]
@@ -30,23 +27,43 @@ public class F_Occlusion : MonoBehaviour
         objPosition = transform.position;
         searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         StateManager.changeStateEvent += MusicAndSounds;
+        RuntimeManager.PlayOneShotAttached("event:/Enemies/BotTurn",default);
+        RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
+        RuntimeManager.AttachInstanceToGameObject(footsteps, transform, GetComponent<Rigidbody>());
     }
     void FmodEventInstances()
     {
-        footsteps = RuntimeManager.CreateInstance("event:/Enemies/E_Footsteps");
-        footsteps.start();
         searching = RuntimeManager.CreateInstance("event:/Enemies/Searching");
+        footsteps = RuntimeManager.CreateInstance("event:/Enemies/E_Footsteps");
     }
+
+    public void BotTurn()
+    {
+        RuntimeManager.PlayOneShot("event:/Enemies/BotTurn",default);
+    }
+
+    public void BotTurnBack()
+    {
+        RuntimeManager.PlayOneShot("event:/Enemies/BotTurnBack",default);
+    }
+    
+    public void BotLook()
+    {
+        RuntimeManager.PlayOneShot("event:/Enemies/BotLook",default);
+    }
+    public void BotStep()
+    {
+        RuntimeManager.PlayOneShot("event:/Enemies/E_Footsteps");
+    }
+    
     private void Update()
     {
-        RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
-        RuntimeManager.AttachInstanceToGameObject(footsteps, transform, GetComponent<Rigidbody>());
+
     }
     private void OnDrawGizmosSelected() //Visual Radius For Occlusion & Music.
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(objPosition, OcclusionRadius);
-        Gizmos.DrawWireSphere(objPosition, MusicRadius);
 
     }
     private void FixedUpdate()
