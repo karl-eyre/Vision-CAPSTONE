@@ -9,6 +9,8 @@ using InDevelopment.Alex.EnemyStates;
 
 public class F_AnnouncerIndoors : MonoBehaviour
 {
+    [EventRef]
+    public string announcerEvent;
     public static EventInstance announcer;
     [SerializeField]
     private bool overideAttenuation;
@@ -18,7 +20,7 @@ public class F_AnnouncerIndoors : MonoBehaviour
     float OverrideMaxDistance = -1.0f;
     void Start()
     {
-        announcer = RuntimeManager.CreateInstance("event:/Ambience/V0_NCD_Announcer");
+        announcer = RuntimeManager.CreateInstance(announcerEvent);
         RuntimeManager.AttachInstanceToGameObject(announcer, transform, GetComponent<Rigidbody>());
         announcer.start();
         announcer.release();
