@@ -13,10 +13,10 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         //when the collider is entered then something heard the sound get those collider's that are off type enemy
         //and call their investigate sound function and pass in the player's collider's position.
         //just use game control events to read when something is happening and set noise accordingly
-        
+
         public LayerMask enemyLayer;
         public LayerMask obstacleLayer;
-        
+
         public void MakeSound(Vector3 soundLocation, float loudnessOfSound)
         {
             Collider[] enemiesInRange = Physics.OverlapSphere(soundLocation, loudnessOfSound, enemyLayer);
@@ -24,23 +24,31 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             {
                 return;
             }
-            
+
             //the sphere cast and if their still in then tell them to investigate
             //use raycast to determine who should've heard the sound
-            
+
             foreach (var enemy in enemiesInRange)
             {
                 //change to other bool if you don't want walls to completely block sound
-                bool actuallyHeardSound = !Physics.Linecast(soundLocation, enemy.transform.position, obstacleLayer);
-                
-                Ray ray = new Ray(soundLocation, soundLocation - enemy.transform.position);
-                
+                Vector3 newSoundLocation = new Vector3(soundLocation.x, soundLocation.y + 1f, soundLocation.z);
+                RaycastHit hitInfo;
+                bool actuallyHeardSound = Physics.Linecast(newSoundLocation, enemy.transform.position, out hitInfo);
+
+                // Ray ray = new Ray(soundLocation, soundLocation - enemy.transform.position);
+
                 // bool actuallyHeardSound = Physics.Raycast(ray, loudnessOfSound);
-                
+
                 if (actuallyHeardSound)
                 {
-                    enemy.gameObject.GetComponentInChildren<EnemyStateBase>().GetDistracted(soundLocation);
-                    enemy.gameObject.GetComponentInParent<LineOfSight.LineOfSight>().SoundDistraction(loudnessOfSound);
+                    if (hitInfo.collider.CompareTag("Obstacles"))
+                    {
+                        return;
+                    }
+
+                    StartCoroutine(enemy.GetComponentInChildren<EnemyStateBase>().HearSomethingAnimation(soundLocation));
+                    enemy.GetComponentInParent<LineOfSight.LineOfSight>()
+                        .SoundDistraction(loudnessOfSound);
                 }
             }
         }

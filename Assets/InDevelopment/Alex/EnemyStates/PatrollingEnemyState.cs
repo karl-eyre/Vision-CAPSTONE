@@ -124,7 +124,8 @@ namespace InDevelopment.Alex.EnemyStates
 
         public bool IsReached()
         {
-            float dist = (Vector3.Distance(enemyController.transform.position, target.transform.position));
+            Vector3 tgtTransform = new Vector3(target.transform.position.x,transform.position.y,target.transform.position.z);
+            float dist = (Vector3.Distance(enemyController.transform.position, tgtTransform));
             if (dist <= minDistancedForIsReached)
             {
                 return true;

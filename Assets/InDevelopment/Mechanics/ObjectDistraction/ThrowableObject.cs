@@ -26,10 +26,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         private Vector3 startingPos;
 
-        public float noiseYOffset;
-        public float noiseThreshold;
-
-
         private void Start()
         {
             //this is just to make sure that any item that this script is
@@ -42,7 +38,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             StartCoroutine(ResetLoudness());
         }
 
-        //TODO make objects respawn after some time has passed
 
         private void OnCollisionEnter(Collision other)
         {
@@ -53,37 +48,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             }
 
             objectSoundMaker.MakeSound(gameObject.transform.position, noiseLoudness);
-
-
-            //TODO: test noiseLoudness 
-
-            // if (other.collider.CompareTag("Wall"))
-            // {
-            //     noiseLoudness += noiseLoudness * (Mathf.RoundToInt(GetComponent<Rigidbody>().velocity.magnitude) / 3);
-            //     Debug.Log(noiseLoudness);
-            //     if (noiseLoudness < noiseThreshold)
-            //     {
-            //         Debug.Log("thing happened");
-            //         return;
-            //     }
-            //
-            //     objectSoundMaker.MakeSound(gameObject.transform.position, noiseLoudness);
-            // }
-            //
-            // if (other.collider.CompareTag("Obstacles"))
-            // {
-            //     noiseLoudness += noiseLoudness * (Mathf.RoundToInt(GetComponent<Rigidbody>().velocity.magnitude) / 3);
-            //     Debug.Log(noiseLoudness);
-            //     if (noiseLoudness < noiseThreshold)
-            //     {
-            //         Debug.Log("thing happened again");
-            //         return;
-            //     }
-            //
-            //     Vector3 transformToPass = new Vector3(gameObject.transform.position.x,
-            //         gameObject.transform.position.y + noiseYOffset, gameObject.transform.position.z);
-            //     objectSoundMaker.MakeSound(transformToPass, noiseLoudness);
-            // }
         }
 
         private void Update()

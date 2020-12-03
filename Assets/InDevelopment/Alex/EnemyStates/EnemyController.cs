@@ -69,7 +69,15 @@ namespace InDevelopment.Alex.EnemyStates
         public SpottingState spottingState;
 
         private LineOfSight lineOfSight;
-        
+
+        public Animator animator;
+
+        private float moveSpeedX;
+        private float moveSpeedZ;
+
+        private int moveSpeedHash;
+        private float agentVelocity;
+
         #endregion
 
 
@@ -80,6 +88,7 @@ namespace InDevelopment.Alex.EnemyStates
             searchingSound = GetComponent<F_Occlusion>();
             agent = GetComponent<NavMeshAgent>();
             lineOfSight = GetComponent<LineOfSight>();
+            moveSpeedHash = Animator.StringToHash("MoveSpeed");
             SetupStates();
             SetupNavmesh();
         }
@@ -111,7 +120,7 @@ namespace InDevelopment.Alex.EnemyStates
 
         private void Update()
         {
-            // if(agent.isStopped || agent.isPathStale)
+            UpdateAnimator();
         }
 
         private void OnCollisionEnter(Collision other)
@@ -126,9 +135,22 @@ namespace InDevelopment.Alex.EnemyStates
             }
         }
 
+        private void UpdateAnimator()
+        {
+            if (stateManager.currentEnemyState != playerDetectedState)
+            {
+                agentVelocity = agent.velocity.magnitude/agent.speed;
+            }
+            else
+            {
+                agentVelocity = 2f;
+            }
+            
+            animator.SetFloat(moveSpeedHash , agentVelocity);
+        }
+
         public void MoveToTarget(Vector3 tgt)
         {
-            //TODO: find how to get closest nav mesh point when moving to target
             tgt = new Vector3(tgt.x,transform.position.y,tgt.z);
 
             if (!(agent is null) && (agent.isStopped || agent.remainingDistance < 0.5f))

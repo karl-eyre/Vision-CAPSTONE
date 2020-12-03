@@ -37,7 +37,7 @@ namespace InDevelopment.Mechanics.VisionAbility
         {
             if (defaultMat == null)
             {
-                defaultMat = GetComponent<Renderer>().material;
+                defaultMat = GetComponentInChildren<Renderer>().material;
             }
 
             if (player == null)

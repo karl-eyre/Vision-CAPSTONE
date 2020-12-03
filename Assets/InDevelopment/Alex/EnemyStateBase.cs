@@ -31,6 +31,10 @@ namespace InDevelopment.Alex
         private bool isResetting;
         public bool playerDetected;
 
+        public Animator animator;
+        public AnimationClip clip;
+        public bool playingAnimation;
+
         // public static event Action playerDetected;
 
         private void Start()
@@ -115,7 +119,6 @@ namespace InDevelopment.Alex
                     }
                 }
 
-
                 if (!(enemyController is null) && !CanSeePlayer() && !enemyController.beingDistracted &&
                     !lineOfSight.detected)
                 {
@@ -153,6 +156,17 @@ namespace InDevelopment.Alex
                 {
                     stateManager.ChangeState(enemyController.investigatingEnemyState);
                 }
+            }
+        }
+
+        public IEnumerator HearSomethingAnimation(Vector3 location)
+        {
+            if (stateManager.currentEnemyState != enemyController.spottingState)
+            {
+                animator.SetBool("HeardSomething", true);
+                yield return new WaitForSeconds(clip.length);
+                animator.SetBool("HeardSomething", false);
+                GetDistracted(location);
             }
         }
 

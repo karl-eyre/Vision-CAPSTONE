@@ -19,11 +19,13 @@ namespace InDevelopment.Alex.EnemyStates
             base.Enter();
             player = FindObjectOfType<PlayerMovement>().gameObject;
             timer = resetDelay;
+            enemyController.agent.speed = (enemyController.agent.velocity.magnitude / enemyController.agent.speed) * 2;
         }
 
         public override void Exit()
         {
             base.Exit();
+            // enemyController.agent.speed = (enemyController.agent.velocity.magnitude / enemyController.agent.speed) / 2;
         }
 
         public override void Execute()
@@ -39,6 +41,7 @@ namespace InDevelopment.Alex.EnemyStates
                     StartCoroutine(SetTargetPos());
                 }
 
+                enemyController.agent.speed = 8f;
                 enemyController.MoveToTarget(target);
                 LookAtPlayer();
             }

@@ -60,13 +60,13 @@ namespace InDevelopment.Mechanics.LineOfSight
             StartCoroutine(RaycastToPlayer(.20f));
             if (player == null)
             {
-                if (!FindObjectOfType<PlayerMovement>())
+                if (!FindObjectOfType<EnemyTarget>())
                 {
                     Debug.Log("No player exists in the scene");
                     return;
                 }
 
-                player = FindObjectOfType<PlayerMovement>().gameObject;
+                player = FindObjectOfType<EnemyTarget>().gameObject;
                 PlayerDetectionUI = FindObjectOfType<PlayerDetectionUI>();
             }
 
@@ -131,7 +131,7 @@ namespace InDevelopment.Mechanics.LineOfSight
         {
             if (player == null) return;
 
-            Vector3 dirToTarget = (player.transform.position - transform.position);
+            Vector3 dirToTarget = (player.transform.position - headPos.transform.position);
             deltaTime = Time.timeSinceLevelLoad - timeSinceLastSeen;
 
             if (Vector3.Angle(headPos.transform.forward, dirToTarget) < viewAngle / 2)
@@ -150,23 +150,6 @@ namespace InDevelopment.Mechanics.LineOfSight
                         canSeePlayer = false;
                     }
                 }
-
-
-                //This is for obstacles getting in the way. 
-                // if (Physics.Raycast(ray, out hitInfo, viewDistance, obstacleMask) || 
-                //     Vector3.Distance(player.transform.position, transform.position) > viewDistance) 
-                // { 
-                //     // Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1); 
-                //     canSeePlayer = false; 
-                //     return; 
-                // } 
-                //
-                // //This is where the actual player detection happens 
-                // if (Physics.Raycast(ray, out hitInfo, viewDistance, playerMask)) 
-                // { 
-                //     // Debug.DrawLine(transform.position, hitInfo.point, Color.red, 1); 
-                //     canSeePlayer = true; 
-                // } 
             }
             else
             {
