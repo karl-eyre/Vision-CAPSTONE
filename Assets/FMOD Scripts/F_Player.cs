@@ -49,6 +49,7 @@ public class F_Player : MonoBehaviour
     private void Update()
     {
         RunningSound();
+        
         //Debug.Log(playerMovement.isCrouching);
     }
     public void TurningSound()
