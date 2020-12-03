@@ -3,13 +3,13 @@ using FMOD.Studio;
 using FMODUnity;
 using InDevelopment.Alex;
 using InDevelopment.Alex.EnemyStates;
+using InDevelopment.Mechanics.Player;
 using UnityEngine;
 
 public class F_Occlusion : MonoBehaviour
 {
     [SerializeField]
     private float OcclusionRadius = 30f;
-
     private EventInstance footsteps;
     public EventInstance searching;
     private Vector3 objPosition;
@@ -20,22 +20,18 @@ public class F_Occlusion : MonoBehaviour
     Transform player;
     void Start()
     {
-        FmodEventInstances();
         player = GameObject.Find("Player 1").GetComponent<Transform>();
         enemyController = GetComponent<EnemyController>();
         lm = LayerMask.GetMask("Obstacle");
         objPosition = transform.position;
-        searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         StateManager.changeStateEvent += MusicAndSounds;
         RuntimeManager.PlayOneShotAttached("event:/Enemies/BotTurn",default);
-        RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
+   
+        footsteps = RuntimeManager.CreateInstance("event:/Enemies/E_Footsteps");
         RuntimeManager.AttachInstanceToGameObject(footsteps, transform, GetComponent<Rigidbody>());
     }
-    void FmodEventInstances()
-    {
-        searching = RuntimeManager.CreateInstance("event:/Enemies/Searching");
-        footsteps = RuntimeManager.CreateInstance("event:/Enemies/E_Footsteps");
-    }
+
+    #region Footsteps
 
     public void BotTurn()
     {
@@ -55,11 +51,9 @@ public class F_Occlusion : MonoBehaviour
     {
         RuntimeManager.PlayOneShot("event:/Enemies/E_Footsteps");
     }
-    
-    private void Update()
-    {
 
-    }
+    #endregion
+
     private void OnDrawGizmosSelected() //Visual Radius For Occlusion & Music.
     {
         Gizmos.color = Color.red;
@@ -89,15 +83,18 @@ public class F_Occlusion : MonoBehaviour
         //Debug.Log(musicDist);
         if (enemyState == enemyController.investigatingEnemyState) 
         {
+                searching = RuntimeManager.CreateInstance("event:/Enemies/Searching");
+                RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
                 searching.start();
+                searching.release();
         }
-        if (enemyState == enemyController.stationaryEnemyState)
+        else if (enemyState == enemyController.stationaryEnemyState)
         {
-                searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); 
         }
-        if (enemyState == enemyController.patrollingEnemyState)
+        else if (enemyState == enemyController.patrollingEnemyState)
         {
-                searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
         if (enemyState == enemyController.playerDetectedState)
         {
@@ -105,6 +102,8 @@ public class F_Occlusion : MonoBehaviour
             F_AnnouncerIndoors.announcer.setParameterByName("PlayerDetected", 1, false);
         }
     }
+
+    #region Occlusion
     void Occlusion() //Raycast From sound Source to Player
     {
         Vector3 playerPos = player.position;
@@ -131,10 +130,11 @@ public class F_Occlusion : MonoBehaviour
             searching.setParameterByName("LowPass", 0, true);
         }
     }
+    #endregion
+
     private void OnDestroy()
     {
         footsteps.release();
-        searching.release();
         StateManager.changeStateEvent -= MusicAndSounds;
     }
 }
