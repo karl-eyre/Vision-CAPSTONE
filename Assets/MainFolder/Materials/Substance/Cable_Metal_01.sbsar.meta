@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0525ffc0342197943be934f21b473fc4
+guid: 26049e61d19a30146aa9a3d4e399b519
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -11,16 +11,14 @@ ScriptedImporter:
   version: 29
   projectContext: 1
   mGraphInstanceData:
-  - graphLabel: New_Graph
-    prototypeName: New_Graph
+  - graphLabel: Cables_Metal_01
+    prototypeName: Cables_Metal_01
     graphDescIndex: 0
     generateAllOutputs: 0
     generateMipMaps: 1
-    preset: " <sbspreset pkgurl=\"pkg://New_Graph\" label=\"\" >\n  <presetinput
-      identifier=\"$outputsize\" uid=\"1526401641\" type=\"8\" value=\"9,9\" />\n 
-      <presetinput identifier=\"groutcolour\" uid=\"860432522\" type=\"3\" value=\"0.371395,0.469977,0.735849,1\"
-      />\n  <presetinput identifier=\"tilecolour\" uid=\"860432532\" type=\"3\" value=\"0.95283,0.95283,0.95283,1\"
-      />\n </sbspreset>\n"
+    preset: " <sbspreset pkgurl=\"pkg://Cables_Metal_01\" label=\"\" >\n  <presetinput
+      identifier=\"$outputsize\" uid=\"2693024120\" type=\"8\" value=\"9,9\" />\n
+      </sbspreset>\n"
     shaderName: HDRP/LitTessellation
     materialProperties:
       shader: {fileID: 4800000, guid: 756bac9090102564582875f4c7e30202, type: 3}
@@ -36,9 +34,9 @@ ScriptedImporter:
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       - name: _BaseColorMap
-        texture: {fileID: 3531699930832850883, guid: 0525ffc0342197943be934f21b473fc4,
+        texture: {fileID: 4062304849852639126, guid: 26049e61d19a30146aa9a3d4e399b519,
           type: 3}
-        scale: {x: 50, y: 50}
+        scale: {x: 10, y: 10}
         offset: {x: 0, y: 0}
       - name: _BentNormalMap
         texture: {instanceID: 0}
@@ -65,7 +63,7 @@ ScriptedImporter:
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       - name: _HeightMap
-        texture: {fileID: -6635210339956795980, guid: 0525ffc0342197943be934f21b473fc4,
+        texture: {fileID: -7075852687392880220, guid: 26049e61d19a30146aa9a3d4e399b519,
           type: 3}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
@@ -78,17 +76,17 @@ ScriptedImporter:
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       - name: _MainTex
-        texture: {fileID: 3531699930832850883, guid: 0525ffc0342197943be934f21b473fc4,
+        texture: {fileID: 4062304849852639126, guid: 26049e61d19a30146aa9a3d4e399b519,
           type: 3}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       - name: _MaskMap
-        texture: {fileID: -2725472594530205841, guid: 0525ffc0342197943be934f21b473fc4,
+        texture: {fileID: -8237380894782202824, guid: 26049e61d19a30146aa9a3d4e399b519,
           type: 3}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       - name: _NormalMap
-        texture: {fileID: -4428681996180148168, guid: 0525ffc0342197943be934f21b473fc4,
+        texture: {fileID: 2013278990447069848, guid: 26049e61d19a30146aa9a3d4e399b519,
           type: 3}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
@@ -244,7 +242,7 @@ ScriptedImporter:
       - name: _HeightTessCenter
         float: 0.5
       - name: _InvTilingScale
-        float: 0.02
+        float: 0.1
       - name: _Ior
         float: 1
       - name: _IridescenceMask
@@ -445,21 +443,21 @@ ScriptedImporter:
       bImage: 1
       bNumerical: 0
       bLinear: 1
-    - outputName: ambientOcclusion
-      identifier: ambientOcclusion
-      usageName: ambientOcclusion
-      channelStr: ambientOcclusion
-      label: Ambient Occlusion
-      usage: 5
-      bImage: 1
-      bNumerical: 0
-      bLinear: 1
     - outputName: height
       identifier: height
       usageName: height
       channelStr: height
       label: Height
       usage: 9
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: ambientOcclusion
+      identifier: ambientocclusion
+      usageName: ambientOcclusion
+      channelStr: ambientOcclusion
+      label: Ambient Occlusion
+      usage: 5
       bImage: 1
       bNumerical: 0
       bLinear: 1
@@ -493,14 +491,14 @@ ScriptedImporter:
       - sourceName: smoothness
         from: 0
         to: 3
-    - targetName: ambientOcclusion
-      components:
-      - sourceName: ambientOcclusion
-        from: 0
-        to: 3
     - targetName: height
       components:
       - sourceName: height
+        from: 0
+        to: 3
+    - targetName: ambientOcclusion
+      components:
+      - sourceName: ambientOcclusion
         from: 0
         to: 3
     - targetName: mask
@@ -518,31 +516,31 @@ ScriptedImporter:
         from: 0
         to: 3
     textureParameters:
-    - textureName: New_Graph - baseColor
+    - textureName: Cables_Metal_01 - baseColor
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: New_Graph - normal
+    - textureName: Cables_Metal_01 - normal
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: New_Graph - roughness
+    - textureName: Cables_Metal_01 - roughness
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: New_Graph - metallic
+    - textureName: Cables_Metal_01 - metallic
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: New_Graph - ambientOcclusion
+    - textureName: Cables_Metal_01 - height
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: New_Graph - height
+    - textureName: Cables_Metal_01 - ambientOcclusion
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: New_Graph - mask
+    - textureName: Cables_Metal_01 - mask
       wrapMode: 0
       filterMode: 1
       aniso: 1
@@ -557,10 +555,10 @@ ScriptedImporter:
       textureFormatMode: 0
       normalCompressed: 0
       bGenerateOnLoad: 1
-    material: {fileID: -2125774551491969924, guid: 0525ffc0342197943be934f21b473fc4,
+    material: {fileID: 2900990828107913989, guid: 26049e61d19a30146aa9a3d4e399b519,
       type: 3}
     generatedTextures:
-    - {fileID: 3531699930832850883, guid: 0525ffc0342197943be934f21b473fc4, type: 3}
-    - {fileID: -4428681996180148168, guid: 0525ffc0342197943be934f21b473fc4, type: 3}
-    - {fileID: -6635210339956795980, guid: 0525ffc0342197943be934f21b473fc4, type: 3}
-    - {fileID: -2725472594530205841, guid: 0525ffc0342197943be934f21b473fc4, type: 3}
+    - {fileID: 4062304849852639126, guid: 26049e61d19a30146aa9a3d4e399b519, type: 3}
+    - {fileID: 2013278990447069848, guid: 26049e61d19a30146aa9a3d4e399b519, type: 3}
+    - {fileID: -7075852687392880220, guid: 26049e61d19a30146aa9a3d4e399b519, type: 3}
+    - {fileID: -8237380894782202824, guid: 26049e61d19a30146aa9a3d4e399b519, type: 3}
