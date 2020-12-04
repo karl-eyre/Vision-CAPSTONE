@@ -23,7 +23,8 @@ namespace InDevelopment.Alex.EnemyStates
 
             if (!lineOfSight.detected)
             {
-                lineOfSight.SoftResetLos();
+                lineOfSight.stopDecrease = false;
+                // lineOfSight.SoftResetLos();
             }
         }
 

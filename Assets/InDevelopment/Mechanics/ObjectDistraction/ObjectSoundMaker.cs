@@ -25,9 +25,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                 return;
             }
 
-            //the sphere cast and if their still in then tell them to investigate
-            //use raycast to determine who should've heard the sound
-
             foreach (var enemy in enemiesInRange)
             {
                 //change to other bool if you don't want walls to completely block sound
@@ -41,14 +38,13 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
                 if (actuallyHeardSound)
                 {
-                    if (hitInfo.collider.CompareTag("Obstacles"))
+                    if (!hitInfo.collider.CompareTag("Obstacles"))
                     {
                         return;
                     }
-
+                    
                     StartCoroutine(enemy.GetComponentInChildren<EnemyStateBase>().HearSomethingAnimation(soundLocation));
-                    enemy.GetComponentInParent<LineOfSight.LineOfSight>()
-                        .SoundDistraction(loudnessOfSound);
+                    enemy.GetComponentInParent<LineOfSight.LineOfSight>().SoundDistraction(loudnessOfSound);
                 }
             }
         }

@@ -26,7 +26,7 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Exit()
         {
             base.Exit();
-            lineOfSight.SoftResetLos();
+            lineOfSight.stopDecrease = false;
             if (enemyController.beingDistracted)
             {
                 Distracted();

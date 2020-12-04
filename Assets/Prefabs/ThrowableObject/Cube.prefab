@@ -130,8 +130,6 @@ MonoBehaviour:
   duration: 0
   reduceRate: 0.01
   thrown: 0
-  noiseYOffset: 0
-  noiseThreshold: 0
 --- !u!114 &7411825657087232548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +163,7 @@ MonoBehaviour:
   closeVisionMat: {fileID: 2100000, guid: a6292bd7cbe641a44bebdf7c09420b2a, type: 2}
   middleVisionMat: {fileID: 2100000, guid: b47a40ec65d9c6944a33452fe4817daf, type: 2}
   farVisionMat: {fileID: 2100000, guid: a1652d6423a2b97418a7dfa5e7a9bccc, type: 2}
-  defaultMat: {fileID: 2100000, guid: af405d8458df1e14089523beff06ca87, type: 2}
+  defaultMat: {fileID: 2100000, guid: 41ffc50b6d23c104890dcd01f96575c6, type: 2}
   isSelected: 0
   headRenderer: {fileID: 7411825657087232568}
   bodyRenderer: {fileID: 7411825657087232568}

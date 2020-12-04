@@ -124,7 +124,8 @@ namespace InDevelopment.Alex
                 {
                     if (stateManager.previousEnemyState != enemyController.spottingState)
                     {
-                        lineOfSight.HardResetLos();
+                        lineOfSight.stopDecrease = false;
+                        // lineOfSight.HardResetLos();
                     }
                 }
             }
@@ -189,7 +190,6 @@ namespace InDevelopment.Alex
                     lineOfSight.detected = true;
                     stateManager.ChangeState(enemyController.playerDetectedState);
                     enemyController.agent.autoBraking = false;
-                    // playerDetected?.Invoke();
                 }
             }
         }
