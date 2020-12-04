@@ -1380,10 +1380,13 @@ MonoBehaviour:
   camera: {fileID: 1478474307715817815}
   teleportRange: 50
   teleportDelay: 5
-  teleportStartUpDelay: 2
+  teleportStartUpDelay: 0.7
+  teleportAssistRange: {x: 2, y: 2, z: 2}
   levelLayer:
     serializedVersion: 2
     m_Bits: 1136951
+  canTeleport: 0
+  targetObj: {fileID: 0}
   heightOffset: 0.5
   noiseLevel: 0
   cooldownTimer: 0

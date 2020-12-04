@@ -70,28 +70,52 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
             ray = camera.ScreenPointToRay(mousePosition);
 
-            teleportIsHit = Physics.Raycast(ray, out hit, teleportRange, teleportAbility.levelLayer);
+            bool isHit = Physics.Raycast(ray, out hit, teleportRange, teleportAbility.levelLayer);
 
-            if (teleportIsHit)
+            if (isHit)
             {
-                if (!hit.collider.CompareTag("ThrowableObjects"))
+                Collider[] colliders =
+                    Physics.OverlapBox(hit.point, teleportAbility.teleportAssistRange, Quaternion.identity);
+
+                foreach (var collider in colliders)
                 {
-                    
-                    // return;
-                }
-                else
-                {
-                    var selection = hit.collider.gameObject;
-                    selection.GetComponent<VisionEffectActivation>().isSelected = true;
-                    var selectionRenderer = hit.collider.gameObject.GetComponent<Renderer>();
-                    if (selectionRenderer != null)
+                    if (collider.CompareTag("ThrowableObjects"))
                     {
-                        selectionRenderer.material = teleportHighlightMat;
-                        pickupSelected = false;
+                        var selection = collider.gameObject;
+                        selection.GetComponent<VisionEffectActivation>().isSelected = true;
+                        var selectionRenderer = collider.gameObject.GetComponent<Renderer>();
+                        if (selectionRenderer != null)
+                        {
+                            selectionRenderer.material = teleportHighlightMat;
+                            pickupSelected = false;
+                        }
+
+                        teleportObject = selection;
                     }
-                    teleportObject = selection;
                 }
             }
+
+            // teleportIsHit = Physics.Raycast(ray, out hit, teleportRange, teleportAbility.levelLayer);
+
+            // if (teleportIsHit)
+            // {
+            //     if (!hit.collider.CompareTag("ThrowableObjects"))
+            //     {
+            //         // return;
+            //     }
+            //     else
+            //     {
+            //         var selection = teleportAbility.targetObj;
+            //         selection.GetComponent<VisionEffectActivation>().isSelected = true;
+            //         var selectionRenderer = hit.collider.gameObject.GetComponent<Renderer>();
+            //         if (selectionRenderer != null)
+            //         {
+            //             selectionRenderer.material = teleportHighlightMat;
+            //             pickupSelected = false;
+            //         }
+            //         teleportObject = selection;
+            //     }
+            // }
         }
 
         private void HighlightPickupObject()

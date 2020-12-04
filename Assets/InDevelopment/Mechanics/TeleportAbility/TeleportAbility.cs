@@ -3,6 +3,8 @@ using System.Collections;
 using InDevelopment.Mechanics.ObjectDistraction;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 
 
 namespace InDevelopment.Mechanics.TeleportAbility
@@ -18,10 +20,11 @@ namespace InDevelopment.Mechanics.TeleportAbility
         public float teleportRange;
         public float teleportDelay;
         public float teleportStartUpDelay = 1f;
+        public Vector3 teleportAssistRange;
         public LayerMask levelLayer;
 
-        private bool canTeleport;
-        private GameObject targetObj;
+        public bool canTeleport;
+        public GameObject targetObj;
 
         [SerializeField]
         private float heightOffset = 0.5f;
@@ -39,10 +42,23 @@ namespace InDevelopment.Mechanics.TeleportAbility
         public static event Action teleportStarted;
         public static event Action teleportTriggered;
 
+        private Volume volume;
+        private Vignette vignette;
+        private LensDistortion lensDistortion;
+
+
         private void Start()
         {
             SetUpControls();
             SetReferences();
+            SetUpPostProcessing();
+        }
+
+        private void SetUpPostProcessing()
+        {
+            volume = GetComponent<Volume>();
+            volume.profile.TryGet(out vignette);
+            volume.profile.TryGet(out lensDistortion);
         }
 
         // private void OnEnable()
@@ -86,6 +102,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
         private IEnumerator Teleport(GameObject targetObject)
         {
             teleportStarted?.Invoke();
+            TurnOnPostProcessing();
             yield return new WaitForSeconds(teleportStartUpDelay);
             var tgt = targetObject;
             Vector3 origin = new Vector3(transform.position.x, transform.position.y + heightOffset,
@@ -96,9 +113,20 @@ namespace InDevelopment.Mechanics.TeleportAbility
             targetObj = null;
             objectSoundMaker.MakeSound(transform.position, noiseLevel);
             teleportTriggered?.Invoke();
+            TurnOffPostProcessing();
             yield return new WaitForSeconds(teleportDelay);
             onCooldown = false;
             cooldownTimer = 0;
+        }
+
+        private void TurnOnPostProcessing()
+        {
+            
+        }
+
+        private void TurnOffPostProcessing()
+        {
+            
         }
 
         private bool CanTeleport()
@@ -107,43 +135,52 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
             ray = camera.ScreenPointToRay(mousePosition);
 
-            //TODO make raycast bigger to allow for leway on teleport
-            // bool isHit = Physics.SphereCast(ray, teleportAssistDistance, out hitInfo, teleportRange);
             bool isHit = Physics.Raycast(ray, out hitInfo, teleportRange, levelLayer);
 
-            if (hitInfo.collider.CompareTag("ThrowableObjects"))
+            if (isHit)
             {
-                targetObj = hitInfo.collider.gameObject;
-                // if (RoomForTeleport())
-                // {
-                    canTeleport = true;  
-                // }
-                // else
-                // {
-                //     canTeleport = false;
-                // }
-            }
-            else
-            {
-                canTeleport = false;
+                Collider[] colliders = Physics.OverlapBox(hitInfo.point, teleportAssistRange, Quaternion.identity);
+
+                foreach (var collider in colliders)
+                {
+                    if (collider.CompareTag("ThrowableObjects"))
+                    {
+                        targetObj = collider.gameObject;
+                        // if (RoomForTeleport(targetObj))
+                        // {
+                            canTeleport = true;
+                        // }
+                        // else
+                        // {
+                        //     canTeleport = false;
+                        //     targetObj = null;
+                        // }
+                    }
+                    else
+                    {
+                        canTeleport = false;
+                        targetObj = null;
+                    }
+                }
             }
 
             return canTeleport;
         }
 
-        private bool RoomForTeleport()
+        private bool RoomForTeleport(GameObject targetObject)
         {
-            
-            Collider[] colliders = Physics.OverlapBox(targetObj.transform.position, targetObj.transform.localScale / 2,
+            Vector3 newPos = new Vector3(targetObject.transform.position.x, targetObject.transform.position.y + 1.6f,
+                targetObject.transform.position.z);
+
+            Collider[] colliders = Physics.OverlapBox(newPos, targetObj.transform.localScale / 2,
                 Quaternion.identity);
-            if (colliders.Length == 0)
+
+            if (colliders.Length == 1)
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
     }
 }
