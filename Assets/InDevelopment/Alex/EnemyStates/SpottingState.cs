@@ -16,21 +16,24 @@ namespace InDevelopment.Alex.EnemyStates
             enemyController.agent.ResetPath();
             stateManager.interruptedState = stateManager.previousEnemyState;
             enemyController.posWhenInterrupted = transform.position;
-            StartCoroutine(PlayAnimation());
+            if (stateManager.previousEnemyState != enemyController.playerDetectedState)
+            {
+                StartCoroutine(PlayAnimation());
+            }
         }
 
         public override void Exit()
         {
             base.Exit();
             // enemyPosWhenInterrupted = enemyController.posWhenInterrupted;
-            lineOfSight.headPos.rotation = Quaternion.Euler(0,0,0);
+            lineOfSight.headPos.rotation = Quaternion.Euler(0, 0, 0);
         }
 
         public override void Execute()
         {
             base.Execute();
             LookAtPlayer();
-            if (!enemyController.stateManager.currentEnemyState.playingAnimation && stateManager.previousEnemyState != enemyController.playerDetectedState)
+            if (!enemyController.stateManager.currentEnemyState.playingAnimation)
             {
                 if (AboveInvestigationThresholdCheck())
                 {
