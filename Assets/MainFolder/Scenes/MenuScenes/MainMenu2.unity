@@ -7970,7 +7970,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321351742}
-  m_LocalRotation: {x: 0.0051835966, y: -0.6944068, z: 0.0050024893, w: 0.7195466}
+  m_LocalRotation: {x: 0.0051835948, y: -0.6944068, z: 0.005002487, w: 0.7195466}
   m_LocalPosition: {x: 10.43, y: 3.48, z: 13.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -21155,69 +21155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c295e165f696ce94f98201a703b82b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &997628285
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 997628286}
-  - component: {fileID: 997628287}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &997628286
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997628285}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.61, z: 0}
-  m_LocalScale: {x: 1, y: 1.8543, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1262091273}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &997628287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997628285}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1fbb15bf92b84f40a1eb030765b5afe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 2
-  parameters:
-    albedo: {r: 1, g: 1, b: 1, a: 1}
-    meanFreePath: 10
-    anisotropy: 0
-    volumeMask: {fileID: 0}
-    textureScrollingSpeed: {x: 0, y: 0, z: 0}
-    textureTiling: {x: 1, y: 1, z: 1}
-    positiveFade: {x: 0.19229999, y: 0.38459998, z: 0.19229999}
-    negativeFade: {x: 0.19229999, y: 0.38459998, z: 0.19229999}
-    m_EditorUniformFade: 19.23
-    m_EditorPositiveFade: {x: 0, y: 0, z: 0}
-    m_EditorNegativeFade: {x: 0, y: 0, z: 0}
-    m_EditorAdvancedFade: 0
-    size: {x: 100, y: 50, z: 100}
-    invertFade: 0
-    distanceFadeStart: 9998.69
-    distanceFadeEnd: 9998.69
-    textureIndex: -1
-    textureOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &999065660
 GameObject:
   m_ObjectHideFlags: 0
@@ -25042,7 +24979,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141181679}
-  m_LocalRotation: {x: 0.0051835966, y: -0.6944068, z: 0.0050024893, w: 0.7195466}
+  m_LocalRotation: {x: 0.0051835948, y: -0.6944068, z: 0.005002487, w: 0.7195466}
   m_LocalPosition: {x: 19.834614, y: 10.968975, z: 9.033471}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -28984,8 +28921,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 33.84381, y: 3.18, z: 15.583216}
   m_LocalScale: {x: 10, y: 10, z: 10}
-  m_Children:
-  - {fileID: 997628286}
+  m_Children: []
   m_Father: {fileID: 659124266}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
