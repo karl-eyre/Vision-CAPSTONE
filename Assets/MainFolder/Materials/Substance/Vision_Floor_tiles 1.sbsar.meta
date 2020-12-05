@@ -18,8 +18,8 @@ ScriptedImporter:
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg://New_Graph\" label=\"\" >\n  <presetinput
       identifier=\"$outputsize\" uid=\"1526401641\" type=\"8\" value=\"9,9\" />\n 
-      <presetinput identifier=\"groutcolour\" uid=\"860432522\" type=\"3\" value=\"0.371395,0.469977,0.735849,1\"
-      />\n  <presetinput identifier=\"tilecolour\" uid=\"860432532\" type=\"3\" value=\"0.95283,0.95283,0.95283,1\"
+      <presetinput identifier=\"groutcolour\" uid=\"860432522\" type=\"3\" value=\"0,0.75,0.68754,1\"
+      />\n  <presetinput identifier=\"tilecolour\" uid=\"860432532\" type=\"3\" value=\"1,1,1,1\"
       />\n </sbspreset>\n"
     shaderName: HDRP/LitTessellation
     materialProperties:
@@ -260,7 +260,7 @@ ScriptedImporter:
       - name: _NormalMapSpace
         float: 0
       - name: _NormalScale
-        float: 1
+        float: 3.5
       - name: _PPDLodThreshold
         float: 5
       - name: _PPDMaxSamples
