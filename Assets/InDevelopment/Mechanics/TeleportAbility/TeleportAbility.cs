@@ -42,24 +42,16 @@ namespace InDevelopment.Mechanics.TeleportAbility
         public static event Action teleportStarted;
         public static event Action teleportTriggered;
 
-        private Volume volume;
-        private Vignette vignette;
-        private LensDistortion lensDistortion;
+       
 
 
         private void Start()
         {
             SetUpControls();
             SetReferences();
-            SetUpPostProcessing();
+            
         }
 
-        private void SetUpPostProcessing()
-        {
-            volume = GetComponent<Volume>();
-            volume.profile.TryGet(out vignette);
-            volume.profile.TryGet(out lensDistortion);
-        }
 
         // private void OnEnable()
         // {
@@ -102,7 +94,6 @@ namespace InDevelopment.Mechanics.TeleportAbility
         private IEnumerator Teleport(GameObject targetObject)
         {
             teleportStarted?.Invoke();
-            TurnOnPostProcessing();
             yield return new WaitForSeconds(teleportStartUpDelay);
             var tgt = targetObject;
             Vector3 origin = new Vector3(transform.position.x, transform.position.y + heightOffset,
@@ -113,21 +104,12 @@ namespace InDevelopment.Mechanics.TeleportAbility
             targetObj = null;
             objectSoundMaker.MakeSound(transform.position, noiseLevel);
             teleportTriggered?.Invoke();
-            TurnOffPostProcessing();
             yield return new WaitForSeconds(teleportDelay);
             onCooldown = false;
             cooldownTimer = 0;
         }
 
-        private void TurnOnPostProcessing()
-        {
-            
-        }
-
-        private void TurnOffPostProcessing()
-        {
-            
-        }
+        
 
         private bool CanTeleport()
         {

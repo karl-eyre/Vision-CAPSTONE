@@ -1183,6 +1183,7 @@ GameObject:
   - component: {fileID: 775013309466900511}
   - component: {fileID: 775013309466900508}
   - component: {fileID: 4767737300619019453}
+  - component: {fileID: 6502602052246147736}
   m_Layer: 13
   m_Name: Player 1
   m_TagString: Player
@@ -1390,6 +1391,9 @@ MonoBehaviour:
   heightOffset: 0.5
   noiseLevel: 0
   cooldownTimer: 0
+  volume: {fileID: 0}
+  vignette: {fileID: 0}
+  lensDistortion: {fileID: 0}
 --- !u!114 &2656615058870319611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1515,6 +1519,23 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 16384
+--- !u!114 &6502602052246147736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7132384237592543338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: f3bcd02e30dcfaf4283e47b79a48c21e, type: 2}
 --- !u!1 &8665093644945325499
 GameObject:
   m_ObjectHideFlags: 0

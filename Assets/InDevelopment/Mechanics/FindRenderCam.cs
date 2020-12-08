@@ -11,7 +11,7 @@ namespace InDevelopment.Mechanics
 
         public Camera cam;
 
-        public void Start()
+        public void Awake()
         {
             cam = FindObjectOfType<Camera>();
             menuUI.worldCamera = cam;
