@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1015818692}
   - component: {fileID: 1015818693}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Container_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7403142235758609032}
   - component: {fileID: 2610837396841988315}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Truck_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8934583515245729622}
   - component: {fileID: 7886018522995190272}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Roof_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,6 +213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Delivery_Truck Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7aef740c4136e3141ac83daf633dd4bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aef740c4136e3141ac83daf633dd4bc, type: 3}

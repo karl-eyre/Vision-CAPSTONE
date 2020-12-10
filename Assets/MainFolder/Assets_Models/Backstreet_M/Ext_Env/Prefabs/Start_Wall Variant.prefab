@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3252261895729146778}
   - component: {fileID: 6899124122985248630}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Wall1_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3466601192943247638}
   - component: {fileID: 1986026061757553324}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SmallPipe_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6390096250925288064}
   - component: {fileID: 2926069239247299052}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Lip_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5193947057023798070}
   - component: {fileID: 7014146640073961761}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BigPipe_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 857742770439074734}
   - component: {fileID: 711467280570456295}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Lip1_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6047007582473284399}
   - component: {fileID: 6410073787142557680}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Wire1_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 19258206715867285}
   - component: {fileID: 54584871990740643}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Wall_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2912948107447144363}
   - component: {fileID: 3242995231503781137}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Roof_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9186405598107795808}
   - component: {fileID: 1093916797590545889}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Wire_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,6 +477,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Start_Wall Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 219d2354626bff64298d511a7cfa2ac2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 219d2354626bff64298d511a7cfa2ac2, type: 3}

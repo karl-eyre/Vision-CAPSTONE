@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2439874357334169201}
   - component: {fileID: 571477715497615441}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Balconies_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 429836855562870263}
   - component: {fileID: 4685237589317615131}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BackWall_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4729157818728260878}
   - component: {fileID: 4390661258625757008}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SideWall_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,6 +198,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Food_VTop Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a3b859285a0486b4b9362f78fc7c56ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3b859285a0486b4b9362f78fc7c56ab, type: 3}
