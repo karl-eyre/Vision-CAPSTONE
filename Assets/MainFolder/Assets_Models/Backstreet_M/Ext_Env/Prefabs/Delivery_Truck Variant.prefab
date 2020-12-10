@@ -14,8 +14,8 @@ GameObject:
   m_Name: Container_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1015818692
 Transform:
@@ -42,8 +42,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9539872, y: 1, z: 1.7428032}
-  m_Center: {x: -0.00037460332, y: 0, z: 0.3635982}
+  m_Size: {x: 0.9539872, y: 1.1126724, z: 1.7428032}
+  m_Center: {x: -0.00037460332, y: -0.056335997, z: 0.3635982}
 --- !u!1 &1187970367647173273
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,8 +58,8 @@ GameObject:
   m_Name: Truck_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7403142235758609032
 Transform:
@@ -86,8 +86,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8534863, y: 0.8635201, z: 0.67764556}
-  m_Center: {x: 0.003655434, y: -0.16475935, z: -0.16898061}
+  m_Size: {x: 0.8534863, y: 0.90973854, z: 0.67764556}
+  m_Center: {x: 0.003655434, y: -0.1878686, z: -0.16898061}
 --- !u!1 &7436789955916213987
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,8 +102,8 @@ GameObject:
   m_Name: Roof_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8934583515245729622
 Transform:
@@ -218,6 +218,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7aef740c4136e3141ac83daf633dd4bc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7aef740c4136e3141ac83daf633dd4bc,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aef740c4136e3141ac83daf633dd4bc, type: 3}
