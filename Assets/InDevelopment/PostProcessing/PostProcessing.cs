@@ -12,6 +12,7 @@ namespace InDevelopment.PostProcessing
     {
         [SerializeField]
         public Volume volume;
+        
         [SerializeField]
         public Animator animator;
         
@@ -30,7 +31,14 @@ namespace InDevelopment.PostProcessing
 
         private void Awake()
         {
+            animator = GetComponent<Animator>();
+        }
+
+        private IEnumerator StartDelay()
+        {
             animator = null;
+            yield return new WaitForSeconds(5f);
+            animator = GetComponent<Animator>();
         }
 
         void Start()
@@ -46,12 +54,14 @@ namespace InDevelopment.PostProcessing
 
         private void OnEnable()
         {
-            animator = GetComponent<Animator>();
+            // animator = GetComponent<Animator>();
         }
 
         private void OnDestroy()
         {
-            animator = GetComponent<Animator>();
+            TeleportAbility.teleportStarted -= TurnOnPostProcessing;
+            TeleportAbility.teleportTriggered -= TurnOffPostProcessing;
+            VisionAbilityController.visionActivation -= TurnVisionPostProcessingOn;
         }
 
         private void TurnVisionPostProcessingOn()

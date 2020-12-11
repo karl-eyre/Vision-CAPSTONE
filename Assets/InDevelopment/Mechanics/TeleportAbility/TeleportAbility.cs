@@ -43,7 +43,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
         public static event Action teleportTriggered;
 
 
-        private void Start()
+        private void Awake()
         {
             if (camera == null)
             {

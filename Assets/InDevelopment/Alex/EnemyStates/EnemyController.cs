@@ -17,9 +17,8 @@ namespace InDevelopment.Alex.EnemyStates
 
         #region Variables
 
-        public float rightTurnRadius = 45f;
+        public float turnRadius = 45f;
 
-        public float leftTurnRadius = -45f;
         public float rotSpeed = 5;
         public float moveSpeed;
 
@@ -78,9 +77,11 @@ namespace InDevelopment.Alex.EnemyStates
 
         private int moveSpeedHash;
         private float agentVelocity;
-        private float rotationAmount;
+        public float rotationAmount;
 
         public Transform headPos;
+
+        private bool turningRight;
 
         #endregion
 
@@ -133,6 +134,7 @@ namespace InDevelopment.Alex.EnemyStates
                 //TODO end game
                 F_Music.music.setParameterByName("MusicState", 2f, false);
                 searchingSound.searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
                 Scene scene = SceneManager.GetActiveScene();
                 SceneManager.LoadScene(scene.name, LoadSceneMode.Single);
             }
@@ -176,21 +178,33 @@ namespace InDevelopment.Alex.EnemyStates
         public void LookLeftAndRight()
         {
             //change to move til it hits max and min angles
-            // float rotationAmount = Mathf.SmoothStep(Vector3.zero.y + rightTurnRadius,
-            //     Vector3.zero.y + -rightTurnRadius,Mathf.PingPong(Time.time * rotSpeed,1));
+            // rotationAmount = Mathf.PingPong(Time.time * rotSpeed,rightTurnRadius * 2) - rightTurnRadius;
 
-            if (headPos.transform.rotation.y <= rightTurnRadius)
+            // float time = Mathf.PingPong(Time.time * rotSpeed, 1);
+            // rotationAmount = Mathf.Lerp(rightTurnRadius, -rightTurnRadius, time);
+
+            if (turningRight)
             {
-                rotationAmount = Mathf.SmoothStep(0, Vector3.zero.y + leftTurnRadius,
-                    Time.time * rotSpeed);
+                if (rotationAmount >= turnRadius)
+                {
+                    turningRight = false;
+                }
+
+                rotationAmount = Mathf.MoveTowards(rotationAmount, turnRadius, Time.deltaTime * rotSpeed);
             }
-            else if (headPos.transform.rotation.y >= leftTurnRadius)
+            else
             {
-                rotationAmount = Mathf.SmoothStep(0, 0 + rightTurnRadius,
-                    Time.time * rotSpeed);
+                if (rotationAmount <= -turnRadius)
+                {
+                    turningRight = true;
+                }
+
+                rotationAmount = Mathf.MoveTowards(rotationAmount, -turnRadius, Time.deltaTime * rotSpeed);
             }
 
-            lineOfSight.headPos.transform.Rotate(0, rotationAmount * Time.deltaTime, 0, Space.Self);
+            lineOfSight.headPos.transform.localRotation = Quaternion.Euler(0, rotationAmount, 0);
+
+            // lineOfSight.headPos.transform.Rotate(0, rotationAmount * Time.deltaTime, 0, Space.Self);
         }
     }
 }
