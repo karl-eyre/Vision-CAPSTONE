@@ -10,7 +10,6 @@ public class F_Occlusion : MonoBehaviour
 {
     [SerializeField]
     private float OcclusionRadius = 30f;
-    private EventInstance footsteps;
     public EventInstance searching;
     private Vector3 objPosition;
     [SerializeField]
@@ -18,6 +17,8 @@ public class F_Occlusion : MonoBehaviour
     EnemyController enemyController;
     private RaycastHit hit;
     Transform player;
+    [HideInInspector]
+    public float occlusion;
     void Start()
     {
         player = GameObject.Find("Player 1").GetComponent<Transform>();
@@ -26,33 +27,9 @@ public class F_Occlusion : MonoBehaviour
         objPosition = transform.position;
         StateManager.changeStateEvent += MusicAndSounds;
         RuntimeManager.PlayOneShotAttached("event:/Enemies/BotTurn",default);
-   
-        footsteps = RuntimeManager.CreateInstance("event:/Enemies/E_Footsteps");
-        RuntimeManager.AttachInstanceToGameObject(footsteps, transform, GetComponent<Rigidbody>());
-    }
+        //footsteps = RuntimeManager.CreateInstance("event:/Enemies/E_Footsteps");
 
-    #region Footsteps
-
-    public void BotTurn()
-    {
-        RuntimeManager.PlayOneShot("event:/Enemies/BotTurn",default);
     }
-
-    public void BotTurnBack()
-    {
-        RuntimeManager.PlayOneShot("event:/Enemies/BotTurnBack",default);
-    }
-    
-    public void BotLook()
-    {
-        RuntimeManager.PlayOneShot("event:/Enemies/BotLook",default);
-    }
-    public void BotStep()
-    {
-        RuntimeManager.PlayOneShot("event:/Enemies/E_Footsteps");
-    }
-
-    #endregion
 
     private void OnDrawGizmosSelected() //Visual Radius For Occlusion & Music.
     {
@@ -74,7 +51,7 @@ public class F_Occlusion : MonoBehaviour
             }
             else
             {
-                footsteps.setParameterByName("LowPass", 0, false);
+                occlusion = 0;
             }
         }
     }
@@ -116,17 +93,17 @@ public class F_Occlusion : MonoBehaviour
     {
         if (hit.collider)
         {
-            if (hit.collider.gameObject.tag == "Obstacles")
+            if (hit.collider.gameObject.CompareTag("Wall"))
             {
-                //Debug.Log("wall");
-                footsteps.setParameterByName("LowPass", 1, true);
+                Debug.Log("wall");
+                occlusion = 1;
                 searching.setParameterByName("LowPass", 1, true);
             }
         }
         else
         {
-            //Debug.Log("No wall");
-            footsteps.setParameterByName("LowPass", 0, true);
+            Debug.Log("No wall");
+            occlusion = 0;
             searching.setParameterByName("LowPass", 0, true);
         }
     }
@@ -134,7 +111,6 @@ public class F_Occlusion : MonoBehaviour
 
     private void OnDestroy()
     {
-        footsteps.release();
         StateManager.changeStateEvent -= MusicAndSounds;
     }
 }

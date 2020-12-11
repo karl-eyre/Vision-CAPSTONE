@@ -38,8 +38,10 @@ public class F_Player : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerController = GetComponent<PlayerController>();
         VisionAbilityController.visionActivation += VisionAbilitySoundPlay;
-        //TeleportAbility.teleportTrigger += TeleportAbilitySoundPlay;
-    // wouldn't let me play the game because it was missing
+        TeleportAbility.teleportStarted += TeleportStart;
+        TeleportAbility.teleportTriggered += TeleportAbilitySoundPlay;
+
+        // wouldn't let me play the game because it was missing
     }
     void FmodEventInstances()
     {
@@ -92,6 +94,11 @@ public class F_Player : MonoBehaviour
     void TeleportAbilitySoundPlay()
     {
         RuntimeManager.PlayOneShot("event:/Player/Abilties/Teleport", default);
+    }
+
+    void TeleportStart()
+    {
+        RuntimeManager.PlayOneShot("event:/Player/Abilties/TeleportStart", default);
     }
     void VisionAbilitySoundPlay()
     {
@@ -151,6 +158,7 @@ public class F_Player : MonoBehaviour
     {
         running.release();
         running.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        VisionAbilityController.visionActivation -= VisionAbilitySoundPlay;
+        TeleportAbility.teleportStarted -= TeleportAbilitySoundPlay;
+        TeleportAbility.teleportStarted -= TeleportStart;
     }
 }
