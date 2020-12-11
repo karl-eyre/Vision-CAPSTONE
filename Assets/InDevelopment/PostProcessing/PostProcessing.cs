@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using InDevelopment.Mechanics.TeleportAbility;
 using InDevelopment.Mechanics.VisionAbility;
 using UnityEngine;
@@ -9,7 +10,10 @@ namespace InDevelopment.PostProcessing
 {
     public class PostProcessing : MonoBehaviour
     {
+        [SerializeField]
         public Volume volume;
+        
+        [SerializeField]
         public Animator animator;
         
         public Vignette vignette;
@@ -22,6 +26,20 @@ namespace InDevelopment.PostProcessing
         public ChromaticAberration chromaticAberration;
         public bool applyVisionPostProcessing;
         public float chromaticAberrationIntensity;
+        // private static readonly int VisionPostProcessingOn = Animator.StringToHash("VisionPostProcessingOn");
+        // private static readonly int TeleportPostProcessingOn = Animator.StringToHash("TeleportPostProcessingOn");
+
+        private void Awake()
+        {
+            animator = GetComponent<Animator>();
+        }
+
+        private IEnumerator StartDelay()
+        {
+            animator = null;
+            yield return new WaitForSeconds(5f);
+            animator = GetComponent<Animator>();
+        }
 
         void Start()
         {
@@ -34,10 +52,22 @@ namespace InDevelopment.PostProcessing
             VisionAbilityController.visionActivation += TurnVisionPostProcessingOn;
         }
 
+        private void OnEnable()
+        {
+            // animator = GetComponent<Animator>();
+        }
+
+        private void OnDestroy()
+        {
+            TeleportAbility.teleportStarted -= TurnOnPostProcessing;
+            TeleportAbility.teleportTriggered -= TurnOffPostProcessing;
+            VisionAbilityController.visionActivation -= TurnVisionPostProcessingOn;
+        }
+
         private void TurnVisionPostProcessingOn()
         {
             applyVisionPostProcessing = !applyVisionPostProcessing;
-            animator.SetBool("VisionPostProcessingOn", applyVisionPostProcessing);
+            animator?.SetBool("VisionPostProcessingOn", applyVisionPostProcessing);
         }
 
         private void Update()
@@ -69,20 +99,23 @@ namespace InDevelopment.PostProcessing
         private void SetUpPostProcessing()
         {
             volume = GetComponent<Volume>();
-            volume.profile.TryGet(out vignette);
-            volume.profile.TryGet(out lensDistortion);
-            volume.profile.TryGet(out chromaticAberration);
+            if (!(volume is null))
+            {
+                volume.profile.TryGet(out vignette);
+                volume.profile.TryGet(out lensDistortion);
+                volume.profile.TryGet(out chromaticAberration);
+            }
         }
 
         private void TurnOnPostProcessing()
         {
-            animator.SetBool("TeleportPostProcessingOn", true);
+            animator?.SetBool("TeleportPostProcessingOn", true);
             applyTeleportPostProcessing = true;
         }
 
         private void TurnOffPostProcessing()
         {
-            animator.SetBool("TeleportPostProcessingOn", false);
+            animator?.SetBool("TeleportPostProcessingOn", false);
             StartCoroutine(StopPostProcessing());
         }
 

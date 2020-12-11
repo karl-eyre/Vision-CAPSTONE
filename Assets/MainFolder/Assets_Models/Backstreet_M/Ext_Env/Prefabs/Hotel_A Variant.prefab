@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 329139458}
   - component: {fileID: 329139459}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: LeftWall_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 695061248}
   - component: {fileID: 695061249}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: MainBody_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   m_Component:
   - component: {fileID: 720750864}
   - component: {fileID: 720750865}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Gate_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1193984602}
   - component: {fileID: 1193984603}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: RightWall_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5817487902177035911}
   - component: {fileID: 3227059782341400558}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: LipLeft_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5063120943813660417}
   - component: {fileID: 2273898360799972623}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: LipRight_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3370307758194687}
   - component: {fileID: 1476378559296210448}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Lip_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4385741498315230584}
   - component: {fileID: 2116733423115913833}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Ceiling_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,10 +434,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hotel_A Variant
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a73f9d7ce302f984dae6e81eceb4e497,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1420165350264548460, guid: a73f9d7ce302f984dae6e81eceb4e497,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1420165350264548460, guid: a73f9d7ce302f984dae6e81eceb4e497,
         type: 3}
