@@ -80,6 +80,8 @@ namespace InDevelopment.Alex.EnemyStates
         private float agentVelocity;
         private float rotationAmount;
 
+        public Transform headPos;
+
         #endregion
 
 
@@ -132,7 +134,7 @@ namespace InDevelopment.Alex.EnemyStates
                 F_Music.music.setParameterByName("MusicState", 2f, false);
                 searchingSound.searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 Scene scene = SceneManager.GetActiveScene();
-                SceneManager.LoadScene(scene.name);
+                SceneManager.LoadScene(scene.name, LoadSceneMode.Single);
             }
         }
 
@@ -174,16 +176,18 @@ namespace InDevelopment.Alex.EnemyStates
         public void LookLeftAndRight()
         {
             //change to move til it hits max and min angles
-            // float rotationAmount = Mathf.SmoothStep(lineOfSight.headPos.transform.rotation.y + turnRadius,lineOfSight.headPos.transform.rotation.y - turnRadius,Mathf.PingPong(Time.time * rotSpeed,1));
-            if (lineOfSight.headPos.transform.rotation.y <= rightTurnRadius)
+            // float rotationAmount = Mathf.SmoothStep(Vector3.zero.y + rightTurnRadius,
+            //     Vector3.zero.y + -rightTurnRadius,Mathf.PingPong(Time.time * rotSpeed,1));
+
+            if (headPos.transform.rotation.y <= rightTurnRadius)
             {
-                rotationAmount = Mathf.SmoothStep(transform.rotation.y, transform.rotation.y + leftTurnRadius,
+                rotationAmount = Mathf.SmoothStep(0, Vector3.zero.y + leftTurnRadius,
                     Time.time * rotSpeed);
             }
-            else if (lineOfSight.headPos.transform.rotation.y >= leftTurnRadius)
+            else if (headPos.transform.rotation.y >= leftTurnRadius)
             {
-                rotationAmount = Mathf.SmoothStep(transform.rotation.y, transform.rotation.y + rightTurnRadius,
-                    Time.time * rotSpeed );
+                rotationAmount = Mathf.SmoothStep(0, 0 + rightTurnRadius,
+                    Time.time * rotSpeed);
             }
 
             lineOfSight.headPos.transform.Rotate(0, rotationAmount * Time.deltaTime, 0, Space.Self);

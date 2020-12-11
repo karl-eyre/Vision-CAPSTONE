@@ -162,12 +162,12 @@ namespace InDevelopment.Mechanics.VisionAbility
 
         private void CallActivationEvent()
         {
-            visionActivation?.Invoke();
+            if (visionActivation != null) visionActivation?.Invoke();
         }
 
         private void CallEndEvent()
         {
-            visionEnded?.Invoke();
+            if (visionEnded != null) visionEnded?.Invoke();
         }
 
         private void OnEnable()

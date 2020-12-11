@@ -15,7 +15,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         [Header("Camera")]
         [SerializeField]
-        private new Camera camera;
+        private Camera camera = null;
 
         public float teleportRange;
         public float teleportDelay;
@@ -42,16 +42,13 @@ namespace InDevelopment.Mechanics.TeleportAbility
         public static event Action teleportStarted;
         public static event Action teleportTriggered;
 
-        private void Awake()
-        {
-            if (camera == null)
-            {
-                camera = FindObjectOfType<Camera>();
-            }
-        }
 
         private void Start()
         {
+            if (camera == null)
+            {
+                camera = Camera.main;
+            }
             SetUpControls();
             SetReferences();
         }
@@ -96,7 +93,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         private IEnumerator Teleport(GameObject targetObject)
         {
-            teleportStarted?.Invoke();
+            if (teleportStarted != null) teleportStarted?.Invoke();
             yield return new WaitForSeconds(teleportStartUpDelay);
             var tgt = targetObject;
             Vector3 origin = new Vector3(transform.position.x, transform.position.y + heightOffset,
@@ -106,7 +103,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
             tgt.GetComponent<Rigidbody>().velocity = Vector3.zero;
             targetObj = null;
             objectSoundMaker.MakeSound(transform.position, noiseLevel);
-            teleportTriggered?.Invoke();
+            if (teleportTriggered != null) teleportTriggered?.Invoke();
             yield return new WaitForSeconds(teleportDelay);
             onCooldown = false;
             cooldownTimer = 0;
