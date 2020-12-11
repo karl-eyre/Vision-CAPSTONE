@@ -127,6 +127,11 @@ namespace InDevelopment.Mechanics.Player
             generalSoundMaker = GetComponentInChildren<GeneralSoundMaker>();
         }
 
+        private void OnDestroy()
+        {
+            VisionAbilityController.visionActivation -= () => visionActivated = !visionActivated;
+        }
+
         public void Walk(InputAction.CallbackContext obj)
         {
             if (isCrouching)

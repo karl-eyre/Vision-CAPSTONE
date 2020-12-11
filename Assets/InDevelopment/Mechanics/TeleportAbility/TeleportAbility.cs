@@ -15,7 +15,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         [Header("Camera")]
         [SerializeField]
-        private Camera camera;
+        private new Camera camera;
 
         public float teleportRange;
         public float teleportDelay;
@@ -42,22 +42,25 @@ namespace InDevelopment.Mechanics.TeleportAbility
         public static event Action teleportStarted;
         public static event Action teleportTriggered;
 
-       
-
+        private void Awake()
+        {
+            if (camera == null)
+            {
+                camera = FindObjectOfType<Camera>();
+            }
+        }
 
         private void Start()
         {
             SetUpControls();
             SetReferences();
-            
         }
 
-
-        // private void OnEnable()
-        // {
-        //     SetUpControls();
-        //     SetReferences();
-        // }
+        private void OnEnable()
+        {
+            SetUpControls();
+            SetReferences();
+        }
 
         private void SetReferences()
         {
@@ -109,13 +112,12 @@ namespace InDevelopment.Mechanics.TeleportAbility
             cooldownTimer = 0;
         }
 
-        
 
         private bool CanTeleport()
         {
             Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
 
-            ray = camera.ScreenPointToRay(mousePosition);
+            if (!(camera is null)) ray = camera.ScreenPointToRay(mousePosition);
 
             bool isHit = Physics.Raycast(ray, out hitInfo, teleportRange, levelLayer);
 
@@ -130,7 +132,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
                         targetObj = collider.gameObject;
                         // if (RoomForTeleport(targetObj))
                         // {
-                            canTeleport = true;
+                        canTeleport = true;
                         // }
                         // else
                         // {

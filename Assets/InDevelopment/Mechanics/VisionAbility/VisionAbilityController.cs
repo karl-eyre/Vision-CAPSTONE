@@ -27,12 +27,6 @@ namespace InDevelopment.Mechanics.VisionAbility
 
         public bool toggleAbility;
 
-        [SerializeField]
-        private Volume postProcessing;
-
-        private static float t1;
-        private static float t2;
-
         private void Awake()
         {
             SetupControls();
@@ -74,10 +68,6 @@ namespace InDevelopment.Mechanics.VisionAbility
                     RefillEnergy();
                 }
             }
-
-
-            // t1 = Mathf.Lerp(1, 0, 0.1f);
-            // t2 = Mathf.Lerp(0, 1, 0.1f);
         }
 
         private void ReduceEnergy()
@@ -112,9 +102,6 @@ namespace InDevelopment.Mechanics.VisionAbility
                 // CallEndEvent();
                 isActive = false;
 
-                //turning off post processing
-                // cb.intensity.value = t2;
-                // v.intensity.value = t2;
             }
         }
 
@@ -133,6 +120,7 @@ namespace InDevelopment.Mechanics.VisionAbility
         private void UseVisionAbilityToggleInput(InputAction.CallbackContext context)
         {
             UseVisionAbility();
+            // CallActivationEvent();
         }
 
         private void StartAbility(InputAction.CallbackContext context)
@@ -164,9 +152,6 @@ namespace InDevelopment.Mechanics.VisionAbility
                     visionAbilityDuration = maxVisionAbilityDuration;
                     visionEnergy -= abilityUseCost;
                     CallActivationEvent();
-                    //turning post processing on
-                    // cb.intensity.value = t1;
-                    // v.intensity.value = t1;
                 }
             }
             else

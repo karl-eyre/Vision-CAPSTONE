@@ -22,6 +22,8 @@ namespace InDevelopment.PostProcessing
         public ChromaticAberration chromaticAberration;
         public bool applyVisionPostProcessing;
         public float chromaticAberrationIntensity;
+        private static readonly int VisionPostProcessingOn = Animator.StringToHash("VisionPostProcessingOn");
+        private static readonly int TeleportPostProcessingOn = Animator.StringToHash("TeleportPostProcessingOn");
 
         void Start()
         {
@@ -37,7 +39,7 @@ namespace InDevelopment.PostProcessing
         private void TurnVisionPostProcessingOn()
         {
             applyVisionPostProcessing = !applyVisionPostProcessing;
-            animator.SetBool("VisionPostProcessingOn", applyVisionPostProcessing);
+            animator.SetBool(VisionPostProcessingOn, applyVisionPostProcessing);
         }
 
         private void Update()
@@ -76,13 +78,13 @@ namespace InDevelopment.PostProcessing
 
         private void TurnOnPostProcessing()
         {
-            animator.SetBool("TeleportPostProcessingOn", true);
+            animator.SetBool(TeleportPostProcessingOn, true);
             applyTeleportPostProcessing = true;
         }
 
         private void TurnOffPostProcessing()
         {
-            animator.SetBool("TeleportPostProcessingOn", false);
+            animator.SetBool(TeleportPostProcessingOn, false);
             StartCoroutine(StopPostProcessing());
         }
 
