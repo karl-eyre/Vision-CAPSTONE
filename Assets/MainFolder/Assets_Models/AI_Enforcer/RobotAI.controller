@@ -171,7 +171,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -413770986547710932}
-    m_Position: {x: 550, y: -10, z: 0}
+    m_Position: {x: 550, y: -70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2256714047753778835}
     m_Position: {x: 340, y: 50, z: 0}
@@ -180,7 +180,7 @@ AnimatorStateMachine:
     m_Position: {x: 770, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6547094883267076036}
-    m_Position: {x: 550, y: 100, z: 0}
+    m_Position: {x: 550, y: 160, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -261,7 +261,7 @@ AnimatorState:
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
+  m_WriteDefaultValues: 0
   m_Mirror: 0
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
@@ -287,30 +287,30 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: MoveSpeed
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: SawSomething
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: HeardSomething
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
     m_StateMachine: {fileID: -1361729819299929639}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 31900000, guid: 5cb7cda5e7a4c484bb4aa81bea72aea1, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0

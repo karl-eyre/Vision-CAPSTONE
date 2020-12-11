@@ -17,7 +17,7 @@ namespace InDevelopment.Alex.EnemyStates
 
         #region Variables
 
-        public float turnRadius = 60;
+        public float turnRadius = 45f;
 
         public float rotSpeed = 5;
         public float moveSpeed;
@@ -77,9 +77,13 @@ namespace InDevelopment.Alex.EnemyStates
 
         private int moveSpeedHash;
         private float agentVelocity;
+        public float rotationAmount;
+
+        public Transform headPos;
+
+        private bool turningRight;
 
         #endregion
-
 
 
         // Start is called before the first frame update
@@ -130,8 +134,9 @@ namespace InDevelopment.Alex.EnemyStates
                 //TODO end game
                 F_Music.music.setParameterByName("MusicState", 2f, false);
                 searchingSound.searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
                 Scene scene = SceneManager.GetActiveScene();
-                SceneManager.LoadScene(scene.name);
+                SceneManager.LoadScene(scene.name, LoadSceneMode.Single);
             }
         }
 
@@ -139,19 +144,19 @@ namespace InDevelopment.Alex.EnemyStates
         {
             if (stateManager.currentEnemyState != playerDetectedState)
             {
-                agentVelocity = agent.velocity.magnitude/agent.speed;
+                agentVelocity = agent.velocity.magnitude / agent.speed;
             }
             else
             {
                 agentVelocity = 2f;
             }
-            
-            animator.SetFloat(moveSpeedHash , agentVelocity);
+
+            animator.SetFloat(moveSpeedHash, agentVelocity);
         }
 
         public void MoveToTarget(Vector3 tgt)
         {
-            tgt = new Vector3(tgt.x,transform.position.y,tgt.z);
+            tgt = new Vector3(tgt.x, transform.position.y, tgt.z);
 
             if (!(agent is null) && (agent.isStopped || agent.remainingDistance < 0.5f))
             {
@@ -166,14 +171,40 @@ namespace InDevelopment.Alex.EnemyStates
 
         public void LookAtTarget(Vector3 tgt)
         {
-            lineOfSight.headPos.transform.LookAt(tgt);
+            // lineOfSight.headPos.transform.LookAt(tgt);
+            lineOfSight.headPos.transform.LookAt(tgt, Vector3.up);
         }
 
         public void LookLeftAndRight()
         {
-            // transform.localRotation = Quaternion.Euler(0f, turnRadius * Mathf.Sin(Time.time * rotSpeed), 0f);
-            float rY = Mathf.SmoothStep(-turnRadius,turnRadius,Mathf.PingPong(Time.time * rotSpeed,1));
-            lineOfSight.headPos. transform.Rotate(0,rY * Time.deltaTime,0,Space.Self);
+            //change to move til it hits max and min angles
+            // rotationAmount = Mathf.PingPong(Time.time * rotSpeed,rightTurnRadius * 2) - rightTurnRadius;
+
+            // float time = Mathf.PingPong(Time.time * rotSpeed, 1);
+            // rotationAmount = Mathf.Lerp(rightTurnRadius, -rightTurnRadius, time);
+
+            if (turningRight)
+            {
+                if (rotationAmount >= turnRadius)
+                {
+                    turningRight = false;
+                }
+
+                rotationAmount = Mathf.MoveTowards(rotationAmount, turnRadius, Time.deltaTime * rotSpeed);
+            }
+            else
+            {
+                if (rotationAmount <= -turnRadius)
+                {
+                    turningRight = true;
+                }
+
+                rotationAmount = Mathf.MoveTowards(rotationAmount, -turnRadius, Time.deltaTime * rotSpeed);
+            }
+
+            lineOfSight.headPos.transform.localRotation = Quaternion.Euler(0, rotationAmount, 0);
+
+            // lineOfSight.headPos.transform.Rotate(0, rotationAmount * Time.deltaTime, 0, Space.Self);
         }
     }
 }

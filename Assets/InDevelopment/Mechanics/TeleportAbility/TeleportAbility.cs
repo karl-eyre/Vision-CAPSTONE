@@ -15,7 +15,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         [Header("Camera")]
         [SerializeField]
-        private Camera camera;
+        private Camera camera = null;
 
         public float teleportRange;
         public float teleportDelay;
@@ -42,30 +42,22 @@ namespace InDevelopment.Mechanics.TeleportAbility
         public static event Action teleportStarted;
         public static event Action teleportTriggered;
 
-        private Volume volume;
-        private Vignette vignette;
-        private LensDistortion lensDistortion;
 
+        private void Awake()
+        {
+            if (camera == null)
+            {
+                camera = Camera.main;
+            }
+            SetUpControls();
+            SetReferences();
+        }
 
-        private void Start()
+        private void OnEnable()
         {
             SetUpControls();
             SetReferences();
-            SetUpPostProcessing();
         }
-
-        private void SetUpPostProcessing()
-        {
-            volume = GetComponent<Volume>();
-            volume.profile.TryGet(out vignette);
-            volume.profile.TryGet(out lensDistortion);
-        }
-
-        // private void OnEnable()
-        // {
-        //     SetUpControls();
-        //     SetReferences();
-        // }
 
         private void SetReferences()
         {
@@ -101,8 +93,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
 
         private IEnumerator Teleport(GameObject targetObject)
         {
-            teleportStarted?.Invoke();
-            TurnOnPostProcessing();
+            if (teleportStarted != null) teleportStarted?.Invoke();
             yield return new WaitForSeconds(teleportStartUpDelay);
             var tgt = targetObject;
             Vector3 origin = new Vector3(transform.position.x, transform.position.y + heightOffset,
@@ -112,28 +103,18 @@ namespace InDevelopment.Mechanics.TeleportAbility
             tgt.GetComponent<Rigidbody>().velocity = Vector3.zero;
             targetObj = null;
             objectSoundMaker.MakeSound(transform.position, noiseLevel);
-            teleportTriggered?.Invoke();
-            TurnOffPostProcessing();
+            if (teleportTriggered != null) teleportTriggered?.Invoke();
             yield return new WaitForSeconds(teleportDelay);
             onCooldown = false;
             cooldownTimer = 0;
         }
 
-        private void TurnOnPostProcessing()
-        {
-            
-        }
-
-        private void TurnOffPostProcessing()
-        {
-            
-        }
 
         private bool CanTeleport()
         {
             Vector3 mousePosition = controls.InGame.MousePosition.ReadValue<Vector2>();
 
-            ray = camera.ScreenPointToRay(mousePosition);
+            if (!(camera is null)) ray = camera.ScreenPointToRay(mousePosition);
 
             bool isHit = Physics.Raycast(ray, out hitInfo, teleportRange, levelLayer);
 
@@ -148,7 +129,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
                         targetObj = collider.gameObject;
                         // if (RoomForTeleport(targetObj))
                         // {
-                            canTeleport = true;
+                        canTeleport = true;
                         // }
                         // else
                         // {
