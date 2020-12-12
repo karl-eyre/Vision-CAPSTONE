@@ -93,7 +93,7 @@ public class F_Occlusion : MonoBehaviour
     {
         if (hit.collider)
         {
-            if (hit.collider.gameObject.CompareTag("Wall"))
+            if (hit.collider.gameObject.CompareTag("Obstacles"))
             {
                 Debug.Log("wall");
                 occlusion = 1;

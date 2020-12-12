@@ -1582,7 +1582,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20710
+  m_Name: pb_Mesh36252
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3414,7 +3414,7 @@ GameObject:
   - component: {fileID: 50814489}
   m_Layer: 14
   m_Name: Couch (5)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -3927,7 +3927,7 @@ GameObject:
   - component: {fileID: 58565866}
   m_Layer: 14
   m_Name: Bookshelf (5)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -6507,7 +6507,7 @@ GameObject:
   - component: {fileID: 154546019}
   m_Layer: 14
   m_Name: OfficeTable90. (1)
-  m_TagString: Wall
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -8785,7 +8785,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20118
+  m_Name: pb_Mesh35660
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8948,7 +8948,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20346
+  m_Name: pb_Mesh35888
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9825,7 +9825,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22446
+  m_Name: pb_Mesh37978
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10845,7 +10845,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22814
+  m_Name: pb_Mesh38358
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11193,7 +11193,7 @@ GameObject:
   - component: {fileID: 264492210}
   m_Layer: 14
   m_Name: OfficeTable90. (7)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -12232,7 +12232,7 @@ GameObject:
   - component: {fileID: 305070484}
   m_Layer: 14
   m_Name: PotPlant1 (5)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -13229,7 +13229,7 @@ GameObject:
   - component: {fileID: 315962636}
   m_Layer: 14
   m_Name: OfficeTable90. (5)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -13770,7 +13770,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20588
+  m_Name: pb_Mesh36130
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18249,7 +18249,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22036
+  m_Name: pb_Mesh37568
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18959,7 +18959,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22138
+  m_Name: pb_Mesh37670
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19835,7 +19835,7 @@ GameObject:
   - component: {fileID: 451085417}
   m_Layer: 14
   m_Name: Couch (3)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -20521,6 +20521,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1517670562}
     m_Modifications:
+    - target: {fileID: 930655485138116927, guid: b3ed2a724ed57b64f9c2446e33ea97fc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 2069926814698957742, guid: b3ed2a724ed57b64f9c2446e33ea97fc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20604,7 +20609,7 @@ GameObject:
   - component: {fileID: 463130967}
   m_Layer: 14
   m_Name: FilingCabinet (3)
-  m_TagString: Wall
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -20939,7 +20944,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21556
+  m_Name: pb_Mesh37088
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22162,7 +22167,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21138
+  m_Name: pb_Mesh36670
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22429,7 +22434,7 @@ GameObject:
   - component: {fileID: 488840687}
   m_Layer: 14
   m_Name: CoffeeTable (6)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -23562,7 +23567,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22866
+  m_Name: pb_Mesh38410
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -24116,7 +24121,7 @@ GameObject:
   - component: {fileID: 536938945}
   m_Layer: 14
   m_Name: PotPlant1 (9)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -29929,7 +29934,7 @@ GameObject:
   - component: {fileID: 642888019}
   m_Layer: 14
   m_Name: OfficeTable90. (4)
-  m_TagString: Wall
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -31789,7 +31794,7 @@ GameObject:
   - component: {fileID: 687306824}
   m_Layer: 14
   m_Name: Bookshelf (1)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -37245,7 +37250,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21268
+  m_Name: pb_Mesh36800
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -37906,6 +37911,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1517670562}
     m_Modifications:
+    - target: {fileID: 930655485138116927, guid: b3ed2a724ed57b64f9c2446e33ea97fc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 2069926814698957742, guid: b3ed2a724ed57b64f9c2446e33ea97fc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37986,7 +37996,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20328
+  m_Name: pb_Mesh35870
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -38172,6 +38182,7 @@ MonoBehaviour:
   m_Script: {fileID: 1243034742}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &809921816
 Transform:
   m_ObjectHideFlags: 19
@@ -38669,7 +38680,7 @@ GameObject:
   - component: {fileID: 838510071}
   m_Layer: 14
   m_Name: OfficeTable90. (6)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -42405,7 +42416,7 @@ GameObject:
   - component: {fileID: 891629682}
   m_Layer: 14
   m_Name: PotPlant1 (8)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -43719,7 +43730,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20098
+  m_Name: pb_Mesh35640
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -43891,7 +43902,7 @@ GameObject:
   - component: {fileID: 910510230}
   m_Layer: 14
   m_Name: PotPlant1 (4)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -44923,7 +44934,7 @@ GameObject:
   - component: {fileID: 920534787}
   m_Layer: 14
   m_Name: FilingCabinet
-  m_TagString: Wall
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -45224,7 +45235,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21250
+  m_Name: pb_Mesh36782
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -45387,7 +45398,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22020
+  m_Name: pb_Mesh37552
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -46974,7 +46985,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21224
+  m_Name: pb_Mesh36756
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -47822,7 +47833,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20642
+  m_Name: pb_Mesh36184
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -48295,7 +48306,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22826
+  m_Name: pb_Mesh38370
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -48481,6 +48492,7 @@ MonoBehaviour:
   m_Script: {fileID: 1697744722}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &965919604
 Transform:
   m_ObjectHideFlags: 19
@@ -49420,7 +49432,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21440
+  m_Name: pb_Mesh36972
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -51537,7 +51549,7 @@ GameObject:
   - component: {fileID: 1029536703}
   m_Layer: 14
   m_Name: PotPlant1 (7)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -52494,7 +52506,7 @@ GameObject:
   - component: {fileID: 1035610286}
   m_Layer: 14
   m_Name: Armchair (4)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -53710,7 +53722,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21956
+  m_Name: pb_Mesh37488
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -54939,7 +54951,7 @@ GameObject:
   - component: {fileID: 1151726955}
   m_Layer: 14
   m_Name: Bookshelf (4)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -56115,7 +56127,7 @@ GameObject:
   - component: {fileID: 1174117357}
   m_Layer: 14
   m_Name: FilingCabinet (9)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -57390,7 +57402,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20874
+  m_Name: pb_Mesh36406
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -58469,7 +58481,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230926086}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -3.4999986, y: 0, z: -12.250891}
+  m_LocalPosition: {x: -3.4999986, y: 0, z: -12.250948}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 518292707}
@@ -61424,7 +61436,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21426
+  m_Name: pb_Mesh36958
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -63578,7 +63590,7 @@ GameObject:
   - component: {fileID: 1306634249}
   m_Layer: 14
   m_Name: OfficeTable90.
-  m_TagString: Wall
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -67398,7 +67410,7 @@ GameObject:
   - component: {fileID: 1372644553}
   m_Layer: 14
   m_Name: OfficeTable90. (3)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -68249,7 +68261,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20928
+  m_Name: pb_Mesh36460
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -71164,7 +71176,7 @@ GameObject:
   - component: {fileID: 1458075117}
   m_Layer: 14
   m_Name: Couch (6)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -71507,7 +71519,7 @@ GameObject:
   - component: {fileID: 1464966453}
   m_Layer: 14
   m_Name: Bookshelf (6)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -74386,7 +74398,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22796
+  m_Name: pb_Mesh38340
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -74731,7 +74743,7 @@ GameObject:
   - component: {fileID: 1524502508}
   m_Layer: 14
   m_Name: Bookshelf (3)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -75304,7 +75316,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22842
+  m_Name: pb_Mesh38386
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -76093,7 +76105,7 @@ GameObject:
   - component: {fileID: 1546339620}
   m_Layer: 14
   m_Name: FilingCabinet (10)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -76747,7 +76759,7 @@ GameObject:
   - component: {fileID: 1548326303}
   m_Layer: 14
   m_Name: OfficeTable90. (2)
-  m_TagString: Wall
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -78454,6 +78466,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeskSet_LShape (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5926677967638525858, guid: b3ed2a724ed57b64f9c2446e33ea97fc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed2a724ed57b64f9c2446e33ea97fc, type: 3}
 --- !u!4 &1575762428 stripped
@@ -78468,7 +78485,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21778
+  m_Name: pb_Mesh37310
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -79441,7 +79458,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22368
+  m_Name: pb_Mesh37900
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -80718,7 +80735,7 @@ GameObject:
   - component: {fileID: 1597094522}
   m_Layer: 14
   m_Name: CoffeeTable (5)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -82530,7 +82547,7 @@ GameObject:
   - component: {fileID: 1657020080}
   m_Layer: 14
   m_Name: Couch (7)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -84738,7 +84755,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20366
+  m_Name: pb_Mesh35908
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -85211,7 +85228,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21890
+  m_Name: pb_Mesh37422
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -85746,7 +85763,7 @@ GameObject:
   - component: {fileID: 1694758095}
   m_Layer: 14
   m_Name: Couch (4)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -86775,7 +86792,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22960
+  m_Name: pb_Mesh38504
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -88158,7 +88175,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22180
+  m_Name: pb_Mesh37712
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -89157,7 +89174,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22892
+  m_Name: pb_Mesh38436
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -89320,7 +89337,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21514
+  m_Name: pb_Mesh37046
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -89712,7 +89729,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22288
+  m_Name: pb_Mesh37820
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -94112,7 +94129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22208
+  m_Name: pb_Mesh37740
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -98151,7 +98168,7 @@ GameObject:
   - component: {fileID: 1975308636}
   m_Layer: 14
   m_Name: OfficeTableStraight
-  m_TagString: Wall
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -98511,7 +98528,7 @@ GameObject:
   - component: {fileID: 1985832327}
   m_Layer: 14
   m_Name: Bookshelf (3)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -98821,7 +98838,7 @@ GameObject:
   - component: {fileID: 2003731305}
   m_Layer: 14
   m_Name: FilingCabinet (6)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -99166,7 +99183,7 @@ GameObject:
   - component: {fileID: 2009756391}
   m_Layer: 14
   m_Name: FilingCabinet (1)
-  m_TagString: Wall
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -99786,7 +99803,7 @@ GameObject:
   - component: {fileID: 2014898836}
   m_Layer: 14
   m_Name: PotPlant1 (6)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -100812,7 +100829,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20200
+  m_Name: pb_Mesh35742
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -100984,7 +101001,7 @@ GameObject:
   - component: {fileID: 2048050581}
   m_Layer: 14
   m_Name: FilingCabinet (7)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -102695,7 +102712,7 @@ GameObject:
   - component: {fileID: 2102249336}
   m_Layer: 14
   m_Name: Bookshelf (2)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -104607,7 +104624,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20562
+  m_Name: pb_Mesh36104
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -106036,6 +106053,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 65
       objectReference: {fileID: 0}
+    - target: {fileID: 3714051505330370479, guid: 69d4c3b7c054d7e45a7ec8d03ce63a2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 3714051505330370480, guid: 69d4c3b7c054d7e45a7ec8d03ce63a2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -106116,15 +106138,30 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 73
       objectReference: {fileID: 0}
+    - target: {fileID: 3714051506441427244, guid: 69d4c3b7c054d7e45a7ec8d03ce63a2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 3714051506482661622, guid: 69d4c3b7c054d7e45a7ec8d03ce63a2f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 3714051506482661622, guid: 69d4c3b7c054d7e45a7ec8d03ce63a2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3714051506504195460, guid: 69d4c3b7c054d7e45a7ec8d03ce63a2f,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 73
       objectReference: {fileID: 0}
     - target: {fileID: 3714051506504195460, guid: 69d4c3b7c054d7e45a7ec8d03ce63a2f,
         type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 73
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 3714051506873534670, guid: 69d4c3b7c054d7e45a7ec8d03ce63a2f,
         type: 3}
@@ -106252,6 +106289,11 @@ PrefabInstance:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 20837282343257126, guid: c2469a78661ceab408d45e8f76defd84,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 108965760952938732, guid: c2469a78661ceab408d45e8f76defd84,
         type: 3}
       propertyPath: m_StitchLightmapSeams
@@ -106291,6 +106333,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 576317143225957854, guid: c2469a78661ceab408d45e8f76defd84,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 602710130390051400, guid: c2469a78661ceab408d45e8f76defd84,
         type: 3}
@@ -106372,6 +106419,11 @@ PrefabInstance:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1414402120114036752, guid: c2469a78661ceab408d45e8f76defd84,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 1427197031047135914, guid: c2469a78661ceab408d45e8f76defd84,
         type: 3}
       propertyPath: m_StitchLightmapSeams
@@ -106396,6 +106448,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843861587429979968, guid: c2469a78661ceab408d45e8f76defd84,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 1876649975982015623, guid: c2469a78661ceab408d45e8f76defd84,
         type: 3}
@@ -106602,6 +106659,11 @@ PrefabInstance:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3639086155800291154, guid: c2469a78661ceab408d45e8f76defd84,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 3843494357245472280, guid: c2469a78661ceab408d45e8f76defd84,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -106626,6 +106688,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978135270790305013, guid: c2469a78661ceab408d45e8f76defd84,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 4073010076201912745, guid: c2469a78661ceab408d45e8f76defd84,
         type: 3}
@@ -106707,6 +106774,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 65
       objectReference: {fileID: 0}
+    - target: {fileID: 5148811581963236943, guid: c2469a78661ceab408d45e8f76defd84,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 5155741629248178951, guid: c2469a78661ceab408d45e8f76defd84,
         type: 3}
       propertyPath: m_StitchLightmapSeams
@@ -106763,6 +106835,11 @@ PrefabInstance:
       propertyPath: m_StitchLightmapSeams
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5496232189724310399, guid: c2469a78661ceab408d45e8f76defd84,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 5523943429075744293, guid: c2469a78661ceab408d45e8f76defd84,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -106772,6 +106849,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5523943429075744293, guid: c2469a78661ceab408d45e8f76defd84,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 5593413218019215689, guid: c2469a78661ceab408d45e8f76defd84,
         type: 3}
@@ -106923,6 +107005,11 @@ PrefabInstance:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7430710083193939510, guid: c2469a78661ceab408d45e8f76defd84,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 7437430073075642487, guid: c2469a78661ceab408d45e8f76defd84,
         type: 3}
       propertyPath: m_StitchLightmapSeams
@@ -107023,6 +107110,11 @@ PrefabInstance:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8281075088887907025, guid: c2469a78661ceab408d45e8f76defd84,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 8398047071080658115, guid: c2469a78661ceab408d45e8f76defd84,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -107057,6 +107149,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9080935982999316609, guid: c2469a78661ceab408d45e8f76defd84,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 9155109006600743115, guid: c2469a78661ceab408d45e8f76defd84,
         type: 3}
@@ -107778,6 +107875,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 73
       objectReference: {fileID: 0}
+    - target: {fileID: 3065937007547388013, guid: eb7e68244db96c54e86c604fbdffb96b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 3390776142791244623, guid: eb7e68244db96c54e86c604fbdffb96b,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -107848,6 +107950,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 65
       objectReference: {fileID: 0}
+    - target: {fileID: 6857844643218664802, guid: eb7e68244db96c54e86c604fbdffb96b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8323002182249960331, guid: eb7e68244db96c54e86c604fbdffb96b,
         type: 3}
       propertyPath: m_Name
@@ -107917,6 +108024,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017559002398592122, guid: eb7e68244db96c54e86c604fbdffb96b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb7e68244db96c54e86c604fbdffb96b, type: 3}
