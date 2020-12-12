@@ -8,29 +8,24 @@ public class SnapShotTrigger : MonoBehaviour
 {
     [FMODUnity.EventRef]
     public string eventpath;
-    public EventInstance snapshot; 
-    GameObject Player;
+    public EventInstance snapshot;
     void Start()
     {
         snapshot = RuntimeManager.CreateInstance(eventpath);
-        Player = GameObject.Find("Player");
-    }
-
-    private void Update()
-    {
         RuntimeManager.AttachInstanceToGameObject(snapshot, transform, GetComponent<Rigidbody>());
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == Player)
+        if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("snapshot");
             snapshot.start();         
         }    
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == Player)
+        if (other.gameObject.CompareTag("Player"))
         {
             snapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }

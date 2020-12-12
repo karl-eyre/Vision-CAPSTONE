@@ -34,7 +34,7 @@ public class F_Occlusion : MonoBehaviour
     private void OnDrawGizmosSelected() //Visual Radius For Occlusion & Music.
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(objPosition, OcclusionRadius);
+        Gizmos.DrawWireSphere(transform.position, OcclusionRadius);
 
     }
     private void FixedUpdate()
@@ -84,16 +84,16 @@ public class F_Occlusion : MonoBehaviour
     void Occlusion() //Raycast From sound Source to Player
     {
         Vector3 playerPos = player.position;
-        float dist = Vector3.Distance(objPosition, playerPos);
-        Vector3 directionToFace = playerPos - objPosition;
-        Physics.Raycast(objPosition, directionToFace, out hit, dist, lm);
-        Debug.DrawRay(objPosition, directionToFace, Color.red);
+        float dist = Vector3.Distance(transform.position, playerPos);
+        Vector3 directionToFace = playerPos - transform.position;
+        Physics.Raycast(transform.position, directionToFace, out hit, dist, lm);
+        Debug.DrawRay(transform.position, directionToFace, Color.red);
     }
     void Lowpass() //Occludes Sound Source
     {
         if (hit.collider)
         {
-            if (hit.collider.gameObject.CompareTag("Wall"))
+            if (hit.collider.gameObject.CompareTag("Obstacles"))
             {
                 Debug.Log("wall");
                 occlusion = 1;

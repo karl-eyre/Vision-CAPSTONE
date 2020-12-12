@@ -7134,6 +7134,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 379486130}
+        m_MethodName: StopMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &275851175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7970,7 +7981,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321351742}
-  m_LocalRotation: {x: 0.0051835948, y: -0.6944068, z: 0.005002487, w: 0.7195466}
+  m_LocalRotation: {x: 0.0051835966, y: -0.6944068, z: 0.0050024893, w: 0.7195466}
   m_LocalPosition: {x: 10.43, y: 3.48, z: 13.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9184,6 +9195,7 @@ GameObject:
   - component: {fileID: 379486130}
   - component: {fileID: 379486132}
   - component: {fileID: 379486133}
+  - component: {fileID: 379486134}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -9244,6 +9256,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noSiren: 1
+--- !u!114 &379486134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379486129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9468c5f457ace64f8d4df6d642b107f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoadEvent: 1
+  UnloadEvent: 2
+  Banks:
+  - Ui
+  - Music
+  - Level2Environment
+  CollisionTag: 
+  PreloadSamples: 0
 --- !u!1 &384329805
 GameObject:
   m_ObjectHideFlags: 0
@@ -24979,7 +25011,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141181679}
-  m_LocalRotation: {x: 0.0051835948, y: -0.6944068, z: 0.005002487, w: 0.7195466}
+  m_LocalRotation: {x: 0.0051835966, y: -0.6944068, z: 0.0050024893, w: 0.7195466}
   m_LocalPosition: {x: 19.834614, y: 10.968975, z: 9.033471}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
