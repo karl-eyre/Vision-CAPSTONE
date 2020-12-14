@@ -31,7 +31,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6458443932491891638}
-  m_LocalRotation: {x: 0, y: 0.25881472, z: -0, w: -0.96592706}
+  m_LocalRotation: {x: 0, y: -0.258819, z: 0, w: 0.9659259}
   m_LocalPosition: {x: -37.850018, y: -3.0999994, z: -2.1996973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -128,10 +128,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 114944
 --- !u!114 &6827170430824687235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,16 +144,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868ec46ec4983ad4392dc16f5e8acf29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closeVisionMat: {fileID: 0}
-  middleVisionMat: {fileID: 0}
-  farVisionMat: {fileID: 0}
-  defaultMat: {fileID: 0}
+  closeVisionMat: {fileID: 2100000, guid: a6292bd7cbe641a44bebdf7c09420b2a, type: 2}
+  middleVisionMat: {fileID: 2100000, guid: b47a40ec65d9c6944a33452fe4817daf, type: 2}
+  farVisionMat: {fileID: 2100000, guid: a1652d6423a2b97418a7dfa5e7a9bccc, type: 2}
+  defaultMat: {fileID: 2100000, guid: 9f6c2c3f895cf504d868f107a1162d1c, type: 2}
   isSelected: 0
-  headRenderer: {fileID: 0}
-  bodyRenderer: {fileID: 0}
-  maxFadeDistance: 0
-  minFadeDistance: 0
-  throwableObject: 0
+  headRenderer: {fileID: 4728171052547897194}
+  bodyRenderer: {fileID: 4728171052547897194}
+  maxFadeDistance: 50
+  minFadeDistance: 30
+  throwableObject: 1
 --- !u!114 &8070741341026427279
 MonoBehaviour:
   m_ObjectHideFlags: 0

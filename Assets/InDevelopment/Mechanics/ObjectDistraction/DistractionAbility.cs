@@ -300,7 +300,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             if (controls != null) controls.Enable();
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             if (controls != null) controls.Disable();
         }
