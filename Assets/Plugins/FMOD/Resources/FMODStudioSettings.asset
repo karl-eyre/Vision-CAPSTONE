@@ -18,8 +18,8 @@ MonoBehaviour:
   sourceProjectPath: 
   sourceBankPath: Assets/FMOD Banks/Desktop
   SourceBankPathUnformatted: 
-  AutomaticEventLoading: 0
-  BankLoadType: 1
+  AutomaticEventLoading: 1
+  BankLoadType: 0
   AutomaticSampleLoading: 0
   EncryptionKey: 
   ImportType: 0
@@ -84,7 +84,5 @@ MonoBehaviour:
   - Music
   - Player
   - Ui
-  BanksToLoad:
-  - Master.bank
-  - Master.strings.bank
+  BanksToLoad: []
   LiveUpdatePort: 9264
