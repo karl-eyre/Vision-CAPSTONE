@@ -19,6 +19,8 @@ public class F_Occlusion : MonoBehaviour
     Transform player;
     [HideInInspector]
     public float occlusion;
+
+    public static bool detected;
     void Start()
     {
         player = GameObject.Find("Player 1").GetComponent<Transform>();
@@ -60,18 +62,21 @@ public class F_Occlusion : MonoBehaviour
         //Debug.Log(musicDist);
         if (enemyState == enemyController.investigatingEnemyState) 
         {
-                searching = RuntimeManager.CreateInstance("event:/Enemies/Searching");
-                RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
-                searching.start();
-                searching.release();
+            //searching = RuntimeManager.CreateInstance("event:/Enemies/Searching");
+            //RuntimeManager.AttachInstanceToGameObject(searching, transform, GetComponent<Rigidbody>());
+            //searching.start();
+            //searching.release();
+            //F_Music.music.setParameterByName("MusicState", 0, true);
+              
         }
-        else if (enemyState == enemyController.stationaryEnemyState)
+        if (enemyState == enemyController.stationaryEnemyState)
         {
-            searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); 
+            //searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            //F_Music.music.setParameterByName("MusicState", 0, true);
         }
-        else if (enemyState == enemyController.patrollingEnemyState)
+        if (enemyState == enemyController.patrollingEnemyState)
         {
-            searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            //searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
         if (enemyState == enemyController.playerDetectedState)
         {

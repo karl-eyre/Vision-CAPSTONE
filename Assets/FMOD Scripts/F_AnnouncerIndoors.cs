@@ -6,6 +6,7 @@ using FMOD.Studio;
 using FMODUnity;
 using InDevelopment.Alex;
 using InDevelopment.Alex.EnemyStates;
+using InDevelopment.Mechanics.Player;
 
 public class F_AnnouncerIndoors : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class F_AnnouncerIndoors : MonoBehaviour
     float OverrideMinDistance = -1.0f;
     [SerializeField]
     float OverrideMaxDistance = -1.0f;
+
+    public PlayerDetectionUI detectionM;
     void Start()
     {
         announcer = RuntimeManager.CreateInstance(announcerEvent);
@@ -29,6 +32,12 @@ public class F_AnnouncerIndoors : MonoBehaviour
     private void Update()
     {
         OverrideAttenuation();
+
+        if (detectionM.detectionMeter <= 0)
+        {
+            announcer.setParameterByName("PlayerDetected", 0, false);
+            F_Music.music.setParameterByName("MusicState", 0, true);
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -45,5 +54,11 @@ public class F_AnnouncerIndoors : MonoBehaviour
             announcer.setProperty(FMOD.Studio.EVENT_PROPERTY.MINIMUM_DISTANCE, OverrideMinDistance);
             announcer.setProperty(FMOD.Studio.EVENT_PROPERTY.MAXIMUM_DISTANCE, OverrideMaxDistance);
         }
+    }
+
+    private void OnDestroy()
+    {
+        announcer.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        announcer.setParameterByName("PlayerDetected", 0, false);
     }
 }

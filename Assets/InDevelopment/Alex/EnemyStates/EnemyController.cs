@@ -133,7 +133,7 @@ namespace InDevelopment.Alex.EnemyStates
             {
                 //TODO end game
                 F_Music.music.setParameterByName("MusicState", 2f, false);
-                searchingSound.searching.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                F_AnnouncerIndoors.announcer.setParameterByName("PlayerDetected", 0, false);
 
                 Scene scene = SceneManager.GetActiveScene();
                 SceneManager.LoadScene(scene.name, LoadSceneMode.Single);
