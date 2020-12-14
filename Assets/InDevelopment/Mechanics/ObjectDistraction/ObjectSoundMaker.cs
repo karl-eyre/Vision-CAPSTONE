@@ -38,7 +38,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
                 if (actuallyHeardSound)
                 {
-                    if (!hitInfo.collider.CompareTag("Obstacles"))
+                    if (hitInfo.collider.CompareTag("Obstacles"))
                     {
                         return;
                     }

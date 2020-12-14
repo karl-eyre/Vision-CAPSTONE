@@ -41,13 +41,18 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         private void OnCollisionEnter(Collision other)
         {
-            if (other.collider.CompareTag("Enemy")) return;
+            if (other.collider.CompareTag("Enemy"))
+            {
+                noiseLoudness = 100;
+            }
             if (other.collider.CompareTag("Player"))
             {
                 thrown = true;
             }
 
+            //make enemy react to being hit
             objectSoundMaker.MakeSound(gameObject.transform.position, noiseLoudness);
+            noiseLoudness = defaultNoiseLoudness;
         }
 
         private void Update()
