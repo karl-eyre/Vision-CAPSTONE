@@ -22,8 +22,8 @@ ScriptedImporter:
     shaderName: HDRP/LitTessellation
     materialProperties:
       shader: {fileID: 4800000, guid: 756bac9090102564582875f4c7e30202, type: 3}
-      shaderKeywords: _DISPLACEMENT_LOCK_TILING_SCALE _HEIGHTMAP _MASKMAP _NORMALMAP
-        _NORMALMAP_TANGENT_SPACE _TESSELLATION_DISPLACEMENT _VERTEX_DISPLACEMENT_LOCK_OBJECT_SCALE
+      shaderKeywords: _DISPLACEMENT_LOCK_TILING_SCALE _HEIGHTMAP _MASKMAP _MATERIAL_FEATURE_CLEAR_COAT
+        _NORMALMAP _NORMALMAP_TANGENT_SPACE _TESSELLATION_DISPLACEMENT _VERTEX_DISPLACEMENT_LOCK_OBJECT_SCALE
       lightmapFlags: 4
       enableInstancingVariants: 0
       doubleSidedGI: 0
@@ -148,7 +148,7 @@ ScriptedImporter:
       - name: _BlendMode
         float: 0
       - name: _CoatMask
-        float: 0
+        float: 0.04
       - name: _CullMode
         float: 2
       - name: _CullModeForward
