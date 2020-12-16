@@ -14,8 +14,8 @@ GameObject:
   m_Name: Top_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1516058793617609953
 Transform:
@@ -71,8 +71,8 @@ GameObject:
   m_Name: Lip_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6581565445361462731
 Transform:
@@ -182,6 +182,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dumpster Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0ca8a57436dfc4240a422d62f01dd0ab,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0ca8a57436dfc4240a422d62f01dd0ab,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ca8a57436dfc4240a422d62f01dd0ab, type: 3}
