@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs_Hologram 1
+  m_Shader: {fileID: -6465566751694194690, guid: e8367bd9f8d890e4ab5afe94d23bca16,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_A2F3709C:
+        m_Texture: {fileID: 2800000, guid: ad5ce0c7885dc8c4fb54b60a47751056, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_DC20883F:
+        m_Texture: {fileID: 2800000, guid: 1dee254db8b04324fb5b32153556a84c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_471C8B68_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 1dee254db8b04324fb5b32153556a84c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_34E83D0C: 0.09
+    m_Colors:
+    - Color_2001DDFD: {r: 0.40879998, g: 0.8, b: 0.46096003, a: 0}
+    - Color_FC626C95: {r: 0.1190843, g: 2.27451, b: 0.02381686, a: 0}
+    - Vector2_3B3D200C: {r: 1, g: 3.02, b: 0, a: 0}
