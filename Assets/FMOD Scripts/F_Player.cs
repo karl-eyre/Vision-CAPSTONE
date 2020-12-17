@@ -39,6 +39,7 @@ public class F_Player : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerController = GetComponent<PlayerController>();
         VisionAbilityController.visionActivation += VisionAbilitySoundPlay;
+        VisionAbilityController.visionEnded += VisionAbilityEnd;
         TeleportAbility.teleportStarted += TeleportStart;
         TeleportAbility.teleportTriggered += TeleportAbilitySoundPlay;
 
@@ -118,11 +119,12 @@ public class F_Player : MonoBehaviour
             visionAbilitySound.release();
             visionSoundPlayed = true;
         }
-        else
-        {
-            visionAbilitySound.setParameterByName("VisionAbilityOff", 1f, false);
-            visionSoundPlayed = false;
-        }        
+    }
+
+    void VisionAbilityEnd()
+    {
+        visionAbilitySound.setParameterByName("VisionAbilityOff", 1f, false);
+        visionSoundPlayed = false;
     }
 
     void FootstepsWalk()
@@ -170,5 +172,7 @@ public class F_Player : MonoBehaviour
         running.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         TeleportAbility.teleportStarted -= TeleportAbilitySoundPlay;
         TeleportAbility.teleportStarted -= TeleportStart;
+        VisionAbilityController.visionEnded -= VisionAbilityEnd;
+        TeleportAbility.teleportTriggered -= TeleportAbilitySoundPlay;
     }
 }
