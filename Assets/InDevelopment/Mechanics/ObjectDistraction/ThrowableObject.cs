@@ -43,7 +43,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         {
             if (other.collider.CompareTag("Enemy"))
             {
-                noiseLoudness = 100;
+                return;
             }
             if (other.collider.CompareTag("Player"))
             {

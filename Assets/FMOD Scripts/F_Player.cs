@@ -1,4 +1,5 @@
-﻿using FMOD.Studio;
+﻿using System;
+using FMOD.Studio;
 using FMODUnity;
 using InDevelopment.Mechanics.Player;
 using InDevelopment.Mechanics.VisionAbility;
@@ -43,6 +44,15 @@ public class F_Player : MonoBehaviour
 
         // wouldn't let me play the game because it was missing
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("AudioTrigger"))
+        {
+            F_Music.music.setParameterByName("NearEndOfLvl2", 1, false);
+        }
+    }
+
     void FmodEventInstances()
     {
         running = RuntimeManager.CreateInstance("event:/Player/Running");

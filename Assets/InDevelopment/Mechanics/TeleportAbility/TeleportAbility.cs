@@ -18,6 +18,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
         private Camera camera = null;
 
         public float teleportRange;
+        private float defaultTeleportRange;
         public float teleportDelay;
         public float teleportStartUpDelay = 1f;
         public Vector3 teleportAssistRange;
@@ -49,6 +50,8 @@ namespace InDevelopment.Mechanics.TeleportAbility
             {
                 camera = Camera.main;
             }
+
+            defaultTeleportRange = teleportRange;
             SetUpControls();
             SetReferences();
         }
@@ -57,6 +60,11 @@ namespace InDevelopment.Mechanics.TeleportAbility
         {
             SetUpControls();
             SetReferences();
+        }
+
+        private void OnDestroy()
+        {
+            controls.Disable();
         }
 
         private void SetReferences()
@@ -78,6 +86,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
         {
             if (CanTeleport() && !onCooldown)
             {
+                teleportRange = 1000f;
                 onCooldown = true;
                 StartCoroutine(Teleport(targetObj));
             }
@@ -106,6 +115,7 @@ namespace InDevelopment.Mechanics.TeleportAbility
             if (teleportTriggered != null) teleportTriggered?.Invoke();
             yield return new WaitForSeconds(teleportDelay);
             onCooldown = false;
+            teleportRange = defaultTeleportRange;
             cooldownTimer = 0;
         }
 

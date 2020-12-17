@@ -3,6 +3,7 @@ using FMOD.Studio;
 using FMODUnity;
 using InDevelopment.Mechanics.Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class F_Music : MonoBehaviour
 {
@@ -12,7 +13,16 @@ public class F_Music : MonoBehaviour
     void Start()
     {
         music = RuntimeManager.CreateInstance("event:/Music/AmbientMusic");
-        music.start();
+        if (SceneManager.GetActiveScene().name == "3_Backstreet 1")
+        {
+            music.setParameterByName("Outside", 1, false);
+            music.start();
+        }
+        else
+        {
+            music.start();
+        }
+ 
     }
 
     private void Update()

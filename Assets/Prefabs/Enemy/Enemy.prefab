@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 2030028518}
   - component: {fileID: 5689473979151110931}
   - component: {fileID: 7636972994651757841}
-  - component: {fileID: 6761460476272357263}
+  - component: {fileID: 6005211403815791951}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Enemy
@@ -165,8 +165,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnRadius: 90
-  rotSpeed: 1
+  rotSpeed: 50
   moveSpeed: 5
+  defaultMoveSpeed: 0
   rotation: {x: 0, y: 0, z: 0, w: 0}
   direction: {x: 0, y: 0, z: 0}
   stateManager: {fileID: 51001221349860988}
@@ -182,6 +183,8 @@ MonoBehaviour:
   startingState: {fileID: 0}
   spottingState: {fileID: 0}
   animator: {fileID: 377525470}
+  rotationAmount: 0
+  headPos: {fileID: 0}
 --- !u!114 &2030028518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +252,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 60
   avoidancePriority: 50
   m_AngularSpeed: 300
   m_StoppingDistance: 0
@@ -276,6 +279,7 @@ MonoBehaviour:
   lm:
     serializedVersion: 2
     m_Bits: 16384
+  occlusion: 0
 --- !u!1 &4601507014533632085
 GameObject:
   m_ObjectHideFlags: 0
