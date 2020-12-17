@@ -33,5 +33,6 @@ public class F_Music : MonoBehaviour
     private void OnDestroy()
     {
         music.release();
+        music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 }

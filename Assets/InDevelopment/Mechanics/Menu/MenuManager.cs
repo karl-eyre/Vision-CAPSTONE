@@ -1,4 +1,6 @@
 ﻿using System;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -19,7 +21,7 @@ namespace InDevelopment.Mechanics.Menu
         public GameObject optionsMenu;
         public GameObject pauseBackground;
         public PauseSmoke smokeScript;
-
+        private EventInstance pausedSnapshot;
 
         public GameObject playerUI;
 
@@ -42,6 +44,7 @@ namespace InDevelopment.Mechanics.Menu
         private void Start()
         {
             SetupControls();
+            pausedSnapshot = RuntimeManager.CreateInstance("snapshot:/Paused");
         }
 
         private void SetupControls()
@@ -55,6 +58,7 @@ namespace InDevelopment.Mechanics.Menu
         {
             if (!paused)
             {
+                pausedSnapshot.start();
                 Debug.Log("paused");
                 paused = true;
                 pauseMenu.SetActive(true);
@@ -69,6 +73,7 @@ namespace InDevelopment.Mechanics.Menu
 
         public void UnPauseGame()
         {
+            pausedSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             pauseMenu.SetActive(false);
             playerUI.SetActive(true);
             Debug.Log("unpaused");
@@ -101,6 +106,11 @@ namespace InDevelopment.Mechanics.Menu
         public void CloseOptionsMenu()
         {
             optionsMenu.SetActive(false);
+        }
+
+        private void OnDestroy()
+        {
+            pausedSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
 }
