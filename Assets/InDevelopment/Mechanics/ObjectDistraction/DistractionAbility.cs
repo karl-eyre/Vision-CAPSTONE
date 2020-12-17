@@ -322,7 +322,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         IEnumerator ThrowObj(Rigidbody rb, GameObject throwableObject)
         {
             animator.SetBool("throwing", true);
-            yield return new WaitForSeconds(throwClip.length - 0.2f);
+            yield return new WaitForSeconds(throwClip.length - 0.1f);
             animator.SetBool("throwing", false);
             armMesh.SetActive(false);
 
