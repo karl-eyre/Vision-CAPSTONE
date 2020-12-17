@@ -12,7 +12,7 @@ namespace InDevelopment.Mechanics.Menu
         private MouseLook mouseSettings;
         public Slider mouseSensitivitySlider;
         public Toggle mouseYInvertion;
-        public TMP_Text mouseSensitivityText;
+        //public TMP_Text mouseSensitivityText;
 
         public void Start()
         {
@@ -25,7 +25,7 @@ namespace InDevelopment.Mechanics.Menu
             if (PlayerPrefs.HasKey("MouseSen"))
             {
                 mouseSettings.mouseSensitivity = PlayerPrefs.GetFloat("MouseSen");
-                mouseSensitivityText.text = mouseSettings.mouseSensitivity.ToString();
+                //mouseSensitivityText.text = mouseSettings.mouseSensitivity.ToString();
                 mouseSensitivitySlider.value = mouseSettings.mouseSensitivity;
             }
 
@@ -48,7 +48,7 @@ namespace InDevelopment.Mechanics.Menu
         public void SetMouseSensitivity(float changedValue)
         {
             mouseSettings.mouseSensitivity = changedValue;
-            mouseSensitivityText.text = changedValue.ToString();
+            //mouseSensitivityText.text = changedValue.ToString();
             PlayerPrefs.SetFloat("MouseSen", changedValue);
         }
 
