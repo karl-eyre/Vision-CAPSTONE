@@ -451,7 +451,7 @@ ScriptedImporter:
       usage: 9
       bImage: 1
       bNumerical: 0
-      bLinear: 1
+      bLinear: 0
     - outputName: ambientOcclusion
       identifier: ambientocclusion
       usageName: ambientOcclusion
@@ -533,7 +533,7 @@ ScriptedImporter:
       filterMode: 1
       aniso: 1
     - textureName: Vent_Metal_01 - height
-      wrapMode: 0
+      wrapMode: 1
       filterMode: 1
       aniso: 1
     - textureName: Vent_Metal_01 - ambientOcclusion
