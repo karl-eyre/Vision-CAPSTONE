@@ -51,6 +51,7 @@
           <e p="F_Ui.cs" t="Include" />
           <e p="F_Utilities.cs" t="Include" />
           <e p="F_VentCheck.cs" t="Include" />
+          <e p="F_VolumeControl.cs" t="Include" />
           <e p="SnapShotTrigger.cs" t="Include" />
           <e p="TriggerMovingSound.cs" t="Include" />
         </e>
@@ -212,6 +213,22 @@
             </e>
           </e>
         </e>
+        <e p="Quixel" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="BridgeImporter" t="Include">
+              <e p="MegascansBridgeLink.cs" t="Include" />
+              <e p="MegascansDecalTools.cs" t="Include" />
+              <e p="MegascansImporter.cs" t="Include" />
+              <e p="MegascansImporterWindow.cs" t="Include" />
+              <e p="MegascansMatertialUtils.cs" t="Include" />
+              <e p="MegascansMeshUtils.cs" t="Include" />
+              <e p="MegascansPostProcess.cs" t="Include" />
+              <e p="MegascansTerrainTools.cs" t="Include" />
+              <e p="MegascansTextureProcessor.cs" t="Include" />
+              <e p="MegascansUtilities.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
             <e p="LiberationSans - OFL.txt" t="Include" />
@@ -238,6 +255,11 @@
           </e>
           <e p="Sprites" t="Include">
             <e p="EmojiOne Attribution.txt" t="Include" />
+          </e>
+        </e>
+        <e p="UnityPackages" t="Include">
+          <e p="JsonNetSample" t="Include">
+            <e p="JsonNetSample.cs" t="Include" />
           </e>
         </e>
       </e>
