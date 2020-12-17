@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using InDevelopment.Mechanics.Player;
@@ -22,9 +22,10 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         [SerializeField]
         private GameObject throwableObjectPrefab;
-        
+
         [SerializeField]
         private GameObject oldThrowableObjectPrefab;
+
         public float throwForce;
         private float defaultThrowForce;
 
@@ -49,21 +50,34 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         private LayerMask groundLayerMask;
 
         private SelectionOutline selectionOutline;
-        
+
         [SerializeField]
         private GameObject hitObject;
+
         private bool pickingUp;
-        public float pickupDelay = 0.5f;
+        // public float pickupDelay = 0.5f;
+
+        public Animator animator;
+        public AnimationClip grabClip;
+        public AnimationClip throwClip;
+        public GameObject armMesh;
+
 
         private void Awake()
         {
             SetUpControls();
             SetUpLineRenderer();
+
+            selectionOutline = GetComponent<SelectionOutline>();
+            defaultThrowForce = throwForce;
+        }
+
+        public void Start()
+        {
+            armMesh.SetActive(false);
             hasObjectToThrow = false;
             predictingThrow = false;
             pickingUp = false;
-            selectionOutline = GetComponent<SelectionOutline>();
-            defaultThrowForce = throwForce;
         }
 
         private void SetUpLineRenderer()
@@ -85,7 +99,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         {
             if (useThrowArc)
             {
-                if (predictingThrow || Mouse.current.leftButton.isPressed && hasObjectToThrow)
+                if (predictingThrow && hasObjectToThrow)
                 {
                     CalculateThrowForce();
                     PredictPath();
@@ -240,20 +254,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
             GameObject throwableObject = throwableObjectPrefab;
             Rigidbody rb = throwableObject.GetComponent<Rigidbody>();
-            rb.velocity = Vector3.zero;
 
-            throwableObject.transform.position = handPosition.position;
-            throwableObject.transform.rotation = handPosition.rotation;
-            throwableObject.SetActive(true);
-            // rb.isKinematic = false;
-            // rb.AddForce(CalculateThrowDirection(throwDirection) * throwForce, ForceMode.Impulse);
-            rb.AddForce(camera.transform.forward * throwForce, ForceMode.Impulse);
-
-            //these two need to be in there
-            throwableObjectPrefab.GetComponent<BoxCollider>().enabled = true;
-            throwableObjectPrefab.GetComponent<ThrowableObject>().thrown = true;
-            throwableObjectPrefab = null;
-            hasObjectToThrow = false;
+            StartCoroutine(ThrowObj(rb, throwableObject));
         }
 
 
@@ -290,6 +292,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                 if (!pickingUp)
                 {
                     pickingUp = true;
+                    armMesh.SetActive(true);
                     StartCoroutine(PickUpObject());
                 }
             }
@@ -307,11 +310,33 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         IEnumerator PickUpObject()
         {
-            yield return new WaitForSeconds(pickupDelay);
+            animator.SetBool("grabbing", true);
+            yield return new WaitForSeconds(grabClip.length - 0.1f);
+            animator.SetBool("grabbing", false);
             hasObjectToThrow = true;
             throwableObjectPrefab.GetComponent<ThrowableObject>().thrown = false;
             throwableObjectPrefab.GetComponent<BoxCollider>().enabled = false;
             pickingUp = false;
+        }
+
+        IEnumerator ThrowObj(Rigidbody rb, GameObject throwableObject)
+        {
+            animator.SetBool("throwing", true);
+            yield return new WaitForSeconds(throwClip.length - 0.2f);
+            animator.SetBool("throwing", false);
+            armMesh.SetActive(false);
+
+            rb.velocity = Vector3.zero;
+
+            throwableObject.transform.position = handPosition.position;
+            throwableObject.transform.rotation = handPosition.rotation;
+            throwableObject.SetActive(true);
+            rb.AddForce(camera.transform.forward * throwForce, ForceMode.Impulse);
+
+            throwableObjectPrefab.GetComponent<BoxCollider>().enabled = true;
+            throwableObjectPrefab.GetComponent<ThrowableObject>().thrown = true;
+            throwableObjectPrefab = null;
+            hasObjectToThrow = false;
         }
     }
 }

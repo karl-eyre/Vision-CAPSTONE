@@ -197,7 +197,9 @@ namespace InDevelopment.Alex
         public void ResetAIState()
         {
             lineOfSight.detected = false;
+            lineOfSight.canSeePlayer = false;
             enemyController.agent.autoBraking = true;
+            enemyController.agent.speed = enemyController.defaultMoveSpeed;
             lineOfSight.detectionMeter = 0f;
             if (stateManager.currentEnemyState != enemyController.startingState)
             {
@@ -221,7 +223,7 @@ namespace InDevelopment.Alex
         //TODO use to turn detection ui on and off
         private void IsAlerted()
         {
-            if (lineOfSight.detectionMeter > 0)
+            if (lineOfSight.detectionMeter > 0 && CanSeePlayer())
             {
                 isAlerted = true;
                 lineOfSight.alerted = true;

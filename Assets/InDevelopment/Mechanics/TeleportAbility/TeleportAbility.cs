@@ -59,6 +59,11 @@ namespace InDevelopment.Mechanics.TeleportAbility
             SetReferences();
         }
 
+        private void OnDestroy()
+        {
+            controls.Disable();
+        }
+
         private void SetReferences()
         {
             objectSoundMaker = GetComponent<ObjectSoundMaker>();

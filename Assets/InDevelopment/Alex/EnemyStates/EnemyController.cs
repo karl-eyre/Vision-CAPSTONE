@@ -21,6 +21,8 @@ namespace InDevelopment.Alex.EnemyStates
 
         public float rotSpeed = 5;
         public float moveSpeed;
+        [HideInInspector]
+        public float defaultMoveSpeed;
 
         [Header("=Debug=")]
         public Quaternion rotation;
@@ -93,6 +95,7 @@ namespace InDevelopment.Alex.EnemyStates
             agent = GetComponent<NavMeshAgent>();
             lineOfSight = GetComponent<LineOfSight>();
             moveSpeedHash = Animator.StringToHash("MoveSpeed");
+            defaultMoveSpeed = moveSpeed;
             SetupStates();
             SetupNavmesh();
         }

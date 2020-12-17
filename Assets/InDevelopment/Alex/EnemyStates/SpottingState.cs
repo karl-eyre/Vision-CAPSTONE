@@ -33,7 +33,7 @@ namespace InDevelopment.Alex.EnemyStates
         public override void Execute()
         {
             base.Execute();
-            // LookAtPlayer();
+            LookAtPlayer();
             if (!enemyController.stateManager.currentEnemyState.playingAnimation)
             {
                 if (AboveInvestigationThresholdCheck())

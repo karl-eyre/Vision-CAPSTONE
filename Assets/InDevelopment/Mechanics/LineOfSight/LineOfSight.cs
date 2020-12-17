@@ -140,14 +140,16 @@ namespace InDevelopment.Mechanics.LineOfSight
 
                 if (Physics.Raycast(ray, out hitInfo, viewDistance))
                 {
-                    if (hitInfo.collider.CompareTag("Player"))
-                    {
-                        canSeePlayer = true;
-                    }
-
                     if (hitInfo.collider.CompareTag("Obstacles"))
                     {
                         canSeePlayer = false;
+                        return;
+                    }
+                    
+                    if (hitInfo.collider.CompareTag("Player"))
+                    {
+                        canSeePlayer = true;
+                        return;
                     }
                 }
             }

@@ -137,6 +137,7 @@ namespace InDevelopment.Mechanics.VisionAbility
             if (isActive)
             {
                 CallActivationEvent();
+                CallEndEvent();
                 isActive = false;
             }
         }
@@ -175,7 +176,7 @@ namespace InDevelopment.Mechanics.VisionAbility
             if (controls != null) controls.Enable();
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             if (controls != null) controls.Disable();
         }

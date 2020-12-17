@@ -101,6 +101,8 @@ namespace InDevelopment.Mechanics.Player
         public float airSpeedLimit;
 
         public Vector3 rbVelocity;
+
+        public Animator animator;
         
         private void Start()
         {
@@ -343,9 +345,11 @@ namespace InDevelopment.Mechanics.Player
                 controller.moveDirection.y > 0)
             {
                 isMoving = true;
+                animator.SetBool("walking",true);
             }
             else
             {
+                animator.SetBool("walking",false);
                 isMoving = false;
             }
 
