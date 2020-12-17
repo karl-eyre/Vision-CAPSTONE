@@ -46,6 +46,18 @@ namespace InDevelopment.Alex.EnemyStates
                 enemyController.MoveToTarget(target);
                 LookAtPlayer();
             }
+            else if(CanSeePlayer())
+            {
+                if (!settingTarget)
+                {
+                    settingTarget = true;
+                    StartCoroutine(SetTargetPos());
+                }
+
+                enemyController.agent.speed += Time.deltaTime;
+                enemyController.MoveToTarget(target);
+                LookAtPlayer();
+            }
             else
             {
                 if (stateManager.currentEnemyState != enemyController.startingState)
