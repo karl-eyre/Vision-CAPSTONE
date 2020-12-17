@@ -32,7 +32,8 @@ namespace InDevelopment.Alex.EnemyStates
         {
             base.Execute();
 
-            if (timer > 0)
+            
+            if (timer > 0 && !CanSeePlayer())
             {
                 timer -= Time.deltaTime;
                 if (!settingTarget)

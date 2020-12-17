@@ -311,7 +311,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         IEnumerator PickUpObject()
         {
             animator.SetBool("grabbing", true);
-            yield return new WaitForSeconds(grabClip.length - 0.1f);
+            yield return new WaitForSeconds(grabClip.length - 0.5f);
             animator.SetBool("grabbing", false);
             hasObjectToThrow = true;
             throwableObjectPrefab.GetComponent<ThrowableObject>().thrown = false;
@@ -322,7 +322,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         IEnumerator ThrowObj(Rigidbody rb, GameObject throwableObject)
         {
             animator.SetBool("throwing", true);
-            yield return new WaitForSeconds(throwClip.length - 0.1f);
+            yield return new WaitForSeconds(throwClip.length - 0.4f);
             animator.SetBool("throwing", false);
             armMesh.SetActive(false);
 
