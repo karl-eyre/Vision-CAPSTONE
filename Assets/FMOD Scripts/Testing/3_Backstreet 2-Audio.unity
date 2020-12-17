@@ -25161,7 +25161,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &786445115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39973,6 +39973,7 @@ MonoBehaviour:
   overideAttenuation: 1
   OverrideMinDistance: 31.45
   OverrideMaxDistance: 126.3
+  detectionM: {fileID: 0}
 --- !u!65 &1293470578
 BoxCollider:
   m_ObjectHideFlags: 0
