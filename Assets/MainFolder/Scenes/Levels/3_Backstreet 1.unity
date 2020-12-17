@@ -204,6 +204,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrashD
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a78f28b70a8a3dd42930613e76ff868c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a78f28b70a8a3dd42930613e76ff868c, type: 3}
 --- !u!4 &10608091 stripped
@@ -548,6 +553,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cement_WallS Variant (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5798190561733510067, guid: d8439c8d2b6066c4f947819f0b650286,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 7362283956784394656, guid: d8439c8d2b6066c4f947819f0b650286,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -611,7 +621,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34698
+  m_Name: pb_Mesh146428
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -886,6 +896,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PalleteC Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013939304692033321, guid: ae590ba1d05b42241a31f543c76a0328,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 7290927814385816890, guid: ae590ba1d05b42241a31f543c76a0328,
         type: 3}
@@ -1355,7 +1370,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34404
+  m_Name: pb_Mesh146122
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1527,7 +1542,7 @@ GameObject:
   - component: {fileID: 105467880}
   m_Layer: 8
   m_Name: Floor3
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -1736,7 +1751,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 02fad187b72dca5468a8f06541d24c9b, type: 2}
+  - {fileID: 2100000, guid: 214591d4935c2964a85eff75a867635c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1771,7 +1786,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34466
+  m_Name: pb_Mesh146184
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2110,6 +2125,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 7586024887797976000, guid: e25f8fc7bc4cbb54981b718c3d96bd8e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e25f8fc7bc4cbb54981b718c3d96bd8e, type: 3}
 --- !u!1 &126603326 stripped
@@ -2191,6 +2211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cement_Wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7392344330529105496, guid: f6bc5efba6229cc469fdb8d37d650c21,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6bc5efba6229cc469fdb8d37d650c21, type: 3}
 --- !u!4 &128760073 stripped
@@ -2214,7 +2239,7 @@ GameObject:
   - component: {fileID: 131001080}
   m_Layer: 0
   m_Name: Garage_Wallflr
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -2317,7 +2342,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 214591d4935c2964a85eff75a867635c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2597,9 +2622,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 144752144}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Pallets
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2737,6 +2762,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cement_WallS Variant (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798190561733510067, guid: d8439c8d2b6066c4f947819f0b650286,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 7362283956784394656, guid: d8439c8d2b6066c4f947819f0b650286,
         type: 3}
@@ -2948,7 +2978,7 @@ GameObject:
   - component: {fileID: 158456678}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -3051,7 +3081,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 214591d4935c2964a85eff75a867635c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3100,7 +3130,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34422
+  m_Name: pb_Mesh146140
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3332,7 +3362,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35222
+  m_Name: pb_Mesh146972
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4031,7 +4061,7 @@ GameObject:
   - component: {fileID: 258636117}
   m_Layer: 14
   m_Name: Baricade1
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -4343,7 +4373,7 @@ GameObject:
   - component: {fileID: 276669561}
   m_Layer: 0
   m_Name: StreetLight
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6120,6 +6150,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cement_Wall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7392344330529105496, guid: f6bc5efba6229cc469fdb8d37d650c21,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 9127164821553107588, guid: f6bc5efba6229cc469fdb8d37d650c21,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6193,6 +6228,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PalleteA (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064185329130570559, guid: b678aa2e2dfad4e44ab31ce634bf30e2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b678aa2e2dfad4e44ab31ce634bf30e2, type: 3}
@@ -6372,11 +6412,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a68947bb82f2b6142b4c2b3e9545f95a, type: 2}
+      objectReference: {fileID: 2100000, guid: 8655920fce7a33045b3ce07e3812dfee, type: 2}
     - target: {fileID: 6013939304692033321, guid: ae590ba1d05b42241a31f543c76a0328,
         type: 3}
       propertyPath: m_Name
       value: PalleteC Variant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013939304692033321, guid: ae590ba1d05b42241a31f543c76a0328,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 7290927814385816890, guid: ae590ba1d05b42241a31f543c76a0328,
         type: 3}
@@ -6468,7 +6513,7 @@ GameObject:
   - component: {fileID: 429991442}
   m_Layer: 14
   m_Name: Baricade5
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -7047,6 +7092,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cement_WallS Variant (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5798190561733510067, guid: d8439c8d2b6066c4f947819f0b650286,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 7362283956784394656, guid: d8439c8d2b6066c4f947819f0b650286,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7211,7 +7261,7 @@ GameObject:
   - component: {fileID: 490239651}
   m_Layer: 0
   m_Name: Models
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7432,7 +7482,7 @@ GameObject:
   - component: {fileID: 508101769}
   m_Layer: 8
   m_Name: Floor1
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -7640,7 +7690,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 02fad187b72dca5468a8f06541d24c9b, type: 2}
+  - {fileID: 2100000, guid: 214591d4935c2964a85eff75a867635c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8225,6 +8275,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Garage_Wall Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4633215220500497615, guid: d5d0edf3b6decb542905c74260941682,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 8509311154215679708, guid: d5d0edf3b6decb542905c74260941682,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8390,6 +8445,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TrashC
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3019e78c59b51844e8d8083852ca328b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3019e78c59b51844e8d8083852ca328b, type: 3}
@@ -8747,7 +8807,7 @@ GameObject:
   - component: {fileID: 561697870}
   m_Layer: 14
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
@@ -8795,7 +8855,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34606
+  m_Name: pb_Mesh146336
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8958,7 +9018,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34520
+  m_Name: pb_Mesh146240
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9457,7 +9517,7 @@ GameObject:
   - component: {fileID: 612173556}
   m_Layer: 8
   m_Name: Computer_Storeflr
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -9560,7 +9620,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 214591d4935c2964a85eff75a867635c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9708,7 +9768,7 @@ GameObject:
   - component: {fileID: 626104163}
   m_Layer: 14
   m_Name: Baricade2
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -10221,7 +10281,7 @@ GameObject:
   - component: {fileID: 660415705}
   m_Layer: 8
   m_Name: Floor5
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -10430,7 +10490,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 02fad187b72dca5468a8f06541d24c9b, type: 2}
+  - {fileID: 2100000, guid: 214591d4935c2964a85eff75a867635c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10470,7 +10530,7 @@ GameObject:
   - component: {fileID: 663635852}
   m_Layer: 14
   m_Name: Trash_Bags
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10613,6 +10673,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cement_WallS Variant (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798190561733510067, guid: d8439c8d2b6066c4f947819f0b650286,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 7362283956784394656, guid: d8439c8d2b6066c4f947819f0b650286,
         type: 3}
@@ -10917,7 +10982,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34716
+  m_Name: pb_Mesh146446
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11230,6 +11295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PalleteA Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064185329130570559, guid: b678aa2e2dfad4e44ab31ce634bf30e2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b678aa2e2dfad4e44ab31ce634bf30e2, type: 3}
@@ -11682,6 +11752,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cement_Wall Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7392344330529105496, guid: f6bc5efba6229cc469fdb8d37d650c21,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6bc5efba6229cc469fdb8d37d650c21, type: 3}
 --- !u!4 &759211206 stripped
@@ -11895,6 +11970,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalleteA (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4064185329130570559, guid: b678aa2e2dfad4e44ab31ce634bf30e2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b678aa2e2dfad4e44ab31ce634bf30e2, type: 3}
 --- !u!4 &784311251 stripped
@@ -11915,7 +11995,7 @@ GameObject:
   - component: {fileID: 786445115}
   m_Layer: 0
   m_Name: Global Volume
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11972,7 +12052,7 @@ GameObject:
   - component: {fileID: 797870466}
   m_Layer: 8
   m_Name: Computer_Storeflr (1)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -12089,7 +12169,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 214591d4935c2964a85eff75a867635c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12283,7 +12363,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34130
+  m_Name: pb_Mesh145838
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12541,7 +12621,7 @@ GameObject:
   - component: {fileID: 837401169}
   m_Layer: 0
   m_Name: Food_VWindows
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12771,7 +12851,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34658
+  m_Name: pb_Mesh146388
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12934,7 +13014,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34176
+  m_Name: pb_Mesh145886
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13196,7 +13276,7 @@ GameObject:
   - component: {fileID: 903726645}
   m_Layer: 8
   m_Name: Floor2
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -13405,7 +13485,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 02fad187b72dca5468a8f06541d24c9b, type: 2}
+  - {fileID: 2100000, guid: 214591d4935c2964a85eff75a867635c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13445,7 +13525,7 @@ GameObject:
   - component: {fileID: 904312285}
   m_Layer: 14
   m_Name: Baricades
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13558,6 +13638,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Backstreet
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 5a1e0e4bbe77a7f439bd49660f746891,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a1e0e4bbe77a7f439bd49660f746891, type: 3}
 --- !u!4 &913437629 stripped
@@ -13583,7 +13668,7 @@ GameObject:
   - component: {fileID: 915221717}
   m_Layer: 14
   m_Name: Dumpsters
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13718,7 +13803,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34956
+  m_Name: pb_Mesh146694
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13881,7 +13966,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35066
+  m_Name: pb_Mesh146810
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14120,6 +14205,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrashA
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 21d3e0a7c61ff9145b3e92f07bab72e1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21d3e0a7c61ff9145b3e92f07bab72e1, type: 3}
 --- !u!1 &924769612
@@ -14137,7 +14227,7 @@ GameObject:
   - component: {fileID: 924769614}
   m_Layer: 8
   m_Name: Floor6
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -14601,6 +14691,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cement_WallS Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5798190561733510067, guid: d8439c8d2b6066c4f947819f0b650286,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 7362283956784394656, guid: d8439c8d2b6066c4f947819f0b650286,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14774,7 +14869,7 @@ GameObject:
   - component: {fileID: 950030535}
   m_Layer: 0
   m_Name: Hotel_Bflr
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14926,7 +15021,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34148
+  m_Name: pb_Mesh145856
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15095,15 +15190,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Food_VTop (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 983117042777262047, guid: 4e7c48a9f81662640997d2cd2524e8e1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 1556114280092087043, guid: 4e7c48a9f81662640997d2cd2524e8e1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bf159d37a477efe40b74ee744d2fed24, type: 2}
+      objectReference: {fileID: 2100000, guid: 8aa6f134cb7458d478b124bc36bca415, type: 2}
     - target: {fileID: 4323423091604190668, guid: 4e7c48a9f81662640997d2cd2524e8e1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.600002
+      value: 29.6
       objectReference: {fileID: 0}
     - target: {fileID: 4323423091604190668, guid: 4e7c48a9f81662640997d2cd2524e8e1,
         type: 3}
@@ -15113,7 +15213,7 @@ PrefabInstance:
     - target: {fileID: 4323423091604190668, guid: 4e7c48a9f81662640997d2cd2524e8e1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11
+      value: -11.4
       objectReference: {fileID: 0}
     - target: {fileID: 4323423091604190668, guid: 4e7c48a9f81662640997d2cd2524e8e1,
         type: 3}
@@ -15239,6 +15339,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4f7870cdde798a64da4cdcba8b7be9d6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f7870cdde798a64da4cdcba8b7be9d6, type: 3}
 --- !u!4 &968792165 stripped
@@ -15349,7 +15454,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34992
+  m_Name: pb_Mesh146734
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15955,11 +16060,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a68947bb82f2b6142b4c2b3e9545f95a, type: 2}
+      objectReference: {fileID: 2100000, guid: 8655920fce7a33045b3ce07e3812dfee, type: 2}
     - target: {fileID: 6013939304692033321, guid: ae590ba1d05b42241a31f543c76a0328,
         type: 3}
       propertyPath: m_Name
       value: PalleteC (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013939304692033321, guid: ae590ba1d05b42241a31f543c76a0328,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 7290927814385816890, guid: ae590ba1d05b42241a31f543c76a0328,
         type: 3}
@@ -16478,6 +16588,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalleteB (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815620386952166713, guid: f77c36c6be20c474bb29f06d08523cb5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 8399174696091733802, guid: f77c36c6be20c474bb29f06d08523cb5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16730,6 +16845,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: End_Wall Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8645763617034549909, guid: 1d788ed8e9cb1264fb2888a4bc9c6606,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d788ed8e9cb1264fb2888a4bc9c6606, type: 3}
 --- !u!1001 &1030515336
@@ -16828,7 +16948,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35346
+  m_Name: pb_Mesh147096
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17539,7 +17659,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34442
+  m_Name: pb_Mesh146160
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18593,6 +18713,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory_B Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8072710570959598263, guid: e754ff0350099b2469db34c39057ecd5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e754ff0350099b2469db34c39057ecd5, type: 3}
 --- !u!1001 &1210059974
@@ -18720,7 +18845,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35488
+  m_Name: pb_Mesh147240
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19336,7 +19461,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35410
+  m_Name: pb_Mesh147160
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19508,7 +19633,7 @@ GameObject:
   - component: {fileID: 1238905372}
   m_Layer: 8
   m_Name: Floor4
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -20323,7 +20448,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 02fad187b72dca5468a8f06541d24c9b, type: 2}
+  - {fileID: 2100000, guid: 214591d4935c2964a85eff75a867635c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20448,7 +20573,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34850
+  m_Name: pb_Mesh146588
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20717,6 +20842,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chain_Fence (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5102683126417424592, guid: 72546d6359cc50741bfd9a17dfd20142,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 8109582822184547011, guid: 72546d6359cc50741bfd9a17dfd20142,
         type: 3}
@@ -21129,7 +21259,7 @@ GameObject:
   - component: {fileID: 1279915666}
   m_Layer: 15
   m_Name: High_Platforms
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21331,7 +21461,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34894
+  m_Name: pb_Mesh146632
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21494,7 +21624,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34814
+  m_Name: pb_Mesh146550
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22060,6 +22190,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cement_WallS Variant (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5798190561733510067, guid: d8439c8d2b6066c4f947819f0b650286,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 7362283956784394656, guid: d8439c8d2b6066c4f947819f0b650286,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22123,7 +22258,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34316
+  m_Name: pb_Mesh146032
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -23022,7 +23157,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34870
+  m_Name: pb_Mesh146608
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -24204,7 +24339,7 @@ GameObject:
   - component: {fileID: 1492851644}
   m_Layer: 14
   m_Name: Trash_Cans
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24741,7 +24876,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35102
+  m_Name: pb_Mesh146850
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -25073,6 +25208,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPostProcessingVolume
       objectReference: {fileID: 0}
+    - target: {fileID: 2625139567265977920, guid: dce1783d052a91a41835587238c075a7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 2625139567265977922, guid: dce1783d052a91a41835587238c075a7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25141,11 +25281,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a68947bb82f2b6142b4c2b3e9545f95a, type: 2}
+      objectReference: {fileID: 2100000, guid: 8655920fce7a33045b3ce07e3812dfee, type: 2}
     - target: {fileID: 6013939304692033321, guid: ae590ba1d05b42241a31f543c76a0328,
         type: 3}
       propertyPath: m_Name
       value: PalleteC Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013939304692033321, guid: ae590ba1d05b42241a31f543c76a0328,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 7290927814385816890, guid: ae590ba1d05b42241a31f543c76a0328,
         type: 3}
@@ -26079,7 +26224,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34480
+  m_Name: pb_Mesh146198
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26242,7 +26387,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35234
+  m_Name: pb_Mesh146984
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26405,7 +26550,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34210
+  m_Name: pb_Mesh145922
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26568,7 +26713,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35134
+  m_Name: pb_Mesh146882
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -27350,6 +27495,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory_A (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2098345209363562604, guid: c21825eeeb0016a4c980c87412021772,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 3118047856440963711, guid: c21825eeeb0016a4c980c87412021772,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27474,6 +27624,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalleteA (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4064185329130570559, guid: b678aa2e2dfad4e44ab31ce634bf30e2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b678aa2e2dfad4e44ab31ce634bf30e2, type: 3}
 --- !u!4 &1645483543 stripped
@@ -27497,7 +27652,7 @@ GameObject:
   - component: {fileID: 1648931110}
   m_Layer: 14
   m_Name: Baricade8
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -27885,6 +28040,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Start_Door
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 37deb6c18f7939a4783b5d531e8c897c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37deb6c18f7939a4783b5d531e8c897c, type: 3}
 --- !u!4 &1653927915 stripped
@@ -27979,7 +28139,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34748
+  m_Name: pb_Mesh146480
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -28486,7 +28646,7 @@ GameObject:
   - component: {fileID: 1698403680}
   m_Layer: 18
   m_Name: ReverbZone
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29510,7 +29670,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35370
+  m_Name: pb_Mesh147120
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -29798,7 +29958,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35192
+  m_Name: pb_Mesh146942
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -29961,7 +30121,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-21308
+  m_Name: pb_Mesh-141642
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -30300,7 +30460,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35448
+  m_Name: pb_Mesh147198
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -30724,7 +30884,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35032
+  m_Name: pb_Mesh146776
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -30892,7 +31052,7 @@ GameObject:
   - component: {fileID: 1776471633}
   m_Layer: 0
   m_Name: ThrowableObj
-  m_TagString: Untagged
+  m_TagString: ThrowableObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31065,6 +31225,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TrashB
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 513612a1436afd34788f48224ed495b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 513612a1436afd34788f48224ed495b5, type: 3}
@@ -31826,6 +31991,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cement_WallS Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798190561733510067, guid: d8439c8d2b6066c4f947819f0b650286,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 7362283956784394656, guid: d8439c8d2b6066c4f947819f0b650286,
         type: 3}
@@ -32876,7 +33046,7 @@ GameObject:
   - component: {fileID: 1926166876}
   m_Layer: 14
   m_Name: Food_Vmodels
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33397,7 +33567,7 @@ GameObject:
   - component: {fileID: 1976593170}
   m_Layer: 8
   m_Name: Floors
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33487,7 +33657,7 @@ GameObject:
   - component: {fileID: 1987665684}
   m_Layer: 14
   m_Name: Cars
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33920,7 +34090,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34760
+  m_Name: pb_Mesh146496
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -34097,7 +34267,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: bd5ba80e1d1997d41bb5aa85e0802a51,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.0416784
+      value: 2.057
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: bd5ba80e1d1997d41bb5aa85e0802a51,
         type: 3}
@@ -34159,6 +34329,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Srt_BgBuilding_A_Base
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bd5ba80e1d1997d41bb5aa85e0802a51,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd5ba80e1d1997d41bb5aa85e0802a51, type: 3}
 --- !u!4 &2008467101 stripped
@@ -34173,7 +34348,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35006
+  m_Name: pb_Mesh146748
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -34516,6 +34691,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chain_Fence Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5102683126417424592, guid: 72546d6359cc50741bfd9a17dfd20142,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 6839992876851508236, guid: 72546d6359cc50741bfd9a17dfd20142,
         type: 3}
@@ -35214,7 +35394,7 @@ GameObject:
   - component: {fileID: 2061088094}
   m_Layer: 14
   m_Name: Sewer
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35523,7 +35703,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35500
+  m_Name: pb_Mesh147252
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -35790,6 +35970,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory_B
       objectReference: {fileID: 0}
+    - target: {fileID: 8072710570959598263, guid: e754ff0350099b2469db34c39057ecd5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e754ff0350099b2469db34c39057ecd5, type: 3}
 --- !u!1001 &349593181771437264
@@ -35876,6 +36061,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: End_Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 8645763617034549909, guid: 1d788ed8e9cb1264fb2888a4bc9c6606,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d788ed8e9cb1264fb2888a4bc9c6606, type: 3}
 --- !u!1001 &958246523159509821
@@ -35940,10 +36130,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7372774361292937971, guid: 0f574f6e8b1053d4dbaae5ff38075620,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7f695caf303f58446ab511900cb84fc1, type: 2}
     - target: {fileID: 9110092878812229167, guid: 0f574f6e8b1053d4dbaae5ff38075620,
         type: 3}
       propertyPath: m_Name
       value: Start_Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110092878812229167, guid: 0f574f6e8b1053d4dbaae5ff38075620,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f574f6e8b1053d4dbaae5ff38075620, type: 3}
@@ -36032,6 +36232,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PalleteB
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815620386952166713, guid: f77c36c6be20c474bb29f06d08523cb5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 8399174696091733802, guid: f77c36c6be20c474bb29f06d08523cb5,
         type: 3}
@@ -36197,6 +36402,44 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 7586024887797976000, guid: e25f8fc7bc4cbb54981b718c3d96bd8e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176900290917351196, guid: e25f8fc7bc4cbb54981b718c3d96bd8e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[10]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43043233911053d40920f747ae696f9d, type: 2}
+    - target: {fileID: 8176900290917351196, guid: e25f8fc7bc4cbb54981b718c3d96bd8e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43043233911053d40920f747ae696f9d, type: 2}
+    - target: {fileID: 8176900290917351196, guid: e25f8fc7bc4cbb54981b718c3d96bd8e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 8480267899196574645, guid: 7aef740c4136e3141ac83daf633dd4bc,
+        type: 3}
+    - target: {fileID: 8176900290917351196, guid: e25f8fc7bc4cbb54981b718c3d96bd8e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43043233911053d40920f747ae696f9d, type: 2}
+    - target: {fileID: 8176900290917351196, guid: e25f8fc7bc4cbb54981b718c3d96bd8e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: -42491600810393268, guid: 7aef740c4136e3141ac83daf633dd4bc,
+        type: 3}
+    - target: {fileID: 8176900290917351196, guid: e25f8fc7bc4cbb54981b718c3d96bd8e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 1150922412438403536, guid: 7aef740c4136e3141ac83daf633dd4bc,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e25f8fc7bc4cbb54981b718c3d96bd8e, type: 3}
 --- !u!1001 &2836969841832060347
@@ -36215,6 +36458,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crate_Rubbish
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088616128670423491, guid: aec87afd3125eee448dce3976ee99faa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 7071854026694568912, guid: aec87afd3125eee448dce3976ee99faa,
         type: 3}
@@ -36306,6 +36554,11 @@ PrefabInstance:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6431541085472207158, guid: 4216ca0dc2fd6b04f801c762f3a17c0b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 8005769915828028197, guid: 4216ca0dc2fd6b04f801c762f3a17c0b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36394,11 +36647,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a68947bb82f2b6142b4c2b3e9545f95a, type: 2}
+      objectReference: {fileID: 2100000, guid: 8655920fce7a33045b3ce07e3812dfee, type: 2}
     - target: {fileID: 6013939304692033321, guid: ae590ba1d05b42241a31f543c76a0328,
         type: 3}
       propertyPath: m_Name
       value: PalleteC
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013939304692033321, guid: ae590ba1d05b42241a31f543c76a0328,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 7290927814385816890, guid: ae590ba1d05b42241a31f543c76a0328,
         type: 3}
@@ -36474,11 +36732,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 43043233911053d40920f747ae696f9d, type: 2}
+      objectReference: {fileID: 2100000, guid: 7f695caf303f58446ab511900cb84fc1, type: 2}
     - target: {fileID: 4633215220500497615, guid: d5d0edf3b6decb542905c74260941682,
         type: 3}
       propertyPath: m_Name
       value: Garage_Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633215220500497615, guid: d5d0edf3b6decb542905c74260941682,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 8509311154215679708, guid: d5d0edf3b6decb542905c74260941682,
         type: 3}
@@ -36554,6 +36817,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 4029821318727806829, guid: d600279148affb9479de5df992017baa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 4482429806576300659, guid: d600279148affb9479de5df992017baa,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -36564,15 +36832,30 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 4507492060999578922, guid: d600279148affb9479de5df992017baa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 4569639129840417398, guid: d600279148affb9479de5df992017baa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569639129840417398, guid: d600279148affb9479de5df992017baa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935738897353876396, guid: d600279148affb9479de5df992017baa,
         type: 3}
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4935738897353876396, guid: d600279148affb9479de5df992017baa,
         type: 3}
-      propertyPath: m_Layer
-      value: 14
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 5069936888563215299, guid: d600279148affb9479de5df992017baa,
         type: 3}
@@ -36584,40 +36867,85 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 5069936888563215299, guid: d600279148affb9479de5df992017baa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 5110980508210324817, guid: d600279148affb9479de5df992017baa,
         type: 3}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110980508210324817, guid: d600279148affb9479de5df992017baa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 5313946788343227840, guid: d600279148affb9479de5df992017baa,
         type: 3}
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 5313946788343227840, guid: d600279148affb9479de5df992017baa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469158898602465559, guid: d600279148affb9479de5df992017baa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 6519596657129507463, guid: d600279148affb9479de5df992017baa,
         type: 3}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519596657129507463, guid: d600279148affb9479de5df992017baa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 6993119436850636610, guid: d600279148affb9479de5df992017baa,
         type: 3}
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 6993119436850636610, guid: d600279148affb9479de5df992017baa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 7503426721229266735, guid: d600279148affb9479de5df992017baa,
         type: 3}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7503426721229266735, guid: d600279148affb9479de5df992017baa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 7550596829185749790, guid: d600279148affb9479de5df992017baa,
         type: 3}
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 7550596829185749790, guid: d600279148affb9479de5df992017baa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 8041827251876290232, guid: d600279148affb9479de5df992017baa,
         type: 3}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8041827251876290232, guid: d600279148affb9479de5df992017baa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 8072510355141777872, guid: d600279148affb9479de5df992017baa,
         type: 3}
@@ -36679,10 +37007,20 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 8517492623575033902, guid: d600279148affb9479de5df992017baa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 9212503246223351797, guid: d600279148affb9479de5df992017baa,
         type: 3}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212503246223351797, guid: d600279148affb9479de5df992017baa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d600279148affb9479de5df992017baa, type: 3}
@@ -36697,6 +37035,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cement_WallS
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798190561733510067, guid: d8439c8d2b6066c4f947819f0b650286,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 7362283956784394656, guid: d8439c8d2b6066c4f947819f0b650286,
         type: 3}
@@ -36918,6 +37261,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalleteA
       objectReference: {fileID: 0}
+    - target: {fileID: 4064185329130570559, guid: b678aa2e2dfad4e44ab31ce634bf30e2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b678aa2e2dfad4e44ab31ce634bf30e2, type: 3}
 --- !u!1001 &5486021016183864782
@@ -37011,6 +37359,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 490239651}
     m_Modifications:
+    - target: {fileID: 299708531074988763, guid: f5616c28d64179e43872b01572a4e69a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 631604373178376998, guid: f5616c28d64179e43872b01572a4e69a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37066,10 +37419,65 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 632687566368901781, guid: f5616c28d64179e43872b01572a4e69a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379925042189239244, guid: f5616c28d64179e43872b01572a4e69a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475968111948876925, guid: f5616c28d64179e43872b01572a4e69a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
+    - target: {fileID: 2180963756855007180, guid: f5616c28d64179e43872b01572a4e69a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722414183564409877, guid: f5616c28d64179e43872b01572a4e69a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751582806247478759, guid: f5616c28d64179e43872b01572a4e69a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919984768832030890, guid: f5616c28d64179e43872b01572a4e69a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 4510549693292843317, guid: f5616c28d64179e43872b01572a4e69a,
         type: 3}
       propertyPath: m_Name
       value: Computer_Store
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510549693292843317, guid: f5616c28d64179e43872b01572a4e69a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789750719575378054, guid: f5616c28d64179e43872b01572a4e69a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974560657852308765, guid: f5616c28d64179e43872b01572a4e69a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033252939384137607, guid: f5616c28d64179e43872b01572a4e69a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 6861023389240481569, guid: f5616c28d64179e43872b01572a4e69a,
         type: 3}
@@ -37082,6 +37490,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -4913169453087345278, guid: e1304faf653296e49b0dba81454d6cdb,
         type: 3}
+    - target: {fileID: 7870227879230739155, guid: f5616c28d64179e43872b01572a4e69a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5616c28d64179e43872b01572a4e69a, type: 3}
 --- !u!1001 &5967605591073034474
@@ -37300,6 +37713,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cement_Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 7392344330529105496, guid: f6bc5efba6229cc469fdb8d37d650c21,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6bc5efba6229cc469fdb8d37d650c21, type: 3}
 --- !u!1001 &6786414337357361394
@@ -37494,6 +37912,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chain_Fence
       objectReference: {fileID: 0}
+    - target: {fileID: 5102683126417424592, guid: 72546d6359cc50741bfd9a17dfd20142,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 8109582822184547011, guid: 72546d6359cc50741bfd9a17dfd20142,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37658,6 +38081,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Conv_Store
       objectReference: {fileID: 0}
+    - target: {fileID: 1919188671395700971, guid: 69c79f6ba8fe05c44b6b2d9fd48d06ba,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 3240632630842512120, guid: 69c79f6ba8fe05c44b6b2d9fd48d06ba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37726,6 +38154,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Factory_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098345209363562604, guid: c21825eeeb0016a4c980c87412021772,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 3118047856440963711, guid: c21825eeeb0016a4c980c87412021772,
         type: 3}
@@ -37985,6 +38418,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hotel_B
       objectReference: {fileID: 0}
+    - target: {fileID: 580094257012941786, guid: 2bd56166a9049944f90f3297be75fbf5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 4492254315869032905, guid: 2bd56166a9049944f90f3297be75fbf5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38054,11 +38492,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Food_VTop
       objectReference: {fileID: 0}
+    - target: {fileID: 983117042777262047, guid: 4e7c48a9f81662640997d2cd2524e8e1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 1556114280092087043, guid: 4e7c48a9f81662640997d2cd2524e8e1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bf159d37a477efe40b74ee744d2fed24, type: 2}
+      objectReference: {fileID: 2100000, guid: 8aa6f134cb7458d478b124bc36bca415, type: 2}
     - target: {fileID: 4323423091604190668, guid: 4e7c48a9f81662640997d2cd2524e8e1,
         type: 3}
       propertyPath: m_LocalPosition.x
