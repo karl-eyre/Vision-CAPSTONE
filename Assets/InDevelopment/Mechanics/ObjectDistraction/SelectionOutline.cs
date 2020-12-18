@@ -94,28 +94,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                     }
                 }
             }
-
-            // teleportIsHit = Physics.Raycast(ray, out hit, teleportRange, teleportAbility.levelLayer);
-
-            // if (teleportIsHit)
-            // {
-            //     if (!hit.collider.CompareTag("ThrowableObjects"))
-            //     {
-            //         // return;
-            //     }
-            //     else
-            //     {
-            //         var selection = teleportAbility.targetObj;
-            //         selection.GetComponent<VisionEffectActivation>().isSelected = true;
-            //         var selectionRenderer = hit.collider.gameObject.GetComponent<Renderer>();
-            //         if (selectionRenderer != null)
-            //         {
-            //             selectionRenderer.material = teleportHighlightMat;
-            //             pickupSelected = false;
-            //         }
-            //         teleportObject = selection;
-            //     }
-            // }
         }
 
         private void HighlightPickupObject()
@@ -133,12 +111,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
             if (pickupIsHit)
             {
-                if (!hit.collider.CompareTag("ThrowableObjects"))
-                {
-                    pickupSelected = false;
-                    // return;
-                }
-                else
+                if (hit.collider.CompareTag("ThrowableObjects"))
                 {
                     var selection = hit.collider.gameObject;
                     selection.GetComponent<VisionEffectActivation>().isSelected = true;
@@ -150,6 +123,10 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                     }
 
                     selectedObject = selection;
+                }
+                else
+                {
+                    pickupSelected = false;
                 }
             }
             else
