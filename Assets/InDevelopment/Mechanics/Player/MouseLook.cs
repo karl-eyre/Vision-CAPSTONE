@@ -38,6 +38,8 @@ namespace InDevelopment.Mechanics.Player
 
         private void Start()
         {
+            Cursor.visible = false;
+
             SetUpControls();
             if (mouseLocked)
             {
