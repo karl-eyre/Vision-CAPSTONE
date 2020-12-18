@@ -67,7 +67,6 @@ namespace InDevelopment.Mechanics.Menu
         public void ExitGame()
         {
             Application.Quit();
-            EditorApplication.isPlaying = false;
             Debug.Log("We Finished");
         }
     }
