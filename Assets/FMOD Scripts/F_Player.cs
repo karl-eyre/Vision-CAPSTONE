@@ -42,8 +42,7 @@ public class F_Player : MonoBehaviour
         VisionAbilityController.visionEnded += VisionAbilityEnd;
         TeleportAbility.teleportStarted += TeleportStart;
         TeleportAbility.teleportTriggered += TeleportAbilitySoundPlay;
-
-        // wouldn't let me play the game because it was missing
+        
     }
 
     private void OnTriggerEnter(Collider other)
