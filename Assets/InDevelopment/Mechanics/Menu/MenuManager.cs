@@ -62,6 +62,7 @@ namespace InDevelopment.Mechanics.Menu
                 Debug.Log("paused");
                 paused = true;
                 pauseMenu.SetActive(true);
+                Cursor.visible = true;
                 playerUI.SetActive(false);
                 //pauseBackground.SetActive(false);
                 Cursor.lockState = CursorLockMode.Confined;
@@ -75,6 +76,7 @@ namespace InDevelopment.Mechanics.Menu
         {
             pausedSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             pauseMenu.SetActive(false);
+            Cursor.visible = false;
             playerUI.SetActive(true);
             Debug.Log("unpaused");
             //pauseBackground.SetActive(false);

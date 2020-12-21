@@ -791,7 +791,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 3, z: 0.6}
+  m_Size: {x: 0.8, y: 3, z: 0.8}
   m_Center: {x: 0, y: 1.6, z: 0}
 --- !u!1 &1478474307715817813
 GameObject:
@@ -1471,6 +1471,7 @@ MonoBehaviour:
   airSpeedLimit: 8
   rbVelocity: {x: 0, y: 0, z: 0}
   animator: {fileID: 3546983313003500119}
+  jumping: 0
 --- !u!114 &7493532745831029287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1593,7 +1594,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.18598023, z: 0.5}
+  m_Size: {x: 0.4, y: 0.18598023, z: 0.4}
   m_Center: {x: 0, y: -0.07299012, z: 0}
 --- !u!1001 &5554277930665334403
 PrefabInstance:

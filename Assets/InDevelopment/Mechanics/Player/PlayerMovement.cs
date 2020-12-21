@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Threading;
 using InDevelopment.Mechanics.ObjectDistraction;
 using InDevelopment.Mechanics.VisionAbility;
@@ -103,7 +104,8 @@ namespace InDevelopment.Mechanics.Player
         public Vector3 rbVelocity;
 
         public Animator animator;
-        
+        public bool jumping;
+
         private void Start()
         {
             SetupVariables();
@@ -239,8 +241,8 @@ namespace InDevelopment.Mechanics.Player
 
         private bool IsGrounded()
         {
-            Vector3 boxColliderTransform = new Vector3(fricStub.transform.localScale.x / 3,
-                fricStub.transform.localScale.y / 4, fricStub.transform.localScale.z / 3);
+            Vector3 boxColliderTransform = new Vector3(fricStub.transform.localScale.x / 5,
+                fricStub.transform.localScale.y / 4, fricStub.transform.localScale.z / 5);
             Collider[] cols = Physics.OverlapBox(fricStub.transform.position, boxColliderTransform, Quaternion.identity,
                 playerMask);
 
@@ -258,12 +260,19 @@ namespace InDevelopment.Mechanics.Player
 
         public void Jump(InputAction.CallbackContext obj)
         {
-            if (IsGrounded() && !isCrouching)
+            if (IsGrounded() && !isCrouching && !jumping)
             {
-                float airSpeed = moveSpeed;
-                // airSpeedLimit = movement.normalized.magnitude * (airSpeed * Time.fixedDeltaTime);
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                jumping = true;
+                StartCoroutine(JumpUp());
             }
+        }
+
+        private IEnumerator JumpUp()
+        {
+            float airSpeed = moveSpeed;
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            yield return new WaitForSeconds(0.5f);
+            jumping = false;
         }
 
         private void ApplyMovement()
