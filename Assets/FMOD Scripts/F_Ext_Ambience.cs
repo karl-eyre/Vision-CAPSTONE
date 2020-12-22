@@ -21,10 +21,9 @@ public class F_Ext_Ambience : MonoBehaviour
             extAmb.setParameterByName("NoSiren", 1, true);
         }
     }
-    
-
     private void OnDestroy()
     {
         extAmb.release();
+        extAmb.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 }
