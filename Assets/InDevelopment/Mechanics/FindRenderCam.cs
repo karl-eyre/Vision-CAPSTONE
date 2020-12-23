@@ -13,6 +13,7 @@ namespace InDevelopment.Mechanics
 
         public void Awake()
         {
+            //finds the render camera for the menu manager and the ui elements
             cam = FindObjectOfType<Camera>();
             menuUI.worldCamera = cam;
             playerUI.worldCamera = cam;

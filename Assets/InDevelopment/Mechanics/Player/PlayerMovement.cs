@@ -165,6 +165,7 @@ namespace InDevelopment.Mechanics.Player
         //works but hacky because it isn't using events
         private void CrouchCheck()
         {
+            //unfortunately I couldn't figure out the way to use the hold button in the new input system
             if (Keyboard.current.cKey.isPressed || Keyboard.current.ctrlKey.isPressed)
             {
                 Crouch();
@@ -179,13 +180,13 @@ namespace InDevelopment.Mechanics.Player
         {
             if (!isCrouching)
             {
+                //simply checking if the player is mid air and if so move ur legs up rather than the head down
                 if (isGrounded)
                 {
                     isCrouching = true;
                     moveSpeed = crouchMoveSpeed;
                     currentNoiseLevel = crouchNoiseLevel;
                     transform.localScale = new Vector3(1, transform.localScale.y / 2f, 1);
-                    // visual.transform.localScale = new Vector3(1, transform.localScale.y / 2f, 1);
                 }
                 else
                 {
@@ -194,9 +195,6 @@ namespace InDevelopment.Mechanics.Player
                     currentNoiseLevel = crouchNoiseLevel;
                     transform.localScale = new Vector3(1, transform.localScale.y / 2f, 1);
                     transform.position = new Vector3(transform.position.x, transform.position.y + 1.6f, transform.position.z);
-                    // visual.transform.localScale = new Vector3(1, transform.localScale.y / 2f, 1);
-                    // visual.transform.position = new Vector3(transform.position.x, transform.position.y + 1.6f,
-                    //     transform.position.z);
                 }
             }
         }
@@ -207,17 +205,15 @@ namespace InDevelopment.Mechanics.Player
             {
                 bool canStand1 =
                     !Physics.Raycast(transform.position, Vector3.up, playerHeight + 0.3f, obstacleLayerMask);
-                // bool canStand2 =
-                //     !Physics.Raycast(transform.position, -Vector3.up,  0.5f, obstacleLayerMask);
                 if (canStand1)
                 {
+                    //simply checking if the player is mid air and if so move ur legs up rather than the head down
                     if (isGrounded)
                     {
                         isCrouching = false;
                         moveSpeed = walkMoveSpeed;
                         currentNoiseLevel = walkNoiseLevel;
                         transform.localScale = new Vector3(1, 1, 1);
-                        // visual.transform.localScale = new Vector3(1, 1, 1);
                     }
                     else
                     {
@@ -226,9 +222,7 @@ namespace InDevelopment.Mechanics.Player
                         currentNoiseLevel = walkNoiseLevel;
                         transform.localScale = new Vector3(1, 1, 1);
                         transform.position = new Vector3(transform.position.x, transform.position.y - 1.6f, transform.position.z);
-                        // visual.transform.localScale = new Vector3(1, 1, 1);
-                        // visual.transform.position = new Vector3(transform.position.x, transform.position.y - 1.6f,
-                        //     transform.position.z);
+                        
                     }
                 }
             }
@@ -241,6 +235,8 @@ namespace InDevelopment.Mechanics.Player
 
         private bool IsGrounded()
         {
+            //using a box cast to determine if the player is grounded if there aren't
+            //any colliders in there then the player isn't on the ground
             Vector3 boxColliderTransform = new Vector3(fricStub.transform.localScale.x / 5,
                 fricStub.transform.localScale.y / 4, fricStub.transform.localScale.z / 5);
             Collider[] cols = Physics.OverlapBox(fricStub.transform.position, boxColliderTransform, Quaternion.identity,
@@ -292,7 +288,7 @@ namespace InDevelopment.Mechanics.Player
             else
             {
                 //AirSpeed
-                // rb.AddForce((movement.normalized * (moveSpeed * Time.deltaTime)) / 2, ForceMode.Acceleration);
+                //this limits how fast you move in the air so that you don't accelerate mid air
                 if (rb.velocity.magnitude > airSpeedLimit)
                 {
                     float x = Mathf.Clamp(rb.velocity.x, rb.velocity.x, airSpeedLimit);
@@ -312,6 +308,7 @@ namespace InDevelopment.Mechanics.Player
 
         private void CalculateForward()
         {
+            //works out the new forward for the slope so that the player can apply movement in the right direction
             if (!hasForward)
             {
                 forwardTransform = transform.forward;
@@ -323,6 +320,7 @@ namespace InDevelopment.Mechanics.Player
 
         private void CalculateGroundAngle()
         {
+            //calculates the ground angle that the player is currently on
             if (!hasForward)
             {
                 groundAngle = 90;
@@ -334,6 +332,7 @@ namespace InDevelopment.Mechanics.Player
 
         private void CheckForwardTransform()
         {
+            //calculates the forward for when the player must go up and down the stairs
             float distance = disToGround + transform.localScale.y;
 
             Ray ray = new Ray(fricStub.transform.position, -Vector3.up);
@@ -350,6 +349,7 @@ namespace InDevelopment.Mechanics.Player
 
         private bool IsMoving()
         {
+            //determines if the player is currently moving
             if (controller.moveDirection.x < 0 || controller.moveDirection.x > 0 || controller.moveDirection.y < 0 ||
                 controller.moveDirection.y > 0)
             {
@@ -367,6 +367,7 @@ namespace InDevelopment.Mechanics.Player
 
         private void CheckSprint()
         {
+            //a lot of value checking to ensure that the sprint is allowed to be used
             if (isSprinting && isMoving && !visionActivated && !isCrouching)
             {
                 sprintEnergy -= Time.deltaTime * sprintDrainRate;
@@ -390,6 +391,7 @@ namespace InDevelopment.Mechanics.Player
 
         private void SwapPhysicsMats()
         {
+            //swaps physics materials to allow for high or low friction
             if (IsMoving() && !visionActivated || !IsGrounded())
             {
                 fricStubCol.sharedMaterial = lowFrictionMat;
@@ -406,15 +408,6 @@ namespace InDevelopment.Mechanics.Player
             if (!visionActivated)
             {
                 ApplyMovement();
-            }
-            else
-            {
-                if (isGrounded)
-                {
-                    //TODO make player slow down rather than just stop completely
-                    // rb.velocity = Vector3.zero;
-                    //moveSpeed = 0;
-                }
             }
         }
 

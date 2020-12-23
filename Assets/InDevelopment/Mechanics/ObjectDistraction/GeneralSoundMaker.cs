@@ -17,7 +17,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         public void MakeSound(float noiseLevel)
         {
             noiseLevelDebug = noiseLevel;
-            // noiseLevelCollider.transform.localScale = new Vector3(noiseLevel, noiseLevel, noiseLevel);
             noiseLevelCollider.radius = noiseLevel;
             if (waiting) return;
             waiting = true;
@@ -26,7 +25,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         public void OnTriggerEnter(Collider other)
         {
-            //maybe raycast to any enemy in range to see if they heard it, if hit they did else it hit a wall and they didn't 
             if (!other.gameObject.GetComponentInChildren<EnemyStateBase>()) return;
             var enemyScript = other.gameObject.GetComponentInChildren<EnemyStateBase>();
             if (enemyScript.enemyController.stateManager.currentEnemyState != enemyScript.enemyController.playerDetectedState)

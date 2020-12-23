@@ -23,6 +23,7 @@ namespace InDevelopment.Mechanics
 
         public void OnValueChange(float changedValue)
         {
+            //controls the slider for the vision animation
             animator.Play("VisionUIAnim", 0, visionEnergy.normalizedValue);
         }
 
@@ -44,6 +45,8 @@ namespace InDevelopment.Mechanics
         {
             if (visionAbilityController.visionEnergy >= visionAbilityController.maxEnergyFill)
             {
+                //due to some weird animation glitch this needs to be set to just before the max because
+                //the max for some reason ends up showing the first animation frame again for some reason
                 visionAbilityController.visionEnergy = 99f;
             }
         }

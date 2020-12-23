@@ -22,6 +22,7 @@ namespace InDevelopment.Mechanics.Menu
 
         private void SetUpOptions()
         {
+            //checking for previously saved settings
             if (PlayerPrefs.HasKey("MouseSen"))
             {
                 mouseSettings.mouseSensitivity = PlayerPrefs.GetFloat("MouseSen");
@@ -47,6 +48,7 @@ namespace InDevelopment.Mechanics.Menu
 
         public void SetMouseSensitivity(float changedValue)
         {
+            //saves the value the slider gives
             mouseSettings.mouseSensitivity = changedValue;
             //mouseSensitivityText.text = changedValue.ToString();
             PlayerPrefs.SetFloat("MouseSen", changedValue);
@@ -54,6 +56,7 @@ namespace InDevelopment.Mechanics.Menu
 
         public void SetMouseYInversion(bool changedValue)
         {
+            //saves the settings the toggle gives
             mouseSettings.InvertMouseY = changedValue;
             if (changedValue)
             {

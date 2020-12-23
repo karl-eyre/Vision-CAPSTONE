@@ -57,6 +57,7 @@ namespace InDevelopment.Mechanics.LineOfSight
 
         private void Start()
         {
+            //will always be calling this coroutine
             StartCoroutine(RaycastToPlayer(.20f));
             if (player == null)
             {
@@ -131,13 +132,17 @@ namespace InDevelopment.Mechanics.LineOfSight
         {
             if (player == null) return;
 
+            //get direction to player
             Vector3 dirToTarget = (player.transform.position - headPos.transform.position);
             deltaTime = Time.timeSinceLevelLoad - timeSinceLastSeen;
 
+            //ensure that the player is in the view angle
             if (Vector3.Angle(headPos.transform.forward, dirToTarget) < viewAngle / 2)
             {
+
                 Ray ray = new Ray(headPos.transform.position, dirToTarget);
 
+                //if it hits the player then obviously you can see the player
                 if (Physics.Raycast(ray, out hitInfo, viewDistance))
                 {
                     if (hitInfo.collider.CompareTag("Obstacles"))
@@ -162,6 +167,7 @@ namespace InDevelopment.Mechanics.LineOfSight
         //used by editor script
         public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
         {
+            //used for the handle drawing
             if (!angleIsGlobal)
             {
                 angleInDegrees += headPos.transform.eulerAngles.y;
@@ -176,6 +182,7 @@ namespace InDevelopment.Mechanics.LineOfSight
             stopDecrease = true;
         }
 
+        //Depreciated
         public void SoftResetLos()
         {
             if (!isResetting)
@@ -184,7 +191,7 @@ namespace InDevelopment.Mechanics.LineOfSight
                 StartCoroutine(SoftResetLOS());
             }
         }
-
+        //Depreciated
         public void HardResetLos()
         {
             if (!isResetting)
@@ -193,7 +200,7 @@ namespace InDevelopment.Mechanics.LineOfSight
                 StartCoroutine(HardResetLOS());
             }
         }
-
+        //Depreciated
         private IEnumerator SoftResetLOS()
         {
             yield return new WaitForSeconds(resetDelay);
@@ -213,7 +220,7 @@ namespace InDevelopment.Mechanics.LineOfSight
 
             isResetting = false;
         }
-
+        //Depreciated
         private IEnumerator HardResetLOS()
         {
             yield return new WaitForSeconds(resetDelay);

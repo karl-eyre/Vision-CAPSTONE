@@ -132,7 +132,6 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         {
             //have both tested to see if these are necessary
             // throwForce = defaultThrowForce / 2 + points.Count;
-            //TODO test this
             throwForce = points.Count;
         }
 
@@ -159,9 +158,9 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             Ray ray1 = camera.ScreenPointToRay(mousePosition);
             RaycastHit hitInfo;
 
+            //just makes the hand rotation look at the hit position of the raycast to ensure that the arc for the throw doesn't go on forever
             if (Physics.Raycast(ray1, out hitInfo, throwForce + 50f, groundLayerMask))
             {
-                // + new Vector3(0, yOffset, 0)
                 handPosition.LookAt(hitInfo.point);
             }
             else
@@ -188,6 +187,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                 }
                 else
                 {
+                    //sets the current points for the loop
                     //the two points are used to determine the way that he point that it is in the line
                     Vector3 point1 = PointPosition(loopCount * 0.1f);
                     Vector3 point2 = PointPosition((loopCount + 1f) * 0.1f);
@@ -196,15 +196,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                     Ray ray = new Ray(point1, point2 - point1);
                     RaycastHit hit;
 
-                    // bool isHit = Physics.BoxCast(point1, throwableObjectPrefab.GetComponent<Renderer>().bounds.extents, point2 - point1, out hit,Quaternion.identity,groundLayerMask);
-
-                    // bool isHit = Physics.SphereCast(ray, throwableObjectPrefab.transform.lossyScale.x ,out hit,Vector3.Distance(point1, point2),groundLayerMask);
-
-                    // if (isHit)
-                    // {
-                    //     hitGround = true;
-                    // }
-
+                    //just see it if it hits the ground if so then that is the end point for the line renderer
                     if (Physics.Raycast(ray, out hit, Vector3.Distance(point1, point2), groundLayerMask))
                         // if (Physics.Raycast(ray, out hit, Vector3.Distance(point1, point2)))
                     {
@@ -237,6 +229,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
         /// <returns></returns>
         private Vector3 PointPosition(float time)
         {
+            //used for calculating the point positions for the line renderer
             Vector3 currentPosition = handPosition.position + (throwDirection * (throwForce * time)) +
                                       Physics.gravity * (0.5f * (time * time));
             return currentPosition;
@@ -268,6 +261,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
             {
                 //when animations need to be added just have the object destroy delayed for the duration of the animations
                 // Debug.Log("UseObject");
+                //grabs the selected object from the object selection outline script
                 hitObject = selectionOutline.selectedObject;
 
                 if (throwableObjectPrefab == null)
@@ -321,13 +315,14 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
         IEnumerator ThrowObj(Rigidbody rb, GameObject throwableObject)
         {
+            //throw the objects
             animator.SetBool("throwing", true);
             yield return new WaitForSeconds(throwClip.length - 0.4f);
             animator.SetBool("throwing", false);
             armMesh.SetActive(false);
 
             rb.velocity = Vector3.zero;
-
+            
             throwableObject.transform.position = handPosition.position;
             throwableObject.transform.rotation = handPosition.rotation;
             throwableObject.SetActive(true);

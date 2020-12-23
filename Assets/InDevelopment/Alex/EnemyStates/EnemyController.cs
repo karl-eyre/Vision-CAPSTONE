@@ -97,10 +97,10 @@ namespace InDevelopment.Alex.EnemyStates
             moveSpeedHash = Animator.StringToHash("MoveSpeed");
             defaultMoveSpeed = moveSpeed;
             SetupStates();
-            SetupNavmesh();
+            SetupNavmeshSettings();
         }
 
-        void SetupNavmesh()
+        void SetupNavmeshSettings()
         {
             agent = GetComponent<NavMeshAgent>();
             agent.ResetPath();
@@ -134,7 +134,6 @@ namespace InDevelopment.Alex.EnemyStates
         {
             if (other.collider.CompareTag("Player"))
             {
-                //TODO end game
                 F_Music.music.setParameterByName("MusicState", 2f, false);
                 F_AnnouncerIndoors.announcer.setParameterByName("PlayerDetected", 0, false);
 
@@ -180,12 +179,6 @@ namespace InDevelopment.Alex.EnemyStates
 
         public void LookLeftAndRight()
         {
-            //change to move til it hits max and min angles
-            // rotationAmount = Mathf.PingPong(Time.time * rotSpeed,rightTurnRadius * 2) - rightTurnRadius;
-
-            // float time = Mathf.PingPong(Time.time * rotSpeed, 1);
-            // rotationAmount = Mathf.Lerp(rightTurnRadius, -rightTurnRadius, time);
-
             if (turningRight)
             {
                 if (rotationAmount >= turnRadius)
@@ -206,8 +199,6 @@ namespace InDevelopment.Alex.EnemyStates
             }
 
             lineOfSight.headPos.transform.localRotation = Quaternion.Euler(0, rotationAmount, 0);
-
-            // lineOfSight.headPos.transform.Rotate(0, rotationAmount * Time.deltaTime, 0, Space.Self);
         }
     }
 }

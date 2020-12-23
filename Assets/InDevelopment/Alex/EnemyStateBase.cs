@@ -35,8 +35,6 @@ namespace InDevelopment.Alex
         public AnimationClip clip;
         public bool playingAnimation;
 
-        // public static event Action playerDetected;
-
         private void Start()
         {
             Init();
@@ -61,7 +59,6 @@ namespace InDevelopment.Alex
             }
 
             if (!(enemyController is null)) enemyController.beingDistracted = false;
-            // PlayerDetectedState.playerDetected += TriggerPlayerDetection;
         }
 
         public void OnEnable()
@@ -69,37 +66,32 @@ namespace InDevelopment.Alex
             Init();
         }
 
-        public void OnDestroy()
-        {
-            // PlayerDetectedState.playerDetected -= TriggerPlayerDetection;
-        }
-
         public virtual void Enter()
         {
             Init();
-            // Debug.Log("I have entered into the " + this.GetType() + " state.");
         }
 
         public virtual void Exit()
         {
-            // Debug.Log("I have exited into the " + this.GetType() + " state.");
+            
         }
 
         public virtual void Execute()
         {
-            // Debug.Log("I am executing the " + this.GetType() + " state.");
+            
         }
 
+        //update needs to be called as well as execute because this function needs to run all the time
+        //however execute only runs while in a state, but during a state change that execute doesn't run
         public void Update()
         {
             CalledAllTheTime();
         }
 
-        //look at moving into line of sight script and just calling it all the time
-        //that would remove the state issue i believe
         public void LOSFunc()
         {
             //only call function in each state manually it seems to be causing problems for currently
+            //checks for what state the AI needs to change to if needed
             if (!(enemyController.playerDetectedState is null) &&
                 stateManager.currentEnemyState != enemyController.playerDetectedState && !playerDetected)
             {
@@ -145,6 +137,7 @@ namespace InDevelopment.Alex
 
         public void GetDistracted(Vector3 location)
         {
+            //used by the objects that get thrown around
             if (enemyController.beingDistracted) return;
 
             if (stateManager.currentEnemyState != enemyController.spottingState)
@@ -183,6 +176,7 @@ namespace InDevelopment.Alex
 
         private void PlayerDetected()
         {
+            //is the player detected if so then change to player detected state
             if (lineOfSight.detectionMeter > lineOfSight.maxDetectionValue)
             {
                 if (stateManager.currentEnemyState != enemyController.playerDetectedState)
@@ -220,7 +214,6 @@ namespace InDevelopment.Alex
             return lineOfSight.detectionMeter >= lineOfSight.investigationThreshold;
         }
 
-        //TODO use to turn detection ui on and off
         private void IsAlerted()
         {
             if (lineOfSight.detectionMeter > 0 && CanSeePlayer())

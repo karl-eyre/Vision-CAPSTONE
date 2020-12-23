@@ -1,12 +1,12 @@
 ﻿using System;
-using Abilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 namespace InDevelopment.Mechanics.VisionAbility
 {
-    public class VisionAbilityController : AbilityBase
+    //this reacts to the vision activation script, this sits on the enemys and throwable objects
+    public class VisionAbilityController : MonoBehaviour
     {
         private GameControls controls;
 

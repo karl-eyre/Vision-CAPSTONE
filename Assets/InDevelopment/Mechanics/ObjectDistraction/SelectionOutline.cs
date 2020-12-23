@@ -74,6 +74,8 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
             if (isHit)
             {
+                //checks if the mouse is close enough to the object to give players some leway on
+                //the teleport since its further away than a pickup would be
                 Collider[] colliders =
                     Physics.OverlapBox(hit.point, teleportAbility.teleportAssistRange, Quaternion.identity);
 
@@ -81,6 +83,7 @@ namespace InDevelopment.Mechanics.ObjectDistraction
                 {
                     if (collider.CompareTag("ThrowableObjects"))
                     {
+                        //used to apply the object teleport highlight shader
                         var selection = collider.gameObject;
                         selection.GetComponent<VisionEffectActivation>().isSelected = true;
                         var selectionRenderer = collider.gameObject.GetComponent<Renderer>();
@@ -111,8 +114,11 @@ namespace InDevelopment.Mechanics.ObjectDistraction
 
             if (pickupIsHit)
             {
+                //if the ray hits the right object then set that as the selected object for the teleport and distraction ability
+                //scripts to use
                 if (hit.collider.CompareTag("ThrowableObjects"))
                 {
+                    //used to apply the object pickup highlight shader
                     var selection = hit.collider.gameObject;
                     selection.GetComponent<VisionEffectActivation>().isSelected = true;
                     var selectionRenderer = hit.collider.gameObject.GetComponent<Renderer>();

@@ -56,6 +56,7 @@ namespace InDevelopment.Mechanics.Player
         {
             look = controls.InGame.MouseLook.ReadValue<Vector2>();
 
+            //sets mouse rotation for camera movement
             var mouseX = look.x * mouseSensitivity * Time.deltaTime;
             var mouseY = look.y * mouseSensitivity * Time.deltaTime;
 

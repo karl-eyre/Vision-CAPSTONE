@@ -12,6 +12,7 @@ namespace InDevelopment.Mechanics
         private EnemyStateBase stateBase;
         private LineOfSight.LineOfSight lineOfSight;
 
+        //used the detection slider that has now be depreciated 
         private void Start()
         {
             lineOfSight = GetComponent<LineOfSight.LineOfSight>();
